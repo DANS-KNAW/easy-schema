@@ -1,0 +1,2133 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/</title>
+      <link rel="stylesheet" href="xsdDocHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        var propertiesBoxes= new Array('properties_id0', 
+				'properties_id8', 
+				'properties_id9', 
+				'properties_id23', 
+				'properties_id28', 
+				'properties_id30', 
+				'properties_id33', 
+				'properties_id36', 
+				'properties_id98');
+
+        var facetsBoxes= new Array('facets_id99');
+
+        var usedByBoxes= new Array('usedBy_id23', 
+				'usedBy_id28', 
+				'usedBy_id30', 
+				'usedBy_id33', 
+				'usedBy_id98', 
+				'usedBy_id10', 
+				'usedBy_id35');
+
+        var sourceBoxes= new Array('source_id8', 
+				'source_id9', 
+				'source_id23', 
+				'source_id28', 
+				'source_id30', 
+				'source_id33', 
+				'source_id36', 
+				'source_id98', 
+				'source_id10', 
+				'source_id35', 
+				'source_id99');
+
+        var instanceBoxes= new Array('instance_id8', 
+				'instance_id9', 
+				'instance_id36');
+
+        var diagramBoxes= new Array('diagram_id8', 
+				'diagram_id9', 
+				'diagram_id23', 
+				'diagram_id28', 
+				'diagram_id30', 
+				'diagram_id33', 
+				'diagram_id36', 
+				'diagram_id98', 
+				'diagram_id10', 
+				'diagram_id35', 
+				'diagram_id99');
+
+        var annotationBoxes= new Array('annotations_id0', 
+				'annotations_id8', 
+				'annotations_id9', 
+				'annotations_id23', 
+				'annotations_id28', 
+				'annotations_id30', 
+				'annotations_id33', 
+				'annotations_id36', 
+				'annotations_id98', 
+				'annotations_id10', 
+				'annotations_id35');
+
+        
+        
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "images/button_minus.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "images/button_plus.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id){
+            var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+            // Make all the tabs invisible.
+            for (i = 0; i < 3; i++){
+               var tab = getElementObject(selectIds[i]);
+               tab.style.display = 'none';
+            }
+            var selTab = getElementObject(id);
+            selTab.style.display = 'block';            
+         }
+          
+
+    --></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, annotationBoxes);"
+                                     class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, diagramBoxes);"
+                                     class="control" /></span><span class="globalControlName">Diagrams</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, facetsBoxes);"
+                                     class="control" /></span><span class="globalControlName">Facets </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, instanceBoxes);"
+                                     class="control" /></span><span class="globalControlName">Instances</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, propertiesBoxes);"
+                                     class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, sourceBoxes);"
+                                     class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, usedByBoxes);"
+                                     class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button"
+                               onclick="getElementObject('global_controls').style.display = 'none';"
+                               value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="id0"></a><div class="componentTitle">Main schema <span class="qname">ddm.xsd</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://easy.dans.knaw.nl/schemas/md/ddm/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id0" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id0');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id0" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">DANS Dataset Metadata (DDM)</span><span class="tokenIndent">
+</span><span class="tokenText">            </span><span class="tokenIndent">
+</span><span class="tokenText">This schema specifies a metadata-format for describing datasets. </span><span class="tokenIndent">
+</span><span class="tokenText">An instance of this metadata-format can be used for ingest of datasets with the Sword protocol.</span><span class="tokenIndent">
+</span><span class="tokenText">            </span><span class="tokenIndent">
+</span><span class="tokenText">Created 2012-10-26</span><span class="tokenIndent">
+</span><span class="tokenText">            </span><span class="tokenIndent">
+</span><span class="tokenText">Copyright (c) 2012 DANS-KNAW</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id0" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('properties_id0');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id0" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">attribute form default:
+                                       
+                                    </td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">element form default:
+                                       
+                                    </td>
+                                    <td><b>qualified</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id8"></a><div class="componentTitle">Element <span class="qname">ddm:DDM</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://easy.dans.knaw.nl/schemas/md/ddm/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id8" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id8');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id8" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">Root element of DANS Dataset Metadata. DDM-instances MUST have one ddm:profile element and MAY have</span><span class="tokenIndent">
+</span><span class="tokenText">one ddm:dcmiMetadata element and one ddm:additional-xml element.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id8" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id8');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id8" style="display:block"><img alt="Diagram" border="0" src="images/ddm.html81.jpeg" usemap="#ddm_46_html81" /><map name="ddm_46_html81" id="ddm_46_html81">
+                                 <area alt="ddm1.tmp#id9" href="ddm1.html#id9" coords="155,2,308,44" />
+                                 <area alt="ddm1.tmp#id36" href="ddm1.html#id36" coords="155,54,436,96" />
+                                 <area alt="ddm1.tmp#id98" href="ddm1.html#id98" coords="155,106,292,130" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id8" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('properties_id8');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id8" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b></td>
+                        <td>ALL(<b><a href="ddm1.html#id9" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:profile</a></b> <b><a href="ddm1.html#id36" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:dcmiMetadata{0,1}</a></b> <b><a href="ddm1.html#id98" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:additional-xml{0,1}</a></b>)
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="ddm1.html#id98" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:additional-xml</a></b>, <b><a href="ddm1.html#id36" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:dcmiMetadata</a></b>, <b><a href="ddm1.html#id9" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:profile</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_id8" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('instance_id8');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_id8" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;ddm:DDM</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;ddm:profile</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">{1,1}</span><span class="tokenElement">&lt;/ddm:profile&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;ddm:dcmiMetadata</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">{0,1}</span><span class="tokenElement">&lt;/ddm:dcmiMetadata&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;ddm:additional-xml</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">{0,1}</span><span class="tokenElement">&lt;/ddm:additional-xml&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/ddm:DDM&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id8" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id8');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id8" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"DDM"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Root element of DANS Dataset Metadata. DDM-instances MUST have one ddm:profile element and MAY have one ddm:dcmiMetadata element and one ddm:additional-xml element.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:complexType</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:all</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"profile"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"ddm:profileType"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+        </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+          </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Container for Easy-specific information. (Required) The information in this group is essential for profiling the dataset in the Easy application.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+        </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;/xs:element&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"dcmiMetadata"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"dcterms:elementOrRefinementContainer"</span><span class="tokenAttrName"> minOccurs=</span><span class="tokenAttrValue">"0"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+        </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+          </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Container for dcmi metadata. (Optional) All elements of the http://purl.org/dc/elements/1.1/ namespace can be used. All elements of the http://purl.org/dc/terms/ namespace can be used. All elements defined in this schema that are extensions or restrictions of dc or dcterms elements can be used. Where applicable the use of the xml:lang attribute is recommended. Where applicable the use of the xsi:type attribute is recommended. See also: http://dublincore.org/documents/dcmi-terms/ http://dublincore.org/schemas/xmls/qdc/dcterms.xsd</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+        </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;/xs:element&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"ddm:additional-xml"</span><span class="tokenAttrName"> minOccurs=</span><span class="tokenAttrValue">"0"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;/xs:all&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:complexType&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:element&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id9"></a><div class="componentTitle">Element <span class="qname"><b><a href="ddm1.html#id8" target="mainFrame"
+                  title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                  onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:DDM</a></b> / ddm:profile</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://easy.dans.knaw.nl/schemas/md/ddm/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id9" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id9');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id9" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">Container for Easy-specific information. (Required)</span><span class="tokenIndent">
+</span><span class="tokenText">The information in this group is essential for profiling the dataset in the Easy application.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id9" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id9');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id9" style="display:block"><img alt="Diagram" border="0" src="images/ddm.html1.jpeg" usemap="#ddm_46_html1" /><map name="ddm_46_html1" id="ddm_46_html1">
+                                 <area alt="ddm0.tmp#id11" href="ddm0.html#id11" coords="287,40,354,64" />
+                                 <area alt="ddm0.tmp#id15" href="ddm0.html#id15" coords="287,74,395,98" />
+                                 <area alt="ddm0.tmp#id19" href="ddm0.html#id19" coords="287,108,373,132" />
+                                 <area alt="ddm1.tmp#id23" href="ddm1.html#id23" coords="287,142,444,184" />
+                                 <area alt="ddm1.tmp#id28" href="ddm1.html#id28" coords="287,194,444,236" />
+                                 <area alt="ddm1.tmp#id30" href="ddm1.html#id30" coords="287,246,466,288" />
+                                 <area alt="ddm1.tmp#id33" href="ddm1.html#id33" coords="287,298,501,340" />
+                                 <area alt="ddm1.tmp#id10" href="ddm1.html#id10" coords="184,3,323,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="ddm1.html#id10" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:profileType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id9" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('properties_id9');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id9" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b></td>
+                        <td><b><a href="ddm0.html#id11" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">title+</a></b> , <b><a href="ddm0.html#id15" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">description+</a></b> , <b><a href="ddm0.html#id19" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">creator+</a></b> , <b><a href="ddm1.html#id23" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:created</a></b> , <b><a href="ddm1.html#id28" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:available{0,1}</a></b> , <b><a href="ddm1.html#id30" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:audience+</a></b> , <b><a href="ddm1.html#id33" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:accessRights</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="ddm0.html#id19" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">creator</a></b>, <b><a href="ddm1.html#id33" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:accessRights</a></b>, <b><a href="ddm1.html#id30" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:audience</a></b>, <b><a href="ddm1.html#id28" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:available</a></b>, <b><a href="ddm1.html#id23" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:created</a></b>, <b><a href="ddm0.html#id15" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">description</a></b>, <b><a href="ddm0.html#id11" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">title</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_id9" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('instance_id9');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_id9" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;ddm:profile</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;title</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">{1,unbounded}</span><span class="tokenElement">&lt;/title&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;description</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">{1,unbounded}</span><span class="tokenElement">&lt;/description&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;creator</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">{1,unbounded}</span><span class="tokenElement">&lt;/creator&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;ddm:created</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">{1,1}</span><span class="tokenElement">&lt;/ddm:created&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;ddm:available</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">{0,1}</span><span class="tokenElement">&lt;/ddm:available&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;ddm:audience</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">{1,unbounded}</span><span class="tokenElement">&lt;/ddm:audience&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;ddm:accessRights</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">{1,1}</span><span class="tokenElement">&lt;/ddm:accessRights&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/ddm:profile&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id9" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id9');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id9" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"profile"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"ddm:profileType"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Container for Easy-specific information. (Required) The information in this group is essential for profiling the dataset in the Easy application.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:element&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id23"></a><div class="componentTitle">Element <span class="qname">ddm:created</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://easy.dans.knaw.nl/schemas/md/ddm/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id23" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id23');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id23" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">Restriction on dcterms:created.</span><span class="tokenIndent">
+</span><span class="tokenText">                </span><span class="tokenIndent">
+</span><span class="tokenText">Element value MUST conform to the dcterms:W3CDTF format.</span><span class="tokenIndent">
+</span><span class="tokenText">                </span><span class="tokenIndent">
+</span><span class="tokenText">See also: http://purl.org/dc/terms/created</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id23" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id23');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id23" style="display:block"><img alt="Diagram" border="0" src="images/ddm.html9.jpeg" usemap="#ddm_46_html9" /><map name="ddm_46_html9" id="ddm_46_html9">
+                                 <area alt="ddm2.tmp#id27" href="ddm2.html#id27" coords="227,286,321,310" />
+                                 <area alt="ddm0.tmp#id26" href="ddm0.html#id26" coords="202,43,432,65" />
+                                 <area alt="ddm2.tmp#id27" href="ddm2.html#id27" coords="213,414,307,438" />
+                                 <area alt="ddm4.tmp#id25" href="ddm4.html#id25" coords="188,3,331,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="ddm4.html#id25" target="mainFrame" title="http://purl.org/dc/terms/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">W3CDTF</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type hierarchy</b></td>
+                        <td>
+                           <ul>
+                              <li><b><a href="ddm0.html#id26" target="mainFrame"
+                                       title="http://purl.org/dc/elements/1.1/"
+                                       onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">SimpleLiteral</a></b><ul>
+                                    <li><b><a href="ddm4.html#id25" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">W3CDTF</a></b></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id23" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id23');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id23" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id23" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id23');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id23" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="ddm1.html#id10" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:profileType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id23" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id23');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id23" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"created"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"dcterms:created"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"dcterms:W3CDTF"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Restriction on dcterms:created. Element value MUST conform to the dcterms:W3CDTF format. See also: http://purl.org/dc/terms/created</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:element&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id28"></a><div class="componentTitle">Element <span class="qname">ddm:available</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://easy.dans.knaw.nl/schemas/md/ddm/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id28" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id28');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id28" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">Restriction on dcterms:available.</span><span class="tokenIndent">
+</span><span class="tokenText">                </span><span class="tokenIndent">
+</span><span class="tokenText">Element value MUST conform to the dcterms:W3CDTF format.</span><span class="tokenIndent">
+</span><span class="tokenText">                </span><span class="tokenIndent">
+</span><span class="tokenText">See also: http://purl.org/dc/terms/available</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id28" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id28');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id28" style="display:block"><img alt="Diagram" border="0" src="images/ddm.html106.jpeg" usemap="#ddm_46_html106" /><map name="ddm_46_html106" id="ddm_46_html106">
+                                 <area alt="ddm2.tmp#id27" href="ddm2.html#id27" coords="227,286,321,310" />
+                                 <area alt="ddm0.tmp#id26" href="ddm0.html#id26" coords="202,43,432,65" />
+                                 <area alt="ddm2.tmp#id27" href="ddm2.html#id27" coords="213,414,307,438" />
+                                 <area alt="ddm4.tmp#id25" href="ddm4.html#id25" coords="188,3,331,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="ddm4.html#id25" target="mainFrame" title="http://purl.org/dc/terms/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">W3CDTF</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type hierarchy</b></td>
+                        <td>
+                           <ul>
+                              <li><b><a href="ddm0.html#id26" target="mainFrame"
+                                       title="http://purl.org/dc/elements/1.1/"
+                                       onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">SimpleLiteral</a></b><ul>
+                                    <li><b><a href="ddm4.html#id25" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">W3CDTF</a></b></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id28" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id28');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id28" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id28" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id28');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id28" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="ddm1.html#id10" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:profileType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id28" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id28');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id28" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"available"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"dcterms:available"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"dcterms:W3CDTF"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Restriction on dcterms:available. Element value MUST conform to the dcterms:W3CDTF format. See also: http://purl.org/dc/terms/available</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:element&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id30"></a><div class="componentTitle">Element <span class="qname">ddm:audience</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://easy.dans.knaw.nl/schemas/md/ddm/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id30" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id30');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id30" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">Restriction on dcterms:audience.</span><span class="tokenIndent">
+</span><span class="tokenText">                </span><span class="tokenIndent">
+</span><span class="tokenText">Element value MUST conform to the narcis:DisciplineType.</span><span class="tokenIndent">
+</span><span class="tokenText">                </span><span class="tokenIndent">
+</span><span class="tokenText">See also: http://purl.org/dc/terms/audience</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id30" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id30');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id30" style="display:block"><img alt="Diagram" border="0" src="images/ddm.html99.jpeg" usemap="#ddm_46_html99" /><map name="ddm_46_html99" id="ddm_46_html99">
+                                 <area alt="ddm2.tmp#id27" href="ddm2.html#id27" coords="249,286,343,310" />
+                                 <area alt="ddm0.tmp#id26" href="ddm0.html#id26" coords="224,43,454,65" />
+                                 <area alt="ddm2.tmp#id27" href="ddm2.html#id27" coords="235,414,329,438" />
+                                 <area alt="ddm7.tmp#id32" href="ddm7.html#id32" coords="210,3,375,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="ddm7.html#id32" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/vocab/narcis-type/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/vocab/narcis-type/')">narcis:DisciplineType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type hierarchy</b></td>
+                        <td>
+                           <ul>
+                              <li><b><a href="ddm0.html#id26" target="mainFrame"
+                                       title="http://purl.org/dc/elements/1.1/"
+                                       onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">SimpleLiteral</a></b><ul>
+                                    <li><b><a href="ddm7.html#id32" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/vocab/narcis-type/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/vocab/narcis-type/')">narcis:DisciplineType</a></b></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id30" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id30');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id30" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id30" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id30');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id30" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="ddm1.html#id10" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:profileType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id30" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id30');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id30" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"audience"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"dcterms:audience"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"narcis:DisciplineType"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Restriction on dcterms:audience. Element value MUST conform to the narcis:DisciplineType. See also: http://purl.org/dc/terms/audience</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:element&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id33"></a><div class="componentTitle">Element <span class="qname">ddm:accessRights</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://easy.dans.knaw.nl/schemas/md/ddm/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id33" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id33');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id33" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">Restriction on dcterms:accessRights.</span><span class="tokenIndent">
+</span><span class="tokenText">                </span><span class="tokenIndent">
+</span><span class="tokenText">Element value MUST conform to ddm:EasyAccessRightsType.</span><span class="tokenIndent">
+</span><span class="tokenText">                </span><span class="tokenIndent">
+</span><span class="tokenText">See also: http://purl.org/dc/terms/accessRights</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id33" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id33');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id33" style="display:block"><img alt="Diagram" border="0" src="images/ddm.html104.jpeg" usemap="#ddm_46_html104" /><map name="ddm_46_html104" id="ddm_46_html104">
+                                 <area alt="ddm2.tmp#id27" href="ddm2.html#id27" coords="284,304,378,328" />
+                                 <area alt="ddm0.tmp#id26" href="ddm0.html#id26" coords="259,61,489,83" />
+                                 <area alt="ddm2.tmp#id27" href="ddm2.html#id27" coords="270,432,364,456" />
+                                 <area alt="ddm1.tmp#id35" href="ddm1.html#id35" coords="245,3,445,43" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="ddm1.html#id35" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:EasyAccessRightsType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type hierarchy</b></td>
+                        <td>
+                           <ul>
+                              <li><b><a href="ddm0.html#id26" target="mainFrame"
+                                       title="http://purl.org/dc/elements/1.1/"
+                                       onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">SimpleLiteral</a></b><ul>
+                                    <li><b><a href="ddm1.html#id35" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:EasyAccessRightsType</a></b></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id33" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id33');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id33" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id33" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id33');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id33" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="ddm1.html#id10" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:profileType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id33" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id33');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id33" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"accessRights"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"dcterms:accessRights"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"ddm:EasyAccessRightsType"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Restriction on dcterms:accessRights. Element value MUST conform to ddm:EasyAccessRightsType. See also: http://purl.org/dc/terms/accessRights</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:element&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id36"></a><div class="componentTitle">Element <span class="qname"><b><a href="ddm1.html#id8" target="mainFrame"
+                  title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                  onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:DDM</a></b> / ddm:dcmiMetadata</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://easy.dans.knaw.nl/schemas/md/ddm/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id36" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id36');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id36" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">Container for dcmi metadata. (Optional)</span><span class="tokenIndent">
+</span><span class="tokenText">                            </span><span class="tokenIndent">
+</span><span class="tokenText">All elements of the http://purl.org/dc/elements/1.1/ namespace can be used.</span><span class="tokenIndent">
+</span><span class="tokenText">All elements of the http://purl.org/dc/terms/ namespace can be used.</span><span class="tokenIndent">
+</span><span class="tokenText">All elements defined in this schema that are extensions or restrictions of dc or dcterms elements can be used.</span><span class="tokenIndent">
+</span><span class="tokenText">                            </span><span class="tokenIndent">
+</span><span class="tokenText">Where applicable the use of the xml:lang attribute is recommended.</span><span class="tokenIndent">
+</span><span class="tokenText">Where applicable the use of the xsi:type attribute is recommended.</span><span class="tokenIndent">
+</span><span class="tokenText">See also:</span><span class="tokenIndent">
+</span><span class="tokenText">http://dublincore.org/documents/dcmi-terms/</span><span class="tokenIndent">
+</span><span class="tokenText">http://dublincore.org/schemas/xmls/qdc/dcterms.xsd</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id36" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id36');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id36" style="display:block"><img alt="Diagram" border="0" src="images/ddm.html18.jpeg" usemap="#ddm_46_html18" /><map name="ddm_46_html18" id="ddm_46_html18">
+                                 <area alt="ddm0.tmp#id14" href="ddm0.html#id14" coords="571,88,637,112" />
+                                 <area alt="ddm4.tmp#id38" href="ddm4.html#id38" coords="397,43,622,69" />
+                                 <area alt="ddm4.tmp#id37" href="ddm4.html#id37" coords="312,3,579,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="ddm4.html#id37" target="mainFrame" title="http://purl.org/dc/terms/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">elementOrRefinementContainer</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id36" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id36');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id36" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">minOccurs:
+                                       
+                                    </td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b></td>
+                        <td>((<b><a href="ddm0.html#id14" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">any</a></b>))
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="ddm0.html#id14" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">any</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_id36" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('instance_id36');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_id36" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;ddm:dcmiMetadata</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;any</span><span class="tokenText"> </span><span class="tokenAttrName">xml:lang=</span><span class="tokenAttrValue">""</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">{1,1}</span><span class="tokenElement">&lt;/any&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/ddm:dcmiMetadata&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id36" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id36');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id36" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"dcmiMetadata"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"dcterms:elementOrRefinementContainer"</span><span class="tokenAttrName"> minOccurs=</span><span class="tokenAttrValue">"0"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Container for dcmi metadata. (Optional) All elements of the http://purl.org/dc/elements/1.1/ namespace can be used. All elements of the http://purl.org/dc/terms/ namespace can be used. All elements defined in this schema that are extensions or restrictions of dc or dcterms elements can be used. Where applicable the use of the xml:lang attribute is recommended. Where applicable the use of the xsi:type attribute is recommended. See also: http://dublincore.org/documents/dcmi-terms/ http://dublincore.org/schemas/xmls/qdc/dcterms.xsd</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:element&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id98"></a><div class="componentTitle">Element <span class="qname">ddm:additional-xml</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://easy.dans.knaw.nl/schemas/md/ddm/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id98" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id98');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id98" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">Any valid xml-element will do as a child of this element, as long as its namespace is ##other.</span><span class="tokenIndent">
+</span><span class="tokenText">If a schemaLocation is provided on the element, validating agents will validate the provided xml against that schema.</span><span class="tokenIndent">
+</span><span class="tokenText">The element may be complex.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id98" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id98');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id98" style="display:block"><img alt="Diagram" border="0" src="images/ddm.html0.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id98" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id98');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id98" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id98" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id98');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id98" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="ddm1.html#id8" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:DDM</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b></td>
+                        <td><b>ANY element from ANY namespace OTHER than 'http://easy.dans.knaw.nl/schemas/md/ddm/'</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id98" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id98');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id98" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"additional-xml"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Any valid xml-element will do as a child of this element, as long as its namespace is ##other. If a schemaLocation is provided on the element, validating agents will validate the provided xml against that schema. The element may be complex.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:complexType</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:sequence</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:any</span><span class="tokenAttrName"> namespace=</span><span class="tokenAttrValue">"##other"</span><span class="tokenAttrName"> processContents=</span><span class="tokenAttrValue">"lax"</span><span class="tokenAttrName"> maxOccurs=</span><span class="tokenAttrValue">"unbounded"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;/xs:sequence&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:complexType&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:element&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id10"></a><div class="componentTitle">Complex Type <span class="qname">ddm:profileType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://easy.dans.knaw.nl/schemas/md/ddm/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id10" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id10');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id10" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">Detailed specification of the information that is essential for profiling the dataset in the Easy application.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id10" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id10');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id10" style="display:block"><img alt="Diagram" border="0" src="images/ddm.html95.jpeg" usemap="#ddm_46_html95" /><map name="ddm_46_html95" id="ddm_46_html95">
+                                 <area alt="ddm0.tmp#id11" href="ddm0.html#id11" coords="236,0,303,24" />
+                                 <area alt="ddm0.tmp#id15" href="ddm0.html#id15" coords="236,34,344,58" />
+                                 <area alt="ddm0.tmp#id19" href="ddm0.html#id19" coords="236,68,322,92" />
+                                 <area alt="ddm1.tmp#id23" href="ddm1.html#id23" coords="236,102,393,144" />
+                                 <area alt="ddm1.tmp#id28" href="ddm1.html#id28" coords="236,154,393,196" />
+                                 <area alt="ddm1.tmp#id30" href="ddm1.html#id30" coords="236,206,415,248" />
+                                 <area alt="ddm1.tmp#id33" href="ddm1.html#id33" coords="236,258,450,300" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id10" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id10');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id10" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="ddm1.html#id9" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:DDM/ddm:profile</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b></td>
+                        <td><b><a href="ddm0.html#id11" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">title+</a></b> , <b><a href="ddm0.html#id15" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">description+</a></b> , <b><a href="ddm0.html#id19" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">creator+</a></b> , <b><a href="ddm1.html#id23" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:created</a></b> , <b><a href="ddm1.html#id28" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:available{0,1}</a></b> , <b><a href="ddm1.html#id30" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:audience+</a></b> , <b><a href="ddm1.html#id33" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:accessRights</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="ddm0.html#id19" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">creator</a></b>, <b><a href="ddm1.html#id33" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:accessRights</a></b>, <b><a href="ddm1.html#id30" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:audience</a></b>, <b><a href="ddm1.html#id28" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:available</a></b>, <b><a href="ddm1.html#id23" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:created</a></b>, <b><a href="ddm0.html#id15" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">description</a></b>, <b><a href="ddm0.html#id11" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">title</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id10" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id10');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id10" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:complexType</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"profileType"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Detailed specification of the information that is essential for profiling the dataset in the Easy application.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:sequence</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"dc:title"</span><span class="tokenAttrName"> maxOccurs=</span><span class="tokenAttrValue">"unbounded"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"dc:description"</span><span class="tokenAttrName"> maxOccurs=</span><span class="tokenAttrValue">"unbounded"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"dc:creator"</span><span class="tokenAttrName"> maxOccurs=</span><span class="tokenAttrValue">"unbounded"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"ddm:created"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"ddm:available"</span><span class="tokenAttrName"> minOccurs=</span><span class="tokenAttrValue">"0"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"ddm:audience"</span><span class="tokenAttrName"> maxOccurs=</span><span class="tokenAttrValue">"unbounded"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"ddm:accessRights"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:sequence&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:complexType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id35"></a><div class="componentTitle">Complex Type <span class="qname">ddm:EasyAccessRightsType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://easy.dans.knaw.nl/schemas/md/ddm/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id35" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id35');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id35" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">Use on dcterms:accessRights or members of its substitutionGroup.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id35" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id35');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id35" style="display:block"><img alt="Diagram" border="0" src="images/ddm.html58.jpeg" usemap="#ddm_46_html58" /><map name="ddm_46_html58" id="ddm_46_html58">
+                                 <area alt="ddm2.tmp#id27" href="ddm2.html#id27" coords="233,246,327,270" />
+                                 <area alt="ddm0.tmp#id26" href="ddm0.html#id26" coords="208,3,438,25" />
+                                 <area alt="ddm2.tmp#id27" href="ddm2.html#id27" coords="219,374,313,398" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b><a href="ddm0.html#id26" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">SimpleLiteral</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type hierarchy</b></td>
+                        <td>
+                           <ul>
+                              <li><b><a href="ddm0.html#id26" target="mainFrame"
+                                       title="http://purl.org/dc/elements/1.1/"
+                                       onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">SimpleLiteral</a></b><ul>
+                                    <li><b><a href="ddm1.html#id35" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:EasyAccessRightsType</a></b></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id35" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id35');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id35" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="ddm1.html#id33" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/ddm/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/ddm/')">ddm:accessRights</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id35" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id35');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id35" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:complexType</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"EasyAccessRightsType"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Use on dcterms:accessRights or members of its substitutionGroup.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:simpleContent</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:restriction</span><span class="tokenAttrName"> base=</span><span class="tokenAttrValue">"dc:SimpleLiteral"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:simpleType</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+        </span><span class="tokenElement">&lt;xs:restriction</span><span class="tokenAttrName"> base=</span><span class="tokenAttrValue">"ddm:EasyAccessCategoryType"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;/xs:simpleType&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:attribute</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"xml:lang"</span><span class="tokenAttrName"> use=</span><span class="tokenAttrValue">"prohibited"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;/xs:restriction&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:simpleContent&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:complexType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id99"></a><div class="componentTitle">Simple Type <span class="qname">ddm:EasyAccessCategoryType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://easy.dans.knaw.nl/schemas/md/ddm/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id99" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id99');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id99" style="display:block"><img alt="Diagram" border="0" src="images/ddm.html123.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>xs:NMTOKEN</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_id99" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('facets_id99');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_id99" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>OPEN_ACCESS_FOR_REGISTERED_USERS</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Unrestricted access for all registered EASY users.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>GROUP_ACCESS</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Access restricted to registered members of a group.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>REQUEST_PERMISSION</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Registered EASY users, but only after depositor permission is granted.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>NO_ACCESS</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">The data are not available via Easy (they are either accessible in another way or elsewhere).</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id99" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id99');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id99" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:simpleType</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"EasyAccessCategoryType"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:restriction</span><span class="tokenAttrName"> base=</span><span class="tokenAttrValue">"xs:NMTOKEN"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:enumeration</span><span class="tokenAttrName"> value=</span><span class="tokenAttrValue">"OPEN_ACCESS_FOR_REGISTERED_USERS"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+        </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Unrestricted access for all registered EASY users.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;/xs:enumeration&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:enumeration</span><span class="tokenAttrName"> value=</span><span class="tokenAttrValue">"GROUP_ACCESS"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+        </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Access restricted to registered members of a group.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;/xs:enumeration&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:enumeration</span><span class="tokenAttrName"> value=</span><span class="tokenAttrValue">"REQUEST_PERMISSION"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+        </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Registered EASY users, but only after depositor permission is granted.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;/xs:enumeration&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:enumeration</span><span class="tokenAttrName"> value=</span><span class="tokenAttrValue">"NO_ACCESS"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+        </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">The data are not available via Easy (they are either accessible in another way or elsewhere).</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;/xs:enumeration&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:restriction&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:simpleType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
+         </div>
+      </div><script type="text/javascript">
+         <!--                     
+                     // The namespace is the selected option in the TOC combo.
+                     
+                     // The corresponding div is already visible conf. to its style attr.                     
+                    
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                --></script></body>
+</html>

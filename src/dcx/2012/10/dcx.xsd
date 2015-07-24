@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:dcx="http://easy.dans.knaw.nl/schemas/dcx/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    targetNamespace="http://easy.dans.knaw.nl/schemas/dcx/"
+    elementFormDefault="qualified" attributeFormDefault="unqualified"> 
+    
+    <!-- =================================================================================== -->
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Basic extensions on dc:SimpleLiteral.
+        </xs:documentation>
+    </xs:annotation>
+    
+    <!-- =================================================================================== -->
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <xs:import namespace="http://purl.org/dc/elements/1.1/"
+        schemaLocation="http://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
+    
+    <!-- =================================================================================== -->
+    <xs:complexType name="NoLanguageAttributeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Restriction on the dc:SimpleLiteral type that prohibits the use of the xml:lang attribute.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+  
+    <!-- =================================================================================== -->
+    <xs:complexType name="ElementsOnlyType" mixed="false">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Restriction on the dc:SimpleLiteral type that prohibits the use of text (because mixed="false")
+                and therefore effectively allows the use of elements only.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:restriction base="dc:SimpleLiteral"/>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <!-- =================================================================================== -->
+    <xs:complexType name="ElementsOnlyNoLanguageAttributeType" mixed="false">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Restriction on the dc:SimpleLiteral type that prohibits the use of the xml:lang attribute
+                and prohibits the use of text (because mixed="false") and therefore effectively allows
+                the use of elements only.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <!-- =================================================================================== -->
+    
+</xs:schema>

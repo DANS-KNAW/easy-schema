@@ -1,0 +1,1932 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for namespace http://purl.org/dc/elements/1.1/</title>
+      <link rel="stylesheet" href="xsdDocHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        var propertiesBoxes= new Array('properties_id3', 
+				'properties_id41');
+
+        
+        var usedByBoxes= new Array('usedBy_id41', 
+				'usedBy_id13', 
+				'usedBy_id111');
+
+        var sourceBoxes= new Array('source_id41', 
+				'source_id42', 
+				'source_id43', 
+				'source_id44', 
+				'source_id45', 
+				'source_id46', 
+				'source_id47', 
+				'source_id48', 
+				'source_id49', 
+				'source_id50', 
+				'source_id51', 
+				'source_id52', 
+				'source_id53', 
+				'source_id54', 
+				'source_id55', 
+				'source_id56', 
+				'source_id13', 
+				'source_id112', 
+				'source_id111');
+
+        
+        var diagramBoxes= new Array('diagram_id41', 
+				'diagram_id42', 
+				'diagram_id43', 
+				'diagram_id44', 
+				'diagram_id45', 
+				'diagram_id46', 
+				'diagram_id47', 
+				'diagram_id48', 
+				'diagram_id49', 
+				'diagram_id50', 
+				'diagram_id51', 
+				'diagram_id52', 
+				'diagram_id53', 
+				'diagram_id54', 
+				'diagram_id55', 
+				'diagram_id56', 
+				'diagram_id13', 
+				'diagram_id112', 
+				'diagram_id111');
+
+        var annotationBoxes= new Array('annotations_id3', 
+				'annotations_id13', 
+				'annotations_id112', 
+				'annotations_id111');
+
+        var attributesBoxes= new Array('attributes_id41', 
+				'attributes_id13');
+
+        
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "images/button_minus.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "images/button_plus.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id){
+            var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+            // Make all the tabs invisible.
+            for (i = 0; i < 3; i++){
+               var tab = getElementObject(selectIds[i]);
+               tab.style.display = 'none';
+            }
+            var selTab = getElementObject(id);
+            selTab.style.display = 'block';            
+         }
+          
+
+    --></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, annotationBoxes);"
+                                     class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, attributesBoxes);"
+                                     class="control" /></span><span class="globalControlName">Attributes </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, diagramBoxes);"
+                                     class="control" /></span><span class="globalControlName">Diagrams</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, propertiesBoxes);"
+                                     class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, sourceBoxes);"
+                                     class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, usedByBoxes);"
+                                     class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button"
+                               onclick="getElementObject('global_controls').style.display = 'none';"
+                               value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="id3"></a><div class="componentTitle">Imported schema <span class="qname">dc.xsd</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id3" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id3');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id3" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">DCMES 1.1 XML Schema</span><span class="tokenIndent">
+</span><span class="tokenText">      XML Schema for http://purl.org/dc/elements/1.1/ namespace</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      Created 2008-02-11</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      Created by </span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      Tim Cole (t-cole3@uiuc.edu)</span><span class="tokenIndent">
+</span><span class="tokenText">      Tom Habing (thabing@uiuc.edu)</span><span class="tokenIndent">
+</span><span class="tokenText">      Jane Hunter (jane@dstc.edu.au)</span><span class="tokenIndent">
+</span><span class="tokenText">      Pete Johnston (p.johnston@ukoln.ac.uk),</span><span class="tokenIndent">
+</span><span class="tokenText">      Carl Lagoze (lagoze@cs.cornell.edu)</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      This schema declares XML elements for the 15 DC elements from the</span><span class="tokenIndent">
+</span><span class="tokenText">      http://purl.org/dc/elements/1.1/ namespace.</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      It defines a complexType SimpleLiteral which permits mixed content </span><span class="tokenIndent">
+</span><span class="tokenText">      and makes the xml:lang attribute available. It disallows child elements by</span><span class="tokenIndent">
+</span><span class="tokenText">      use of minOcccurs/maxOccurs.</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      However, this complexType does permit the derivation of other complexTypes</span><span class="tokenIndent">
+</span><span class="tokenText">      which would permit child elements.</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      All elements are declared as substitutable for the abstract element any, </span><span class="tokenIndent">
+</span><span class="tokenText">      which means that the default type for all elements is dc:SimpleLiteral.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id3" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('properties_id3');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id3" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">attribute form default:
+                                       
+                                    </td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">element form default:
+                                       
+                                    </td>
+                                    <td><b>qualified</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id41"></a><div class="componentTitle">Element <span class="qname">any</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id41" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id41');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id41" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html60.jpeg"
+                                   usemap="#dcx-gml_46_html60" /><map name="dcx-gml_46_html60" id="dcx-gml_46_html60">
+                                 <area alt="dcx-gml2.tmp#id14" href="dcx-gml2.html#id14" coords="111,246,205,270" />
+                                 <area alt="dcx-gml3.tmp#id13" href="dcx-gml3.html#id13" coords="86,3,205,25" />
+                                 <area alt="dcx-gml0.tmp#id105" href="dcx-gml0.html#id105" coords="97,374,207,398" />
+                                 <area alt="dcx-gml0.tmp#id106" href="dcx-gml0.html#id106" coords="97,408,223,432" />
+                                 <area alt="dcx-gml0.tmp#id107" href="dcx-gml0.html#id107" coords="97,442,198,466" />
+                                 <area alt="dcx-gml0.tmp#id102" href="dcx-gml0.html#id102" coords="97,476,176,500" />
+                                 <area alt="dcx-gml3.tmp#id47" href="dcx-gml3.html#id47" coords="97,510,190,534" />
+                                 <area alt="dcx-gml3.tmp#id55" href="dcx-gml3.html#id55" coords="97,544,177,568" />
+                                 <area alt="dcx-gml3.tmp#id43" href="dcx-gml3.html#id43" coords="97,578,167,602" />
+                                 <area alt="dcx-gml3.tmp#id48" href="dcx-gml3.html#id48" coords="97,612,152,636" />
+                                 <area alt="dcx-gml3.tmp#id45" href="dcx-gml3.html#id45" coords="97,646,189,670" />
+                                 <area alt="dcx-gml3.tmp#id50" href="dcx-gml3.html#id50" coords="97,680,164,704" />
+                                 <area alt="dcx-gml3.tmp#id51" href="dcx-gml3.html#id51" coords="97,714,176,738" />
+                                 <area alt="dcx-gml0.tmp#id108" href="dcx-gml0.html#id108" coords="97,748,236,772" />
+                                 <area alt="dcx-gml3.tmp#id53" href="dcx-gml3.html#id53" coords="97,782,177,806" />
+                                 <area alt="dcx-gml0.tmp#id109" href="dcx-gml0.html#id109" coords="97,816,191,840" />
+                                 <area alt="dcx-gml3.tmp#id46" href="dcx-gml3.html#id46" coords="97,850,179,874" />
+                                 <area alt="dcx-gml3.tmp#id54" href="dcx-gml3.html#id54" coords="97,884,169,908" />
+                                 <area alt="dcx-gml3.tmp#id56" href="dcx-gml3.html#id56" coords="97,918,160,942" />
+                                 <area alt="dcx-gml0.tmp#id110" href="dcx-gml0.html#id110" coords="97,952,196,976" />
+                                 <area alt="dcx-gml3.tmp#id52" href="dcx-gml3.html#id52" coords="97,986,165,1010" />
+                                 <area alt="dcx-gml3.tmp#id44" href="dcx-gml3.html#id44" coords="97,1020,167,1044" />
+                                 <area alt="dcx-gml3.tmp#id42" href="dcx-gml3.html#id42" coords="97,1054,152,1078" />
+                                 <area alt="dcx-gml3.tmp#id49" href="dcx-gml3.html#id49" coords="97,1088,152,1112" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="dcx-gml3.html#id13" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">SimpleLiteral</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id41" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id41');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id41" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">abstract:
+                                       
+                                    </td>
+                                    <td><b>true</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id41" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id41');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id41" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element Groups </td>
+                                    <td><b><a href="dcx-gml0.html#id132" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">elementsAndRefinementsGroup</a></b>, <b><a href="dcx-gml3.html#id111" target="mainFrame"
+                                             title="http://purl.org/dc/elements/1.1/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">elementsGroup</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b></td>
+                        <td><b>ANY element from ANY namespace</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_id41" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('attributes_id41');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_id41" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th>Type</th>
+                                       <th>Fixed</th>
+                                       <th>Default</th>
+                                       <th>Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="dcx-gml2.html#id14" target="mainFrame"
+                                             title="http://www.w3.org/XML/1998/namespace"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://www.w3.org/XML/1998/namespace')">xml:lang</a></b></td>
+                                    <td><b>xs:language</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">In due course, we should install the relevant ISO 2- and 3-letter</span><span class="tokenIndent">
+</span><span class="tokenText">codes as the enumerated possible values . . .</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id41" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id41');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id41" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"any"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"SimpleLiteral"</span><span class="tokenAttrName"> abstract=</span><span class="tokenAttrValue">"true"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id42"></a><div class="componentTitle">Element <span class="qname">title</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id42" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id42');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id42" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html69.jpeg"
+                                   usemap="#dcx-gml_46_html69" /><map name="dcx-gml_46_html69" id="dcx-gml_46_html69">
+                                 <area alt="dcx-gml0.tmp#id57" href="dcx-gml0.html#id57" coords="97,38,152,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id42" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id42');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id42" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"title"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id43"></a><div class="componentTitle">Element <span class="qname">creator</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id43" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id43');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id43" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html21.jpeg"
+                                   usemap="#dcx-gml_46_html21" /><map name="dcx-gml_46_html21" id="dcx-gml_46_html21">
+                                 <area alt="dcx-gml0.tmp#id59" href="dcx-gml0.html#id59" coords="112,38,182,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id43" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id43');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id43" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"creator"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id44"></a><div class="componentTitle">Element <span class="qname">subject</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id44" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id44');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id44" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html4.jpeg"
+                                   usemap="#dcx-gml_46_html4" /><map name="dcx-gml_46_html4" id="dcx-gml_46_html4">
+                                 <area alt="dcx-gml0.tmp#id60" href="dcx-gml0.html#id60" coords="112,38,182,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id44" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id44');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id44" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"subject"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id45"></a><div class="componentTitle">Element <span class="qname">description</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id45" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id45');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id45" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html70.jpeg"
+                                   usemap="#dcx-gml_46_html70" /><map name="dcx-gml_46_html70" id="dcx-gml_46_html70">
+                                 <area alt="dcx-gml0.tmp#id61" href="dcx-gml0.html#id61" coords="134,38,226,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id45" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id45');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id45" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"description"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id46"></a><div class="componentTitle">Element <span class="qname">publisher</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id46" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id46');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id46" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html110.jpeg"
+                                   usemap="#dcx-gml_46_html110" /><map name="dcx-gml_46_html110" id="dcx-gml_46_html110">
+                                 <area alt="dcx-gml0.tmp#id64" href="dcx-gml0.html#id64" coords="124,38,206,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id46" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id46');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id46" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"publisher"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id47"></a><div class="componentTitle">Element <span class="qname">contributor</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id47" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id47');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id47" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html116.jpeg"
+                                   usemap="#dcx-gml_46_html116" /><map name="dcx-gml_46_html116" id="dcx-gml_46_html116">
+                                 <area alt="dcx-gml0.tmp#id65" href="dcx-gml0.html#id65" coords="135,38,228,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id47" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id47');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id47" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"contributor"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id48"></a><div class="componentTitle">Element <span class="qname">date</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id48" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id48');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id48" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html198.jpeg"
+                                   usemap="#dcx-gml_46_html198" /><map name="dcx-gml_46_html198" id="dcx-gml_46_html198">
+                                 <area alt="dcx-gml0.tmp#id66" href="dcx-gml0.html#id66" coords="97,38,152,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id48" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id48');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id48" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"date"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id49"></a><div class="componentTitle">Element <span class="qname">type</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id49" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id49');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id49" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html164.jpeg"
+                                   usemap="#dcx-gml_46_html164" /><map name="dcx-gml_46_html164" id="dcx-gml_46_html164">
+                                 <area alt="dcx-gml0.tmp#id75" href="dcx-gml0.html#id75" coords="97,38,152,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id49" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id49');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id49" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"type"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id50"></a><div class="componentTitle">Element <span class="qname">format</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id50" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id50');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id50" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html192.jpeg"
+                                   usemap="#dcx-gml_46_html192" /><map name="dcx-gml_46_html192" id="dcx-gml_46_html192">
+                                 <area alt="dcx-gml0.tmp#id76" href="dcx-gml0.html#id76" coords="109,38,176,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id50" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id50');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id50" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"format"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id51"></a><div class="componentTitle">Element <span class="qname">identifier</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id51" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id51');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id51" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html71.jpeg"
+                                   usemap="#dcx-gml_46_html71" /><map name="dcx-gml_46_html71" id="dcx-gml_46_html71">
+                                 <area alt="dcx-gml0.tmp#id79" href="dcx-gml0.html#id79" coords="121,38,200,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id51" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id51');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id51" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"identifier"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id52"></a><div class="componentTitle">Element <span class="qname">source</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id52" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id52');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id52" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html90.jpeg"
+                                   usemap="#dcx-gml_46_html90" /><map name="dcx-gml_46_html90" id="dcx-gml_46_html90">
+                                 <area alt="dcx-gml0.tmp#id81" href="dcx-gml0.html#id81" coords="110,38,178,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id52" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id52');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id52" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"source"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id53"></a><div class="componentTitle">Element <span class="qname">language</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id53" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id53');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id53" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html137.jpeg"
+                                   usemap="#dcx-gml_46_html137" /><map name="dcx-gml_46_html137" id="dcx-gml_46_html137">
+                                 <area alt="dcx-gml0.tmp#id82" href="dcx-gml0.html#id82" coords="122,38,202,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id53" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id53');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id53" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"language"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id54"></a><div class="componentTitle">Element <span class="qname">relation</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id54" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id54');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id54" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html134.jpeg"
+                                   usemap="#dcx-gml_46_html134" /><map name="dcx-gml_46_html134" id="dcx-gml_46_html134">
+                                 <area alt="dcx-gml0.tmp#id83" href="dcx-gml0.html#id83" coords="114,38,186,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id54" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id54');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id54" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"relation"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id55"></a><div class="componentTitle">Element <span class="qname">coverage</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id55" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id55');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id55" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html26.jpeg"
+                                   usemap="#dcx-gml_46_html26" /><map name="dcx-gml_46_html26" id="dcx-gml_46_html26">
+                                 <area alt="dcx-gml0.tmp#id97" href="dcx-gml0.html#id97" coords="122,38,202,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id55" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id55');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id55" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"coverage"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id56"></a><div class="componentTitle">Element <span class="qname">rights</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id56" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id56');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id56" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html113.jpeg"
+                                   usemap="#dcx-gml_46_html113" /><map name="dcx-gml_46_html113" id="dcx-gml_46_html113">
+                                 <area alt="dcx-gml0.tmp#id99" href="dcx-gml0.html#id99" coords="105,38,168,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id56" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id56');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id56" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"rights"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id13"></a><div class="componentTitle">Complex Type <span class="qname">SimpleLiteral</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id13" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id13');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id13" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">This is the default type for all of the DC elements.</span><span class="tokenIndent">
+</span><span class="tokenText">            It permits text content only with optional</span><span class="tokenIndent">
+</span><span class="tokenText">            xml:lang attribute.</span><span class="tokenIndent">
+</span><span class="tokenText">            Text is allowed because mixed="true", but sub-elements</span><span class="tokenIndent">
+</span><span class="tokenText">            are disallowed because minOccurs="0" and maxOccurs="0" </span><span class="tokenIndent">
+</span><span class="tokenText">            are on the xs:any tag.</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">    	    This complexType allows for restriction or extension permitting</span><span class="tokenIndent">
+</span><span class="tokenText">            child elements.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id13" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id13');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id13" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html27.jpeg"
+                                   usemap="#dcx-gml_46_html27" /><map name="dcx-gml_46_html27" id="dcx-gml_46_html27">
+                                 <area alt="dcx-gml2.tmp#id14" href="dcx-gml2.html#id14" coords="165,206,259,230" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id13" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id13');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id13" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Types </td>
+                                    <td><b><a href="dcx-gml0.html#id130" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">Box</a></b>, <b><a href="dcx-gml0.html#id120" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">DCMIType</a></b>, <b><a href="dcx-gml0.html#id115" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">DDC</a></b>, <b><a href="dcx-gml0.html#id121" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">IMT</a></b>, <b><a href="dcx-gml0.html#id129" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">ISO3166</a></b>, <b><a href="dcx-gml0.html#id123" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">ISO639-2</a></b>, <b><a href="dcx-gml0.html#id124" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">ISO639-3</a></b>, <b><a href="dcx-gml0.html#id116" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">LCC</a></b>, <b><a href="dcx-gml0.html#id113" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">LCSH</a></b>, <b><a href="dcx-gml0.html#id114" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">MESH</a></b>, <b><a href="dcx-gml0.html#id118" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">Period</a></b>, <b><a href="dcx-gml0.html#id128" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">Point</a></b>, <b><a href="dcx-gml0.html#id125" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">RFC1766</a></b>, <b><a href="dcx-gml0.html#id126" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">RFC3066</a></b>, <b><a href="dcx-gml0.html#id127" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">RFC4646</a></b>, <b><a href="dcx-gml0.html#id131" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">TGN</a></b>, <b><a href="dcx-gml0.html#id117" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">UDC</a></b>, <b><a href="dcx-gml0.html#id122" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">URI</a></b>, <b><a href="dcx-gml0.html#id119" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">W3CDTF</a></b>, <b><a href="dcx-gml6.html#id12" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/dcx/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/dcx/')">dcx:ElementsOnlyNoLanguageAttributeType</a></b>, <b><a href="dcx-gml6.html#id37" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/dcx/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/dcx/')">dcx:ElementsOnlyType</a></b>, <b><a href="dcx-gml6.html#id36" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/dcx/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/dcx/')">dcx:NoLanguageAttributeType</a></b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="dcx-gml3.html#id41" target="mainFrame"
+                                             title="http://purl.org/dc/elements/1.1/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">any</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b></td>
+                        <td><b>ANY element from ANY namespace</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_id13" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('attributes_id13');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_id13" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th>Type</th>
+                                       <th>Fixed</th>
+                                       <th>Default</th>
+                                       <th>Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="dcx-gml2.html#id14" target="mainFrame"
+                                             title="http://www.w3.org/XML/1998/namespace"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://www.w3.org/XML/1998/namespace')">xml:lang</a></b></td>
+                                    <td><b>xs:language</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">In due course, we should install the relevant ISO 2- and 3-letter</span><span class="tokenIndent">
+</span><span class="tokenText">codes as the enumerated possible values . . .</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id13" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id13');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id13" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:complexType</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"SimpleLiteral"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">This is the default type for all of the DC elements. It permits text content only with optional xml:lang attribute. Text is allowed because mixed="true", but sub-elements are disallowed because minOccurs="0" and maxOccurs="0" are on the xs:any tag. This complexType allows for restriction or extension permitting child elements.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:complexContent</span><span class="tokenAttrName"> mixed=</span><span class="tokenAttrValue">"true"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:restriction</span><span class="tokenAttrName"> base=</span><span class="tokenAttrValue">"xs:anyType"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:sequence</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+        </span><span class="tokenElement">&lt;xs:any</span><span class="tokenAttrName"> processContents=</span><span class="tokenAttrValue">"lax"</span><span class="tokenAttrName"> minOccurs=</span><span class="tokenAttrValue">"0"</span><span class="tokenAttrName"> maxOccurs=</span><span class="tokenAttrValue">"0"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;/xs:sequence&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:attribute</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"xml:lang"</span><span class="tokenAttrName"> use=</span><span class="tokenAttrValue">"optional"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;/xs:restriction&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:complexContent&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:complexType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id112"></a><div class="componentTitle">Complex Type <span class="qname">elementContainer</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id112" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id112');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id112" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">This complexType is included as a convenience for schema authors who need to define a root</span><span class="tokenIndent">
+</span><span class="tokenText">or container element for all of the DC elements.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id112" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id112');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id112" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html55.jpeg"
+                                   usemap="#dcx-gml_46_html55" /><map name="dcx-gml_46_html55" id="dcx-gml_46_html55">
+                                 <area alt="dcx-gml3.tmp#id41" href="dcx-gml3.html#id41" coords="426,48,481,72" />
+                                 <area alt="dcx-gml3.tmp#id111" href="dcx-gml3.html#id111" coords="252,3,389,29" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b></td>
+                        <td>((<b><a href="dcx-gml3.html#id41" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">any</a></b>))
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="dcx-gml3.html#id41" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">any</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id112" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id112');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id112" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:complexType</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"elementContainer"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">This complexType is included as a convenience for schema authors who need to define a root or container element for all of the DC elements.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:choice</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:group</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"elementsGroup"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:choice&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:complexType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id111"></a><div class="componentTitle">Element Group <span class="qname">elementsGroup</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id111" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id111');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id111" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">This group is included as a convenience for schema authors</span><span class="tokenIndent">
+</span><span class="tokenText">who need to refer to all the elements in the </span><span class="tokenIndent">
+</span><span class="tokenText">http://purl.org/dc/elements/1.1/ namespace.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id111" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id111');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id111" style="display:block"><img alt="Diagram" border="0" src="images/dcx-gml.html128.jpeg"
+                                   usemap="#dcx-gml_46_html128" /><map name="dcx-gml_46_html128" id="dcx-gml_46_html128">
+                                 <area alt="dcx-gml3.tmp#id41" href="dcx-gml3.html#id41" coords="328,4,383,28" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id111" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id111');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id111" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="dcx-gml3.html#id112" target="mainFrame"
+                                             title="http://purl.org/dc/elements/1.1/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">elementContainer</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b></td>
+                        <td>(<b><a href="dcx-gml3.html#id41" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">any</a></b>)
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="dcx-gml3.html#id41" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">any</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id111" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id111');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id111" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:group</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"elementsGroup"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">This group is included as a convenience for schema authors who need to refer to all the elements in the http://purl.org/dc/elements/1.1/ namespace.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:sequence</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:choice</span><span class="tokenAttrName"> minOccurs=</span><span class="tokenAttrValue">"0"</span><span class="tokenAttrName"> maxOccurs=</span><span class="tokenAttrValue">"unbounded"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;/xs:choice&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:sequence&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:group&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
+         </div>
+      </div><script type="text/javascript">
+         <!--                     
+                     // The namespace is the selected option in the TOC combo.
+                     
+                     // The corresponding div is already visible conf. to its style attr.                     
+                    
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                --></script></body>
+</html>

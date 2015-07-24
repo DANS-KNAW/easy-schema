@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmo-collection xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:oai-dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="http://easy.dans.knaw.nl/schemas/collections/dmo-collection.xsd" 
+ dmo-namespace="easy-collection" id="root">
+    <label>label0</label>
+    <short-name>short-name0</short-name>
+    <oai-set>false</oai-set>
+    <dc-metadata>
+        <oai-dc:dc>
+            <dc:relation>relation0</dc:relation>
+            <dc:relation>relation1</dc:relation>
+            <dc:contributor>contributor0</dc:contributor>
+            <dc:contributor>contributor1</dc:contributor>
+        </oai-dc:dc>
+    </dc-metadata>
+    <dmo-collections>
+        <dmo-collection id="1">
+            <label>label1</label>
+            <short-name>short-name1</short-name>
+            <oai-set>false</oai-set>
+            <dc-metadata>
+                <oai-dc:dc>
+                    <dc:type>type0</dc:type>
+                    <dc:type>type1</dc:type>
+                    <dc:date>2012</dc:date>
+                    <dc:date>2012-01-18</dc:date>
+                </oai-dc:dc>
+            </dc-metadata>
+        </dmo-collection>
+        <dmo-collection id="2">
+            <label>label2</label>
+            <short-name>short-name2</short-name>
+            <oai-set>false</oai-set>
+            <dc-metadata>
+                <oai-dc:dc>
+                    <dc:identifier>identifier0</dc:identifier>
+                    <dc:identifier>identifier1</dc:identifier>
+                    <dc:publisher>publisher0</dc:publisher>
+                    <dc:publisher>publisher1</dc:publisher>
+                </oai-dc:dc>
+            </dc-metadata>
+        </dmo-collection>
+    </dmo-collections>
+</dmo-collection>

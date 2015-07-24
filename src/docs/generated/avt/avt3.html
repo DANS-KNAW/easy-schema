@@ -1,0 +1,1228 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for namespace NO_NAMESPACE</title>
+      <link rel="stylesheet" href="xsdDocHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        var propertiesBoxes= new Array('properties_id86', 
+				'properties_id88', 
+				'properties_id89', 
+				'properties_id101', 
+				'properties_id104', 
+				'properties_id105', 
+				'properties_id106');
+
+        var facetsBoxes= new Array('facets_id86', 
+				'facets_id89', 
+				'facets_id101', 
+				'facets_id104', 
+				'facets_id105');
+
+        var usedByBoxes= new Array('usedBy_id86', 
+				'usedBy_id88', 
+				'usedBy_id89', 
+				'usedBy_id101', 
+				'usedBy_id104', 
+				'usedBy_id105', 
+				'usedBy_id106');
+
+        var sourceBoxes= new Array('source_id86', 
+				'source_id88', 
+				'source_id89', 
+				'source_id101', 
+				'source_id104', 
+				'source_id105', 
+				'source_id106');
+
+        
+        
+        
+        
+        
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "images/button_minus.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "images/button_plus.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id){
+            var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+            // Make all the tabs invisible.
+            for (i = 0; i < 3; i++){
+               var tab = getElementObject(selectIds[i]);
+               tab.style.display = 'none';
+            }
+            var selTab = getElementObject(id);
+            selTab.style.display = 'block';            
+         }
+          
+
+    --></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, facetsBoxes);"
+                                     class="control" /></span><span class="globalControlName">Facets </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, propertiesBoxes);"
+                                     class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, sourceBoxes);"
+                                     class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, usedByBoxes);"
+                                     class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button"
+                               onclick="getElementObject('global_controls').style.display = 'none';"
+                               value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="id86"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="avt4.html#id10" target="mainFrame"
+                  title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                  onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:metadata</a></b> / @list-action</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="avt4.html#id87" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:ListActionType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id86" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id86');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id86" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_id86" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('facets_id86');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_id86" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>add</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Create a new list on the receiving side with all items from the given list.</span><span class="tokenIndent">
+</span><span class="tokenText">If a list on the receiving side already exists, add all items from the given list.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>update</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Create a new list on the receiving side with all items from the given list.</span><span class="tokenIndent">
+</span><span class="tokenText">If a list on the receiving side already exists, replace all items with items from given list.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id86" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id86');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id86" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="avt4.html#id10" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:metadata</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id86" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id86');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id86" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"list-action"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"avt:ListActionType"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id88"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="avt4.html#id9" target="mainFrame"
+                  title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                  onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:DigitalObjectType</a></b> / @storeId</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id88" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id88');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id88" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">use:
+                                       
+                                    </td>
+                                    <td><b>required</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id88" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id88');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id88" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="avt4.html#id9" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:DigitalObjectType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id88" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id88');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id88" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"storeId"</span><span class="tokenAttrName"> use=</span><span class="tokenAttrValue">"required"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id89"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="avt4.html#id9" target="mainFrame"
+                  title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                  onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:DigitalObjectType</a></b> / @object-action</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="avt4.html#id90" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:ObjectActionType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id89" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id89');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id89" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">default:
+                                       
+                                    </td>
+                                    <td><b>add</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_id89" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('facets_id89');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_id89" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>add</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Add this object and all children of this object.</span><span class="tokenIndent">
+</span><span class="tokenText">If an object with the same storeId already exists on the receiving side,</span><span class="tokenIndent">
+</span><span class="tokenText">this action will raise an error.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>update</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Update this object and/or the children of this object. </span><span class="tokenIndent">
+</span><span class="tokenText">If a child-object does not already exist, create it.</span><span class="tokenIndent">
+</span><span class="tokenText">If an object with the same storeId does not exist on the receiving side,</span><span class="tokenIndent">
+</span><span class="tokenText">this action will raise an error.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>delete</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Delete this object and all children of this object.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id89" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id89');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id89" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="avt4.html#id9" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:DigitalObjectType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id89" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id89');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id89" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"object-action"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"avt:ObjectActionType"</span><span class="tokenAttrName"> default=</span><span class="tokenAttrValue">"add"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id101"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="avt4.html#id97" target="mainFrame"
+                  title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                  onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:reel-list</a></b> / <b><a href="avt4.html#id96" target="mainFrame"
+                  title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                  onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:PresentationType</a></b> / @list-action</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="avt4.html#id87" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:ListActionType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id101" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id101');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id101" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_id101" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('facets_id101');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_id101" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>add</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Create a new list on the receiving side with all items from the given list.</span><span class="tokenIndent">
+</span><span class="tokenText">If a list on the receiving side already exists, add all items from the given list.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>update</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Create a new list on the receiving side with all items from the given list.</span><span class="tokenIndent">
+</span><span class="tokenText">If a list on the receiving side already exists, replace all items with items from given list.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id101" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id101');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id101" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="avt4.html#id97" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:PresentationType/avt:reel-list</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id101" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id101');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id101" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"list-action"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"avt:ListActionType"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id104"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="avt4.html#id94" target="mainFrame"
+                  title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                  onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:presentation-list</a></b> / <b><a href="avt4.html#id93" target="mainFrame"
+                  title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                  onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:ProjectType</a></b> / @list-action</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="avt4.html#id87" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:ListActionType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id104" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id104');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id104" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_id104" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('facets_id104');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_id104" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>add</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Create a new list on the receiving side with all items from the given list.</span><span class="tokenIndent">
+</span><span class="tokenText">If a list on the receiving side already exists, add all items from the given list.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>update</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Create a new list on the receiving side with all items from the given list.</span><span class="tokenIndent">
+</span><span class="tokenText">If a list on the receiving side already exists, replace all items with items from given list.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id104" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id104');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id104" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="avt4.html#id94" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:ProjectType/avt:presentation-list</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id104" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id104');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id104" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"list-action"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"avt:ListActionType"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id105"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="avt4.html#id91" target="mainFrame"
+                  title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                  onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:project-list</a></b> / <b><a href="avt4.html#id8" target="mainFrame"
+                  title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                  onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:DatasetType</a></b> / @list-action</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="avt4.html#id87" target="mainFrame"
+                                 title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:ListActionType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id105" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id105');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id105" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_id105" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('facets_id105');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_id105" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>add</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Create a new list on the receiving side with all items from the given list.</span><span class="tokenIndent">
+</span><span class="tokenText">If a list on the receiving side already exists, add all items from the given list.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>update</b></td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">Create a new list on the receiving side with all items from the given list.</span><span class="tokenIndent">
+</span><span class="tokenText">If a list on the receiving side already exists, replace all items with items from given list.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id105" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id105');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id105" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="avt4.html#id91" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:DatasetType/avt:project-list</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id105" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id105');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id105" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"list-action"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"avt:ListActionType"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id106"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="avt4.html#id5" target="mainFrame"
+                  title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                  onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:AVT</a></b> / @domain</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id106" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id106');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id106" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">fixed:
+                                       
+                                    </td>
+                                    <td><b>DANS</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id106" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id106');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id106" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="avt4.html#id5" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/md/avt/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/md/avt/')">avt:AVT</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id106" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id106');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id106" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"domain"</span><span class="tokenAttrName"> fixed=</span><span class="tokenAttrValue">"DANS"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
+         </div>
+      </div><script type="text/javascript">
+         <!--                     
+                     // The namespace is the selected option in the TOC combo.
+                     
+                     // The corresponding div is already visible conf. to its style attr.                     
+                    
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                --></script></body>
+</html>

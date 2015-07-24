@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:dcx="http://easy.dans.knaw.nl/schemas/dcx/"
+    xmlns:dcx-dai="http://easy.dans.knaw.nl/schemas/dcx/dai/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    targetNamespace="http://easy.dans.knaw.nl/schemas/dcx/dai/"
+    elementFormDefault="qualified" attributeFormDefault="unqualified">
+    
+    <!-- =================================================================================== -->
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Enabling the use of Digital Author ID (DAI).
+            Structuring name and affiliation of dc:creator and dc:contributor.
+        </xs:documentation>
+    </xs:annotation>
+    
+    <!-- =================================================================================== --> 
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/03/xml.xsd"/> 
+    <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/" 
+        schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
+    <xs:import namespace="http://purl.org/dc/elements/1.1/" 
+        schemaLocation="http://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="creator" substitutionGroup="dc:creator" type="dcx-dai:DAIType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Extension of dc:creator.
+                
+                This element enables the use of the DAI attribute for specifying the Digital Author ID (DAI).
+                If the name of an author can be split up into multiple fields or if an organization must be specified,
+                the use of the element dcx-dai:creatorDetails is preferred.
+                
+                See also: http://purl.org/dc/elements/1.1/creator
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="contributor" substitutionGroup="dc:contributor" type="dcx-dai:DAIType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Extension of dc:contributor.
+                
+                This element enables the use of the DAI attribute for specifying the Digital Author ID (DAI).
+                If the name of an author can be split up into multiple fields or if an organization must be specified,
+                the use of the element dcx-dai:contributorDetails is preferred.
+                
+                See also: http://purl.org/dc/elements/1.1/contributor
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="creatorDetails" substitutionGroup="dc:creator" type="dcx-dai:AuthorOrOrganizationType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Extension of dc:creator.
+                
+                This element enables the detailed specification of a dcx-dai:author or dcx-dai:organization.
+                
+                See also: http://purl.org/dc/elements/1.1/creator
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="contributorDetails" substitutionGroup="dc:contributor" type="dcx-dai:AuthorOrOrganizationType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Extension of dc:contributor.
+                
+                This element enables the detailed specification of a dcx-dai:author or dcx-dai:organization.
+                
+                See also:  http://purl.org/dc/elements/1.1/contributor
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="organization">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Detailed specification of a company or institution.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:group ref="dcx-dai:OrganizationalInformationGroup"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="author">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Detailed specification of a person that acts as a writer, creator or contributor.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:group ref="dcx-dai:AuthorInformationGroup"/>            
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:complexType name="DAIType">
+        <xs:complexContent>
+            <xs:extension base="dc:SimpleLiteral">
+                <xs:attribute name="DAI" type="dcx-dai:SimpleDaiType" use="required"/>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <!-- =================================================================================== -->
+    <xs:simpleType name="SimpleDaiType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Digital Author ID (DAI) is composed of 8 or 9 digits and a MOD 11 checksum character.
+                Use of a urified DAI (starting with info:eu-repo/dai/nl/) is allowed.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(info:eu-repo/dai/nl/){0,1}([0-9]{8,9})([0-9xX]{1})"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- =================================================================================== -->
+    <xs:complexType name="AuthorOrOrganizationType">
+        <xs:complexContent>
+            <xs:extension base="dcx:ElementsOnlyNoLanguageAttributeType">
+                <xs:choice>
+                    <xs:element ref="dcx-dai:author"/>
+                    <xs:element ref="dcx-dai:organization"/>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <!-- =================================================================================== -->
+    <xs:group name="OrganizationalInformationGroup">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Group of elements specifying information about an organization.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="name" minOccurs="1" type="dcx-dai:LingualTokenType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Designation or appalation of a company or institution.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:group>
+    
+    <!-- =================================================================================== -->
+    <xs:group name="AuthorInformationGroup">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Group of elements specifying information about an author.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="titles" type="dcx-dai:LingualTokenType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        (Academic) Title(s).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="initials" type="xs:token" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Abbreviation of first names.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="insertions" type="xs:token" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Words between first name and last name, known as "tussenvoegsels" in Dutch.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="surname" type="xs:token" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Last name or family name.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DAI" type="dcx-dai:SimpleDaiType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Digital Author ID (DAI).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="dcx-dai:organization" minOccurs="0"/>
+        </xs:all>
+    </xs:group>
+    
+    <!-- =================================================================================== -->
+    <xs:complexType name="LingualTokenType">
+        <xs:simpleContent>
+            <xs:extension base="xs:token">
+                <xs:attribute ref="xml:lang"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- =================================================================================== -->
+    
+</xs:schema>

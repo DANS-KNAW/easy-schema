@@ -1,0 +1,1118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.den.nl/standaard/166/Archeologisch-Basisregister/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    targetNamespace="http://www.den.nl/standaard/166/Archeologisch-Basisregister/"
+    elementFormDefault="qualified" attributeFormDefault="unqualified">
+    
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/03/xml.xsd"/> 
+
+    <xs:import namespace="http://purl.org/dc/elements/1.1/" 
+    	schemaLocation="http://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
+    
+    <xs:annotation>
+        <xs:documentation>
+            Delen uit
+            'Het Archeologisch Basisregister (ABR) versie 1.0 november 1992'
+            zie: http://www.cultureelerfgoed.nl/sites/default/files/u4/ABR_website2.pdf
+        </xs:documentation>
+    </xs:annotation>
+    
+    <xs:complexType name="ABRcomplex">
+        <xs:annotation>
+            <xs:documentation>
+                Use on element dc:subject
+            </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="complex"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="ABRperiode">
+        <xs:annotation>
+            <xs:documentation>
+                Use on element dcterms:temporal
+            </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="periode"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:simpleType name="complex">
+        <xs:annotation>
+            <xs:documentation>
+                TABEL 5: COMPLEX
+            </xs:documentation>
+        </xs:annotation>
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                       <xs:enumeration value="DEPO">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Depot
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EX">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie, onbepaald
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GX">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving, onbepaald
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="IX">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur, onbepaald
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="NX">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Nederzetting, onbepaald
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="RX">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Religie, onbepaald
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="VX">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Versterking, onbepaald
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="XXX">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Onbekend
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="ELA">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Akker/tuin
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EIBB">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Beenbewerking
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EIB">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Brouwerij
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="ELCF">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Celtic field/raatakker
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="ELDP">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Drenkplaats/dobbe
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="ELEK">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Eendekooi
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EIGB">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Glasblazerij
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EGX">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Grondstofwinning
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EIHB">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Houtbewerking
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EIHK">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Houtskool-/kolenbranderij
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EGYW">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - IJzerwinning
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EIX">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Industrie/nijverheid
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EIKB">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Kalkbranderij
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EGKW">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Kleiwinning
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="ELX">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Landbouw
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EILL">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Leerlooierij
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EGMW">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Mergel-/kalkwinning
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EIMB">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Metaalbewerking/smederij
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EIM">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Molen
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EIPB">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Pottenbakkerij
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="ESCH">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Scheepvaart
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EISM">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Smelterij
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EISB">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Steen-/pannenbakkerij
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EITN">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Textielnijverheid
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="ELVK">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Veekraal/schaapskooi
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EGVW">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Veenwinning
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EVX">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Visserij
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EIVB">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Vuursteenbewerking
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EGVU">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Vuursteenwinning
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="EGZW">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Economie - Zoutwinning/moernering
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GC">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Crematiegraf
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GD">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Dierengraf
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GHC">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Grafheuvel, crematie
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GHIC">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Grafheuvel, gemengd
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GHI">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Grafheuvel, inhumatie
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GHX">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Grafheuvel, onbepaald
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GVC">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Grafveld, crematies
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GVIC">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Grafveld, gemengd
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GVI">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Grafveld, inhumaties
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GVX">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Grafveld, onbepaald
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GI">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Inhumatiegraf
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GVIK">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Kerkhof
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GMEG">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Megalietgraf
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GVIR">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Rijengrafveld
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GVCU">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Urnenveld
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GCV">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Vlakgraf, crematie
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GIV">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Vlakgraf, inhumatie
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GXV">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Begraving - Vlakgraf, onbepaald
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="IBRU">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur - Brug
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="IDAM">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur - Dam
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="IDIJ">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur - Dijk
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="IDUI">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur - Duiker
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="IGEM">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur - Gemaal
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="IHAV">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur - Haven
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="IKAN">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur - Kanaal/vaarweg
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="IPER">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur - Percelering/verkaveling
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="ISLU">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur - Sluis
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="ISTE">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur - Steiger
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="IVW">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur - Veenweg/veenbrug
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="IWAT">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur - Waterweg (natuurlijk)
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="IWEG">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Infrastructuur - Weg
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="NBAS">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Nederzetting - Basiskamp/basisnederzetting
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="NVB">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Nederzetting - Borg/stins/versterkt huis
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="NEXT">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Nederzetting - Extractiekamp/-nederzetting
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="NVH">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Nederzetting - Havezathe/ridderhofstad
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="NHP">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Nederzetting - Huisplaats, onverhoogd
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="NHT">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Nederzetting - Huisterp
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="NKD">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Nederzetting - Kampdorp
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="NMS">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Nederzetting - Moated site
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="NRV">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Nederzetting - Romeins villa(complex)
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="NS">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Nederzetting - Stad
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="NT">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Nederzetting - Terp/wierde
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="NWD">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Nederzetting - Wegdorp
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="RCP">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Religie - Cultusplaats/heiligdom/tempel
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="RKAP">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Religie - Kapel
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="RKER">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Religie - Kerk
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="RKLO">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Religie - Klooster(complex)
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="VK">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Versterking - Kasteel
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="VLW">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Versterking - Landweer
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="VLP">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Versterking - Legerplaats
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="VKM">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Versterking - Motte/kasteelheuvel/vliedberg
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="VSCH">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Versterking - Schans
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="VWP">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Versterking - Wachtpost
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="VWB">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Versterking - Wal-/vluchtburcht
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="VWAL">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Versterking - Wal/omwalling
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="VKW">
+                        	<xs:annotation>
+                        		<xs:documentation xml:lang="nl">
+                        			Versterking - Waterburcht
+                        		</xs:documentation>
+                        	</xs:annotation>
+                        </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="periode">
+        <xs:annotation>
+            <xs:documentation>
+                TABEL 9: PERIODE
+            </xs:documentation>
+        </xs:annotation>
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                    <xs:enumeration value="PALEO">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Paleolithicum: tot 8800 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="PALEOV">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Paleolithicum vroeg: tot 300000 C14
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="PALEOM">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Paleolithicum midden: 300000 - 35000 C14
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="PALEOL">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Paleolithicum laat: 35000 C14 - 8800 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="PALEOLA">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Paleolithicum laat A: 35000 - 18000 C14
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="PALEOLB">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Paleolithicum laat B: 18000 C14 -8800 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="MESO">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Mesolithicum: 8800 - 4900 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="MESOV">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Mesolithicum vroeg: 8800 - 7100 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="MESOM">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Mesolithicum midden: 7100 - 6450 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="MESOL">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Mesolithicum laat: 6450 -4900 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NEO">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Neolithicum: 5300 - 2000 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NEOV">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Neolithicum vroeg: 5300 - 4200 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NEOVA">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Neolithicum vroeg A: 5300 - 4900 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NEOVB">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Neolithicum vroeg B: 4900 - 4200 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NEOM">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Neolithicum midden: 4200 - 2850 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NEOMA">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Neolithicum midden A: 4200 - 3400 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NEOMB">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Neolithicum midden B: 3400 - 2850 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NEOL">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Neolithicum laat: 2850 - 2000 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NEOLA">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Neolithicum laat A: 2850 - 2450 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NEOLB">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Neolithicum laat B: 2450 - 2000 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="BRONS">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Bronstijd: 2000 - 800 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="BRONSV">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Bronstijd vroeg: 2000 - 1800 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="BRONSM">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Bronstijd midden: 1800 - 1100 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="BRONSMA">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Bronstijd midden A: 1800 - 1500 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="BRONSMB">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Bronstijd midden B: 1500 - 1100 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="BRONSL">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Bronstijd laat: 1100 - 800 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="IJZ">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			IJzertijd: 800 - 12 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="IJZV">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			IJzertijd vroeg: 800 - 500 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="IJZM">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			IJzertijd midden: 500 - 250 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="IJZL">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			IJzertijd laat: 250 - 12 vC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ROM">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Romeinse tijd: 12 vC - 450 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ROMV">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Romeinse tijd vroeg: 12 vC - 70 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ROMVA">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Romeinse tijd vroeg A: 12 vC - 25 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ROMVB">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Romeinse tijd vroeg B: 25 - 70 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ROMM">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Romeinse tijd midden: 70 - 270 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ROMMA">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Romeinse tijd midden A: 70 - 150 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ROMMB">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Romeinse tijd midden B: 150 - 270 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ROML">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Romeinse tijd laat: 270 - 450 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ROMLA">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Romeinse tijd laat A: 270 - 350 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ROMLB">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Romeinse tijd laat B: 350 - 450 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="XME">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Middeleeuwen: 450 - 1500 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="VME">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Middeleeuwen vroeg: 450 - 1050 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="VMEA">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Middeleeuwen vroeg A: 450 - 525 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="VMEB">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Middeleeuwen vroeg B: 525 - 725 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="VMEC">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Middeleeuwen vroeg C: 725 - 900 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="VMED">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Middeleeuwen vroeg D: 900 - 1050 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="LME">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Middeleeuwen laat: 1050 - 1500 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="LMEA">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Middeleeuwen laat A: 1050 - 1250 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="LMEB">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Middeleeuwen laat B: 1250 - 1500 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NT">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Nieuwe tijd: 1500 - heden
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NTA">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Nieuwe tijd A: 1500 - 1650 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NTB">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Nieuwe tijd B: 1650 - 1850 nC
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="NTC">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Nieuwe tijd C: 1850 - heden
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="XXX">
+                    	<xs:annotation>
+                    		<xs:documentation xml:lang="nl">
+                    			Onbekend
+                    		</xs:documentation>
+                    	</xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+</xs:schema>

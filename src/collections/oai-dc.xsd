@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:oai-dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    targetNamespace="http://www.openarchives.org/OAI/2.0/oai_dc/">
+
+    <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="http://easy.dans.knaw.nl/schemas/collections/dc.xsd"/>
+
+    <xs:element name="dc" substitutionGroup="dc:dc"/>
+    
+</xs:schema>

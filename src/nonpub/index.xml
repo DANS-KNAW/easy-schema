@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type='text/xsl' href='index.xsl' ?>
+<index basename="http://easy.dans.knaw.nl/">
+    
+    <type label="main schemas">
+        <schemas>
+            <schema>
+                <schemaLocation>schemas/md/2013/08/avt.xsd</schemaLocation>
+                <prefix>avt</prefix>
+                <documentation label="generated">../md/2013/08/docs/avt.html</documentation>
+		<!--documentation label="examples (pdf)">docs/ddm/DDM_description_by_example.pdf</documentation-->
+		<documentation label="example">../md/2013/08/avt-example.xml</documentation>
+            </schema>
+            <schema>
+                <schemaLocation>schemas/md/2013/06/avt.xsd</schemaLocation>
+                <prefix>avt</prefix>
+                <documentation label="generated">../docs/generated/avt/avt.html</documentation>
+                <!--documentation label="examples (pdf)">docs/ddm/DDM_description_by_example.pdf</documentation-->
+                <!--documentation label="example">docs/examples/ddm/example1.xml</documentation-->
+            </schema>
+	    <schema>
+		<schemaLocation>schemas/md/emd/2012/11/emd.xsd</schemaLocation>
+ 		<prefix>emd</prefix>
+		<documentation label="generated">../docs/generated/emd/emd.html</documentation>
+            </schema>
+        </schemas>
+    </type>
+    
+    
+</index>

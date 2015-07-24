@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type='text/xsl' href='index.xsl' ?>
+<index basename="http://easy.dans.knaw.nl/">
+    
+    <type label="main schemas">
+        <schemas>
+            <schema>
+                <schemaLocation>schemas/md/2014/09/ddm.xsd</schemaLocation>
+                <prefix>ddm</prefix>
+                <documentation label="generated">docs/generated/ddm/ddm.html</documentation>
+		<!--documentation label="examples (pdf)">docs/ddm/DDM_description_by_example.pdf</documentation-->
+		<documentation label="example">docs/examples/ddm/example1.xml</documentation>
+            </schema>
+        </schemas>
+    </type>
+    
+    <type label="controlled vocabulary schemas">
+        <schemas>
+            <schema>
+                <schemaLocation>schemas/vocab/2012/10/narcis-type.xsd</schemaLocation>
+                <prefix>narcis</prefix>
+                <documentation label="generated">docs/generated/narcis-type/narcis-type.html</documentation>
+            </schema>
+            
+            <schema>
+                <schemaLocation>schemas/vocab/2012/10/abr-type.xsd</schemaLocation>
+                <prefix>abr</prefix>
+                <documentation label="generated">docs/generated/abr-type/abr-type.html</documentation>
+		<documentation label="example">docs/examples/abr-type/example1.xml</documentation>
+            </schema>
+        </schemas>
+    </type>
+    
+    <type label="schemas with structural extensions">
+        <schemas>
+	    <schema>
+                <schemaLocation>schemas/dcx/2012/10/dcx-dai.xsd</schemaLocation>
+                <prefix>dcx-dai</prefix>
+                <documentation label="generated">docs/generated/dcx-dai/dcx-dai.html</documentation>
+		<documentation label="example">docs/examples/dcx-dai/example1.xml</documentation>
+            </schema>
+            <schema>
+                <schemaLocation>schemas/dcx/2012/10/dcx-gml.xsd</schemaLocation>
+                <prefix>dcx-gml</prefix>
+                <documentation label="generated">docs/generated/dcx-gml/dcx-gml.html</documentation>
+		<documentation label="example">docs/examples/dcx-gml/example1.xml</documentation>
+            </schema>
+        </schemas>
+    </type>
+    
+    <type label="auxiliary schemas">
+        <schemas>
+            <schema>
+                <schemaLocation>schemas/dcx/2012/10/dcx.xsd</schemaLocation>
+                <prefix>dcx</prefix>
+                <documentation label="generated">docs/generated/dcx/dcx.html</documentation>
+            </schema>
+        </schemas>
+    </type>
+    
+</index>

@@ -1,0 +1,1907 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for namespace http://purl.org/dc/elements/1.1/</title>
+      <link rel="stylesheet" href="xsdDocHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        var propertiesBoxes= new Array('properties_id2', 
+				'properties_id13');
+
+        
+        var usedByBoxes= new Array('usedBy_id13', 
+				'usedBy_id84', 
+				'usedBy_id110');
+
+        var sourceBoxes= new Array('source_id13', 
+				'source_id14', 
+				'source_id15', 
+				'source_id16', 
+				'source_id17', 
+				'source_id18', 
+				'source_id19', 
+				'source_id20', 
+				'source_id21', 
+				'source_id22', 
+				'source_id23', 
+				'source_id24', 
+				'source_id25', 
+				'source_id26', 
+				'source_id27', 
+				'source_id28', 
+				'source_id84', 
+				'source_id111', 
+				'source_id110');
+
+        
+        var diagramBoxes= new Array('diagram_id13', 
+				'diagram_id14', 
+				'diagram_id15', 
+				'diagram_id16', 
+				'diagram_id17', 
+				'diagram_id18', 
+				'diagram_id19', 
+				'diagram_id20', 
+				'diagram_id21', 
+				'diagram_id22', 
+				'diagram_id23', 
+				'diagram_id24', 
+				'diagram_id25', 
+				'diagram_id26', 
+				'diagram_id27', 
+				'diagram_id28', 
+				'diagram_id84', 
+				'diagram_id111', 
+				'diagram_id110');
+
+        var annotationBoxes= new Array('annotations_id2', 
+				'annotations_id84', 
+				'annotations_id111', 
+				'annotations_id110');
+
+        var attributesBoxes= new Array('attributes_id13', 
+				'attributes_id84');
+
+        
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "images/button_minus.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "images/button_plus.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id){
+            var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+            // Make all the tabs invisible.
+            for (i = 0; i < 3; i++){
+               var tab = getElementObject(selectIds[i]);
+               tab.style.display = 'none';
+            }
+            var selTab = getElementObject(id);
+            selTab.style.display = 'block';            
+         }
+          
+
+    --></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, annotationBoxes);"
+                                     class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, attributesBoxes);"
+                                     class="control" /></span><span class="globalControlName">Attributes </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, diagramBoxes);"
+                                     class="control" /></span><span class="globalControlName">Diagrams</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, propertiesBoxes);"
+                                     class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, sourceBoxes);"
+                                     class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, usedByBoxes);"
+                                     class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button"
+                               onclick="getElementObject('global_controls').style.display = 'none';"
+                               value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="id2"></a><div class="componentTitle">Imported schema <span class="qname">dc.xsd</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id2" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id2');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id2" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">DCMES 1.1 XML Schema</span><span class="tokenIndent">
+</span><span class="tokenText">      XML Schema for http://purl.org/dc/elements/1.1/ namespace</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      Created 2008-02-11</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      Created by </span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      Tim Cole (t-cole3@uiuc.edu)</span><span class="tokenIndent">
+</span><span class="tokenText">      Tom Habing (thabing@uiuc.edu)</span><span class="tokenIndent">
+</span><span class="tokenText">      Jane Hunter (jane@dstc.edu.au)</span><span class="tokenIndent">
+</span><span class="tokenText">      Pete Johnston (p.johnston@ukoln.ac.uk),</span><span class="tokenIndent">
+</span><span class="tokenText">      Carl Lagoze (lagoze@cs.cornell.edu)</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      This schema declares XML elements for the 15 DC elements from the</span><span class="tokenIndent">
+</span><span class="tokenText">      http://purl.org/dc/elements/1.1/ namespace.</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      It defines a complexType SimpleLiteral which permits mixed content </span><span class="tokenIndent">
+</span><span class="tokenText">      and makes the xml:lang attribute available. It disallows child elements by</span><span class="tokenIndent">
+</span><span class="tokenText">      use of minOcccurs/maxOccurs.</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      However, this complexType does permit the derivation of other complexTypes</span><span class="tokenIndent">
+</span><span class="tokenText">      which would permit child elements.</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">      All elements are declared as substitutable for the abstract element any, </span><span class="tokenIndent">
+</span><span class="tokenText">      which means that the default type for all elements is dc:SimpleLiteral.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id2" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('properties_id2');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id2" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">attribute form default:
+                                       
+                                    </td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">element form default:
+                                       
+                                    </td>
+                                    <td><b>qualified</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id13"></a><div class="componentTitle">Element <span class="qname">any</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id13" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id13');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id13" style="display:block"><img alt="Diagram" border="0" src="images/avt.html58.jpeg" usemap="#avt_46_html58" /><map name="avt_46_html58" id="avt_46_html58">
+                                 <area alt="avt1.tmp#id85" href="avt1.html#id85" coords="111,246,205,270" />
+                                 <area alt="avt2.tmp#id84" href="avt2.html#id84" coords="86,3,205,25" />
+                                 <area alt="avt0.tmp#id78" href="avt0.html#id78" coords="97,374,207,398" />
+                                 <area alt="avt0.tmp#id79" href="avt0.html#id79" coords="97,408,223,432" />
+                                 <area alt="avt0.tmp#id80" href="avt0.html#id80" coords="97,442,198,466" />
+                                 <area alt="avt0.tmp#id75" href="avt0.html#id75" coords="97,476,176,500" />
+                                 <area alt="avt2.tmp#id19" href="avt2.html#id19" coords="97,510,190,534" />
+                                 <area alt="avt2.tmp#id27" href="avt2.html#id27" coords="97,544,177,568" />
+                                 <area alt="avt2.tmp#id15" href="avt2.html#id15" coords="97,578,167,602" />
+                                 <area alt="avt2.tmp#id20" href="avt2.html#id20" coords="97,612,152,636" />
+                                 <area alt="avt2.tmp#id17" href="avt2.html#id17" coords="97,646,189,670" />
+                                 <area alt="avt2.tmp#id22" href="avt2.html#id22" coords="97,680,164,704" />
+                                 <area alt="avt2.tmp#id23" href="avt2.html#id23" coords="97,714,176,738" />
+                                 <area alt="avt0.tmp#id81" href="avt0.html#id81" coords="97,748,236,772" />
+                                 <area alt="avt2.tmp#id25" href="avt2.html#id25" coords="97,782,177,806" />
+                                 <area alt="avt0.tmp#id82" href="avt0.html#id82" coords="97,816,191,840" />
+                                 <area alt="avt2.tmp#id18" href="avt2.html#id18" coords="97,850,179,874" />
+                                 <area alt="avt2.tmp#id26" href="avt2.html#id26" coords="97,884,169,908" />
+                                 <area alt="avt2.tmp#id28" href="avt2.html#id28" coords="97,918,160,942" />
+                                 <area alt="avt0.tmp#id83" href="avt0.html#id83" coords="97,952,196,976" />
+                                 <area alt="avt2.tmp#id24" href="avt2.html#id24" coords="97,986,165,1010" />
+                                 <area alt="avt2.tmp#id16" href="avt2.html#id16" coords="97,1020,167,1044" />
+                                 <area alt="avt2.tmp#id14" href="avt2.html#id14" coords="97,1054,152,1078" />
+                                 <area alt="avt2.tmp#id21" href="avt2.html#id21" coords="97,1088,152,1112" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="avt2.html#id84" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">SimpleLiteral</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id13" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id13');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id13" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">content:
+                                       
+                                    </td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">abstract:
+                                       
+                                    </td>
+                                    <td><b>true</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id13" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id13');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id13" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element Groups </td>
+                                    <td><b><a href="avt0.html#id12" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">elementsAndRefinementsGroup</a></b>, <b><a href="avt2.html#id110" target="mainFrame"
+                                             title="http://purl.org/dc/elements/1.1/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">elementsGroup</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b></td>
+                        <td><b>ANY element from ANY namespace</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_id13" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('attributes_id13');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_id13" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th>Type</th>
+                                       <th>Fixed</th>
+                                       <th>Default</th>
+                                       <th>Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="avt1.html#id85" target="mainFrame"
+                                             title="http://www.w3.org/XML/1998/namespace"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://www.w3.org/XML/1998/namespace')">xml:lang</a></b></td>
+                                    <td><b>xs:language</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">In due course, we should install the relevant ISO 2- and 3-letter</span><span class="tokenIndent">
+</span><span class="tokenText">codes as the enumerated possible values . . .</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id13" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id13');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id13" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"any"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"SimpleLiteral"</span><span class="tokenAttrName"> abstract=</span><span class="tokenAttrValue">"true"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id14"></a><div class="componentTitle">Element <span class="qname">title</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id14" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id14');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id14" style="display:block"><img alt="Diagram" border="0" src="images/avt.html93.jpeg" usemap="#avt_46_html93" /><map name="avt_46_html93" id="avt_46_html93">
+                                 <area alt="avt0.tmp#id29" href="avt0.html#id29" coords="97,38,152,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id14" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id14');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id14" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"title"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id15"></a><div class="componentTitle">Element <span class="qname">creator</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id15" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id15');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id15" style="display:block"><img alt="Diagram" border="0" src="images/avt.html0.jpeg" usemap="#avt_46_html0" /><map name="avt_46_html0" id="avt_46_html0">
+                                 <area alt="avt0.tmp#id31" href="avt0.html#id31" coords="112,38,182,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id15" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id15');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id15" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"creator"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id16"></a><div class="componentTitle">Element <span class="qname">subject</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id16" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id16');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id16" style="display:block"><img alt="Diagram" border="0" src="images/avt.html20.jpeg" usemap="#avt_46_html20" /><map name="avt_46_html20" id="avt_46_html20">
+                                 <area alt="avt0.tmp#id32" href="avt0.html#id32" coords="112,38,182,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id16" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id16');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id16" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"subject"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id17"></a><div class="componentTitle">Element <span class="qname">description</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id17" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id17');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id17" style="display:block"><img alt="Diagram" border="0" src="images/avt.html27.jpeg" usemap="#avt_46_html27" /><map name="avt_46_html27" id="avt_46_html27">
+                                 <area alt="avt0.tmp#id33" href="avt0.html#id33" coords="134,38,226,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id17" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id17');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id17" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"description"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id18"></a><div class="componentTitle">Element <span class="qname">publisher</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id18" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id18');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id18" style="display:block"><img alt="Diagram" border="0" src="images/avt.html103.jpeg" usemap="#avt_46_html103" /><map name="avt_46_html103" id="avt_46_html103">
+                                 <area alt="avt0.tmp#id36" href="avt0.html#id36" coords="124,38,206,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id18" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id18');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id18" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"publisher"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id19"></a><div class="componentTitle">Element <span class="qname">contributor</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id19" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id19');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id19" style="display:block"><img alt="Diagram" border="0" src="images/avt.html57.jpeg" usemap="#avt_46_html57" /><map name="avt_46_html57" id="avt_46_html57">
+                                 <area alt="avt0.tmp#id37" href="avt0.html#id37" coords="135,38,228,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id19" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id19');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id19" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"contributor"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id20"></a><div class="componentTitle">Element <span class="qname">date</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id20" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id20');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id20" style="display:block"><img alt="Diagram" border="0" src="images/avt.html105.jpeg" usemap="#avt_46_html105" /><map name="avt_46_html105" id="avt_46_html105">
+                                 <area alt="avt0.tmp#id38" href="avt0.html#id38" coords="97,38,152,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id20" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id20');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id20" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"date"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id21"></a><div class="componentTitle">Element <span class="qname">type</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id21" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id21');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id21" style="display:block"><img alt="Diagram" border="0" src="images/avt.html52.jpeg" usemap="#avt_46_html52" /><map name="avt_46_html52" id="avt_46_html52">
+                                 <area alt="avt0.tmp#id47" href="avt0.html#id47" coords="97,38,152,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id21" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id21');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id21" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"type"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id22"></a><div class="componentTitle">Element <span class="qname">format</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id22" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id22');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id22" style="display:block"><img alt="Diagram" border="0" src="images/avt.html106.jpeg" usemap="#avt_46_html106" /><map name="avt_46_html106" id="avt_46_html106">
+                                 <area alt="avt0.tmp#id48" href="avt0.html#id48" coords="109,38,176,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id22" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id22');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id22" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"format"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id23"></a><div class="componentTitle">Element <span class="qname">identifier</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id23" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id23');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id23" style="display:block"><img alt="Diagram" border="0" src="images/avt.html41.jpeg" usemap="#avt_46_html41" /><map name="avt_46_html41" id="avt_46_html41">
+                                 <area alt="avt0.tmp#id51" href="avt0.html#id51" coords="121,38,200,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id23" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id23');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id23" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"identifier"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id24"></a><div class="componentTitle">Element <span class="qname">source</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id24" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id24');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id24" style="display:block"><img alt="Diagram" border="0" src="images/avt.html70.jpeg" usemap="#avt_46_html70" /><map name="avt_46_html70" id="avt_46_html70">
+                                 <area alt="avt0.tmp#id53" href="avt0.html#id53" coords="110,38,178,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id24" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id24');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id24" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"source"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id25"></a><div class="componentTitle">Element <span class="qname">language</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id25" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id25');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id25" style="display:block"><img alt="Diagram" border="0" src="images/avt.html89.jpeg" usemap="#avt_46_html89" /><map name="avt_46_html89" id="avt_46_html89">
+                                 <area alt="avt0.tmp#id54" href="avt0.html#id54" coords="122,38,202,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id25" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id25');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id25" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"language"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id26"></a><div class="componentTitle">Element <span class="qname">relation</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id26" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id26');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id26" style="display:block"><img alt="Diagram" border="0" src="images/avt.html35.jpeg" usemap="#avt_46_html35" /><map name="avt_46_html35" id="avt_46_html35">
+                                 <area alt="avt0.tmp#id55" href="avt0.html#id55" coords="114,38,186,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id26" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id26');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id26" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"relation"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id27"></a><div class="componentTitle">Element <span class="qname">coverage</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id27" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id27');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id27" style="display:block"><img alt="Diagram" border="0" src="images/avt.html76.jpeg" usemap="#avt_46_html76" /><map name="avt_46_html76" id="avt_46_html76">
+                                 <area alt="avt0.tmp#id69" href="avt0.html#id69" coords="122,38,202,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id27" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id27');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id27" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"coverage"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id28"></a><div class="componentTitle">Element <span class="qname">rights</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id28" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id28');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id28" style="display:block"><img alt="Diagram" border="0" src="images/avt.html37.jpeg" usemap="#avt_46_html37" /><map name="avt_46_html37" id="avt_46_html37">
+                                 <area alt="avt0.tmp#id72" href="avt0.html#id72" coords="105,38,168,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id28" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id28');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id28" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"rights"</span><span class="tokenAttrName"> substitutionGroup=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id84"></a><div class="componentTitle">Complex Type <span class="qname">SimpleLiteral</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id84" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id84');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id84" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">This is the default type for all of the DC elements.</span><span class="tokenIndent">
+</span><span class="tokenText">            It permits text content only with optional</span><span class="tokenIndent">
+</span><span class="tokenText">            xml:lang attribute.</span><span class="tokenIndent">
+</span><span class="tokenText">            Text is allowed because mixed="true", but sub-elements</span><span class="tokenIndent">
+</span><span class="tokenText">            are disallowed because minOccurs="0" and maxOccurs="0" </span><span class="tokenIndent">
+</span><span class="tokenText">            are on the xs:any tag.</span><span class="tokenIndent">
+</span><span class="tokenText"></span><span class="tokenIndent">
+</span><span class="tokenText">    	    This complexType allows for restriction or extension permitting</span><span class="tokenIndent">
+</span><span class="tokenText">            child elements.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id84" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id84');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id84" style="display:block"><img alt="Diagram" border="0" src="images/avt.html21.jpeg" usemap="#avt_46_html21" /><map name="avt_46_html21" id="avt_46_html21">
+                                 <area alt="avt1.tmp#id85" href="avt1.html#id85" coords="165,206,259,230" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id84" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id84');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id84" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="avt2.html#id13" target="mainFrame"
+                                             title="http://purl.org/dc/elements/1.1/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">any</a></b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">Complex Types </td>
+                                    <td><b><a href="avt0.html#id129" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">Box</a></b>, <b><a href="avt0.html#id119" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">DCMIType</a></b>, <b><a href="avt0.html#id114" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">DDC</a></b>, <b><a href="avt0.html#id120" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">IMT</a></b>, <b><a href="avt0.html#id128" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">ISO3166</a></b>, <b><a href="avt0.html#id122" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">ISO639-2</a></b>, <b><a href="avt0.html#id123" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">ISO639-3</a></b>, <b><a href="avt0.html#id115" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">LCC</a></b>, <b><a href="avt0.html#id112" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">LCSH</a></b>, <b><a href="avt0.html#id113" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">MESH</a></b>, <b><a href="avt0.html#id117" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">Period</a></b>, <b><a href="avt0.html#id127" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">Point</a></b>, <b><a href="avt0.html#id124" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">RFC1766</a></b>, <b><a href="avt0.html#id125" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">RFC3066</a></b>, <b><a href="avt0.html#id126" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">RFC4646</a></b>, <b><a href="avt0.html#id130" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">TGN</a></b>, <b><a href="avt0.html#id116" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">UDC</a></b>, <b><a href="avt0.html#id121" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">URI</a></b>, <b><a href="avt0.html#id118" target="mainFrame" title="http://purl.org/dc/terms/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/terms/')">W3CDTF</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b></td>
+                        <td><b>ANY element from ANY namespace</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_id84" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('attributes_id84');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_id84" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th>Type</th>
+                                       <th>Fixed</th>
+                                       <th>Default</th>
+                                       <th>Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="avt1.html#id85" target="mainFrame"
+                                             title="http://www.w3.org/XML/1998/namespace"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://www.w3.org/XML/1998/namespace')">xml:lang</a></b></td>
+                                    <td><b>xs:language</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                                 class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tokenText">In due course, we should install the relevant ISO 2- and 3-letter</span><span class="tokenIndent">
+</span><span class="tokenText">codes as the enumerated possible values . . .</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id84" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id84');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id84" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:complexType</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"SimpleLiteral"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">This is the default type for all of the DC elements. It permits text content only with optional xml:lang attribute. Text is allowed because mixed="true", but sub-elements are disallowed because minOccurs="0" and maxOccurs="0" are on the xs:any tag. This complexType allows for restriction or extension permitting child elements.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:complexContent</span><span class="tokenAttrName"> mixed=</span><span class="tokenAttrValue">"true"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:restriction</span><span class="tokenAttrName"> base=</span><span class="tokenAttrValue">"xs:anyType"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:sequence</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+        </span><span class="tokenElement">&lt;xs:any</span><span class="tokenAttrName"> processContents=</span><span class="tokenAttrValue">"lax"</span><span class="tokenAttrName"> minOccurs=</span><span class="tokenAttrValue">"0"</span><span class="tokenAttrName"> maxOccurs=</span><span class="tokenAttrValue">"0"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;/xs:sequence&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:attribute</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"xml:lang"</span><span class="tokenAttrName"> use=</span><span class="tokenAttrValue">"optional"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;/xs:restriction&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:complexContent&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:complexType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id111"></a><div class="componentTitle">Complex Type <span class="qname">elementContainer</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id111" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id111');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id111" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">This complexType is included as a convenience for schema authors who need to define a root</span><span class="tokenIndent">
+</span><span class="tokenText">or container element for all of the DC elements.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id111" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id111');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id111" style="display:block"><img alt="Diagram" border="0" src="images/avt.html25.jpeg" usemap="#avt_46_html25" /><map name="avt_46_html25" id="avt_46_html25">
+                                 <area alt="avt2.tmp#id13" href="avt2.html#id13" coords="426,48,481,72" />
+                                 <area alt="avt2.tmp#id110" href="avt2.html#id110" coords="252,3,389,29" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b></td>
+                        <td>((<b><a href="avt2.html#id13" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">any</a></b>))
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="avt2.html#id13" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">any</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id111" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id111');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id111" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:complexType</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"elementContainer"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">This complexType is included as a convenience for schema authors who need to define a root or container element for all of the DC elements.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:choice</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:group</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"elementsGroup"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:choice&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:complexType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id110"></a><div class="componentTitle">Element Group <span class="qname">elementsGroup</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://purl.org/dc/elements/1.1/</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id110" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id110');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id110" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">This group is included as a convenience for schema authors</span><span class="tokenIndent">
+</span><span class="tokenText">who need to refer to all the elements in the </span><span class="tokenIndent">
+</span><span class="tokenText">http://purl.org/dc/elements/1.1/ namespace.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_id110" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('diagram_id110');"
+                                     class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_id110" style="display:block"><img alt="Diagram" border="0" src="images/avt.html78.jpeg" usemap="#avt_46_html78" /><map name="avt_46_html78" id="avt_46_html78">
+                                 <area alt="avt2.tmp#id13" href="avt2.html#id13" coords="328,4,383,28" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id110" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id110');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id110" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="avt2.html#id111" target="mainFrame"
+                                             title="http://purl.org/dc/elements/1.1/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">elementContainer</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b></td>
+                        <td>(<b><a href="avt2.html#id13" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">any</a></b>)
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="avt2.html#id13" target="mainFrame"
+                                 title="http://purl.org/dc/elements/1.1/"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://purl.org/dc/elements/1.1/')">any</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id110" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id110');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id110" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:group</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"elementsGroup"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">This group is included as a convenience for schema authors who need to refer to all the elements in the http://purl.org/dc/elements/1.1/ namespace.</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:sequence</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:choice</span><span class="tokenAttrName"> minOccurs=</span><span class="tokenAttrValue">"0"</span><span class="tokenAttrName"> maxOccurs=</span><span class="tokenAttrValue">"unbounded"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+      </span><span class="tokenElement">&lt;xs:element</span><span class="tokenAttrName"> ref=</span><span class="tokenAttrValue">"any"</span><span class="tokenElement">/&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;/xs:choice&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:sequence&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:group&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
+         </div>
+      </div><script type="text/javascript">
+         <!--                     
+                     // The namespace is the selected option in the TOC combo.
+                     
+                     // The corresponding div is already visible conf. to its style attr.                     
+                    
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                --></script></body>
+</html>

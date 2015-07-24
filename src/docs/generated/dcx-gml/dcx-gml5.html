@@ -1,0 +1,1184 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for namespace NO_NAMESPACE</title>
+      <link rel="stylesheet" href="xsdDocHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        var propertiesBoxes= new Array('properties_id32', 
+				'properties_id34', 
+				'properties_id35', 
+				'properties_id169', 
+				'properties_id181', 
+				'properties_id191', 
+				'properties_id216');
+
+        var facetsBoxes= new Array('facets_id169', 
+				'facets_id181');
+
+        var usedByBoxes= new Array('usedBy_id32', 
+				'usedBy_id34', 
+				'usedBy_id35', 
+				'usedBy_id169', 
+				'usedBy_id181', 
+				'usedBy_id191', 
+				'usedBy_id216');
+
+        var sourceBoxes= new Array('source_id32', 
+				'source_id34', 
+				'source_id35', 
+				'source_id169', 
+				'source_id181', 
+				'source_id191', 
+				'source_id216');
+
+        
+        
+        var annotationBoxes= new Array('annotations_id34', 
+				'annotations_id35', 
+				'annotations_id169', 
+				'annotations_id181', 
+				'annotations_id191');
+
+        
+        
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "images/button_minus.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "images/button_plus.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id){
+            var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+            // Make all the tabs invisible.
+            for (i = 0; i < 3; i++){
+               var tab = getElementObject(selectIds[i]);
+               tab.style.display = 'none';
+            }
+            var selTab = getElementObject(id);
+            selTab.style.display = 'block';            
+         }
+          
+
+    --></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, annotationBoxes);"
+                                     class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, facetsBoxes);"
+                                     class="control" /></span><span class="globalControlName">Facets </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, propertiesBoxes);"
+                                     class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, sourceBoxes);"
+                                     class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked"
+                                     onclick="switchStateForAll(this, usedByBoxes);"
+                                     class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button"
+                               onclick="getElementObject('global_controls').style.display = 'none';"
+                               value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="id32"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="dcx-gml1.html#id31" target="mainFrame" title="http://www.opengis.net/gml"
+                  onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:CodeType</a></b> / @codeSpace</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>anyURI</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id32" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id32');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id32" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">use:
+                                       
+                                    </td>
+                                    <td><b>optional</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id32" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id32');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id32" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="dcx-gml1.html#id31" target="mainFrame" title="http://www.opengis.net/gml"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:CodeType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id32" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id32');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id32" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"codeSpace"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"anyURI"</span><span class="tokenAttrName"> use=</span><span class="tokenAttrValue">"optional"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id34"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="dcx-gml1.html#id26" target="mainFrame" title="http://www.opengis.net/gml"
+                  onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:AbstractGeometryType</a></b> / @srsName</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id34" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id34');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id34" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">In general this reference points to a CRS instance of</span><span class="tokenIndent">
+</span><span class="tokenText">gml:CoordinateReferenceSystemType (see</span><span class="tokenIndent">
+</span><span class="tokenText">coordinateReferenceSystems.xsd). For well known</span><span class="tokenIndent">
+</span><span class="tokenText">references it is not required that the CRS description</span><span class="tokenIndent">
+</span><span class="tokenText">exists at the location the URI points to. If no srsName</span><span class="tokenIndent">
+</span><span class="tokenText">attribute is given, the CRS must be specified as part of</span><span class="tokenIndent">
+</span><span class="tokenText">the larger context this geometry element is part of, e.g.</span><span class="tokenIndent">
+</span><span class="tokenText">a geometric element like point, curve, etc. It is expected</span><span class="tokenIndent">
+</span><span class="tokenText">that this attribute will be specified at the direct</span><span class="tokenIndent">
+</span><span class="tokenText">position level only in rare cases.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>anyURI</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id34" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id34');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id34" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">use:
+                                       
+                                    </td>
+                                    <td><b>optional</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id34" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id34');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id34" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="dcx-gml1.html#id26" target="mainFrame" title="http://www.opengis.net/gml"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:AbstractGeometryType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id34" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id34');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id34" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"srsName"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"anyURI"</span><span class="tokenAttrName"> use=</span><span class="tokenAttrValue">"optional"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;documentation</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">In general this reference points to a CRS instance of gml:CoordinateReferenceSystemType (see coordinateReferenceSystems.xsd). For well known references it is not required that the CRS description exists at the location the URI points to. If no srsName attribute is given, the CRS must be specified as part of the larger context this geometry element is part of, e.g. a geometric element like point, curve, etc. It is expected that this attribute will be specified at the direct position level only in rare cases.</span><span class="tokenElement">&lt;/documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/annotation&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id35"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="dcx-gml7.html#id11" target="mainFrame"
+                  title="http://easy.dans.knaw.nl/schemas/dcx/gml/"
+                  onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/dcx/gml/')">dcx-gml:SimpleGMLType</a></b> / @srsName</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id35" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id35');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id35" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">Default coordinate reference system is WGS84 (urn:ogc:def:crs:EPSG::4326),</span><span class="tokenIndent">
+</span><span class="tokenText">"Used by the GPS satellite navigation system and for NATO military geodetic surveying."</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:anyURI</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id35" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id35');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id35" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">default:
+                                       
+                                    </td>
+                                    <td><b>http://www.opengis.net/def/crs/EPSG/0/4326</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id35" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id35');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id35" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="dcx-gml7.html#id11" target="mainFrame"
+                                             title="http://easy.dans.knaw.nl/schemas/dcx/gml/"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://easy.dans.knaw.nl/schemas/dcx/gml/')">dcx-gml:SimpleGMLType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id35" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id35');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id35" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;xs:attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"srsName"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"xs:anyURI"</span><span class="tokenAttrName"> default=</span><span class="tokenAttrValue">"http://www.opengis.net/def/crs/EPSG/0/4326"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;xs:annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;xs:documentation</span><span class="tokenAttrName"> xml:lang=</span><span class="tokenAttrValue">"en"</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">Default coordinate reference system is WGS84 (urn:ogc:def:crs:EPSG::4326), "Used by the GPS satellite navigation system and for NATO military geodetic surveying."</span><span class="tokenElement">&lt;/xs:documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/xs:annotation&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/xs:attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id169"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="dcx-gml1.html#id166" target="mainFrame"
+                  title="http://www.opengis.net/gml"
+                  onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:LineStringSegmentType</a></b> / @interpolation</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id169" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id169');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id169" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">The attribute "interpolation" specifies</span><span class="tokenIndent">
+</span><span class="tokenText">the curve interpolation mechanism used</span><span class="tokenIndent">
+</span><span class="tokenText">for this segment. This mechanism uses</span><span class="tokenIndent">
+</span><span class="tokenText">the control points and control parameters</span><span class="tokenIndent">
+</span><span class="tokenText">to determine the position of this curve</span><span class="tokenIndent">
+</span><span class="tokenText">segment. For a LineStringSegment the</span><span class="tokenIndent">
+</span><span class="tokenText">interpolation is fixed as "linear".</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="dcx-gml1.html#id170" target="mainFrame"
+                                 title="http://www.opengis.net/gml"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:CurveInterpolationType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id169" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id169');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id169" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">fixed:
+                                       
+                                    </td>
+                                    <td><b>linear</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_id169" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('facets_id169');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_id169" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>linear</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id169" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id169');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id169" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="dcx-gml1.html#id166" target="mainFrame"
+                                             title="http://www.opengis.net/gml"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:LineStringSegmentType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id169" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id169');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id169" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"interpolation"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"gml:CurveInterpolationType"</span><span class="tokenAttrName"> fixed=</span><span class="tokenAttrValue">"linear"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;documentation</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">The attribute "interpolation" specifies the curve interpolation mechanism used for this segment. This mechanism uses the control points and control parameters to determine the position of this curve segment. For a LineStringSegment the interpolation is fixed as "linear".</span><span class="tokenElement">&lt;/documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/annotation&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id181"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="dcx-gml1.html#id176" target="mainFrame"
+                  title="http://www.opengis.net/gml"
+                  onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:PolygonPatchType</a></b> / @interpolation</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id181" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id181');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id181" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">The attribute "interpolation" specifies the</span><span class="tokenIndent">
+</span><span class="tokenText">interpolation mechanism used for this surface</span><span class="tokenIndent">
+</span><span class="tokenText">patch. Currently only planar surface patches</span><span class="tokenIndent">
+</span><span class="tokenText">are defined in GML 3, the attribute is fixed</span><span class="tokenIndent">
+</span><span class="tokenText">to "planar", i.e. the interpolation method</span><span class="tokenIndent">
+</span><span class="tokenText">shall return points on a single plane. The</span><span class="tokenIndent">
+</span><span class="tokenText">boundary of the patch shall be contained within</span><span class="tokenIndent">
+</span><span class="tokenText">that plane.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="dcx-gml1.html#id182" target="mainFrame"
+                                 title="http://www.opengis.net/gml"
+                                 onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:SurfaceInterpolationType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id181" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id181');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id181" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">fixed:
+                                       
+                                    </td>
+                                    <td><b>planar</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_id181" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('facets_id181');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_id181" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>planar</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id181" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id181');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id181" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="dcx-gml1.html#id176" target="mainFrame"
+                                             title="http://www.opengis.net/gml"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:PolygonPatchType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id181" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id181');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id181" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"interpolation"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"gml:SurfaceInterpolationType"</span><span class="tokenAttrName"> fixed=</span><span class="tokenAttrValue">"planar"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;documentation</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">The attribute "interpolation" specifies the interpolation mechanism used for this surface patch. Currently only planar surface patches are defined in GML 3, the attribute is fixed to "planar", i.e. the interpolation method shall return points on a single plane. The boundary of the patch shall be contained within that plane.</span><span class="tokenElement">&lt;/documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/annotation&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id191"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="dcx-gml1.html#id188" target="mainFrame"
+                  title="http://www.opengis.net/gml"
+                  onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:EnvelopeType</a></b> / @srsName</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_id191" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('annotations_id191');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_id191" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                        class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tokenText">In general this reference points to a CRS instance of</span><span class="tokenIndent">
+</span><span class="tokenText">gml:CoordinateReferenceSystemType (see</span><span class="tokenIndent">
+</span><span class="tokenText">coordinateReferenceSystems.xsd). For well known</span><span class="tokenIndent">
+</span><span class="tokenText">references it is not required that the CRS description</span><span class="tokenIndent">
+</span><span class="tokenText">exists at the location the URI points to.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>anyURI</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id191" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id191');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id191" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">use:
+                                       
+                                    </td>
+                                    <td><b>required</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id191" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id191');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id191" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="dcx-gml1.html#id188" target="mainFrame"
+                                             title="http://www.opengis.net/gml"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:EnvelopeType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id191" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id191');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id191" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"srsName"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"anyURI"</span><span class="tokenAttrName"> use=</span><span class="tokenAttrValue">"required"</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;annotation</span><span class="tokenElement">&gt;</span><span class="tokenIndent">
+    </span><span class="tokenElement">&lt;documentation</span><span class="tokenElement">&gt;</span><span class="tokenText" style="white-space:normal">In general this reference points to a CRS instance of gml:CoordinateReferenceSystemType (see coordinateReferenceSystems.xsd). For well known references it is not required that the CRS description exists at the location the URI points to.</span><span class="tokenElement">&lt;/documentation&gt;</span><span class="tokenIndent">
+  </span><span class="tokenElement">&lt;/annotation&gt;</span><span class="tokenIndent">
+</span><span class="tokenElement">&lt;/attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="id216"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="dcx-gml1.html#id215" target="mainFrame"
+                  title="http://www.opengis.net/gml"
+                  onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:MeasureType</a></b> / @uom</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>anyURI</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_id216" type="image" src="images/button_minus.gif"
+                                     value="-"
+                                     onclick="switchState('properties_id216');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_id216" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn">use:
+                                       
+                                    </td>
+                                    <td><b>required</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_id216" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('usedBy_id216');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_id216" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="dcx-gml1.html#id215" target="mainFrame"
+                                             title="http://www.opengis.net/gml"
+                                             onclick="updatePageTitle('Schema documentation for namespace http://www.opengis.net/gml')">gml:MeasureType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_id216" type="image" src="images/button_minus.gif" value="-"
+                                     onclick="switchState('source_id216');"
+                                     class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_id216" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;"
+                                     class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tokenElement">&lt;attribute</span><span class="tokenAttrName"> name=</span><span class="tokenAttrValue">"uom"</span><span class="tokenAttrName"> type=</span><span class="tokenAttrValue">"anyURI"</span><span class="tokenAttrName"> use=</span><span class="tokenAttrValue">"required"</span><span class="tokenElement">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
+         </div>
+      </div><script type="text/javascript">
+         <!--                     
+                     // The namespace is the selected option in the TOC combo.
+                     
+                     // The corresponding div is already visible conf. to its style attr.                     
+                    
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                --></script></body>
+</html>
