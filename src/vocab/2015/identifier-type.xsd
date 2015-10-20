@@ -22,7 +22,7 @@
         <xs:simpleContent>
             <xs:restriction base="dc:SimpleLiteral">
                 <xs:simpleType>
-                    <xs:restriction base="identifier:Discipline"/>
+                    <xs:restriction base="identifier:Identifier"/>
                 </xs:simpleType>
                 <xs:attribute ref="xml:lang" use="prohibited"/>
             </xs:restriction>
