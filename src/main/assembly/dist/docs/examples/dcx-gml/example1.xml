@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2015-2016 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<ddm:DDM xmlns:ddm="http://easy.dans.knaw.nl/schemas/md/ddm/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:dcx-gml="http://easy.dans.knaw.nl/schemas/dcx/gml/"
+    xsi:schemaLocation=
+    "http://easy.dans.knaw.nl/schemas/md/ddm/ http://easy.dans.knaw.nl/schemas/md/2014/09/ddm.xsd
+    http://easy.dans.knaw.nl/schemas/dcx/gml/ http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx-gml.xsd">
+    
+    <!-- If you view this example in a browser, click 'page source' to see the namespace declarations. -->
+    
+    <!-- 
+    Example of the use of the dcx-gml extension. The dcx-gml extension enables the use of 
+    GML 3.1.1 Simplified Features profile Levels 0 and 1 on a substitution of element dct:spatial.
+    Mark declaration of namespace in the root element (see above).
+    -->
+    
+    <ddm:dcmiMetadata>
+        
+        <!-- Example definition of a Point. Default coordinate reference system is WGS84 
+        (urn:ogc:def:crs:EPSG::4326). 
+        The list in element pos is in the order latitude longitude [altitude]. 
+        Latitude and longitude are in decimal degrees, altitude in m. -->
+        <dcx-gml:spatial>
+            <Point xmlns="http://www.opengis.net/gml">
+                <description>Entrance of DANS Building</description>
+                <name>Data Archiving and Networked Services (DANS)</name>
+                <pos>52.08110 4.34521 1.12</pos>
+            </Point>
+        </dcx-gml:spatial>
+        
+        <!-- Same point in Dutch National Grid (urn:ogc:def:crs:EPSG::28992). 
+        The list in element pos is in the order x y [altitude]. All units in m. -->
+        <dcx-gml:spatial srsName="http://www.opengis.net/def/crs/EPSG/0/28992">
+            <Point xmlns="http://www.opengis.net/gml">
+                <description>Entrance of DANS Building</description>
+                <name>Data Archiving and Networked Services (DANS)</name>
+                <pos>83575.4 455271.2 1.12</pos>
+            </Point> 
+        </dcx-gml:spatial>
+        
+        <!-- Example definition of a LineString -->
+        <dcx-gml:spatial>
+            <LineString xmlns="http://www.opengis.net/gml">
+                <description>Walk from DANS to the railway station</description>
+                <posList>52.08110 4.34521 52.08071 4.34422 52.07913 4.34332</posList>
+            </LineString>
+        </dcx-gml:spatial>
+        
+        <!--  -->
+    </ddm:dcmiMetadata>
+    
+    <ddm:profile>
+        <dc:title></dc:title>
+        <dc:description></dc:description>
+        <dc:creator></dc:creator>
+        <ddm:created>2012</ddm:created>
+        <ddm:audience>D24000</ddm:audience>
+        <ddm:accessRights>OPEN_ACCESS_FOR_REGISTERED_USERS</ddm:accessRights>
+    </ddm:profile>
+
+</ddm:DDM>

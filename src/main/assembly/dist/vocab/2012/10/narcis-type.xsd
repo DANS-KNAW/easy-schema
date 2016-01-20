@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2015-2016 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:narcis="http://easy.dans.knaw.nl/schemas/vocab/narcis-type/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    targetNamespace="http://easy.dans.knaw.nl/schemas/vocab/narcis-type/" 
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+
+    <xs:annotation>
+        <xs:documentation>This type vocabulary contains a provisional enumeration for use on dcterms:audience.</xs:documentation>
+    </xs:annotation>
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="http://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
+
+    <xs:complexType name="DisciplineType">
+        <xs:annotation>
+            <xs:documentation>
+                Use on element dcterms:audience.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="narcis:Discipline"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+<!--
+    <xs:complexType name="ResearchAreaType">
+        <xs:annotation>
+            <xs:documentation> </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="narcis:Research-area"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="InterestAreaType">
+        <xs:annotation>
+            <xs:documentation> </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="narcis:Area-of-interest"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+-->
+
+    <xs:simpleType name="Discipline">
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="C20000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Development studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:46</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="C40000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Women's studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:53</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="C50000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Environmental studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:25</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D20000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Life sciences and medicine</xs:documentation>
+                    <xs:appinfo>easy-discipline:54</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D24000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Health sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:55</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D30000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Humanities</xs:documentation>
+                    <xs:appinfo>easy-discipline:1</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D31000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Palaeography, bibliology, bibliography, library science</xs:documentation>
+                    <xs:appinfo>easy-discipline:20</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D32000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Philosophy</xs:documentation>
+                    <xs:appinfo>easy-discipline:21</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D33000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Theology and religious sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:22</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D34000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">History</xs:documentation>
+                    <xs:appinfo>easy-discipline:8</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D34100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Antiquity</xs:documentation>
+                    <xs:appinfo>easy-discipline:9</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D34200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Middle Ages</xs:documentation>
+                    <xs:appinfo>easy-discipline:10</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D34300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Early modern history</xs:documentation>
+                    <xs:appinfo>easy-discipline:11</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D34400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Modern history</xs:documentation>
+                    <xs:appinfo>easy-discipline:12</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D34500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Contemporary history</xs:documentation>
+                    <xs:appinfo>easy-discipline:13</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D35000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Arts</xs:documentation>
+                    <xs:appinfo>easy-discipline:3</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D35100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">History of arts and architecture</xs:documentation>
+                    <xs:appinfo>easy-discipline:5</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D35200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Musicology</xs:documentation>
+                    <xs:appinfo>easy-discipline:7</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D35300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Dramaturgy</xs:documentation>
+                    <xs:appinfo>easy-discipline:4</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D35400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Media sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:6</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D36000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Language and literature studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:14</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D36100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Classic studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:16</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D36200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Germanic language and literature studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:17</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D36300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Romance language and literature studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:18</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D36400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Baltic and Slavonic language and literature studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:15</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D36900">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Language and literature studies of other language groups</xs:documentation>
+                    <xs:appinfo>easy-discipline:19</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D37000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Archaeology</xs:documentation>
+                    <xs:appinfo>easy-discipline:2</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D40000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Social sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:23</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Science of law</xs:documentation>
+                    <xs:appinfo>easy-discipline:29</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">History of Law</xs:documentation>
+                    <xs:appinfo>easy-discipline:30</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Private (procedural) law</xs:documentation>
+                    <xs:appinfo>easy-discipline:31</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Criminal (procedural) law and criminology</xs:documentation>
+                    <xs:appinfo>easy-discipline:32</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Constitutional and administrative law</xs:documentation>
+                    <xs:appinfo>easy-discipline:33</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Interdisciplinary branches of law</xs:documentation>
+                    <xs:appinfo>easy-discipline:34</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41600">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">International law</xs:documentation>
+                    <xs:appinfo>easy-discipline:35</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D42000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Political and administrative sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:26</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D42100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Political science</xs:documentation>
+                    <xs:appinfo>easy-discipline:27</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D42200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Social and Public administration</xs:documentation>
+                    <xs:appinfo>easy-discipline:28</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D43000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Economics</xs:documentation>
+                    <xs:appinfo>easy-discipline:24</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D44000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Traffic and transport studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:36</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D50000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Behavioural sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:37</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D51000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Psychology</xs:documentation>
+                    <xs:appinfo>easy-discipline:40</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D52000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Science of education</xs:documentation>
+                    <xs:appinfo>easy-discipline:41</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D53000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Gerontology</xs:documentation>
+                    <xs:appinfo>easy-discipline:38</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D54000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Pedagogics</xs:documentation>
+                    <xs:appinfo>easy-discipline:39</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D60000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Socio-cultural sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:42</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D61000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Sociology</xs:documentation>
+                    <xs:appinfo>easy-discipline:51</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D62000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Social geography</xs:documentation>
+                    <xs:appinfo>easy-discipline:49</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D63000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Cultural anthropology</xs:documentation>
+                    <xs:appinfo>easy-discipline:44</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D64000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Demography</xs:documentation>
+                    <xs:appinfo>easy-discipline:45</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D65000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Urban and rural planning</xs:documentation>
+                    <xs:appinfo>easy-discipline:52</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D66000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Communication sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:43</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D67000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Leisure and recreation studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:47</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D68000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Social security studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:50</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D69000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Personnel administration and management</xs:documentation>
+                    <xs:appinfo>easy-discipline:48</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="GeoSpat">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Geospatial sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:56</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+<!--
+    <xs:simpleType name="Research-area">
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="C30000"/>
+            <xs:enumeration value="C40000"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Area-of-interest">
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="A30000"/>
+            <xs:enumeration value="A40000"/>
+        </xs:restriction>
+    </xs:simpleType>
+-->
+
+</xs:schema>

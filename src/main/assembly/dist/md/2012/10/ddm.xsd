@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2015-2016 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:ddm="http://easy.dans.knaw.nl/schemas/md/ddm/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:dcx="http://easy.dans.knaw.nl/schemas/dcx/"
+    xmlns:dai="info:eu-repo/dai"
+    xmlns:narcis="http://easy.dans.knaw.nl/schemas/vocab/narcis-type"
+    targetNamespace="http://easy.dans.knaw.nl/schemas/md/ddm/"
+    elementFormDefault="qualified" attributeFormDefault="unqualified">
+    
+    <!-- =================================================================================== -->
+    <xs:annotation>
+        <xs:documentation xml:lang="en">DANS Dataset Metadata (DDM)
+            
+            This schema specifies a metadata-format for describing datasets. 
+            An instance of this metadata-format can be used for ingest of datasets with the Sword protocol.
+            
+            Created 2012-10-26
+            
+            Copyright (c) 2012 DANS-KNAW 
+        </xs:documentation>
+    </xs:annotation>
+    
+    <!-- =================================================================================== -->
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <xs:import namespace="http://purl.org/dc/elements/1.1/"
+        schemaLocation="http://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
+    <xs:import namespace="http://purl.org/dc/terms/"
+        schemaLocation="http://dublincore.org/schemas/xmls/qdc/dcterms.xsd"/>
+    <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/" 
+        schemaLocation="http://eof12.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
+    <xs:import namespace="info:eu-repo/dai"
+        schemaLocation="http://purl.org/REP/standards/dai-extension.xsd"/>
+    <xs:import namespace="http://easy.dans.knaw.nl/schemas/vocab/narcis-type"
+        schemaLocation="http://eof12.dans.knaw.nl/schemas/vocab/2012/10/narcis-type.xsd"/>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="DDM">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Root element of DANS Dataset Metadata. DDM-instances MUST have one ddm:profile element and MAY have
+                one ddm:dcmiMetadata element.
+                
+                If elements ddm:creatorWithID or ddm:contributorWithID are used, an identity-contraint is enforced with regard to
+                the one-to-one relation of the values of the ID attribute on these elements and the IDref attribute on elements 
+                info:eu-repo/dai:identifier. In this case the DDM-instance MUST have one ddm:daiList element.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="profile" type="ddm:profileType">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Container for Easy-specific information. (Required)
+                            The information in this group is essential for profiling the dataset in the Easy application.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="dcmiMetadata" type="dcterms:elementOrRefinementContainer" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Container for dcmi metadata. (Optional)
+                            
+                            All elements of the http://purl.org/dc/elements/1.1/ namespace can be used.
+                            All elements of the http://purl.org/dc/terms/ namespace can be used.
+                            All elements defined in this schema that are extensions or restrictions of dc or dcterms elements can be used.
+                            
+                            Where applicable the use of the xml:lang attribute is recommended.
+                            Where applicable the use of the xsi:type attribute is recommended.
+                            See also:
+                            http://dublincore.org/documents/dcmi-terms/
+                            http://dublincore.org/schemas/xmls/qdc/dcterms.xsd
+                            http://eof12.dans.knaw.nl/schemas/vocab/2012/10/abr-type.xsd (Archeologisch-Basisregister)
+                            http://eof12.dans.knaw.nl/schemas/vocab/2012/10/narcis-type.xsd (NARCIS classification)
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="ddm:daiList" minOccurs="0"/>
+                <xs:element ref="ddm:additional-xml" minOccurs="0"/>
+            </xs:all>
+        </xs:complexType>
+        <xs:key name="daiIDKey">
+            <xs:selector xpath="ddm:daiList/dai:identifier"/>
+            <xs:field xpath="@IDref"/>
+        </xs:key>
+        <xs:keyref refer="ddm:daiIDKey" name="profileCreatorID">
+            <xs:selector xpath="ddm:profile/ddm:creatorWithID"/>
+            <xs:field xpath="@ID"/>
+        </xs:keyref>
+        <xs:keyref refer="ddm:daiIDKey" name="dcmiMetadataCreatorID">
+            <xs:selector xpath="ddm:dcmiMetadata/ddm:creatorWithID"/>
+            <xs:field xpath="@ID"/>
+        </xs:keyref>
+        <xs:keyref refer="ddm:daiIDKey" name="dcmiMetadataContributorID">
+            <xs:selector xpath="ddm:dcmiMetadata/ddm:contributorWithID"/>
+            <xs:field xpath="@ID"/>
+        </xs:keyref>        
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="creatorWithDAI" substitutionGroup="dc:creator" type="ddm:DCAuthorDAIType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Extension of dc:creator.
+                
+                This element enables the use of the DAI attribute for specifying the Digital Author ID (DAI).
+                If the name of an author can be split up into multiple fields or if an organization must be specified,
+                the use of the element ddm:creatorDetails is preferred.
+                
+                See also: http://purl.org/dc/terms/creator
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="creatorWithID" substitutionGroup="dc:creator" type="ddm:DCAuthorIDType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Extension of dc:creator.
+                
+                This element enables the use of the ID attribute for refering the Digital Author ID (DAI).
+                If the name of an author can be split up into multiple fields or if an organization must be specified,
+                the use of the element ddm:creatorDetails is preferred.
+                
+                See also: http://purl.org/dc/terms/creator
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="creatorDetails" substitutionGroup="dc:creator" type="ddm:AuthorOrOrganizationType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Extension of dc:creator.
+                
+                This element enables the detailed specification of a ddm:author or ddm:organization.
+                
+                See also: http://purl.org/dc/terms/creator
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="contributorWithDAI" substitutionGroup="dc:contributor" type="ddm:DCAuthorDAIType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Extension of dc:contributor.
+                
+                This element enables the use of the DAI attribute for specifying the Digital Author ID (DAI).
+                If the name of an author can be split up into multiple fields or if an organization must be specified,
+                the use of the element ddm:contributorDetails is preferred.
+                
+                See also: http://purl.org/dc/terms/contributor
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="contributorWithID" substitutionGroup="dc:contributor" type="ddm:DCAuthorIDType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Extension of dc:contributor.
+                
+                This element enables the use of the ID attribute for refering the Digital Author ID (DAI).
+                If the name of an author can be split up into multiple fields or if an organization must be specified,
+                the use of the element ddm:contributorDetails is preferred.
+                
+                See also: http://purl.org/dc/terms/contributor
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="contributorDetails" substitutionGroup="dc:contributor" type="ddm:AuthorOrOrganizationType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Extension of dc:contributor.
+                
+                This element enables the detailed specification of a ddm:author or ddm:organization.
+                
+                See also: http://purl.org/dc/terms/contributor
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="created" substitutionGroup="dcterms:created" type="dcterms:W3CDTF">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Restriction on dcterms:created.
+                
+                Element value MUST conform to the dcterms:W3CDTF format.
+                
+                See also: http://purl.org/dc/terms/created
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="available" substitutionGroup="dcterms:available" type="dcterms:W3CDTF">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Restriction on dcterms:available.
+                
+                Element value MUST conform to the dcterms:W3CDTF format.
+                
+                See also: http://purl.org/dc/terms/available
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="audience" substitutionGroup="dcterms:audience" type="narcis:DisciplineType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Restriction on dcterms:audience.
+                
+                Element value MUST conform to the narcis:DisciplineType.
+                
+                See also: http://purl.org/dc/terms/audience
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="accessRights" substitutionGroup="dcterms:accessRights" type="ddm:EasyAccessRightsType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Restriction on dcterms:accessRights.
+                
+                Element value MUST conform to ddm:EasyAccessRightsType.
+                
+                See also: http://purl.org/dc/terms/accessRights
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="author">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Detailed specification of a person that acts as a writer, creator or contributor.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:group ref="ddm:AuthorInformationGroup"/>            
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="organization">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Detailed specification of a company or institution.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:group ref="ddm:OrganizationalInformationGroup"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="daiList" type="dai:daiListType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Container for one or more info:eu-repo/dai:identifier elements. 
+                The values of IDref attributes of the info:eu-repo/dai:identifier elements MUST have a one-to-one 
+                relation to the ID attributes used on elements ddm:creatorWithID and ddm:contributorWithID.
+                
+                Optional. Required if elements ddm:creatorWithID or ddm:contributorWithID are used in the containers
+                ddm:profile or ddm:dcmiMetadata.
+                
+                See also: http://wiki.surf.nl/display/standards/DAI-extension
+            </xs:documentation>
+        </xs:annotation>
+        <xs:unique name="oneIDReference">
+            <xs:selector xpath="dai:identifier"/>
+            <xs:field xpath="@IDref"/>
+        </xs:unique>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:element name="additional-xml">
+        <xs:annotation>
+            <xs:documentation>
+                Any valid xml-element will do as a child of this element, as long as its namespace is ##other.
+                If a schemaLocation is provided on the element, validating agents will validate the provided xml against that schema.
+                The element may be complex.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- =================================================================================== -->
+    <xs:complexType name="profileType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Detailed specification of the information that is essential for profiling the dataset in the Easy application.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="dc:title" maxOccurs="unbounded"/>
+            <xs:element ref="dc:description" maxOccurs="unbounded"/>
+            <xs:element ref="dc:creator" maxOccurs="unbounded"/>
+            <xs:element ref="ddm:created"/>
+            <xs:element ref="ddm:available" minOccurs="0"/>
+            <xs:element ref="ddm:audience" maxOccurs="unbounded"/>
+            <xs:element ref="ddm:accessRights"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- =================================================================================== -->
+    <xs:complexType name="DCAuthorDAIType" mixed="true">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Single-value type that enables the use of the DAI attribute for specifying the Digital Author ID (DAI).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="dcx:NoLanguageAttributeType">
+                <xs:attribute ref="ddm:DAI" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <!-- =================================================================================== -->
+    <xs:complexType name="DCAuthorIDType" mixed="true">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Single-value type that enables the use of the ID attribute for refering the Digital Author ID (DAI).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="dcx:NoLanguageAttributeType">
+                <xs:attribute name="ID" type="xs:ID" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <!-- =================================================================================== -->
+    <xs:complexType name="AuthorOrOrganizationType">
+        <xs:complexContent>
+            <xs:extension base="dcx:ElementsOnlyType">
+                <xs:choice>
+                    <xs:element ref="ddm:author"/>
+                    <xs:element ref="ddm:organization"/>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <!-- =================================================================================== -->
+    <xs:complexType name="EasyAccessRightsType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Use on dcterms:accessRights or members of its substitutionGroup.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="ddm:EasyAccessCategoryType"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <!-- =================================================================================== -->
+    <xs:simpleType name="EasyAccessCategoryType">
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="OPEN_ACCESS">
+                <xs:annotation>
+                    <xs:documentation>
+                        Unrestricted access for all registered EASY users.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="GROUP_ACCESS">
+                <xs:annotation>
+                    <xs:documentation>
+                        Access restricted to registered members of a group.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="REQUEST_PERMISSION">
+                <xs:annotation>
+                    <xs:documentation>
+                        Registered EASY users, but only after depositor permission is granted.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="NO_ACCESS">
+                <xs:annotation>
+                    <xs:documentation>
+                        The data are not available via Easy (they are either accessible in another way or elsewhere).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- =================================================================================== -->
+    <xs:simpleType name="DaiType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Digital Author ID (DAI) is composed of 8 or 9 digits and a MOD 11 checksum character.
+                Use of a urified DAI (starting with info:eu-repo/dai/nl/) is allowed.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(info:eu-repo/dai/nl/){0,1}([0-9]{8,9})([0-9xX]{1})"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- =================================================================================== -->
+    <xs:group name="AuthorInformationGroup">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Group of elements specifying information about an author.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="titles" type="dc:SimpleLiteral" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        (Academic) Title(s).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="initials" type="xs:token" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Abbreviation of first names.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="insertions" type="xs:token" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Words between first name and last name, known as "tussenvoegsels" in Dutch.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="surname" type="xs:token" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Last name or family name.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DAI" type="ddm:DaiType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Digital Author ID (DAI).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="ddm:organization" minOccurs="0"/>
+        </xs:all>
+    </xs:group>
+    
+    <!-- =================================================================================== -->
+    <xs:group name="OrganizationalInformationGroup">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Group of elements specifying information about an organization.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="name" minOccurs="1" type="dc:SimpleLiteral">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Designation or appalation of a company or institution.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:group>
+    
+    <!-- =================================================================================== -->
+    <xs:attribute name="DAI" type="ddm:DaiType">
+        <xs:annotation>
+            <xs:documentation>
+                Digital Author Identifier. Either as plain DAI (example: 123456789)
+                or in the urified format (example: info:eu-repo/dai/nl/123456789).
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <!-- =================================================================================== -->
+</xs:schema>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2015-2016 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:oai-dc="http://www.openarchives.org/OAI/2.0/oai_dc/"> 
+    
+    <xs:import namespace="http://www.openarchives.org/OAI/2.0/oai_dc/" schemaLocation="http://easy.dans.knaw.nl/schemas/collections/oai-dc.xsd"/>
+    
+    <xs:element name="dmo-collection">
+        <xs:annotation>
+            <xs:documentation>Recursive element of a dmo-collection tree.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="label" type="xs:string" minOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>The full title of this dmo-collection. Required.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="short-name" type="xs:string" minOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>A short name for this dmo-collection. Will be used in some displays. Required.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="oai-set" type="xs:boolean" minOccurs="0" default="false">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Is this dmo-collection published as OAI-set.
+                            - false: will set the published status of all descendants of this dmo-collection to 'false'.
+                            - true:  will set the published status of all ascendants of this dmo-collection to 'true'.
+                            Default value is 'false'.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="dc-metadata" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Dublin Core metadata on this dmo-collection. The format is oai-dc. Optional.
+                            The next element, &lt;oai-dc:dc&gt;, contains a list of dc-elements. 
+                            All elements are of type xs:string. 
+                            All elements are optional.
+                            All elements can occur multiple times. 
+                            Elements with the same name don't have to be grouped.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="oai-dc:dc" minOccurs="0">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Contains a list of dc-elements. All elements are of type xs:string. All elements are optional.
+                                        All elements can occur multiple times. Elements with the same name don't have to be grouped.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="dmo-collections" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>An optional list of descendants of this dmo-collection.</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="dmo-collection" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="dmo-namespace" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        The dmo-namespace for this collection tree, uniquely identifying this collection tree. 
+                        This attribute is required on the root-elemnt of a tree, and will be ignored on descendants of the root.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="id" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Uniquely identifies this dmo-collection within this dmo-collection tree.
+                        The id of the root of a dmo-collection tree will always be set to 'root'.
+                        The id of a dmo-collection can be generated. In that case, the value specified here will be ignored.
+                        Together with the dmo-namespace specified at the root-element, the id will form the storeId for this dmo-collection.
+                        Examples of storeIds: 'easy-collection:root', 'easy-collection:42'.
+                        In the above examples, 'easy-collection' is the dmo-namespace of the dmo-collection tree, 'root' and '42' are the ids
+                        of the root and one of its descendants respectively.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            
+        </xs:complexType>
+    </xs:element>
+    
+
+</xs:schema>
