@@ -20,8 +20,12 @@
         xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
-    <id>${project.version}</id>
-    <baseDirectory>${artifactId}-${version}</baseDirectory>
+    <id>bin</id>
+    <!--
+        No base directory configuration. For easy-schema we don't want the name of the base directory to include
+        the version number (e.g., "easy-schema-1.x-SNAPSHOT"). It should be just "easy-schema" to facilitate the
+        usage of this package as a maven resource dependency. (See the easy-app/lib/dmm project for example.)
+    -->
     <formats>
         <format>tar.gz</format>
     </formats>

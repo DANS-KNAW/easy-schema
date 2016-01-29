@@ -31,9 +31,13 @@
     <version>1.x-SNAPSHOT</version>
     <inceptionYear>2015-2016</inceptionYear>
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>com.mycila</groupId>
