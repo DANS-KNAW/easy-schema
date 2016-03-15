@@ -70,7 +70,7 @@
         
         <!-- One or more ddm:audience. Use codes specified in 
              http://easy.dans.knaw.nl/schemas/vocab/2012/10/narcis-type.xsd  -->
-        <ddm:audience>C20000</ddm:audience>
+        <ddm:audience>D20000</ddm:audience>
         <ddm:audience>D24000</ddm:audience>
         
         <!-- Exactly one ddm:accessRights. Valid codes for the element ddm:accessRights are
