@@ -131,7 +131,7 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
+
     <!-- =================================================================================== -->
     <xs:element name="accessRights" substitutionGroup="dcterms:accessRights" type="ddm:EasyAccessRightsType">
         <xs:annotation>
@@ -144,7 +144,41 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
+
+    <!-- =================================================================================== -->
+    <xs:element name="relation" substitutionGroup="dc:relation" type="ddm:DdmRelationType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Restriction on dcterms:accessRights.
+
+                Element value MUST conform to ddm:DdmRelationType.
+
+                See also: http://purl.org/dc/terms/accessRights
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="DdmRelationType">
+        <xs:complexContent>
+            <xs:extension base="dc:SimpleLiteral">
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+                <xs:attribute name="scheme" use="required" type="ddm:RelationTypeSchema"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="RelationTypeSchema">
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="STREAMING_SURROGATE_RELATION">
+                <xs:annotation>
+                    <xs:documentation>
+                        Location on the video streaming service.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
     <!-- =================================================================================== -->
     <xs:element name="additional-xml">
         <xs:annotation>

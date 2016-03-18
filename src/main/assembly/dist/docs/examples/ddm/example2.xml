@@ -33,7 +33,7 @@
 		 http://easy.dans.knaw.nl/schemas/dcx/ http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd
 		 http://easy.dans.knaw.nl/schemas/dcx/dai/ http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx-dai.xsd
 		 http://easy.dans.knaw.nl/schemas/dcx/gml/ http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx-gml.xsd
-		 http://easy.dans.knaw.nl/schemas/md/ddm/ http://easy.dans.knaw.nl/schemas/md/2015/12/ddm.xsd
+		 http://easy.dans.knaw.nl/schemas/md/ddm/ http://easy.dans.knaw.nl/schemas/md/2016/ddm.xsd
 		 http://easy.dans.knaw.nl/schemas/vocab/narcis-type/ http://easy.dans.knaw.nl/schemas/vocab/2015/narcis-type.xsd
 		 http://www.den.nl/standaard/166/Archeologisch-Basisregister/ http://easy.dans.knaw.nl/schemas/vocab/2012/10/abr-type.xsd
 
@@ -143,9 +143,9 @@
 
 		<!--  ================================================================ relations -->
 
-		<!--<ddm:relation scheme="STREAMING_SURROGATE_RELATION">/domain/dans/user/someone/collection/test/presentation/test9</ddm:relation>-->
 		<!--<dc:relation xsi:type="id-type:URN">urn:nbn:nl:ui:13-fant-asy</dc:relation>-->
 		<!--<dcterms:relation xsi:type="id-type:DOI">10.5072/fantasy-doi-rel</dcterms:relation>-->
+		<ddm:relation scheme="STREAMING_SURROGATE_RELATION">/domain/dans/user/somebody/collection/test1/presentation/testA</ddm:relation>
 		<dc:relation>urn:nbn:nl:ui:13-fant-asy</dc:relation>
 		<dcterms:relation>10.5072/fantasy-doi-rel</dcterms:relation>
 		<dcterms:conformsTo>http://doi.org/10.1111/sode.12120</dcterms:conformsTo>
