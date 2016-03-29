@@ -45,7 +45,7 @@ Eat the sword pudding:
 
       No need to worry about an internal error if it is just about something like
       `Connection refused for easy-dataset:NNN ...MetadataPidGenerator`
-      this means the dataset was created as a draft and the test sitill serves the purpose.
+      this means the dataset was created as a draft and the test still serves the purpose.
       When running with a deployed sword service the URL becomes `deasy.dans.knaw.nl/sword/deposit`.
 
     * Check the result on the second tab for the new dataset in the web-ui,
