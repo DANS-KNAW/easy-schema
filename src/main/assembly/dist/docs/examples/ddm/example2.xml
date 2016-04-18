@@ -104,13 +104,13 @@
 
 	<!-- DDM instances MAY have one ddm:dcmiMetadata element -->
 	<ddm:dcmiMetadata>
-		<!--
-            Sword-V1 returns HTTP/1.1 500 Internal Server Error with the following fields
+		<dcterms:audience xsi:type='narcis:DisciplineType'>D24000</dcterms:audience>
 
-            <dcterms:audience xsi:type='narcis:DisciplineType'>D34500</dcterms:audience>
-            <dcterms:educationLevel>meer vrije tekst</dcterms:educationLevel>
-            <dcterms:audience>vrije tekst</dcterms:audience>
-        -->
+		<!-- Sword-V1 returns HTTP/1.1 500 Internal Server Error with the following fields -->
+		<!--<dcterms:audience xsi:type='narcis:DisciplineType'>D34500</dcterms:audience>-->
+		<!--<dcterms:educationLevel>meer vrije tekst</dcterms:educationLevel>-->
+		<!--<dcterms:audience>vrije tekst</dcterms:audience>-->
+		<!--<dcterms:audience>D24000</dcterms:audience>-->
 
 		<!-- ================================================================ not copied to EMD -->
 
@@ -143,8 +143,13 @@
 
 		<!--  ================================================================ relations -->
 
+		<!-- Sword-V1 returns HTTP/1.1 415 Unsupported Media Type:
+			Could not create EMD from DDM
+			Cannot resolve 'id-type:URN' as a QName: the prefix 'id-type' is not declared
+		-->
 		<!--<dc:relation xsi:type="id-type:URN">urn:nbn:nl:ui:13-fant-asy</dc:relation>-->
 		<!--<dcterms:relation xsi:type="id-type:DOI">10.5072/fantasy-doi-rel</dcterms:relation>-->
+
 		<ddm:relation scheme="STREAMING_SURROGATE_RELATION">/domain/dans/user/somebody/collection/test1/presentation/testA</ddm:relation>
 		<dc:relation>urn:nbn:nl:ui:13-fant-asy</dc:relation>
 		<dcterms:relation>10.5072/fantasy-doi-rel</dcterms:relation>
@@ -190,16 +195,17 @@
 
 		<dcterms:rightsHolder>Houder van rechten</dcterms:rightsHolder>
 		<dcx-dai:creator DAI='info:eu-repo/dai/nl/9876543216'><!-- empty: does not show up --></dcx-dai:creator>
-		<!--
-			Sword-V1 returns HTTP/1.1 400 Bad Request: invalid meta data [Incomplete value eas.creator index=1]
+		<dc:creator>maker</dc:creator>
+		<dc:contributor>bijdrager</dc:contributor>
+		<dcterms:creator>maker term</dcterms:creator>
+		<dcterms:contributor>bijdrager term</dcterms:contributor>
 
-			<dcx-dai:creator DAI='info:eu-repo/dai/nl/1234567897'>maker met dai</dcx-dai:creator>
-			<dcx-dai:contributor DAI='1234567897'>bijdrager met DAI</dcx-dai:contributor>
-			<dc:creator>maker</dc:creator>
-			<dc:contributor>bijdrager</dc:contributor>
-			<dcterms:creator>maker term</dcterms:creator>
-			<dcterms:contributor>bijdrager term</dcterms:contributor>
-		-->
+		<!-- Sword-V1 returns HTTP/1.1 400 Bad Request: invalid meta data [Incomplete value eas.creator index=1] -->
+		<!--<dcx-dai:creator DAI='info:eu-repo/dai/nl/1234567897'>maker met dai</dcx-dai:creator>-->
+
+		<!-- Sword-V1 returns HTTP/1.1 400 Bad Request: invalid meta data [Incomplete value eas.contributor index=0] -->
+		<!--<dcx-dai:contributor DAI='1234567897'>bijdrager met DAI</dcx-dai:contributor>-->
+
 
 		<dcx-dai:creatorDetails>
 			<dcx-dai:author>
