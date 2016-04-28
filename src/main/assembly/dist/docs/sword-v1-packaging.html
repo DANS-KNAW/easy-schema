@@ -50,19 +50,19 @@
 <h1>Sword Packaging for EASY Sword-v1</h1>
 <p>
     <a href="http://easy.dans.knaw.nl/">EASY</a> supports a
-    <a href="https://easy.dans.knaw.nl/sword/servicedocument">Sword-v1</a> interface for deposits of
+    <a href="https://easy.dans.knaw.nl/sword/servicedocument">SWORD v1</a> interface for deposits of
     datasets. The zip file for a deposit should contain:
 </p>
 <ul>
     <li>
-        <p>A single file with metadata.</p>
+        <p>A single file in the root folder of the zip with metadata.</p>
         <ul>
             <li>
-                The name of the file should be: <code>DansDatasetMetadata.xml</code>
+                The name of the file must be: <code>DansDatasetMetadata.xml</code>
             </li>
             <li>
-                The format is defined by
-                <a href="https://easy.dans.knaw.nl/schemas/md/2016/"
+                It must conform to the schema at
+                <a href="https://easy.dans.knaw.nl/schemas/md/2016/ddm.xsd"
                 >ddm.xsd</a>
             </li>
             <li>
@@ -89,10 +89,10 @@
     </li>
 </ul>
 <p>
-    Supplied metadata (DDM) is stored as a file in the dataset.
-    The mapping shows what to expect when downloading the description (EMD) of a published dataset as XML.
+    The table below defines the mapping from DDM-elements to EASY Metadata (EMD) elements.
+    The EASY Metadata file can be downloaded from the Description tab of the dataset.
     Elements ignored without a warning may contain elements that will be copied into the EMD.
-    Note that the help articles are written for online deposits,
+    Note that the help articles are written for manual deposits,
     so a remark like "click the [+] button" means the element is repeatable.
 </p>
 <!--
@@ -106,92 +106,92 @@
   -->
 
 <article id='mapping'><h1>Mapping</h1><table><tr><th>ddm</th><th>emd</th><th>note</th></tr>
-    <tr><td>/dc:contributor</td><td>&lt;emd:contributor&gt&lt;dc:contributor&gt;</td><td> </td></tr>
-    <tr><td>/dc:coverage</td><td>&lt;emd:coverage&gt&lt;dc:coverage&gt;</td><td> </td></tr>
-    <tr><td>/dc:creator</td><td>&lt;emd:creator&gt&lt;dc:creator&gt;</td><td> </td></tr>
-    <tr><td>/dc:date</td><td>&lt;emd:date&gt&lt;dc:date&gt;</td><td> </td></tr>
-    <tr><td>/dc:description</td><td>&lt;emd:description&gt&lt;dc:description&gt;</td><td> </td></tr>
-    <tr><td>/dc:format</td><td>&lt;emd:format&gt&lt;dc:format&gt;</td><td> </td></tr>
-    <tr><td>/dc:identifier</td><td>&lt;emd:identifier&gt&lt;dc:identifier&gt;</td><td> </td></tr>
-    <tr><td>/dc:language</td><td>&lt;emd:language&gt&lt;dc:language&gt;</td><td> </td></tr>
-    <tr><td>/dc:publisher</td><td>&lt;emd:publisher&gt&lt;dc:publisher&gt;</td><td> </td></tr>
-    <tr><td>/dc:relation</td><td>&lt;emd:relation&gt&lt;dc:relation&gt;</td><td> </td></tr>
+    <tr><td>/dc:contributor</td><td>&lt;emd:contributor&gt;&lt;dc:contributor&gt;</td><td> </td></tr>
+    <tr><td>/dc:coverage</td><td>&lt;emd:coverage&gt;&lt;dc:coverage&gt;</td><td> </td></tr>
+    <tr><td>/dc:creator</td><td>&lt;emd:creator&gt;&lt;dc:creator&gt;</td><td> </td></tr>
+    <tr><td>/dc:date</td><td>&lt;emd:date&gt;&lt;dc:date&gt;</td><td> </td></tr>
+    <tr><td>/dc:description</td><td>&lt;emd:description&gt;&lt;dc:description&gt;</td><td> </td></tr>
+    <tr><td>/dc:format</td><td>&lt;emd:format&gt;&lt;dc:format&gt;</td><td> </td></tr>
+    <tr><td>/dc:identifier</td><td>&lt;emd:identifier&gt;&lt;dc:identifier&gt;</td><td> </td></tr>
+    <tr><td>/dc:language</td><td>&lt;emd:language&gt;&lt;dc:language&gt;</td><td> </td></tr>
+    <tr><td>/dc:publisher</td><td>&lt;emd:publisher&gt;&lt;dc:publisher&gt;</td><td> </td></tr>
+    <tr><td>/dc:relation</td><td>&lt;emd:relation&gt;&lt;dc:relation&gt;</td><td> </td></tr>
     <tr><td>/dc:rights</td><td> </td><td>ignored with a warning</td></tr>
-    <tr><td>/dc:source</td><td>&lt;emd:source&gt&lt;dc:source&gt;</td><td> </td></tr>
-    <tr><td>/dc:subject</td><td>&lt;emd:subject&gt&lt;dc:subject&gt;</td><td> </td></tr>
-    <tr><td>/dc:title</td><td>&lt;emd:title&gt&lt;dc:title&gt;</td><td> </td></tr>
-    <tr><td>/dc:type</td><td>&lt;emd:type&gt&lt;dc:type&gt;</td><td> </td></tr>
+    <tr><td>/dc:source</td><td>&lt;emd:source&gt;&lt;dc:source&gt;</td><td> </td></tr>
+    <tr><td>/dc:subject</td><td>&lt;emd:subject&gt;&lt;dc:subject&gt;</td><td> </td></tr>
+    <tr><td>/dc:title</td><td>&lt;emd:title&gt;&lt;dc:title&gt;</td><td> </td></tr>
+    <tr><td>/dc:type</td><td>&lt;emd:type&gt;&lt;dc:type&gt;</td><td> </td></tr>
     <tr><td>/dcterms:abstract</td><td> </td><td>ignored with a warning</td></tr>
     <tr><td>/dcterms:accessRights</td><td> </td><td>ignored with a warning</td></tr>
     <tr><td>/dcterms:accrualMethod</td><td> </td><td>ignored with a warning</td></tr>
     <tr><td>/dcterms:accrualPeriodicity</td><td> </td><td>ignored with a warning</td></tr>
     <tr><td>/dcterms:accrualPolicy</td><td> </td><td>ignored with a warning</td></tr>
-    <tr><td>/dcterms:alternative</td><td>&lt;emd:title&gt&lt;dc:title&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:audience</td><td>&lt;emd:audience&gt&lt;dct:audience&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:available</td><td>&lt;emd:date&gt&lt;dct:available&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:alternative</td><td>&lt;emd:title&gt;&lt;dc:title&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:audience</td><td>&lt;emd:audience&gt;&lt;dct:audience&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:available</td><td>&lt;emd:date&gt;&lt;dct:available&gt;</td><td> </td></tr>
     <tr><td>/dcterms:bibliographicCitation</td><td> </td><td>ignored with a warning</td></tr>
-    <tr><td>/dcterms:conformsTo</td><td>&lt;emd:relation&gt&lt;dct:conformsTo&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:contributor</td><td>&lt;emd:contributor&gt&lt;dc:contributor&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:coverage</td><td>&lt;emd:coverage&gt&lt;dc:coverage&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:created</td><td>&lt;emd:date&gt&lt;dct:created&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:creator</td><td>&lt;emd:creator&gt&lt;dc:creator&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:date</td><td>&lt;emd:date&gt&lt;dc:date&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:dateAccepted</td><td>&lt;emd:date&gt&lt;dct:dateAccepted&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:dateCopyrighted</td><td>&lt;emd:date&gt&lt;dct:dateCopyrighted&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:dateSubmitted</td><td>&lt;emd:date&gt&lt;dct:dateSubmitted&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:description</td><td>&lt;emd:description&gt&lt;dc:description&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:educationLevel</td><td>&lt;emd:audience&gt&lt;dct:audience&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:conformsTo</td><td>&lt;emd:relation&gt;&lt;dct:conformsTo&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:contributor</td><td>&lt;emd:contributor&gt;&lt;dc:contributor&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:coverage</td><td>&lt;emd:coverage&gt;&lt;dc:coverage&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:created</td><td>&lt;emd:date&gt;&lt;dct:created&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:creator</td><td>&lt;emd:creator&gt;&lt;dc:creator&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:date</td><td>&lt;emd:date&gt;&lt;dc:date&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:dateAccepted</td><td>&lt;emd:date&gt;&lt;dct:dateAccepted&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:dateCopyrighted</td><td>&lt;emd:date&gt;&lt;dct:dateCopyrighted&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:dateSubmitted</td><td>&lt;emd:date&gt;&lt;dct:dateSubmitted&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:description</td><td>&lt;emd:description&gt;&lt;dc:description&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:educationLevel</td><td>&lt;emd:audience&gt;&lt;dct:audience&gt;</td><td> </td></tr>
     <tr><td>/dcterms:extent</td><td> </td><td>ignored with a warning</td></tr>
-    <tr><td>/dcterms:format</td><td>&lt;emd:format&gt&lt;dc:format&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:hasFormat</td><td>&lt;emd:relation&gt&lt;dct:hasFormat&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:hasPart</td><td>&lt;emd:relation&gt&lt;dct:hasPart&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:hasVersion</td><td>&lt;emd:relation&gt&lt;dct:hasVersion&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:identifier</td><td>&lt;emd:identifier&gt&lt;dc:identifier&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:format</td><td>&lt;emd:format&gt;&lt;dc:format&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:hasFormat</td><td>&lt;emd:relation&gt;&lt;dct:hasFormat&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:hasPart</td><td>&lt;emd:relation&gt;&lt;dct:hasPart&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:hasVersion</td><td>&lt;emd:relation&gt;&lt;dct:hasVersion&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:identifier</td><td>&lt;emd:identifier&gt;&lt;dc:identifier&gt;</td><td> </td></tr>
     <tr><td>/dcterms:instructionalMethod</td><td> </td><td>ignored with a warning</td></tr>
-    <tr><td>/dcterms:isFormatOf</td><td>&lt;emd:relation&gt&lt;dct:isFormatOf&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:isPartOf</td><td>&lt;emd:relation&gt&lt;dct:isPartOf&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:isReferencedBy</td><td>&lt;emd:relation&gt&lt;dct:isReferencedBy&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:isReplacedBy</td><td>&lt;emd:relation&gt&lt;dct:isReplacedBy&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:isRequiredBy</td><td>&lt;emd:relation&gt&lt;dct:isRequiredBy&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:isVersionOf</td><td>&lt;emd:relation&gt&lt;dct:isVersionOf&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:issued</td><td>&lt;emd:date&gt&lt;dct:issued&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:language</td><td>&lt;emd:language&gt&lt;dc:language&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:isFormatOf</td><td>&lt;emd:relation&gt;&lt;dct:isFormatOf&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:isPartOf</td><td>&lt;emd:relation&gt;&lt;dct:isPartOf&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:isReferencedBy</td><td>&lt;emd:relation&gt;&lt;dct:isReferencedBy&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:isReplacedBy</td><td>&lt;emd:relation&gt;&lt;dct:isReplacedBy&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:isRequiredBy</td><td>&lt;emd:relation&gt;&lt;dct:isRequiredBy&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:isVersionOf</td><td>&lt;emd:relation&gt;&lt;dct:isVersionOf&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:issued</td><td>&lt;emd:date&gt;&lt;dct:issued&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:language</td><td>&lt;emd:language&gt;&lt;dc:language&gt;</td><td> </td></tr>
     <tr><td>/dcterms:license</td><td> </td><td>ignored with a warning</td></tr>
     <tr><td>/dcterms:mediator</td><td> </td><td>ignored with a warning</td></tr>
     <tr><td>/dcterms:medium</td><td> </td><td>ignored with a warning</td></tr>
-    <tr><td>/dcterms:modified</td><td>&lt;emd:date&gt&lt;dct:modified&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:modified</td><td>&lt;emd:date&gt;&lt;dct:modified&gt;</td><td> </td></tr>
     <tr><td>/dcterms:provenance</td><td> </td><td>ignored with a warning</td></tr>
-    <tr><td>/dcterms:publisher</td><td>&lt;emd:publisher&gt&lt;dc:publisher&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:references</td><td>&lt;emd:relation&gt&lt;dct:references&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:relation</td><td>&lt;emd:relation&gt&lt;dc:relation&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:replaces</td><td>&lt;emd:relation&gt&lt;dct:replaces&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:requires</td><td>&lt;emd:relation&gt&lt;dct:requires&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:publisher</td><td>&lt;emd:publisher&gt;&lt;dc:publisher&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:references</td><td>&lt;emd:relation&gt;&lt;dct:references&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:relation</td><td>&lt;emd:relation&gt;&lt;dc:relation&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:replaces</td><td>&lt;emd:relation&gt;&lt;dct:replaces&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:requires</td><td>&lt;emd:relation&gt;&lt;dct:requires&gt;</td><td> </td></tr>
     <tr><td>/dcterms:rights</td><td> </td><td>ignored with a warning</td></tr>
-    <tr><td>/dcterms:rightsHolder</td><td>&lt;emd:rights&gt&lt;dct:rightsHolder&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:source</td><td>&lt;emd:source&gt&lt;dc:source&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:spatial</td><td>&lt;emd:coverage&gt&lt;dct:spatial&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:subject</td><td>&lt;emd:subject&gt&lt;dc:subject&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:rightsHolder</td><td>&lt;emd:rights&gt;&lt;dct:rightsHolder&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:source</td><td>&lt;emd:source&gt;&lt;dc:source&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:spatial</td><td>&lt;emd:coverage&gt;&lt;dct:spatial&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:subject</td><td>&lt;emd:subject&gt;&lt;dc:subject&gt;</td><td> </td></tr>
     <tr><td>/dcterms:tableOfContents</td><td> </td><td>ignored with a warning</td></tr>
-    <tr><td>/dcterms:temporal</td><td>&lt;emd:coverage&gt&lt;dct:temporal&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:title</td><td>&lt;emd:title&gt&lt;dc:title&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:type</td><td>&lt;emd:type&gt&lt;dc:type&gt;</td><td> </td></tr>
-    <tr><td>/dcterms:valid</td><td>&lt;emd:date&gt&lt;dct:valid&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:temporal</td><td>&lt;emd:coverage&gt;&lt;dct:temporal&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:title</td><td>&lt;emd:title&gt;&lt;dc:title&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:type</td><td>&lt;emd:type&gt;&lt;dc:type&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:valid</td><td>&lt;emd:date&gt;&lt;dct:valid&gt;</td><td> </td></tr>
     <tr><td>/dcx-dai:author</td><td> </td><td>ignored</td></tr>
-    <tr><td>/dcx-dai:contributor</td><td>&lt;emd:contributor&gt&lt;eas:contributor&gt;</td><td> </td></tr>
-    <tr><td>/dcx-dai:contributorDetails</td><td>&lt;emd:contributor&gt&lt;eas:contributor&gt;</td><td> </td></tr>
-    <tr><td>/dcx-dai:creator</td><td>&lt;emd:creator&gt&lt;eas:creator&gt;</td><td> </td></tr>
-    <tr><td>/dcx-dai:creatorDetails</td><td>&lt;emd:creator&gt&lt;eas:creator&gt;</td><td> </td></tr>
+    <tr><td>/dcx-dai:contributor</td><td>&lt;emd:contributor&gt;&lt;eas:contributor&gt;</td><td> </td></tr>
+    <tr><td>/dcx-dai:contributorDetails</td><td>&lt;emd:contributor&gt;&lt;eas:contributor&gt;</td><td> </td></tr>
+    <tr><td>/dcx-dai:creator</td><td>&lt;emd:creator&gt;&lt;eas:creator&gt;</td><td> </td></tr>
+    <tr><td>/dcx-dai:creatorDetails</td><td>&lt;emd:creator&gt;&lt;eas:creator&gt;</td><td> </td></tr>
     <tr><td>/dcx-dai:organization</td><td> </td><td>ignored</td></tr>
-    <tr><td>/dcx-gml:spatial</td><td>&lt;emd:coverage&gt&lt;eas:spatial&gt;</td><td> </td></tr>
+    <tr><td>/dcx-gml:spatial</td><td>&lt;emd:coverage&gt;&lt;eas:spatial&gt;</td><td> </td></tr>
     <tr><td>/ddm:DDM</td><td> </td><td>ignored</td></tr>
-    <tr><td>/ddm:accessRights</td><td>&lt;emd:rights&gt&lt;dct:accessRights&gt;</td><td> </td></tr>
+    <tr><td>/ddm:accessRights</td><td>&lt;emd:rights&gt;&lt;dct:accessRights&gt;</td><td> </td></tr>
     <tr><td>/ddm:additional-xml</td><td> </td><td>ignored</td></tr>
-    <tr><td>/ddm:audience</td><td>&lt;emd:audience&gt&lt;dct:audience&gt;</td><td> </td></tr>
-    <tr><td>/ddm:available</td><td>&lt;emd:date&gt&lt;eas:available&gt;</td><td> </td></tr>
-    <tr><td>/ddm:created</td><td>&lt;emd:date&gt&lt;eas:created&gt;</td><td> </td></tr>
+    <tr><td>/ddm:audience</td><td>&lt;emd:audience&gt;&lt;dct:audience&gt;</td><td> </td></tr>
+    <tr><td>/ddm:available</td><td>&lt;emd:date&gt;&lt;eas:available&gt;</td><td> </td></tr>
+    <tr><td>/ddm:created</td><td>&lt;emd:date&gt;&lt;eas:created&gt;</td><td> </td></tr>
     <tr><td>/ddm:dcmiMetadata</td><td> </td><td>ignored</td></tr>
     <tr><td>/ddm:profile</td><td> </td><td>ignored</td></tr>
-    <tr><td>/ddm:relation</td><td>&lt;emd:relation&gt&lt;dc:relation&gt;</td><td> </td></tr>
+    <tr><td>/ddm:relation</td><td>&lt;emd:relation&gt;&lt;dc:relation&gt;</td><td> </td></tr>
 </table></article>
 <article id='helpIndex'><h1>Help Index</h1><ul>
     <li><a href='#AccessRights'>AccessRights</a></li>
