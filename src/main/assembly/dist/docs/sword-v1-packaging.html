@@ -2,16 +2,25 @@
 <head lang="en">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title lang="en">Sword Packaging for EASY Sword-v1</title>
     <style>
     body {
-        max-width: 1200px; margin: auto;
+        max-width: 1200px;
+        margin: auto;
+        padding: 1em;
+        font-family: "Open Sans",Arial,Helvetica,sans-serif;
     }
     article {
-        border: solid 1px; margin-bottom: 1em; margin-right: 1em; border-radius: 0.5em; padding: 1em;
+        border: solid 1px;
+        margin-bottom: 1em;
+        margin-right: 1em;
+        border-radius: 0.5em;
+        padding: 1em;
     }
     #mapping, #helpIndex {
-        display: inline-block; vertical-align: top;
+        display: inline-block;
+        vertical-align: top;
     }
     th {
         text-align: left;
@@ -19,17 +28,21 @@
     hr {
         display: none;
     }
+    a {
+        text-decoration: none;
+    }
     a, h1, h2 {
-        color: #248BB8; text-decoration: none;
+        color: #248BB8;
     }
     a:hover, a:focus {
         color: #DD291E;
     }
     h1, h2, th {
         font-family: "Glegoo",Georgia,Times New Roman,serif;
+        text-transform: uppercase;
     }
-    h1, h2, p, li, th, td {
-        font-family: "Open Sans",Arial,Helvetica,sans-serif;
+    h1, h2 {
+        font-weight: 100;
     }
     </style>
 </head>
@@ -76,9 +89,11 @@
     </li>
 </ul>
 <p>
-    Supplied metadata (ddm) is stored as a file in the dataset.
-    The mapping shows what to expect when downloading the description (emd) of a published dataset as XML.
-    Elements ignored without a warning may contain elements that are copied into emd.
+    Supplied metadata (DDM) is stored as a file in the dataset.
+    The mapping shows what to expect when downloading the description (EMD) of a published dataset as XML.
+    Elements ignored without a warning may contain elements that will be copied into the EMD.
+    Note that the help articles are written for online deposits,
+    so a remark like "click the [+] button" means the element is repeatable.
 </p>
 <!--
      The following content is copy pasted from
