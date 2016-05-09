@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title lang="en">Sword Packaging for EASY Sword-v1</title>
+    <style>
+    body {
+        max-width: 1200px;
+        margin: auto;
+        padding: 1em;
+        font-family: "Open Sans",Arial,Helvetica,sans-serif;
+    }
+    article {
+        border: solid 1px;
+        margin-bottom: 1em;
+        margin-right: 1em;
+        border-radius: 0.5em;
+        padding: 1em;
+    }
+    #mapping, #helpIndex {
+        display: inline-block;
+        vertical-align: top;
+    }
+    th {
+        text-align: left;
+    }
+    hr {
+        display: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    a, h1, h2 {
+        color: #248BB8;
+    }
+    a:hover, a:focus {
+        color: #DD291E;
+    }
+    h1, h2, th {
+        font-family: "Glegoo",Georgia,Times New Roman,serif;
+        text-transform: uppercase;
+    }
+    h1, h2 {
+        font-weight: 100;
+    }
+    </style>
+</head>
+<body>
+<h1>Sword Packaging for EASY Sword-v1</h1>
+<p>
+    <a href="http://easy.dans.knaw.nl/">EASY</a> supports a
+    <a href="https://easy.dans.knaw.nl/sword/servicedocument">SWORD v1</a> interface for deposits of
+    datasets. The zip file for a deposit should contain:
+</p>
+<ul>
+    <li>
+        <p>A single file in the root folder of the zip with metadata.</p>
+        <ul>
+            <li>
+                The name of the file must be: <code>DansDatasetMetadata.xml</code>
+            </li>
+            <li>
+                It must conform to the schema at
+                <a href="https://easy.dans.knaw.nl/schemas/md/2016/ddm.xsd"
+                >ddm.xsd</a>
+            </li>
+            <li>
+                <a href="https://easy.dans.knaw.nl/schemas/doc/ddm/examples"
+                >Examples</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p>A single folder:</p>
+        <ul>
+            <li>
+                The name of the folder should be: <code>data</code>
+            </li>
+            <li>
+                The full path name of datafiles should not exceed 252 characters.
+            </li>
+            <li>
+                See also:
+                <a href="http://www.dans.knaw.nl/en/deposit/information-about-depositing-data/DANSpreferredformatsUK.pdf"
+                >File formats, preferred formats and accepted formats</a> (pdf)
+            </li>
+        </ul>
+    </li>
+</ul>
+<p>
+    The table below defines the mapping from DDM-elements to EASY Metadata (EMD) elements.
+    The EASY Metadata file can be downloaded from the Description tab of the dataset resulting from the deposit.
+    Elements ignored without a warning may contain elements that will be copied into the EMD.
+</p><p>
+    Note that the help articles are written for manual deposits,
+    the <a href='#Upload'>upload</a> article applies to the content of the data folder
+    and a remark like "click the [+] button" means the element is repeatable.
+</p>
+<!--
+     The following content is copy pasted from
+     target/pageDumps/swordPackagingFragmentHelp.html
+     of the legacy components DDM and web-ui, in that order.
+
+     Note that the generated help articles are generated from
+     easy-webui/src/main/assembly/dist/res/example/editable/help
+     These files may be behind on the editable texts in production.
+  -->
+
+<article id='mapping'><h1>Mapping</h1><table><tr><th>ddm</th><th>emd</th><th>note</th></tr>
+    <tr><td>/dc:contributor</td><td>&lt;emd:contributor&gt;&lt;dc:contributor&gt;</td><td> </td></tr>
+    <tr><td>/dc:coverage</td><td>&lt;emd:coverage&gt;&lt;dc:coverage&gt;</td><td> </td></tr>
+    <tr><td>/dc:creator</td><td>&lt;emd:creator&gt;&lt;dc:creator&gt;</td><td> </td></tr>
+    <tr><td>/dc:date</td><td>&lt;emd:date&gt;&lt;dc:date&gt;</td><td> </td></tr>
+    <tr><td>/dc:description</td><td>&lt;emd:description&gt;&lt;dc:description&gt;</td><td> </td></tr>
+    <tr><td>/dc:format</td><td>&lt;emd:format&gt;&lt;dc:format&gt;</td><td> </td></tr>
+    <tr><td>/dc:identifier</td><td>&lt;emd:identifier&gt;&lt;dc:identifier&gt;</td><td> </td></tr>
+    <tr><td>/dc:language</td><td>&lt;emd:language&gt;&lt;dc:language&gt;</td><td> </td></tr>
+    <tr><td>/dc:publisher</td><td>&lt;emd:publisher&gt;&lt;dc:publisher&gt;</td><td> </td></tr>
+    <tr><td>/dc:relation</td><td>&lt;emd:relation&gt;&lt;dc:relation&gt;</td><td> </td></tr>
+    <tr><td>/dc:rights</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dc:source</td><td>&lt;emd:source&gt;&lt;dc:source&gt;</td><td> </td></tr>
+    <tr><td>/dc:subject</td><td>&lt;emd:subject&gt;&lt;dc:subject&gt;</td><td> </td></tr>
+    <tr><td>/dc:title</td><td>&lt;emd:title&gt;&lt;dc:title&gt;</td><td> </td></tr>
+    <tr><td>/dc:type</td><td>&lt;emd:type&gt;&lt;dc:type&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:abstract</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:accessRights</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:accrualMethod</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:accrualPeriodicity</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:accrualPolicy</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:alternative</td><td>&lt;emd:title&gt;&lt;dc:title&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:audience</td><td>&lt;emd:audience&gt;&lt;dct:audience&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:available</td><td>&lt;emd:date&gt;&lt;dct:available&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:bibliographicCitation</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:conformsTo</td><td>&lt;emd:relation&gt;&lt;dct:conformsTo&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:contributor</td><td>&lt;emd:contributor&gt;&lt;dc:contributor&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:coverage</td><td>&lt;emd:coverage&gt;&lt;dc:coverage&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:created</td><td>&lt;emd:date&gt;&lt;dct:created&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:creator</td><td>&lt;emd:creator&gt;&lt;dc:creator&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:date</td><td>&lt;emd:date&gt;&lt;dc:date&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:dateAccepted</td><td>&lt;emd:date&gt;&lt;dct:dateAccepted&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:dateCopyrighted</td><td>&lt;emd:date&gt;&lt;dct:dateCopyrighted&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:dateSubmitted</td><td>&lt;emd:date&gt;&lt;dct:dateSubmitted&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:description</td><td>&lt;emd:description&gt;&lt;dc:description&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:educationLevel</td><td>&lt;emd:audience&gt;&lt;dct:audience&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:extent</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:format</td><td>&lt;emd:format&gt;&lt;dc:format&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:hasFormat</td><td>&lt;emd:relation&gt;&lt;dct:hasFormat&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:hasPart</td><td>&lt;emd:relation&gt;&lt;dct:hasPart&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:hasVersion</td><td>&lt;emd:relation&gt;&lt;dct:hasVersion&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:identifier</td><td>&lt;emd:identifier&gt;&lt;dc:identifier&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:instructionalMethod</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:isFormatOf</td><td>&lt;emd:relation&gt;&lt;dct:isFormatOf&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:isPartOf</td><td>&lt;emd:relation&gt;&lt;dct:isPartOf&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:isReferencedBy</td><td>&lt;emd:relation&gt;&lt;dct:isReferencedBy&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:isReplacedBy</td><td>&lt;emd:relation&gt;&lt;dct:isReplacedBy&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:isRequiredBy</td><td>&lt;emd:relation&gt;&lt;dct:isRequiredBy&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:isVersionOf</td><td>&lt;emd:relation&gt;&lt;dct:isVersionOf&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:issued</td><td>&lt;emd:date&gt;&lt;dct:issued&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:language</td><td>&lt;emd:language&gt;&lt;dc:language&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:license</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:mediator</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:medium</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:modified</td><td>&lt;emd:date&gt;&lt;dct:modified&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:provenance</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:publisher</td><td>&lt;emd:publisher&gt;&lt;dc:publisher&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:references</td><td>&lt;emd:relation&gt;&lt;dct:references&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:relation</td><td>&lt;emd:relation&gt;&lt;dc:relation&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:replaces</td><td>&lt;emd:relation&gt;&lt;dct:replaces&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:requires</td><td>&lt;emd:relation&gt;&lt;dct:requires&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:rights</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:rightsHolder</td><td>&lt;emd:rights&gt;&lt;dct:rightsHolder&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:source</td><td>&lt;emd:source&gt;&lt;dc:source&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:spatial</td><td>&lt;emd:coverage&gt;&lt;dct:spatial&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:subject</td><td>&lt;emd:subject&gt;&lt;dc:subject&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:tableOfContents</td><td> </td><td>ignored with a warning</td></tr>
+    <tr><td>/dcterms:temporal</td><td>&lt;emd:coverage&gt;&lt;dct:temporal&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:title</td><td>&lt;emd:title&gt;&lt;dc:title&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:type</td><td>&lt;emd:type&gt;&lt;dc:type&gt;</td><td> </td></tr>
+    <tr><td>/dcterms:valid</td><td>&lt;emd:date&gt;&lt;dct:valid&gt;</td><td> </td></tr>
+    <tr><td>/dcx-dai:author</td><td> </td><td>ignored</td></tr>
+    <tr><td>/dcx-dai:contributor</td><td>&lt;emd:contributor&gt;&lt;eas:contributor&gt;</td><td> </td></tr>
+    <tr><td>/dcx-dai:contributorDetails</td><td>&lt;emd:contributor&gt;&lt;eas:contributor&gt;</td><td> </td></tr>
+    <tr><td>/dcx-dai:creator</td><td>&lt;emd:creator&gt;&lt;eas:creator&gt;</td><td> </td></tr>
+    <tr><td>/dcx-dai:creatorDetails</td><td>&lt;emd:creator&gt;&lt;eas:creator&gt;</td><td> </td></tr>
+    <tr><td>/dcx-dai:organization</td><td> </td><td>ignored</td></tr>
+    <tr><td>/dcx-gml:spatial</td><td>&lt;emd:coverage&gt;&lt;eas:spatial&gt;</td><td> </td></tr>
+    <tr><td>/ddm:DDM</td><td> </td><td>ignored</td></tr>
+    <tr><td>/ddm:accessRights</td><td>&lt;emd:rights&gt;&lt;dct:accessRights&gt;</td><td> </td></tr>
+    <tr><td>/ddm:additional-xml</td><td> </td><td>ignored</td></tr>
+    <tr><td>/ddm:audience</td><td>&lt;emd:audience&gt;&lt;dct:audience&gt;</td><td> </td></tr>
+    <tr><td>/ddm:available</td><td>&lt;emd:date&gt;&lt;eas:available&gt;</td><td> </td></tr>
+    <tr><td>/ddm:created</td><td>&lt;emd:date&gt;&lt;eas:created&gt;</td><td> </td></tr>
+    <tr><td>/ddm:dcmiMetadata</td><td> </td><td>ignored</td></tr>
+    <tr><td>/ddm:profile</td><td> </td><td>ignored</td></tr>
+    <tr><td>/ddm:relation</td><td>&lt;emd:relation&gt;&lt;dc:relation&gt;</td><td> </td></tr>
+</table></article>
+<article id='helpIndex'><h1>Help Index</h1><ul>
+    <li><a href='#AccessRights'>AccessRights</a></li>
+    <li><a href='#Alternative'>Alternative</a></li>
+    <li><a href='#Archis'>Archis</a></li>
+    <li><a href='#Audience'>Audience</a></li>
+    <li><a href='#CmdiChoice'>CmdiChoice</a></li>
+    <li><a href='#Contributor'>Contributor</a></li>
+    <li><a href='#Creator'>Creator</a></li>
+    <li><a href='#Date'>Date</a></li>
+    <li><a href='#DateAvailable'>DateAvailable</a></li>
+    <li><a href='#DateCreated'>DateCreated</a></li>
+    <li><a href='#DateCreatedFreeForm'>DateCreatedFreeForm</a></li>
+    <li><a href='#DateIso8601'>DateIso8601</a></li>
+    <li><a href='#Description'>Description</a></li>
+    <li><a href='#EasContributor'>EasContributor</a></li>
+    <li><a href='#EasCreator'>EasCreator</a></li>
+    <li><a href='#Format'>Format</a></li>
+    <li><a href='#FormatIMT'>FormatIMT</a></li>
+    <li><a href='#Identifier'>Identifier</a></li>
+    <li><a href='#Language'>Language</a></li>
+    <li><a href='#LanguageIso639'>LanguageIso639</a></li>
+    <li><a href='#Pakbon'>Pakbon</a></li>
+    <li><a href='#Publisher'>Publisher</a></li>
+    <li><a href='#Refine'>Refine</a></li>
+    <li><a href='#Relation'>Relation</a></li>
+    <li><a href='#Remarks'>Remarks</a></li>
+    <li><a href='#RightsHolder'>RightsHolder</a></li>
+    <li><a href='#Search'>Search</a></li>
+    <li><a href='#Source'>Source</a></li>
+    <li><a href='#Spatial'>Spatial</a></li>
+    <li><a href='#SpatialBox'>SpatialBox</a></li>
+    <li><a href='#SpatialPoint'>SpatialPoint</a></li>
+    <li><a href='#Subject'>Subject</a></li>
+    <li><a href='#SubjectAbr'>SubjectAbr</a></li>
+    <li><a href='#Temporal'>Temporal</a></li>
+    <li><a href='#TemporalAbr'>TemporalAbr</a></li>
+    <li><a href='#Title'>Title</a></li>
+    <li><a href='#Type'>Type</a></li>
+    <li><a href='#TypeDCMI'>TypeDCMI</a></li>
+    <li><a href='#Upload'>Upload</a></li>
+</ul></article>
+<article><a name='AccessRights'> </a>
+    <h2>Access rights<br /></h2>
+    <p>Description of the accessibility to the dataset.</p>
+    <p>The datasets may be made accessible to users and/or re-users in various ways. The following options are available for making the datasets accessible:</p>
+    <p>&#8226; Open access<br />The files are accessible to all users of EASY.<br />&#8226; Open access for registered users<br />The files are accessible to all registered users of EASY.<br />&#8226; Restricted access<br />The access to the files deposited is limited to a smaller group of users. EASY currently has the two following forms of limited access:<br />-Restricted - archaeology group. Please note that this option can only be selected for archaeological deposits.<br />The datasets are only accessible to registered users of EASY who belong to a specific group. In principle, this option is used as default for all archaeological datasets. Just like Archis is an information system for and by archaeologists, the archaeological files in EASY are also only accessible to other, registered archaeologists. We share the available information on archaeological sites, without this information being immediately available on the Internet so that we can preserve the historical buildings and/or archaeological sites or perform scientific research as effectively as possible.<br />-Restricted - request permission.<br />With this option, you - as the person depositing the dataset - can personally manage the accessibility to the files deposited by you. The datasets are accessible only if another registered user, not necessarily an archaeologist, has submitted a &#8216;permission request'. You, the person depositing the dataset, will be informed of this request and you will personally be able to grant or reject this request for permission to access the dataset.<br />&#8226; Other access<br />It is not possible to access the datasets through EASY. DANS is only intended for sustainable, digital archiving behind the scenes. Another possibility is that the data have been stored elsewhere and that only the metadata have been stored in EASY. You can only choose this option if the digital data are accessible, for example, through a different data repository, digital archive, databank or website.</p>
+    <p><br /><strong>NB:</strong> The descriptive information on the research project and the dataset (metadata) is always freely accessible to all users of the Internet. This provides each potential user or re-user the opportunity to find the files and to assess whether they are valuable to his/her research. In order to actually being able to download the data, users must first create an account.</p>
+    <hr />
+</article>
+<article><a name='Alternative'> </a>
+    <h2>Alternative title</h2>
+    If the dataset is known under multiple titles, such as subtitles and/or a translation of the title, you can enter these titles in this field. Subtitles are often used to include references to the specific location of the excavation site, the date, or the project code of the site(s). This field may also be used to fill in the report number.<br />See the description of the &#8216;Title' field above for more instructions.<br /><br />When performing a search in Easy, you will be able to find the words from the &#8216;Title' as well as words from the &#8216;Alternative title'. The only difference is that the &#8216;Title' is shown immediately in the list of search results, whereas the &#8216;Alternative title' (just like many other fields) is not shown.<br /><br />Click the [+] button behind a field to add an additional field.<br /><br />
+    <h2>Examples</h2>
+    Terrein 16 - Diepriool<br />Meuse Valley Project - macro regional investigations<br />Neolithische depots in Noord-Nederland<br />Archeologische Rapporten 2008-46<br />
+    <hr />
+</article>
+<article><a name='Archis'> </a>
+    <h2>Archis Research Registration Number</h2>
+    <p>If the project you are describing has been registered in Archis, you can use this field to fill in the Research Registration Number. Use the &#8216;Import' button to import some descriptive data from Archis. As a result of this, several fields in EASY will be filled in automatically. It is recommended, however, to check this fields for accuracy and completeness.</p>
+    <p>If the project has several Archis Research Registration Numbers, you can import the relevant data from Archis one by one.</p>
+    <p>Click the [+] button behind a field to add an additional field.</p>
+    <hr />
+</article>
+<article><a name='Audience'> </a>
+    <h2>Audience</h2>
+    <p>Target group for the dataset deposited. The scientific disciplines to which the dataset is relevant. You can choose from a list of disciplines by means of a drop-down menu. Please contact DANS via <strong><em>info</em> at <em>dans.knaw.nl</em></strong> if you like to add a new discipline. <br /><br />Click the [+] button behind a field to add an additional field.</p>
+    <hr />
+</article>
+<article><a name='CmdiChoice'> </a>
+    <h2>Extra metadata</h2>
+    <p>Metadata are an important instrument to make your data visible and findable. If you have received CLARIN funding for the data that you are about to deposit, your dataset ought to contain (preferably) one or (if necessary) more metadata files in the so-called Component MetaData Infrastructure (CDMI) format, which is an XML format. Also, when you have received a research grant that requires you to deliver your results in a CLARIN-compatible way, CMDI metadata should be part of the dataset. For information about CMDI please see: <a href="http://www.clarin.eu/cmdi">http://www.clarin.eu/cmdi</a>. To enable EASY to make your CMDI metadata available to e.g. external search engines please select the second option.</p>
+    <hr />
+</article>
+<article><a name='Contributor'> </a>
+    <h2>Contributor</h2>
+    <p>With a contribution from ...<br /><br />Persons or organizations that have contributed to the publication or the dataset. With regard to a publication, contributors may be authors who have written an annex or a chapter. With regard to datasets, the contributors may be specialist researchers who have collected and recorded part of the data. In addition to filling in the name with title(s) and initials, it is also possible to fill in the name of the organization and its role in brackets.<br /><br /><strong>NB:</strong> Although the contributors are not included in the source references for this dataset, they are shown and it is possible to perform a targeted search on them.<br /><br />Click the [+] button behind a field to add an additional field.</p>
+    <h2>Examples</h2>
+    <p>Sociale Verzekeringsraad, SVR * Zoetermeer (research initiator)<br />Vermeeren, C. (BIAX Consult, houtskoolanalyse)<br />GfK Panel Services<br />Lieffering, A.<br />Spek, Th. (Alterra)</p>
+    <hr />
+</article>
+<article><a name='Creator'> </a>
+    <h2><strong>Creator</strong></h2>
+    <p>The person <strong>AND</strong>&#160;organization responsible for the dataset.<br /><br />Name of the person or organization that is primarily responsible for the contents of the dataset. The description of a publication usually specifies the author(s) or the editor(s). With regard to a dataset (collection of digital files belonging together), this will often be the project manager. The dataset will be registered in the name of the &#8216;Creator(s)' and this name will subsequently be used in the source references for this dataset. Other persons or organizations that have contributed to the realization of the publication or the dataset must not be filled in at &#8216;Creator', but at the separate field &#8216;Contributor'. Contrary to the name(s) of the &#8216;Contributor', the name of the &#8216;Creator' will be shown in the search results.<br /><br />Fill in the complete name, preferably in the following way: surname, title(s), initials, insertions, and, if desired, the organizational role within the project in brackets. If the &#8216;Creator' is an organization, first state the name of the division and subsequently the name of the organization.<br /><br />Click the [+] button behind a field to add an additional field.</p>
+    <h2>Examples</h2>
+    <p>Gorter, prof. Dr. D. (Fyske Akademy)<br />Kamermans, Dr. H. (projectleider)<br />Ruiter, D.L. de<br />Sociaal en Cultureel Planbureau (SCP)<br />Faculteit der Archeologie, Universiteit Leiden</p>
+    <p><!--[if gte mso 10] <mce:style> /* Style Definitions */  table.MsoNormalTable 	{mso-style-name:"Table Normal"; 	mso-tstyle-rowband-size:0; 	mso-tstyle-colband-size:0; 	mso-style-noshow:yes; 	mso-style-parent:""; 	mso-padding-alt:0pt 5.4pt 0pt 5.4pt; 	mso-para-margin:0pt; 	mso-para-margin-bottom:.0001pt; 	mso-pagination:widow-orphan; 	font-size:10.0pt; 	font-family:"Times New Roman"; 	mso-ansi-language:#0400; 	mso-fareast-language:#0400; 	mso-bidi-language:#0400;} --><!--[endif] --></p>
+    <hr />
+</article>
+<article><a name='Date'> </a>
+    <h2>Date</h2>
+    A date or period associated with the dataset.<br /><br />In addition to the &#8216;Date created' (on the first tab) and the &#8216;Temporal coverage' (on the second tab), one or more other periods may be important to the formation of the dataset. Think, for example, of the date on which the project was closed, when this date is much later than the date on which the digital files were completed (qualifier issued) or the date on which entries were changed (qualifier modified). Please use the standardized date notation (ISO), in the form of YYYY-[MM]-[DD].<br /><br /><strong>NB:</strong> The date on which the digital files were closed is already recorded at &#8216;Date created' on the first tab.<br /><br /><strong>NB:</strong> the fields "Date Submitted" (date of deposit) and "Date Available" (expiration of a temporary embargo on access) are automatically created by EASY.<br /><br />Click the [+] button behind a field to add an additional field.<br /><br />
+    <h2>Examples</h2>
+    2004<br />2006-02-21<br />Opgravingsperiode: maart - oktober 2003<br />
+    <hr />
+</article>
+<article><a name='DateAvailable'> </a>
+    <strong>Date available</strong>
+    <p>You can use this option to impose a temporary restriction, e.g. because of a thesis/publication that is about to be completed. The default <em>date available</em> is today, implying no temporary restriction. To impose a temporary restriction, change the date into a date in the future. Until that date specified by you, there is an <em>embargo</em> period, in which the data files will not be accessible by any user. After that date, your dataset becomes automatically available for registered EASY users, under the conditions you specified as <em>Access rights</em>. The embargo period (time between today and the date specified) cannot be longer than two years and cannot be extended.<br /><br /><strong>NB:</strong> data files which are not yet available will still be visible to other users.&#160;
+    <hr />
+    </p>
+</article>
+<article><a name='DateCreated'> </a>
+    <h2>Date created</h2>
+    <p>Date on which the research project was finished and the dataset was completed. <br />Please note: for archaeological reports use the date of publication.</p>
+    <p>This is the field where you fill in the date on which the research project was finished and, as a result of this, the dataset was completed. Please use the standardized date notation (ISO), in the form of YYYY-[MM]-[DD]. The &#8216;Date created' will form a part of the source references. If the data have been collected and processed during a medium to long period of time, please fill in the end date here.<br /><br /><strong>NB:</strong> At &#8216;Temporal coverage' on the next tab, you can indicate to what period (date) the research relates. This is where you can indicate, for example, that an early Bronze Age site has been researched.<br /><br />This field is used, in particular, to fill in the date on which the research project (or other project) or the dataset was completed. This is often a different date from the date on which you deposit the data. The deposit date is added to the metadata automatically.<br /><br />Click the [+] button behind a field to add an additional field.</p>
+    <h2>Examples</h2>
+    <p>2006<br />2003-04<br />2005-03-01</p>
+    <hr />
+</article>
+<article><a name='DateCreatedFreeForm'> </a>
+    <h2>Date created</h2>
+    <p>Date on which the research project was finished and the dataset was completed. <br /><br />This is the field where you fill in the date on which the research project was finished and, as a result of this, the dataset was completed. Please use the standardized date notation (ISO), in the form of YYYY-[MM]-[DD]. The &#8216;Date created' will form a part of the source references. If the data have been collected and processed during a medium to long period of time, please fill in the end date here.<br /><br /><strong>NB:</strong> At &#8216;Temporal coverage' on the next tab, you can indicate to what period (date) the research relates. This is where you can indicate, for example, that an early Bronze Age site has been researched.<br /><br />This field is used, in particular, to fill in the date on which the research project (or other project) or the dataset was completed. This is often a different date from the date on which you deposit the data. The deposit date is added to the metadata automatically.<br /><br />Click the [+] button behind a field to add an additional field.</p>
+    <h2>Examples</h2>
+    <p>2006<br />2003-04<br />2005-03-01</p>
+    <hr />
+</article>
+<article><a name='DateIso8601'> </a>
+    <h2>Date</h2>
+    A date or period associated with the dataset.<br /><br />In addition to the &#8216;Date created' (on the first tab) and the &#8216;Temporal coverage' (on the second tab), one or more other periods may be important to the formation of the dataset. Think, for example, of the date on which the project was closed, when this date is much later than the date on which the digital files were completed (qualifier issued) or the date on which entries were changed (qualifier modified). Please use the standardized date notation (ISO), in the form of YYYY-[MM]-[DD].<br /><br /><strong>NB:</strong> The date on which the digital files were closed is already recorded at &#8216;Date created' on the first tab.<br /><br /><strong>NB:</strong> the fields "Date Submitted" (date of deposit) and "Date Available" (expiration of a temporary embargo on access) are automatically created by EASY.<br /><br />Click the [+] button behind a field to add an additional field.<br /><br />
+    <h2>Examples</h2>
+    2004<br />2006-02-21<br />Opgravingsperiode: maart - oktober 2003<br />
+    <hr />
+</article>
+<article><a name='Description'> </a>
+    <h2>Description</h2>
+    <p>Short description of the research project.<br /><br />Give a description of the contents of the research project of which the dataset and/or the publication are/is the result. Give, for example, a description of the character and the purpose of the research project, the nature of the data, and the most significant conclusions. Give a concise description, preferably one that is limited to one paragraph of text.</p>
+    <h2>Examples</h2>
+    <p>"Brekingsonderzoek in de kleuter- en lagere scholen in de Dongeradelen.</p>
+    <p>In de herfst van 1983 is de helft van alle leerlingen van kleuter- en lagere scholen in de vroegere gemeenten Oost- en Westdongeradeel aan de hand van speelgoed gevraagd naar hun uitspraak van meervoud en verkleiningswoord bij de woorden 'tean, foet, stien, beam, stoel, doar, hier en noas' (resp. teen, voet, steen, boom, stoel, deur, haar en neus.). Per kind had het onderwijzend personeel van tevoren schriftelijk informatie gegeven over de voertaal van het kind thuis, over het beroep van de ouders en over het Fries als vak en voertaal in hun klassen."</p>
+    <p>"Op het toekomstige trac&#233; van de Hanzelijn (trac&#233;deel 'Oude land') zijn op basis van booronderzoek drie locaties aangemerkt voor aanvullend onderzoek in de vorm van proefsleuven. Twee locaties (Module 3 en 4) bevinden zich in de gemeente Kampen (Provincie Overijssel), en de derde (Module 5) in de gemeente Hattem (Provincie Gelderland). Het onderzoek heeft voor alle drie de locaties bestaan uit proefsleuven van 4 meter breed met verschillende lengtes."<br /><br />"Aan het begin van de jaren '90 werd het gebied Oss-Mettegeupel aangewezen als nieuwe woningbouwlocatie. Dankzij tijdig overleg met de Dienst Grondzaken van de Gemeente Oss bestond de mogelijkheid al een jaar voor de start van de bouw een groot terrein te onderzoeken. Behoudens een enkele losse vondst, was er weinig over het gebied bekend. Er was dus een verkennend onderzoek noodzakelijk."<br /><br />"This dataset presents statistical data on various kinds of agricultural production and distribution, and the distribution of cattle in Greece. Some files concern a specific agricultural product or a part of the cattle production (sheep, horses etc.). In each file, the data are divided according to regions and departments of Greece and according to the type of product. Crop areas are available for the years 1963, 1969, 1973, 1978 and 1984. The dataset contains one file with statistical data on the (number of) establishment(s) of industries and the (annual) employment."</p>
+    <hr />
+</article>
+<article><a name='EasContributor'> </a>
+    <h2><strong>Contributor</strong></h2>
+    <p>With a contribution from ...<br /><br />Persons or organizations that have contributed to the publication or the dataset. With regard to a publication, contributors may be authors who have written an annex or a chapter. With regard to datasets, the contributors may be specialist researchers who have collected and recorded part of the data. In addition to filling in the name with title(s) and initials, it is also possible to fill in the name of the organization and its role in brackets.<br /><br /><strong>NB:</strong> Although the contributors are not included in the source references for this dataset, they are shown and it is possible to perform a targeted search on them.<br /><br />Click the [+] button behind a field to add an additional field.</p>
+    <h2>Examples</h2>
+    <p>Sociale Verzekeringsraad, SVR * Zoetermeer (research initiator)<br />Vermeeren, C. (BIAX Consult, houtskoolanalyse)<br />GfK Panel Services<br />Lieffering, A.<br />Spek, Th. (Alterra)</p>
+    <hr />
+</article>
+<article><a name='EasCreator'> </a>
+    <h2><strong>Creator</strong></h2>
+    <p>The person (s) and/or organization (s) responsible for the creation of the dataset. The Principal investigator (person and/or the organization) must be mentioned first.</p>
+    <p><strong>Definition</strong> (copied from <a href="http://dublincore.org/documents/dcmi-terms/#terms-creator" target="_blank">Dublin Core</a>): An entity primarily responsible for making the resource.</p>
+    <p>If you are employed at a Dutch university or research institute please mention your <strong>Digital Author ID (DAI)</strong>. You can find your DAI in <a href="http://www.narcis.nl/">NARCIS</a> by selecting the entry PERSONEN and typing your surname in the SEARCHfield. For additional information see also: <a href="http://www.surffoundation.nl/dai">www.surffoundation.nl/dai</a></p>
+    <hr />
+</article>
+<article><a name='Format'> </a>
+    <h2>Format</h2>
+    <h2></h2>
+    <p>Software used.<br /><br />This field can be used to indicate which software and which file format was used to store the data. Indicate which software was used, and preferably also fill in the name of the manufacturer, the product name, and the version number.<br /><br />Click the [+] button behind a field to add an additional field.</p>
+    <h2>Examples</h2>
+    <p>Microsoft-Access, Office 2000<br />MapInfo 7.0<br />AutoDESK- AutoCAD 97<br />application/msword<br />image/jpeg</p>
+    <hr />
+</article>
+<article><a name='FormatIMT'> </a>
+    <h2>Format</h2>
+    Software used.<br /><br />This field can be used to indicate which software and which file format was used to store the data. Indicate which software was used, and preferably also fill in the name of the manufacturer, the product name, and the version number.<br /><br />Click the [+] button behind a field to add an additional field.<br /><br />
+    <h2>Examples</h2>
+    Microsoft-Access, Office 2000<br />MapInfo 7.0<br />AutoDESK- AutoCAD 97<br />application/msword<br />image/jpeg<br />
+    <hr />
+</article>
+<article><a name='Identifier'> </a>
+    <h2>Identifier</h2>
+    <p>Unique combination of figures and letters in order to make it possible to identify the research project or the files.<br /><br />The agencies concerned usually assign a short code to each research project, excavation, and publication in order to make it possible to identify the project uniquely. There are currently still multiple identifiers for the same research project. This may vary from an internal project number within the executive organization to the international ISBN number for publications.<br /><br />After depositing, EASY automatically assigns the Persistent Identifier to the dataset.<br /><br />Click the [+] button behind a field to add an additional field.</p>
+    <h2>Examples</h2>
+    <p>90-77287-02-6 (ISBN)<br />1836 (Archis Onderzoeksnummer)<br />52189 (Archis Waarnemingsnummer)<br />NHDA: R0214<br />0925-6229 (RAAP projectnummer)<br />STAR: P1233</p>
+    <hr />
+</article>
+<article><a name='Language'> </a>
+    <h2>Language</h2>
+    <p>The language in which the data and the documents have been written.<br /><br />The language that is used to describe the contents of the files in the dataset is important to potential re-users. A database (names of variables and remarks) or a CAD drawing (nomenclature of the layers) is also language dependent and is usually in Dutch. Foreign researchers will therefore appreciate it if this is clearly mentioned in the metadata. Use the free text field or the ISO 639-2 code for the description.<br /><br />Click the [+] button behind a field to add an additional field.<br /></p>
+    <h2>Examples</h2>
+    <p>Nederlands en Engels<br />Dutch and English<br />dut / nld<br />eng<br />deu</p>
+    <hr />
+</article>
+<article><a name='LanguageIso639'> </a>
+    <h2>Language</h2>
+    <p>The language in which the data and the documents have been written.<br /><br />The language that is used to describe the contents of the files in the dataset is important to potential re-users. A database (names of variables and remarks) or a CAD drawing (nomenclature of the layers) is also language dependent and is usually in Dutch. Foreign researchers will therefore appreciate it if this is clearly mentioned in the metadata. Use the free text field or the ISO 639-2 code for the description.<br /><br />Click the [+] button behind a field to add an additional field.<br /></p>
+    <h2>Examples</h2>
+    <p>Nederlands en Engels<br />Dutch and English<br />dut / nld<br />eng<br />deu</p>
+    <p>&#160;</p>
+    <hr />
+</article>
+<article><a name='Pakbon'> </a>
+    <h2>Pakbon</h2>
+    <p>
+        Met de digitale pakbon (SIKB0102 standaard) geven archeologen na afloop van het onderzoek aan wat waar is gedeponeerd. De gegevens over vondsten worden via een standaard set beschrijvingen bij de verschillende depothouders, waaronder DANS, aangeleverd.
+    </p>
+    <p>
+        De metadata wordt via de pakbon aangeleverd als een xml document.
+        Gebruikers kunnen ervoor kiezen in EASY niet het Dublin Core formulier in te vullen, maar een dataset te deponeren via de button: 'upload pakbon". Alle DC gegevens worden uit de pakbon geëxtraheerd en in de juiste velden geplaatst. Het bestand wordt hierbij ook gelijk geupload en bij de bestanden van de dataset gezet.
+    </p>
+    <p>
+        DANS hoort graag uw ervaring met deze nieuwe stap in het deponeer proces.
+        Heeft u vragen over het deponeren van een dataset met een pakbon? Neem contact op met <a href="mailto:hella.hollander@dans.knaw.nl">Hella Hollander</a>.
+    </p>
+
+
+</article>
+<article><a name='Publisher'> </a>
+    <h2>Publisher</h2>
+    <p><strong>Publisher</strong></p>
+    <p>The organization responsible for making the resource available, the organization that published the dataset or the publication.</p>
+    <p>With regard to archaeological publications: fill in which organization produced and published this publication. Archaeological datasets hardly ever have a formal &#8216;Publisher'. The only exception to this may be formed by digital data that has been recorded and has been provided as an annex to an article in an electronic magazine or on CD-ROM.</p>
+    <p>Click the [+] button behind a field to add an additional field.</p>
+    <p>
+    <hr />
+    </p>
+</article>
+<article><a name='Refine'> </a>
+    <h2>Refine</h2>
+    <p>Refine options are available in a list of results. Use these options to filter within the list. After refining, a narrowed-down list of results appears (which may be refined again, depending on the criteria chosen).<br />For other result lists options, e.g. removing criteria, refer to the search help (use the '?' mark next to 'Search').</p>
+    <h2>Searching within results</h2>
+    <p>Search and Advanced search are available on any list of results. That may be a list of published datasets obtained through search or browse or a list of your deposited datasets obtained through the 'My datasets' link.<br />The functioning of search is explained in the search help (use the '?' mark next to 'Search').</p>
+    <h2>Browsing within results</h2>
+    <p>Additional attributes of the dataset metadata may be shown with values which can be selected. For example, selecting 'Social sciences' from a list of audiences produces the result list again but this time with only datasets that have 'Social sciences' as Audience in their metadata. <br />Note that only values that are present in the datasets in the result list are shown. If no dataset in the list has an Audience in Social sciences, then the value 'Social sciences' is not shown.</p>
+    <h2>Audience</h2>
+    <p>Note that Audience has a tree structure, so after selecting 'Social sciences' you get a new list of possible values within Social sciences. Selecting 'Social sciences' actually selects datasets that have Audience set to either 'Social sciences' or a more specific audience within Social sciences.</p>
+    <h2>Access</h2>
+    <p>The access policy of datasets (within the result list) may show one or more of the following values:</p>
+    <ul>
+        <li>Open, i.e. unrestricted access for all registered EASY users</li>
+        <li>Restricted -request permission, i.e. access for registered EASY users, but only after depositor permission is granted</li>
+        <li>Restricted -'archaeology' group, i.e. access restricted to registered group members, in this case 'archaeology' group members</li>
+        <li>Other, i.e. the data is not available via EASY (they are either accessible in another way or elsewhere)</li>
+    </ul>
+    <p>Note that the access policy of the dataset may be an approximation of the actual access settings of its files. For example, the dataset may be 'Restricted -request permission', implying that its data requires permission. But some documentation files may be accessible without requiring permission.&#160;&#160;&#160;</p>
+    <h2>Archaeology options</h2>
+    <p>On archaeological datasets (i.e. datasets with Audience: Humanities &gt; Archaeology), additional attributes may be available that are specific to this discipline.</p>
+</article>
+<article><a name='Relation'> </a>
+    <h2>Relation</h2>
+    <p>Other analogous or digital resources related to the dataset of this research project.<br /><br />Use this field to fill in the titles of publications, reports (internal or otherwise), websites and/or other digital resources (datasets, online publications) that belong to the research project. Add a full title description and, where possible, also fill in the web address (URL) where to find this information.<br />By means of a &#8216;qualifier' it is possible to specify the relation between the dataset deposited here and the other sources referred to. Several examples of qualifiers that often occur:<br /><br />&#8226;	for a literature reference: isReferencedBy;<br />&#8226;	is part of a larger project: isPartOf;<br />&#8226;	replaces a previous deposit: replaces;<br />&#8226;	is replaced by: isReplacedBy.<br /><br /><strong>NB: </strong>If you are filling in the address of a website in this field, take account of the fact that the website may no longer be accessible after some time. It is recommended to use only &#8216;persistent identifiers', URLs or identifiers of digital archives. Use the &#8216;Verify' button to check whether the URL has been written correctly and actually works.<br /><br />The field &#8216;Source' on the second tab can be used to fill in analogous and digital resources that have served as bases for the dataset. <br /><br />Click the [+] button behind a field to add an additional field.</p>
+    <h2>Examples</h2>
+    <p>LISS panel data - 2007 -- (longitudinal) (qualifier isPartOf)<br />http://persistent-identifier.nl/?identifier=urn:nbn:nl:ui:13-q9x-xu7<br />Vijver, C.D. van der; De burger en de zin van strafrecht; 1993; Lelystad; Koninklijke Vermande; 90-5458-088-7; pages 226 pp. (qualifier isReferencedBy)<br />Maas-Demer-Schelde project (Faculteit der Archeologie, Universiteit Leiden) (qualifier isPartOf)</p>
+    <hr />
+</article>
+<article><a name='Remarks'> </a>
+    <h2>Remarks</h2>
+    <p>The field &#8216;Remarks' can be used to fill in additional remarks about the dataset which remarks cannot be written elsewhere.</p>
+    <hr />
+</article>
+<article><a name='RightsHolder'> </a>
+    <p><strong>Rights holder<br /></strong><br />Owner of the copyrights or other intellectual property rights.<br /><br />In publications, clear reference is always made to the individual or organization that is holder of the copyright. In principle, the right to publish and reproduce a publication, scientific or otherwise, is vested in the author(s) or organization where the author(s) are employed. This copyright may, however, have been transferred to a commercial or non-commercial publisher.<br /><br />Insofar as datasets are concerned, the copyright is usually vested in the creator(s). In most cases, the field &#8216;Creator' is used to fill in the name of the researcher, and the field &#8216;(Copy)right holder' is used to fill in the name of the organization where he/she is employed.<br /><br /><strong>NB:</strong> If you do not fill in the holder of the copyrights or intellectual property rights here, the right will be assigned automatically to the individual or organization referred to &#8216;Creator'. If the publication or the dataset has been reused, the creator(s) must be granted the scientific credits for his/her/their work in the form of clear source references.<br /><br />Click the [+] button behind a field to add an additional field.<br /><br /><strong>Examples<br /></strong><br />Auxilia, Radboud Universiteit Nijmegen<br />Amsterdam University Press, Amsterdam</p>
+</article>
+<article><a name='Search'> </a>
+    <h2>Search scope</h2>
+    <p>EASY can be searched via a general free-text search. It searches in the metadata of all published datasets, but it does not extend into the contents of the uploaded files in datasets. Please use English as well as Dutch words for optimal search results.</p>
+    <h2>Result list</h2>
+    <p>A result list shows datasets that match the chosen criteria, mentioned in the 'Criteria' at the top of the list. Criteria may be removed individually using the 'x' mark beside them. <br />Sort options are also available; clicking toggles the sort order (ascending/descending).<br />On most result lists, refine options are available (at the right-hand side). Use those options to filter within the list (e.g. search within the result list).<br />For more about refining and the meaning of the values of the field 'Access', refer to the help on refine (use the '?' mark next to 'Refine').</p>
+    <h2>Additional options</h2>
+    <p>To search specific fields (and/or any field), use the 'Advanced search' link.<br />To get a list of all published datasets, start with the 'Browse' link.</p>
+    <h2>Search terms</h2>
+    <ul>
+        <li>Please enter one or more terms in the search box. All terms occur in the document.<br />For example: archaeological predictive modelling.</li>
+        <li>Use <strong>English</strong> and <strong>Dutch</strong> terms<br />For example: Enter human rights, but also mensenrechten. Hence: enter human rights or mensenrechten.</li>
+        <li><strong>Quotation marks</strong> can be used to find word combinations.<br />For example: enter “health care”. and you will find records where the words ‘health’ and ‘care' are adjacent.</li>
+        <li>You can search on terms that are specified only partially by using an <strong>asterisk: *</strong><br />For example: econom* also provides records about economical, economics, economic, economy et cetera </li>
+        <li>You can use <strong>question marks: ?</strong> as a subsitute for any letter.<br />For example: sh?p provides all records featuring 'ship' or 'shop';<br />ship???? provides all records where 'ship' is followed by four letters (i.e. 'shipping', 'shipment');<br />ship????? provides all records where ship is followed by five letters (i.e. 'shipwreck', 'shipments').</li>
+    </ul>
+    <p/>
+    <h2>Boolean searching in search box</h2>
+    <p>Search terms can be combined using ‘<strong>AND</strong>’,‘<strong>OR</strong>’ and ‘<strong>NOT</strong>’.</p>
+    <ul>
+        <li>‘<strong>AND</strong><strong></strong>’: both terms should occur, but the order is not important.    </li>
+        <li>‘<strong>OR</strong><strong></strong>’: one of either the terms or both terms should occur (e.g. with synonyms or words in different languages), the order is not important.</li>
+        <li>‘<strong>NOT</strong><strong></strong>’: the first term should occur and the second not.<br /><br />     For example:</li>
+        <ul>
+            <li>youth <strong>AND</strong><strong></strong> child: Records contain both 'youth' and 'child'.</li>
+            <li>youth <strong>OR</strong><strong></strong> child: Records contain either 'youth' or 'child' or both.</li>
+            <li>(youth <strong>OR</strong><strong></strong> child) <strong>AND</strong> language: Records contain either 'youth' or 'child' or both, and also 'language'.</li>
+            <li>youth <strong>NOT</strong><strong></strong> language: Records contain 'youth' and not 'language'     </li>
+            <li>+youth -criminal: Records contain 'youth' and do not contain 'criminal' </li>
+        </ul>
+    </ul>
+    <p/>
+    <h2>More about finding data</h2>
+    <p>Please continue reading more general information about <a class="external" href="http://www.dans.knaw.nl/en/content/data-archive/finding-data" target="_blank">finding data</a>.</p>
+</article>
+<article><a name='Source'> </a>
+    <h2>Source</h2>
+    <p>Sources on which the digital data in the dataset have been based.<br /><br />Use this field if the data have been based on an analogous or digital source. Fill in the complete source references of that source, including the names of the creators, the date, title and repository and/or identification number. Where applicable, also indicate which method was used to process the source and which selection procedure was used (full selection procedure, sample).<br /></p>
+    <h2>Examples</h2>
+    <p>"13e Algemene volkstelling 31 mei 1960; Zeist, Hilversum, 's-Gravenhage : De Haan, Staatsuitgeverij, 1963-1972, 13 vol. in 18 books; 196 p. (vol. 2)"<br />"LISS panel, CentERdata"<br />"Deze digitale gegevens zijn gebaseerd op de oorspronkelijke, analoge opgravingsdocumentatie uit 1973, zoals ter beschikking gesteld door Pauline de Roever."<br />"Digitaal kaartmateriaal is gebaseerd op de gescande veldtekeningen uit het ROB archief (tekeningnummers 1993-00215 t/m 1993-00272)."</p>
+    <hr />
+</article>
+<article><a name='Spatial'> </a>
+    <h2>Spatial coverage</h2>
+    <p>Geographical location.<br /><br />Describe the geographical area to which the publication and/or dataset applies. This may be a geographical location, such as a municipality-place name-toponym or the name of a country/region.<br /><br />Click the [+] button behind a field to add an additional field.<br /></p>
+    <h2>Examples</h2>
+    <p>Roerstreek (ten zuiden van Roermond, Limburg)<br />Venray - Merselo - Haag (Limburg)<br />Nederland</p>
+    <hr />
+</article>
+<article><a name='SpatialBox'> </a>
+    <h2>Spatial coverage (Spatial point, Spatial box, or free text field)</h2>
+    Geographical location of the research area or site.<br /><br />Describe the geographical area to which the publication and/or dataset applies. This may be a geographical location, such as a municipality-place name-toponym or the name of a country/region.<br /><br />You can also add the geographical coordinates of the area, both as a central point (Point: 2 coordinates) and as a rectangular box covering the entire research area (Box: 4 coordinates).<br /><br />Click the [+] button behind a field to add an additional field.<br /><br />
+    <h2>Examples</h2>
+    Roerstreek (ten zuiden van Roermond, Limburg)<br />Venray - Merselo - Haag (Limburg)<br /><br />(Nederlandse RD-stelsel, in meters)<br />105350&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160; 460350<br /><br />(Nederlandse RD-stelsel, in meters)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 461355<br />105350&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;106555&#160;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;460150<br />
+    <hr />
+</article>
+<article><a name='SpatialPoint'> </a>
+    <h2>Spatial coverage (Spatial point, Spatial box, or free text field)</h2>
+    Geographical location of the research area or site.<br /><br />Describe the geographical area to which the publication and/or dataset applies. This may be a geographical location, such as a municipality-place name-toponym or the name of a country/region.<br /><br />You can also add the geographical coordinates of the area, both as a central point (Point: 2 coordinates) and as a rectangular box covering the entire research area (Box: 4 coordinates).<br /><br />Click the [+] button behind a field to add an additional field.<br /><br />
+    <h2>Examples</h2>
+    Roerstreek (ten zuiden van Roermond, Limburg)<br />Venray - Merselo - Haag (Limburg)<br />Roerstreek (ten zuiden van Roermond, Limburg)<br />Venray - Merselo - Haag (Limburg)<br /><br />(Nederlandse RD-stelsel, in meters)<br />105350&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160; 460350<br /><br />(Nederlandse RD-stelsel, in meters)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 461355<br />105350&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;106555&#160;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;460150<br />
+    <hr />
+</article>
+<article><a name='Subject'> </a>
+    <h2><strong>Subject</strong></h2>
+    <p>The &#8216;Subject' field is used to describe the contents of the research project and the files deposited.<br />This field can be used to fill in all kinds of descriptive keywords. In addition to general characteristics, keywords can also be used to refer to specific finds or results. If the keywords originate from a controlled list of keywords, fill in the name of the thesaurus. If this list of keywords cannot be chosen as a scheme, fill in the keyword followed by the name of the thesaurus in brackets.</p>
+    <p><strong>NB:</strong> Any details on the date are recorded separately at &#8216;Temporal coverage' below and need not be included in the general keywords.<br /><br />Click the [+] button behind a field to add an additional field. It is also possible to fill in several keywords behind each other in one field if they are separated from each other by a semicolon followed by a space (; ). <br /></p>
+    <h2>Examples</h2>
+    <p>kinderopvang<br />arbeidsparticipatie<br />Disabled persons<br />steentijd; begraving; kralen; haardkuilen<br />Verkennend veldonderzoek<br />survey methodology<br />AKA; NEOM; GX; KRAAL; HAARDKL (ABR 1.0, 1992)</p>
+    <hr />
+</article>
+<article><a name='SubjectAbr'> </a>
+    <h2>Subject (ABR Complex)</h2>
+    Descriptive keywords and complex type (Archis site type) in accordance with the standardized terms from the &#8216;Archeologisch Basis Register' (ABR, Archaeological Basic Register).<br /><br />The &#8216;Subject' field is used to describe the contents of the research project and the files deposited.<br />A standardized list of complex types from the &#8216;Archeologisch Basis Register' (Archis 1992) is available here in the form of a drop-down menu. In addition to the date and the geographical location of the excavation, the type of site is an essential characteristic for retrieving archaeological information by means of a targeted search.<br /><br />The free text field can furthermore be used to fill in all kinds of other descriptive keywords. In addition to general characteristics, keywords can also be used to refer to specific finds or results. If the keywords originate from a controlled list of keywords, fill in the name of the thesaurus. If this list of keywords cannot be chosen as a scheme, fill in the keyword followed by the name of the thesaurus in brackets.<br /><br /><strong>NB:</strong> Any details on the date are recorded separately at &#8216;Temporal coverage' below and need not be included in the general keywords.<br /><br />Click the [+] button behind a field to add an additional field. It is also possible to fill in several keywords behind each other in one field if they are separated from each other by a semicolon followed by a space (; ).<br /><br />
+    <h2>Examples</h2>
+    Verkennend veldonderzoek<br />IVO-P<br />steentijd; begraving; kralen; haardkuilen<br />AKA; NEOM; GX; KRAAL; HAARDKL (ABR 1.0, 1992)<br />
+    <hr />
+</article>
+<article><a name='Temporal'> </a>
+    <p>&#160;</p>
+    <h2>Temporal coverage</h2>
+    <p>The period of time to which the data relate (date) recorded in keywords.<br /><br />Fill in a year, a starting date and end date or a historical period. <br /><br /><strong>NB:</strong> The date on which the research was finished will be recorded at &#8216;Date created' on the first tab.<br /><br />Click the [+] button behind a field to add an additional field.<br /></p>
+    <h2>Examples</h2>
+    <p>1985<br />1879 - 1981<br />Mesolithicum - Neolithicum</p>
+    <p>&#160;</p>
+    <hr />
+</article>
+<article><a name='TemporalAbr'> </a>
+    <h2>Temporal coverage (ABR Period)</h2>
+    The period of time to which the data relate (date) recorded in keywords or standardized terms from the &#8216;Archeologisch Basis Register' (ABR, Archaeological Basic Register).<br /><br />Fill in the period of time to which the archaeological site, finds, and data deposited relate. Enter a year, a starting date and end date or a historical period. Fill in the date, preferably in accordance with the &#8216;Archeologisch Basis Register' (Archis 1992): you can use the drop-down menu for this purpose.<br /><br /><strong>NB:</strong> The date on which the research was completed will be recorded at &#8216;date created' on the first tab.<br /><br />Click the [+] button behind a field to add an additional field.<br /><br />
+    <h2>Examples</h2>
+    1650 AD<br />1200-800 v. Chr.<br />Mesolithicum - Neolithicum<br />Vroege Middeleeuwen<br />BRONSL<br />XME<br />
+    <hr />
+</article>
+<article><a name='Title'> </a>
+    <h2>Title</h2>
+    <p>The title of the research.<br /><br />Full title with an adequate description of the dataset, preferably with geographical and periodical indications. For this purpose, choose the title that is used most, the Dutch or the English title. The title of the dataset will become part of the source references. The best thing to do of course is to stick as closely as possible to the name under which the research project is known in literature.</p>
+    <h2>Examples</h2>
+    <p>The Opium Society: Dividend transfers to shareholders in Patria, 1756-1794<br />De mesolithische en vroeg-neolithische vindplaats Hoge Vaart-A27 (Flevoland)<br />Blerick-centrumplan, een bureauonderzoek naar de archaeologische verwachting voor het centrum van Blerick<br />Culturele Veranderingen in Nederland, 1989<br />Health behaviour in school-aged children - HBSC Nederland</p>
+    <hr />
+</article>
+<article><a name='Type'> </a>
+    <h2>Type</h2>
+    General characteristic of the dataset deposited.<br /><br />The field &#8216;Type' can be used to indicate the form of the dataset in general terms. You can opt for both an archaeological description of the contents and a technical description of the contents. If you opt for a technical description, it is recommended that you do this in conformity with the international thesaurus called &#8216;DCMI resource type'. The default value will then be &#8216;Dataset' (the set of different files on one research project that belong to each other).<br /><br />Click the [+] button behind a field to add an additional field.<br /><br />
+    <h2>Examples</h2>
+    Dataset<br />Resultaten en gegevens van een geologisch booronderzoek<br />Materiaalstudie: artefactbeschrijvingen en ruimtelijke analyse<br />Eindrapport<br />Text<br />Image<br />
+    <hr />
+</article>
+<article><a name='TypeDCMI'> </a>
+    <h2>Type</h2>
+    General characteristic of the dataset deposited.<br /><br />The field &#8216;Type' can be used to indicate the form of the dataset in general terms. You can opt for both an archaeological description of the contents and a technical description of the contents. If you opt for a technical description, it is recommended that you do this in conformity with the international thesaurus called &#8216;DCMI resource type'. The default value will then be &#8216;Dataset' (the set of different files on one research project that belong to each other).<br /><br />Click the [+] button behind a field to add an additional field.<br /><br />
+    <h2>Examples</h2>
+    Dataset<br />Resultaten en gegevens van een geologisch booronderzoek<br />Materiaalstudie: artefactbeschrijvingen en ruimtelijke analyse<br />Eindrapport<br />Text<br />Image<br />
+    <hr />
+    <br />
+</article>
+<article><a name='Upload'> </a>
+    <h2>Upload dataset</h2>
+    <p>Uploading files in EASY.<br /><br />By means of the field &#8216;File upload', you can actually link the data files to the metadata you have just filled in. This field gives you the possibility to search the files of the dataset and the relevant documentation on your PC and to upload them. If it concerns a limited number of files, you can upload the files one by one. If the datasets are larger or more complex, it is recommended to make a zip file of all directories and to subsequently upload this file as if it is only one file. Depending on your zip application, choose &#8216;Include subfolder' and &#8216;Save path information'. While uploading, the zip file will be unpacked again in its original directory structure.<br /><br />If desired, you can check what files have been uploaded by means of the &#8216;Show files' button.<br /><br /><strong>NB</strong>: If the dataset is very large, or if you want to deposit privacy sensitive data, it is recommended to send the files to DANS by means of a different medium, such as a CD, a DVD or an external hard drive. This is also recommended if the dataset in zip file is larger than 100 MB or if it contains more than 1,000 files.<br />If you send the files without using EASY, it is still possible to finish the project description in EASY: just click &#8216;submit' on the last page without uploading any files. You can indicate in the field &#8216;Remarks' on the third tab that the files will be forwarded. <br /><br />Whether a dataset is used often or rarely depends largely on the presence of qualitatively good documentation on the data. <br />If this documentation is lacking, it will be difficult for another researcher to understand, let alone use your data. <br /> In addition to the metadata referred to above, the documentation files form an integral part of the data deposit. In most cases, the documentation files include the following documents:</p>
+    <p>&#8226;	A documented list of files with a description of the contents and technical details of each separate file deposited;<br />&#8226;	Code book(s), with an explanation of the data structure, names of variables and layers, abbreviations and codes used.</p>
+    It is recommended to put the metadata documents in a separate subdirectory within the zip file.<br />
+    <hr />
+</article>
+
+</body>

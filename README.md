@@ -22,6 +22,8 @@ Preparation:
   * The schema locations of `easy-schema/src/main/assembly/dist/docs/examples/ddm/`
     (also supply something in these examples that reflects the change in the XSD)
   * `easy-app/lib/ddm/src/main/java/nl/knaw/dans/pf/language/ddm/handlermaps/NameSpace.java`
+  * `easy-schema/src/main/assembly/dist/docs/sword-v1-packaging.html`
+    also update the mapping and help sections as explained in the comment of the file.
 * `mvn clean install -f easy-schema`
 * `mvn -DSNAPSHOT_SCHEMA=true clean install -f easy-app/lib/ddm`
   By default `ddm/target/easy-schema` is copied from the maven repository,
@@ -35,7 +37,7 @@ Eat the sword pudding:
     it allows you to verify the EMD created from the DDM
     as presented in the license document sent to the depositor.
   * Use your IDE to execute the easy-sword test class Start with jvm arguments
-    `-Xmx1g  -Dwicket.configuration=development -DEASY_WEBUI_HOME=xxx -Dlogback.configurationFile=yyy`
+    `-Xmx1g  -Dwicket.configuration=development -DEASY_SWORD_HOME=xxx -Dlogback.configurationFile=yyy`
   * For convenience the ddm tests create a folder target/swordPuddings. Each pudding is a folder
     with a copy of an example in `DansDatasetMetadata.xml` and some file(s) in the subfolder `data`.
     For each pudding:
