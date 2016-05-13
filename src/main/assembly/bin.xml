@@ -26,7 +26,7 @@
         the version number (e.g., "easy-schema-1.x-SNAPSHOT"). It should be just "easy-schema" to facilitate the
         usage of this package as a maven resource dependency. (See the easy-app/lib/dmm project for example.)
     -->
-    <baseDirectory>${project.artifactId}</baseDirectory>
+    <baseDirectory>/</baseDirectory>
     <formats>
         <format>tar.gz</format>
     </formats>
