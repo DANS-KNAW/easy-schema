@@ -26,7 +26,6 @@
 		 xmlns:dc="http://purl.org/dc/elements/1.1/"
 		 xmlns:dct="http://purl.org/dc/terms/"
 		 xmlns:dcterms="http://purl.org/dc/terms/"
-
 		 xmlns:dcmitype="http://purl.org/dc/dcmitype/"
 
 		 xsi:schemaLocation="
@@ -37,7 +36,7 @@
 		 http://easy.dans.knaw.nl/schemas/vocab/narcis-type/ http://easy.dans.knaw.nl/schemas/vocab/2015/narcis-type.xsd
 		 http://www.den.nl/standaard/166/Archeologisch-Basisregister/ http://easy.dans.knaw.nl/schemas/vocab/2012/10/abr-type.xsd
 
-		 http://www.w3.org/2001/XMLSchema-instance https://www.w3.org/2001/XMLSchema-instance
+		 http://purl.org/dc/dcmitype/ http://dublincore.org/schemas/xmls/qdc/dcterms.xsd
 		 http://purl.org/dc/terms/ http://dublincore.org/schemas/xmls/qdc/dcterms.xsd
 		 http://purl.org/dc/elements/1.1/ http://dublincore.org/schemas/xmls/qdc/dc.xsd
 ">
@@ -299,7 +298,7 @@
 			</Point>
 		</dcx-gml:spatial>
 		<dcx-gml:spatial srsName="http://www.opengis.net/def/crs/EPSG/0/28992">
-			<!-- fields with an explicit srsName will not show up -->
+			<!-- fields with an explicit srsName will not show up in EMD -->
 			<Point xmlns="http://www.opengis.net/gml">
 				<!-- Same point in Dutch National Grid (urn:ogc:def:crs:EPSG::28992).
 					The list in element pos is in the order x y [altitude]. All units in m. -->
@@ -308,6 +307,18 @@
 				<pos>83575.4 455271.2 1.12</pos>
 			</Point>
 		</dcx-gml:spatial>
+		<!--TODO when the new 2016/dcx-gml.xsd is published at http://easy.dans.knaw.nl/schemas/ -->
+		<!--<dcx-gml:spatial>-->
+		<!--<boundedBy xmlns="http://www.opengis.net/gml">-->
+		<!--<Envelope srsName="">-->
+		<!--<lowerCorner>52.07913 4.34332</lowerCorner>-->
+		<!--<upperCorner>52.08110 4.34521</upperCorner>-->
+		<!--</Envelope>-->
+		<!--</boundedBy>-->
+		<!--</dcx-gml:spatial>-->
+
+		<!-- not copied to EMD, see SWORD v1 packaging document: it has no mapping for dcterms:Box -->
+		<dcterms:spatial xsi:type="dcterms:Box">name=Western Australia; northlimit=-13.5; southlimit=-35.5; westlimit=112.5; eastlimit=129</dcterms:spatial>
 
 		<!-- Use ';' for separation of list items. Use of line breaks is allowed -->
 		<dct:tableOfContents>
