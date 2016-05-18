@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2015-2016 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:dcx="http://easy.dans.knaw.nl/schemas/dcx/"
+           xmlns:dcx-gml="http://easy.dans.knaw.nl/schemas/dcx/gml/"
+           xmlns:dcterms="http://purl.org/dc/terms/"
+           xmlns:gml="http://www.opengis.net/gml"
+           targetNamespace="http://easy.dans.knaw.nl/schemas/dcx/gml/"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <!-- =================================================================================== -->
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Enabling the use of GML 3.1.1 Simplified Features profile Levels 0 and 1.
+        </xs:documentation>
+    </xs:annotation>
+
+    <!-- =================================================================================== -->
+    <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/"
+               schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
+    <xs:import namespace="http://purl.org/dc/terms/"
+               schemaLocation="http://dublincore.org/schemas/xmls/qdc/dcterms.xsd"/>
+    <xs:import namespace="http://www.opengis.net/gml"
+               schemaLocation="http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsf.xsd"/>
+
+    <!-- =================================================================================== -->
+    <xs:element name="spatial" substitutionGroup="dcterms:spatial" type="dcx-gml:SimpleGMLType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Extension of dcterms:spatial.
+
+                This element allows the use of GML 3.1.1 Simplified Features profile Levels 0 and 1.
+
+                See also: http://purl.org/dc/terms/spatial
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <!-- =================================================================================== -->
+    <xs:complexType name="SimpleGMLType">
+        <xs:complexContent>
+            <xs:extension base="dcx:ElementsOnlyNoLanguageAttributeType">
+                <xs:choice>
+                    <xs:element ref="gml:_Geometry" minOccurs="1"/>
+                    <xs:element ref="gml:boundedBy" minOccurs="1"/>
+                </xs:choice>
+                <xs:attribute name="srsName" type="xs:anyURI" default="http://www.opengis.net/def/crs/EPSG/0/4326">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Default coordinate reference system is WGS84 (urn:ogc:def:crs:EPSG::4326),
+                            "Used by the GPS satellite navigation system and for NATO military geodetic surveying."
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- =================================================================================== -->
+</xs:schema>
