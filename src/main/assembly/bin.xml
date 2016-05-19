@@ -34,6 +34,17 @@
         <fileSet>
             <directory>${project.basedir}/src/main/assembly/dist</directory>
             <outputDirectory>/</outputDirectory>
+            <excludes>
+                <exclude>version</exclude>
+            </excludes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/main/assembly/dist</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>version</include>
+            </includes>
+            <filtered>true</filtered>
         </fileSet>
     </fileSets>
 </assembly>
