@@ -4,6 +4,24 @@ easy-schema
 A collection of XML schema's used by EASY. These schema's are published at 
 [https://easy.dans.knaw.nl/schemas/](https://easy.dans.knaw.nl/schemas/)
 
+
+Maintain sword-v1-packaging
+---------------------------
+
+The Sword-v1 [service document] (ignore login) refers to the [packaging document]
+located next to the ddm [examples]. The `<article id='mapping'>` in the packaging document
+contains the DDM-EMD mapping. Subsequent articles show help content of the web forms.
+
+The mentioned articles are copy pasted from test results of the legacy components `ddm` and `web-ui`,
+in that order. These results are located at `target/pageDumps/swordPackagingFragmentHelp.html`.
+Note that the help content is generated from the code base, which might be behind on the actual
+editable texts in production.
+
+[service document]: http://easy.dans.knaw.nl/sword/servicedocument
+[packaging document]: https://easy.dans.knaw.nl/schemas/docs/sword-v1-packaging.html
+[examples]: https://github.com/DANS-KNAW/easy-schema/tree/master/src/main/assembly/dist/docs
+
+
 Round trip test of ddm.xsd
 --------------------------
 
