@@ -8,7 +8,8 @@ A collection of XML schema's used by EASY. These schema's are published at
 Maintain sword-v1-packaging
 ---------------------------
 
-The Sword-v1 [service document] \(ignore login) refers to the published [packaging document], its source is
+The Sword-v1 [service document] \(ignore login, only put requests require authentication)
+refers to the published [packaging document], its source is
 located next to the [examples] directory. The `<article id='mapping'>` in the packaging document
 contains the DDM-EMD mapping. Subsequent articles show help content of the web forms.
 
