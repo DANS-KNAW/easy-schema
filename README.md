@@ -5,23 +5,27 @@ A collection of XML schema's used by EASY. These schema's are published at
 [https://easy.dans.knaw.nl/schemas/](https://easy.dans.knaw.nl/schemas/)
 
 
-Maintain sword-v1-packaging
----------------------------
+Sword-v1-packaging
+------------------
 
-The Sword-v1 [service document] \(ignore login, only put requests require authentication)
-refers to the published [packaging document], its source is
-located next to the [examples] directory. The `<article id='mapping'>` in the packaging document
-contains the DDM-EMD mapping. Subsequent articles show help content of the web forms.
+The Sword-v1 interface provides a machine-to-machine alternative for the manual deposit procudure of [EASY].
+The Sword-v1 [service document] \(you can ignore the login, only put requests require authentication)
+refers to the published [packaging document], its source is located next to the source of the [examples]
+directory. The `<article id='mapping'>` in the packaging document contains the DDM-EMD mapping.
+Subsequent articles show help content of the web forms.
+
+_Maintnance prerequisites_: Access to the legacy code of EASY.
 
 The mentioned articles are copy pasted from test results of the legacy components `ddm` and `web-ui`,
 in that order. These results are located at `target/pageDumps/swordPackagingFragmentHelp.html`.
-Note that the help content is generated from [editable] texts in the code base,
+Note that the help content is generated from [editable] texts in the legacy code base,
 the actual versions in production are leading in case of differences.
 
+[EASY]: http://easy.dans.knaw.nl/ui/deposit
 [service document]: http://easy.dans.knaw.nl/sword/servicedocument
 [packaging document]: https://easy.dans.knaw.nl/schemas/docs/sword-v1-packaging.html
 [examples]: https://github.com/DANS-KNAW/easy-schema/tree/master/src/main/assembly/dist/docs
-[editable]: https://github.com/jo-pol/easy-app/tree/master/front-end/easy-webui/src/main/assembly/dist/res/example/editable/help
+[editable]: https://github.com/DANS-KNAW/easy-app/tree/master/front-end/easy-webui/src/main/assembly/dist/res/example/editable/help
 
 
 Round trip test of ddm.xsd
@@ -33,7 +37,7 @@ Purpose:
 * Verify the ingested metadata.
 * Check wether the description tab of a dataset (both view mode as edit mode for archivists) contains less than an XML downloaded from the same tab. It would require an update of the [form definition] or even more legacy code to fix such omissions.
 
-[form definition]: https://github.com/jo-pol/easy-app/blob/9ec1c7f0fc496250f797269c874a990d1c21decb/lib/easy-business/src/main/java/nl/knaw/dans/easy/domain/form/form-descriptions/unspecified.xml#L678-L681
+[form definition]: https://github.com/DANS-KNAW/easy-app/blob/9ec1c7f0fc496250f797269c874a990d1c21decb/lib/easy-business/src/main/java/nl/knaw/dans/easy/domain/form/form-descriptions/unspecified.xml#L678-L681
 
 Prerequisites:
 
