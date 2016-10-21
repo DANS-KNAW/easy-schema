@@ -1,16 +1,46 @@
 easy-schema
 ============
+[![Build Status](https://travis-ci.org/DANS-KNAW/easy-schema.svg?branch=master)](https://travis-ci.org/DANS-KNAW/easy-schema)
 
 A collection of XML schema's used by EASY. These schema's are published at 
 [https://easy.dans.knaw.nl/schemas/](https://easy.dans.knaw.nl/schemas/)
+
+
+Sword-v1-packaging
+------------------
+
+The Sword-v1 interface provides a machine-to-machine alternative for the manual deposit procedure of [EASY].
+The Sword-v1 [service document] \(accepts any user name with any password, `put` requests do require
+proper authentication) refers to the published [packaging document], its source is located next to
+the source of the [examples] directory. The `<article id='mapping'>` in the packaging document
+contains the DDM-EMD mapping. Subsequent articles show help content of the web forms.
+
+### Maintenance of the packaging document
+
+_Prerequisites_: Access to the legacy code of EASY.
+
+The mentioned articles are copy pasted from test results of the legacy components `ddm` and `web-ui`,
+in that order. These results are located at `target/pageDumps/swordPackagingFragmentHelp.html`.
+Note that the help content is generated from [editable] texts in the legacy code base,
+the actual versions in production are leading in case of differences.
+
+[EASY]: http://easy.dans.knaw.nl/ui/deposit
+[service document]: http://easy.dans.knaw.nl/sword/servicedocument
+[packaging document]: https://easy.dans.knaw.nl/schemas/docs/sword-v1-packaging.html
+[examples]: https://github.com/DANS-KNAW/easy-schema/tree/master/src/main/assembly/dist/docs
+[editable]: https://github.com/DANS-KNAW/easy-app/tree/master/front-end/easy-webui/src/main/assembly/dist/res/example/editable/help
+
 
 Round trip test of ddm.xsd
 --------------------------
 
 Purpose:
  
-* Test an updated ddm.xsd (or the schema's it uses) by depositing via sword-V1 with new examples.
+* Test an updated `ddm.xsd` (or the schema's it uses) by depositing via sword-V1 with new/updated examples.
 * Verify the ingested metadata.
+* Check whether the description tab of a dataset (both view mode as edit mode for archivists) contains less than an XML downloaded from the same tab. It would require an update of the [form definition] or even more legacy code to fix such omissions.
+
+[form definition]: https://github.com/DANS-KNAW/easy-app/blob/9ec1c7f0fc496250f797269c874a990d1c21decb/lib/easy-business/src/main/java/nl/knaw/dans/easy/domain/form/form-descriptions/unspecified.xml#L678-L681
 
 Prerequisites:
 
