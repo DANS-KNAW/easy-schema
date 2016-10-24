@@ -216,7 +216,7 @@
                     <xs:documentation xml:lang="eng-usa">Deprecated.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="ALL_DISCIPLINES">
+            <xs:enumeration value="ANY_DISCIPLINE">
                 <xs:annotation>
                     <xs:documentation xml:lang="eng-usa">Single deposit form for all disciplines.</xs:documentation>
                 </xs:annotation>
