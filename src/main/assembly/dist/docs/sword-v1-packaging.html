@@ -51,7 +51,7 @@
 <p>
     <a href="http://easy.dans.knaw.nl/">EASY</a> supports a
     <a href="https://easy.dans.knaw.nl/sword/servicedocument">SWORD v1</a> interface for deposits of
-    datasets. The zip file for a deposit should contain:
+    datasets. The zip file for a deposit must contain:
 </p>
 <ul>
     <li>
@@ -75,7 +75,7 @@
         <p>A single folder:</p>
         <ul>
             <li>
-                The name of the folder should be: <code>data</code>
+                The name of the folder must be: <code>data</code>
             </li>
             <li>
                 The full path name of datafiles should not exceed 252 characters.
@@ -84,14 +84,16 @@
                 See also:
                 <a href="http://www.dans.knaw.nl/en/deposit/information-about-depositing-data/DANSpreferredformatsUK.pdf"
                 >File formats, preferred formats and accepted formats</a> (pdf)
+                and the help article <a href="#Upload">upload</a>.
             </li>
         </ul>
     </li>
 </ul>
 <p>
-    The table below defines the mapping from DDM-elements to EASY Metadata (EMD) elements.
-    The EASY Metadata file can be downloaded from the Description tab of the dataset resulting from the deposit.
-    Elements ignored without a warning may contain elements that will be copied into the EMD.
+    The table below defines the mapping from DDM-elements to EASY Metadata (EMD) elements,
+    elements ignored without a warning may contain elements that will be copied into the EMD.
+    The EASY Metadata can be downloaded from the Description tab of the dataset resulting from the deposit,
+    DansDatasetMetadata.xml is stored as a data file.
 </p><p>
     Note that the help articles are written for manual deposits,
     the <a href='#Upload'>upload</a> article applies to the content of the data folder
@@ -102,9 +104,14 @@
      target/pageDumps/swordPackagingFragmentHelp.html
      of the legacy components DDM and web-ui, in that order.
 
-     Note that the generated help articles are generated from
+     NOTE: the generated help articles are generated from
      easy-webui/src/main/assembly/dist/res/example/editable/help
-     These files may be behind on the editable texts in production.
+     These files may be behind on the actual texts in production.
+
+     The location of the actual texts is configured
+     in: /opt/easy-webui/cfg/applications.properties
+     with the key: easy.editable.content.root
+     In production that is: /opt/easy-webui-editable/help
   -->
 
 <article id='mapping'><h1>Mapping</h1><table><tr><th>ddm</th><th>emd</th><th>note</th></tr>
@@ -218,11 +225,9 @@
     <li><a href='#LanguageIso639'>LanguageIso639</a></li>
     <li><a href='#Pakbon'>Pakbon</a></li>
     <li><a href='#Publisher'>Publisher</a></li>
-    <li><a href='#Refine'>Refine</a></li>
     <li><a href='#Relation'>Relation</a></li>
     <li><a href='#Remarks'>Remarks</a></li>
     <li><a href='#RightsHolder'>RightsHolder</a></li>
-    <li><a href='#Search'>Search</a></li>
     <li><a href='#Source'>Source</a></li>
     <li><a href='#Spatial'>Spatial</a></li>
     <li><a href='#SpatialBox'>SpatialBox</a></li>
@@ -237,12 +242,8 @@
     <li><a href='#Upload'>Upload</a></li>
 </ul></article>
 <article><a name='AccessRights'> </a>
-    <h2>Access rights<br /></h2>
-    <p>Description of the accessibility to the dataset.</p>
-    <p>The datasets may be made accessible to users and/or re-users in various ways. The following options are available for making the datasets accessible:</p>
-    <p>&#8226; Open access<br />The files are accessible to all users of EASY.<br />&#8226; Open access for registered users<br />The files are accessible to all registered users of EASY.<br />&#8226; Restricted access<br />The access to the files deposited is limited to a smaller group of users. EASY currently has the two following forms of limited access:<br />-Restricted - archaeology group. Please note that this option can only be selected for archaeological deposits.<br />The datasets are only accessible to registered users of EASY who belong to a specific group. In principle, this option is used as default for all archaeological datasets. Just like Archis is an information system for and by archaeologists, the archaeological files in EASY are also only accessible to other, registered archaeologists. We share the available information on archaeological sites, without this information being immediately available on the Internet so that we can preserve the historical buildings and/or archaeological sites or perform scientific research as effectively as possible.<br />-Restricted - request permission.<br />With this option, you - as the person depositing the dataset - can personally manage the accessibility to the files deposited by you. The datasets are accessible only if another registered user, not necessarily an archaeologist, has submitted a &#8216;permission request'. You, the person depositing the dataset, will be informed of this request and you will personally be able to grant or reject this request for permission to access the dataset.<br />&#8226; Other access<br />It is not possible to access the datasets through EASY. DANS is only intended for sustainable, digital archiving behind the scenes. Another possibility is that the data have been stored elsewhere and that only the metadata have been stored in EASY. You can only choose this option if the digital data are accessible, for example, through a different data repository, digital archive, databank or website.</p>
-    <p><br /><strong>NB:</strong> The descriptive information on the research project and the dataset (metadata) is always freely accessible to all users of the Internet. This provides each potential user or re-user the opportunity to find the files and to assess whether they are valuable to his/her research. In order to actually being able to download the data, users must first create an account.</p>
-    <hr />
+    <h2>Access rights</h2>
+    Description of the accessibility to the dataset files.<br /><br />The dataset files may be made accessible to users and/or re-users in various ways. The following categories are available:<br /><br />&#160;&#160;&#160; &#8226;&#160;&#160;&#160; Open access<br />The dataset files are accessible to all users of EASY and 'CC0 Waiver - No Rights Reserved' applies. For more information please visit <a href="https://creativecommons.org/about/cc0">https://creativecommons.org/about/cc0</a>. In this category all possible rights (such as copyrights and database rights) on the dataset files have been waived.<br /><br />&#160;&#160;&#160; &#8226;&#160;&#160;&#160; Open access for registered users<br />The dataset files are accessible to all registered users of EASY.<br /><br />&#160;&#160;&#160; &#8226;&#160;&#160;&#160; Restricted: archaeology group. (Only available for the discipline archaeology)<br />The dataset files are only accessible to archaeologists registered at EASY. <br /><br />&#160;&#160;&#160; &#8226;&#160;&#160;&#160; Restricted: request permission.<br />The dataset files are only accessible for registered users of EASY who have been granted permission to access the dataset files. You as depositor have the exclusive ability to grant or deny a permission request. A notification of a permission request is sent to the Email address used for your user account.<br /><br />&#160;&#160;&#160; &#8226;&#160;&#160;&#160; Other access<br />It is not possible to access the dataset files through EASY. DANS is only intended for sustainable, digital archiving behind the scenes. You can only choose this option if the dataset files are accessible, for example, through a different data repository, digital archive, databank or website. Please note: a specific agreement with DANS needs to be negotiated.<br /><br />Regardless of the applicable category, users should always cite datasets.<br /><br />NB: The descriptive information on the research project and the dataset (metadata) is always freely accessible to all users of the Internet. This provides each potential user or re-user the opportunity to find the dataset files and to assess whether they are valuable to his/her research.﻿<br />
 </article>
 <article><a name='Alternative'> </a>
     <h2>Alternative title</h2>
@@ -260,7 +261,7 @@
 </article>
 <article><a name='Audience'> </a>
     <h2>Audience</h2>
-    <p>Target group for the dataset deposited. The scientific disciplines to which the dataset is relevant. You can choose from a list of disciplines by means of a drop-down menu. Please contact DANS via <strong><em>info</em> at <em>dans.knaw.nl</em></strong> if you like to add a new discipline. <br /><br />Click the [+] button behind a field to add an additional field.</p>
+    <p>Target group for the dataset deposited. The scientific disciplines to which the dataset is relevant. You can choose from a list of disciplines by means of a drop-down menu. Please contact DANS via info at dans.knaw.nl if the relevant discipline is not available yet.<br /><br />Click the [+] button behind a field to add an additional field.﻿</p>
     <hr />
 </article>
 <article><a name='CmdiChoice'> </a>
@@ -404,27 +405,6 @@
     <hr />
     </p>
 </article>
-<article><a name='Refine'> </a>
-    <h2>Refine</h2>
-    <p>Refine options are available in a list of results. Use these options to filter within the list. After refining, a narrowed-down list of results appears (which may be refined again, depending on the criteria chosen).<br />For other result lists options, e.g. removing criteria, refer to the search help (use the '?' mark next to 'Search').</p>
-    <h2>Searching within results</h2>
-    <p>Search and Advanced search are available on any list of results. That may be a list of published datasets obtained through search or browse or a list of your deposited datasets obtained through the 'My datasets' link.<br />The functioning of search is explained in the search help (use the '?' mark next to 'Search').</p>
-    <h2>Browsing within results</h2>
-    <p>Additional attributes of the dataset metadata may be shown with values which can be selected. For example, selecting 'Social sciences' from a list of audiences produces the result list again but this time with only datasets that have 'Social sciences' as Audience in their metadata. <br />Note that only values that are present in the datasets in the result list are shown. If no dataset in the list has an Audience in Social sciences, then the value 'Social sciences' is not shown.</p>
-    <h2>Audience</h2>
-    <p>Note that Audience has a tree structure, so after selecting 'Social sciences' you get a new list of possible values within Social sciences. Selecting 'Social sciences' actually selects datasets that have Audience set to either 'Social sciences' or a more specific audience within Social sciences.</p>
-    <h2>Access</h2>
-    <p>The access policy of datasets (within the result list) may show one or more of the following values:</p>
-    <ul>
-        <li>Open, i.e. unrestricted access for all registered EASY users</li>
-        <li>Restricted -request permission, i.e. access for registered EASY users, but only after depositor permission is granted</li>
-        <li>Restricted -'archaeology' group, i.e. access restricted to registered group members, in this case 'archaeology' group members</li>
-        <li>Other, i.e. the data is not available via EASY (they are either accessible in another way or elsewhere)</li>
-    </ul>
-    <p>Note that the access policy of the dataset may be an approximation of the actual access settings of its files. For example, the dataset may be 'Restricted -request permission', implying that its data requires permission. But some documentation files may be accessible without requiring permission.&#160;&#160;&#160;</p>
-    <h2>Archaeology options</h2>
-    <p>On archaeological datasets (i.e. datasets with Audience: Humanities &gt; Archaeology), additional attributes may be available that are specific to this discipline.</p>
-</article>
 <article><a name='Relation'> </a>
     <h2>Relation</h2>
     <p>Other analogous or digital resources related to the dataset of this research project.<br /><br />Use this field to fill in the titles of publications, reports (internal or otherwise), websites and/or other digital resources (datasets, online publications) that belong to the research project. Add a full title description and, where possible, also fill in the web address (URL) where to find this information.<br />By means of a &#8216;qualifier' it is possible to specify the relation between the dataset deposited here and the other sources referred to. Several examples of qualifiers that often occur:<br /><br />&#8226;	for a literature reference: isReferencedBy;<br />&#8226;	is part of a larger project: isPartOf;<br />&#8226;	replaces a previous deposit: replaces;<br />&#8226;	is replaced by: isReplacedBy.<br /><br /><strong>NB: </strong>If you are filling in the address of a website in this field, take account of the fact that the website may no longer be accessible after some time. It is recommended to use only &#8216;persistent identifiers', URLs or identifiers of digital archives. Use the &#8216;Verify' button to check whether the URL has been written correctly and actually works.<br /><br />The field &#8216;Source' on the second tab can be used to fill in analogous and digital resources that have served as bases for the dataset. <br /><br />Click the [+] button behind a field to add an additional field.</p>
@@ -439,40 +419,6 @@
 </article>
 <article><a name='RightsHolder'> </a>
     <p><strong>Rights holder<br /></strong><br />Owner of the copyrights or other intellectual property rights.<br /><br />In publications, clear reference is always made to the individual or organization that is holder of the copyright. In principle, the right to publish and reproduce a publication, scientific or otherwise, is vested in the author(s) or organization where the author(s) are employed. This copyright may, however, have been transferred to a commercial or non-commercial publisher.<br /><br />Insofar as datasets are concerned, the copyright is usually vested in the creator(s). In most cases, the field &#8216;Creator' is used to fill in the name of the researcher, and the field &#8216;(Copy)right holder' is used to fill in the name of the organization where he/she is employed.<br /><br /><strong>NB:</strong> If you do not fill in the holder of the copyrights or intellectual property rights here, the right will be assigned automatically to the individual or organization referred to &#8216;Creator'. If the publication or the dataset has been reused, the creator(s) must be granted the scientific credits for his/her/their work in the form of clear source references.<br /><br />Click the [+] button behind a field to add an additional field.<br /><br /><strong>Examples<br /></strong><br />Auxilia, Radboud Universiteit Nijmegen<br />Amsterdam University Press, Amsterdam</p>
-</article>
-<article><a name='Search'> </a>
-    <h2>Search scope</h2>
-    <p>EASY can be searched via a general free-text search. It searches in the metadata of all published datasets, but it does not extend into the contents of the uploaded files in datasets. Please use English as well as Dutch words for optimal search results.</p>
-    <h2>Result list</h2>
-    <p>A result list shows datasets that match the chosen criteria, mentioned in the 'Criteria' at the top of the list. Criteria may be removed individually using the 'x' mark beside them. <br />Sort options are also available; clicking toggles the sort order (ascending/descending).<br />On most result lists, refine options are available (at the right-hand side). Use those options to filter within the list (e.g. search within the result list).<br />For more about refining and the meaning of the values of the field 'Access', refer to the help on refine (use the '?' mark next to 'Refine').</p>
-    <h2>Additional options</h2>
-    <p>To search specific fields (and/or any field), use the 'Advanced search' link.<br />To get a list of all published datasets, start with the 'Browse' link.</p>
-    <h2>Search terms</h2>
-    <ul>
-        <li>Please enter one or more terms in the search box. All terms occur in the document.<br />For example: archaeological predictive modelling.</li>
-        <li>Use <strong>English</strong> and <strong>Dutch</strong> terms<br />For example: Enter human rights, but also mensenrechten. Hence: enter human rights or mensenrechten.</li>
-        <li><strong>Quotation marks</strong> can be used to find word combinations.<br />For example: enter “health care”. and you will find records where the words ‘health’ and ‘care' are adjacent.</li>
-        <li>You can search on terms that are specified only partially by using an <strong>asterisk: *</strong><br />For example: econom* also provides records about economical, economics, economic, economy et cetera </li>
-        <li>You can use <strong>question marks: ?</strong> as a subsitute for any letter.<br />For example: sh?p provides all records featuring 'ship' or 'shop';<br />ship???? provides all records where 'ship' is followed by four letters (i.e. 'shipping', 'shipment');<br />ship????? provides all records where ship is followed by five letters (i.e. 'shipwreck', 'shipments').</li>
-    </ul>
-    <p/>
-    <h2>Boolean searching in search box</h2>
-    <p>Search terms can be combined using ‘<strong>AND</strong>’,‘<strong>OR</strong>’ and ‘<strong>NOT</strong>’.</p>
-    <ul>
-        <li>‘<strong>AND</strong><strong></strong>’: both terms should occur, but the order is not important.    </li>
-        <li>‘<strong>OR</strong><strong></strong>’: one of either the terms or both terms should occur (e.g. with synonyms or words in different languages), the order is not important.</li>
-        <li>‘<strong>NOT</strong><strong></strong>’: the first term should occur and the second not.<br /><br />     For example:</li>
-        <ul>
-            <li>youth <strong>AND</strong><strong></strong> child: Records contain both 'youth' and 'child'.</li>
-            <li>youth <strong>OR</strong><strong></strong> child: Records contain either 'youth' or 'child' or both.</li>
-            <li>(youth <strong>OR</strong><strong></strong> child) <strong>AND</strong> language: Records contain either 'youth' or 'child' or both, and also 'language'.</li>
-            <li>youth <strong>NOT</strong><strong></strong> language: Records contain 'youth' and not 'language'     </li>
-            <li>+youth -criminal: Records contain 'youth' and do not contain 'criminal' </li>
-        </ul>
-    </ul>
-    <p/>
-    <h2>More about finding data</h2>
-    <p>Please continue reading more general information about <a class="external" href="http://www.dans.knaw.nl/en/content/data-archive/finding-data" target="_blank">finding data</a>.</p>
 </article>
 <article><a name='Source'> </a>
     <h2>Source</h2>
