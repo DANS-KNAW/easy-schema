@@ -49,12 +49,11 @@ class PackagingSpec extends FlatSpec with Matchers {
     // compare(generatedLines,docLines) shouldBe ""
   }
 
-
   /** @return lines of xs not in ys */
   private def compare(xs: List[String], ys: List[String]): String = {
     val diff = xs.diff(ys)
     if (diff.size <= 1)
-      diff.mkString("", "", "")
+      diff.mkString
     else
       diff.mkString("\n\t", "\n\t", "")
   }

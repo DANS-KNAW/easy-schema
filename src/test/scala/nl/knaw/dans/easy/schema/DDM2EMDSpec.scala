@@ -23,7 +23,7 @@ import org.scalatest.{FlatSpec, Matchers}
 import scala.reflect.io.File
 import scala.xml.{Elem, XML}
 
-class CrosswalkerSpec extends FlatSpec with Matchers {
+class DDM2EMDSpec extends FlatSpec with Matchers {
 
   "crosswalker" should "convert ddm/example1.xml example1 to EMD" in {
     toEMD(File("src/main/assembly/dist/docs/examples/ddm/example1.xml")) shouldBe
