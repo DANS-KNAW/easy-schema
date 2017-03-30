@@ -211,7 +211,7 @@
             <xs:element ref="dc:description" maxOccurs="unbounded"/>
             <xs:element ref="dc:creator" maxOccurs="unbounded"/>
             <xs:element ref="ddm:created"/>
-            <xs:element ref="ddm:available" minOccurs="0"/>
+            <xs:element ref="ddm:available"/>
             <xs:element ref="ddm:audience" maxOccurs="unbounded"/>
             <xs:element ref="ddm:accessRights"/>
         </xs:sequence>
