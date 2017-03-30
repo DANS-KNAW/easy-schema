@@ -52,6 +52,10 @@
         schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx-dai.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/vocab/narcis-type/"
         schemaLocation="http://easy.dans.knaw.nl/schemas/vocab/2015/narcis-type.xsd"/>
+    <xs:import namespace="http://www.den.nl/standaard/166/Archeologisch-Basisregister/"
+        schemaLocation="https://easy.dans.knaw.nl/schemas/vocab/2012/abr-type.xsd"/>
+    <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/gml/"
+        schemaLocation="https://easy.dans.knaw.nl/schemas/dcx/2016/dcx-gml.xsd"/>
     
     <!-- =================================================================================== -->
     <xs:element name="DDM">
@@ -207,10 +211,9 @@
             <xs:element ref="dc:description" maxOccurs="unbounded"/>
             <xs:element ref="dc:creator" maxOccurs="unbounded"/>
             <xs:element ref="ddm:created"/>
-            <xs:element ref="ddm:available" minOccurs="0"/>
+            <xs:element ref="ddm:available"/>
             <xs:element ref="ddm:audience" maxOccurs="unbounded"/>
             <xs:element ref="ddm:accessRights"/>
-            <xs:element ref="ddm:relation" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     
