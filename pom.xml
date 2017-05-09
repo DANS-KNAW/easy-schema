@@ -87,15 +87,6 @@
                         <include>src/main/assembly/**/*.xsd</include>
                         <include>src/main/assembly/**/*.xml</include>
                     </includes>
-                    <!--<includes>-->
-                        <!--<include>src/main/assembly/dist/**/*.xsd</include>-->
-                    <!--</includes>-->
-                    <!--<excludes>-->
-                        <!--<exclude>LICENSE</exclude>-->
-                        <!--<exclude>**/README</exclude>-->
-                        <!--<exclude>%regex[src/main/assembly/dist/*?!(.xsd)]></exclude>-->
-                        <!--<exclude>src/main/assembly/dist/**</exclude>-->
-                    <!--</excludes>-->
                 </configuration>
             </plugin>
             <!-- Avoid build warning about generating empty jar -->
