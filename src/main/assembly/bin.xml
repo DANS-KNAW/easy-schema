@@ -7,7 +7,7 @@
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
 
-            http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
@@ -26,21 +26,21 @@
         the version number (e.g., "easy-schema-1.x-SNAPSHOT"). It should be just "easy-schema" to facilitate the
         usage of this package as a maven resource dependency. (See the easy-app/lib/dmm project for example.)
     -->
-    <baseDirectory>/</baseDirectory>
+    <baseDirectory/>
     <formats>
         <format>tar.gz</format>
     </formats>
     <fileSets>
         <fileSet>
             <directory>${project.basedir}/src/main/assembly/dist</directory>
-            <outputDirectory>/</outputDirectory>
+            <outputDirectory/>
             <excludes>
                 <exclude>version</exclude>
             </excludes>
         </fileSet>
         <fileSet>
             <directory>${project.basedir}/src/main/assembly/dist</directory>
-            <outputDirectory>/</outputDirectory>
+            <outputDirectory/>
             <includes>
                 <include>version</include>
             </includes>
