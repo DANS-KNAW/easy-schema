@@ -27,11 +27,11 @@
     <artifactId>easy-schema</artifactId>
     <name>EASY Schema Definitions</name>
     <description>Collection of metadata schema's used by EASY</description>
-    <version>1.x-SNAPSHOT</version>
+    <version>1.9</version>
     <inceptionYear>2012</inceptionYear>
     <scm>
         <developerConnection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v1.9</tag>
     </scm>
     <dependencies>
         <dependency>
@@ -80,7 +80,7 @@
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <configuration combine.children="append">
-                    <excludes combine.self="override"/>
+                    <excludes combine.self="override" />
                     <includes>
                         <include>pom.xml</include>
                         <include>src/test/scala/**</include>
