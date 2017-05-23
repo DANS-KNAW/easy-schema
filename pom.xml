@@ -33,19 +33,6 @@
         <developerConnection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
         <tag>HEAD</tag>
     </scm>
-    <dependencies>
-        <dependency>
-            <groupId>nl.knaw.dans.easy</groupId>
-            <artifactId>ddm</artifactId>
-            <version>3.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_2.11</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
     <repositories>
         <repository>
             <id>DANS</id>
