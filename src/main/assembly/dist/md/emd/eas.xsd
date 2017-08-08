@@ -231,30 +231,6 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="archivelocation">
-        <xs:restriction base="xs:token">
-            <xs:enumeration value="EASY">
-                <xs:annotation>
-                    <xs:documentation xml:lang="eng-usa">Data and metadata are archived in EASY.</xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="DATAVAULT">
-            <xs:annotation>
-                <xs:documentation xml:lang="eng-usa">Data and metadata are archived in the DATAVAULT.
-                    There may be dissemination copies in EASY.</xs:documentation>
-            </xs:annotation>
-        </xs:enumeration>
-        </xs:restriction>
-    </xs:simpleType>
-
-    <xs:complexType name="archivetype">
-        <xs:annotation>
-            <xs:documentation xml:lang="eng-usa">Denotes the way the dataset is archived.</xs:documentation>
-        </xs:annotation>
-        <xs:attribute name="location" type="eas:archivelocation" default="EASY"/>
-    </xs:complexType>
-
-
     <xs:element name="creator" type="eas:authortype"/>
 
     <xs:element name="contributor" type="eas:authortype"/>
@@ -310,7 +286,6 @@
             <xs:sequence>
                 <xs:element name="metadataformat" type="eas:metadataformattype" default="UNSPECIFIED" maxOccurs="1" minOccurs="0"/>
                 <xs:element name="pakbon-status"  type="eas:pakbonstatustype" default="NOT_IMPORTED" maxOccurs="1" minOccurs="0"/>
-                <xs:element name="archive"  type="eas:archivetype" maxOccurs="1" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
