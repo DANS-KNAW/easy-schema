@@ -251,7 +251,7 @@
         <xs:annotation>
             <xs:documentation xml:lang="eng-usa">Denotes the way the dataset is archived.</xs:documentation>
         </xs:annotation>
-        <xs:attribute name="scheme" type="eas:archivelocation" default="EASY"/>
+        <xs:attribute name="location" type="eas:archivelocation" default="EASY"/>
     </xs:complexType>
 
 
