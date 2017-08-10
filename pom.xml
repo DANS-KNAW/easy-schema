@@ -74,6 +74,7 @@
                         <include>src/main/assembly/**/*.xsd</include>
                         <include>src/main/assembly/**/*.xml</include>
                     </includes>
+                    <excludes>src/main/assembly/dist/extern/*.xsd</excludes>
                 </configuration>
             </plugin>
             <!-- Avoid build warning about generating empty jar -->
