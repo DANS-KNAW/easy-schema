@@ -20,7 +20,11 @@
                 <xs:element ref="sf:presentation"/>
                 <xs:element ref="sf:user"/>
             </xs:choice>
-            <xs:attribute name="target" use="required"/>
+            <xs:attribute name="target" use="required">
+                <xs:annotation>
+                    <xs:documentation>the target MUST NOT end in a slash '/' or subsequent Springfield processes will fail</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
     <xs:element name="collection">
@@ -55,27 +59,7 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
-            <xs:assert
-                    test="
-                    every $video in sf:video
-                        satisfies @play-mode = 'continuous' or $video/@title"/>
-            <xs:assert
-                    test="
-                    every $audio in sf:audio
-                        satisfies @play-mode = 'continuous' or $audio/@title"/>
         </xs:complexType>
-        <xs:unique name="UniqueSrc">
-            <xs:selector xpath="*"/>
-            <xs:field xpath="@src"/>
-        </xs:unique>
-        <xs:unique name="UniqueTarget">
-            <xs:selector xpath="*"/>
-            <xs:field xpath="@target"/>
-        </xs:unique>
-        <xs:unique name="UniqueTitle">
-            <xs:selector xpath="*"/>
-            <xs:field xpath="@title"/>
-        </xs:unique>
     </xs:element>
     <xs:element name="video">
         <xs:annotation>
@@ -90,7 +74,6 @@
                     <xs:documentation>relative path to the video file</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="subtitles"><xs:annotation><xs:documentation>Deprecated. please use the subtitles-tag instead.</xs:documentation></xs:annotation></xs:attribute>
             <xs:attribute name="target" use="required" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>used to determine the order in which the files will be played, by sorting the target-values alpha-numerically</xs:documentation>
@@ -101,18 +84,7 @@
                     <xs:documentation>human readable title of the video file, used when the presentation is in 'menu' mode</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:assert
-                    test="
-                    if (exists(@subtitles)) then
-                        (count(sf:subtitles)) = 0
-                    else
-                        true()"
-            />
         </xs:complexType>
-        <xs:unique name="UniqueSubtitlesLanguage">
-            <xs:selector xpath="sf:subtitles"/>
-            <xs:field xpath="@xml:lang"/>
-        </xs:unique>
     </xs:element>
     <xs:element name="audio">
         <xs:annotation>
@@ -137,6 +109,9 @@
         </xs:complexType>
     </xs:element>
     <xs:element name="subtitles">
+        <xs:annotation>
+            <xs:documentation>in one video-playlist, all video's SHOULD have the same number of subtitles, with the same languages</xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:attribute name="src" use="required"/>
             <xs:attribute ref="xml:lang" use="required"/>
@@ -144,7 +119,7 @@
     </xs:element>
     <xs:element name="user">
         <xs:complexType>
-            <xs:attribute name="name" use="required" type="xs:NCName"/>
+            <xs:attribute name="name" use="required" type="xs:string"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>
