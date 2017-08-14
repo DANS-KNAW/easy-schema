@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:sf="springfield-actions" xmlns:xml="http://www.w3.org/XML/1998/namespace"
+           targetNamespace="springfield-actions" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <xs:annotation>
+        <xs:documentation>2017-08: @play-mode attribuut toegevoegd in de video-playlist met twee mogelijke
+            waarden, continuous en menu. voor elke video/audio in menu-playlist moet een @title attribuut aanwezig zijn. </xs:documentation>
+    </xs:annotation>
+    <xs:element name="actions">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="sf:add"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="add">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="sf:collection"/>
+                <xs:element ref="sf:presentation"/>
+                <xs:element ref="sf:user"/>
+            </xs:choice>
+            <xs:attribute name="target" use="required">
+                <xs:annotation>
+                    <xs:documentation>the target MUST NOT end in a slash '/' or subsequent Springfield processes will fail</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="collection">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="title" type="xs:string"/>
+                <xs:element name="description" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="name" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="presentation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="sf:video-playlist"/>
+            </xs:sequence>
+            <xs:attribute name="name" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="video-playlist">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="sf:video"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="sf:audio"/>
+            </xs:choice>
+            <xs:attribute name="require-ticket" type="xs:boolean" default="true"/>
+            <xs:attribute name="play-mode" default="continuous" use="optional">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="continuous"/>
+                        <xs:enumeration value="menu"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="video">
+        <xs:annotation>
+            <xs:documentation>container of one video file</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="sf:subtitles"/>
+            </xs:sequence>
+            <xs:attribute name="src" use="required">
+                <xs:annotation>
+                    <xs:documentation>relative path to the video file</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="target" use="required" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>used to determine the order in which the files will be played, by sorting the target-values alpha-numerically</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="title">
+                <xs:annotation>
+                    <xs:documentation>human readable title of the video file, used when the presentation is in 'menu' mode</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="audio">
+        <xs:annotation>
+            <xs:documentation>container of one audio file</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="src" use="required">
+                <xs:annotation>
+                    <xs:documentation>relative path to the audio file</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="target" use="required" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>used to determine the order in which the files will be played, by sorting the target-values alpha-numerically</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="title">
+                <xs:annotation>
+                    <xs:documentation>human readable title of the audio file, used when the presentation is in 'menu' mode</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="subtitles">
+        <xs:annotation>
+            <xs:documentation>in one video-playlist, all video's SHOULD have the same number of subtitles, with the same languages</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="src" use="required"/>
+            <xs:attribute ref="xml:lang" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="user">
+        <xs:complexType>
+            <xs:attribute name="name" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
