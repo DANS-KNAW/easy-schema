@@ -67,14 +67,15 @@
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <configuration combine.children="append">
-                    <excludes combine.self="override" />
+                    <excludes combine.self="override">
+                        <exclude>src/main/assembly/dist/extern/*.xsd</exclude>
+                    </excludes>
                     <includes>
                         <include>pom.xml</include>
                         <include>src/test/scala/**</include>
                         <include>src/main/assembly/**/*.xsd</include>
                         <include>src/main/assembly/**/*.xml</include>
                     </includes>
-                    <excludes>src/main/assembly/dist/extern/*.xsd</excludes>
                 </configuration>
             </plugin>
             <!-- Avoid build warning about generating empty jar -->
