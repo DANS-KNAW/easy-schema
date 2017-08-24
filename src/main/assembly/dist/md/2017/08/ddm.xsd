@@ -157,7 +157,7 @@
         <xs:annotation>
             <xs:documentation>
                 This extension on dc:relation can be used in two ways:
-                    1. as a substitutionGroup for ddm:extendedRelation. in that case, use the href-attribute
+                    1. as a substitutionGroup for ddm:linkedRelation. in that case, use the href-attribute
                     2. as a substitutionGroup for ddm:DdmRelationType. in that case, use the scheme attribute
 
                     so either the href or scheme attribute MUST be provided
@@ -165,7 +165,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="ddm:RelationType">
+                <xs:extension base="ddm:LinkedRelationType">
                     <xs:attribute ref="xml:lang" use="prohibited"/>
                     <xs:attribute name="scheme" type="ddm:RelationTypeSchema"/>
                 </xs:extension>
@@ -194,16 +194,16 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:element name="extendedRelation" substitutionGroup="dc:relation" type="ddm:RelationType">
+    <xs:element name="linkedRelation" substitutionGroup="dc:relation" type="ddm:LinkedRelationType">
         <xs:annotation>
             <xs:documentation>
-                all dcterms relation types can also extend this extendedRelation,
+                all dcterms relation types can also extend this linkedRelation,
                 and take a 'href' attribute to include a webresource
             </xs:documentation>
         </xs:annotation>
     </xs:element>
 
-    <xs:complexType name="RelationType">
+    <xs:complexType name="LinkedRelationType">
         <xs:complexContent>
             <xs:extension base="dc:SimpleLiteral">
                 <xs:attribute name="href" type="xs:anyURI">
@@ -217,19 +217,19 @@
         </xs:complexContent>
     </xs:complexType>
 
-    <xs:element name="conformsTo" substitutionGroup="ddm:extendedRelation"/>
-    <xs:element name="hasFormat" substitutionGroup="ddm:extendedRelation"/>
-    <xs:element name="hasPart" substitutionGroup="ddm:extendedRelation"/>
-    <xs:element name="hasVersion" substitutionGroup="ddm:extendedRelation"/>
-    <xs:element name="isFormatOf" substitutionGroup="ddm:extendedRelation"/>
-    <xs:element name="isPartOf" substitutionGroup="ddm:extendedRelation"/>
-    <xs:element name="isReferencedBy" substitutionGroup="ddm:extendedRelation"/>
-    <xs:element name="isReplacedBy" substitutionGroup="ddm:extendedRelation"/>
-    <xs:element name="isRequiredBy" substitutionGroup="ddm:extendedRelation"/>
-    <xs:element name="isVersionOf" substitutionGroup="ddm:extendedRelation"/>
-    <xs:element name="references" substitutionGroup="ddm:extendedRelation"/>
-    <xs:element name="replaces" substitutionGroup="ddm:extendedRelation"/>
-    <xs:element name="requires" substitutionGroup="ddm:extendedRelation"/>
+    <xs:element name="conformsTo" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="hasFormat" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="hasPart" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="hasVersion" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="isFormatOf" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="isPartOf" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="isReferencedBy" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="isReplacedBy" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="isRequiredBy" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="isVersionOf" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="references" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="replaces" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="requires" substitutionGroup="ddm:linkedRelation"/>
 
     <!-- =================================================================================== -->
     <xs:element name="additional-xml">
