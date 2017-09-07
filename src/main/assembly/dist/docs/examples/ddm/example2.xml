@@ -31,8 +31,8 @@
 		 xsi:schemaLocation="
 		 http://easy.dans.knaw.nl/schemas/dcx/ http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd
 		 http://easy.dans.knaw.nl/schemas/dcx/dai/ http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx-dai.xsd
-		 http://easy.dans.knaw.nl/schemas/dcx/gml/ http://easy.dans.knaw.nl/schemas/dcx/2016/dcx-gml.xsd
-		 http://easy.dans.knaw.nl/schemas/md/ddm/ http://easy.dans.knaw.nl/schemas/md/2016/ddm.xsd
+		 http://easy.dans.knaw.nl/schemas/dcx/gml/ http://easy.dans.knaw.nl/schemas/dcx/2017/dcx-gml.xsd
+		 http://easy.dans.knaw.nl/schemas/md/ddm/ http://easy.dans.knaw.nl/schemas/md/2017/09/ddm.xsd
 		 http://easy.dans.knaw.nl/schemas/vocab/narcis-type/ http://easy.dans.knaw.nl/schemas/vocab/2015/narcis-type.xsd
 		 http://www.den.nl/standaard/166/Archeologisch-Basisregister/ http://easy.dans.knaw.nl/schemas/vocab/2012/10/abr-type.xsd
 
@@ -315,6 +315,22 @@
 				</Envelope>
 			</boundedBy>
 		</dcx-gml:spatial>
+        <dcx-gml:spatial>
+            <Polygon xmlns="http://www.opengis.net/gml">
+                <exterior>
+                    <LinearRing>
+                        <description>A triangle between DANS, NWO and the railway station</description>
+                        <posList>52.08110 4.34521 52.08071 4.34422 52.07913 4.34332 52.08110 4.34521</posList>
+                    </LinearRing>
+                </exterior>
+                <interior>
+                    <LinearRing>
+                        <description>hole</description>
+                        <posList>52.080542 4.344215 52.080450 4.344323 52.080357 4.344110 52.080542 4.344215</posList>
+                    </LinearRing>
+                </interior>
+            </Polygon>
+        </dcx-gml:spatial>
 
 		<!-- not copied to EMD, see SWORD v1 packaging document: it has no mapping for dcterms:Box -->
 		<dcterms:spatial xsi:type="dcterms:Box">name=Western Australia; northlimit=-13.5; southlimit=-35.5; westlimit=112.5; eastlimit=129</dcterms:spatial>
