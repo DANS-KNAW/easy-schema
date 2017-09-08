@@ -28,7 +28,7 @@
 
     <groupId>nl.knaw.dans.easy</groupId>
     <artifactId>easy-schema</artifactId>
-    <version>1.13.0-SNAPSHOT</version>
+    <version>1.13.1-SNAPSHOT</version>
 
     <name>EASY Schema Definitions</name>
     <description>Collection of metadata schema's used by EASY</description>
@@ -60,6 +60,16 @@
     </pluginRepositories>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/assembly/dist</directory>
+                <targetPath>${project.build.directory}/version</targetPath>
+                <includes>
+                    <include>version</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.jfrog.buildinfo</groupId>
@@ -129,6 +139,9 @@
                                     <sources>
                                         <source>
                                             <location>src/main/assembly/dist</location>
+                                        </source>
+                                        <source>
+                                            <location>${project.build.directory}/version/version</location>
                                         </source>
                                     </sources>
                                 </mapping>

@@ -60,7 +60,7 @@
     <xs:import namespace="http://www.den.nl/standaard/166/Archeologisch-Basisregister/"
                schemaLocation="http://easy.dans.knaw.nl/schemas/vocab/2012/abr-type.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/gml/"
-               schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2017/dcx-gml.xsd"/>
+               schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2016/dcx-gml.xsd"/>
 
     <!-- =================================================================================== -->
     <xs:element name="DDM">
