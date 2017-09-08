@@ -140,6 +140,9 @@
                                         <source>
                                             <location>src/main/assembly/dist</location>
                                         </source>
+                                        <source>
+                                            <location>${project.build.directory}/version/version</location>
+                                        </source>
                                     </sources>
                                 </mapping>
                             </mappings>
