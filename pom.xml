@@ -27,7 +27,7 @@
 
     <groupId>nl.knaw.dans.easy</groupId>
     <artifactId>easy-schema</artifactId>
-    <version>1.13.2-beta-1</version>
+    <version>1.13.2-SNAPSHOT</version>
 
     <name>EASY Schema Definitions</name>
     <description>Collection of metadata schema's used by EASY</description>
@@ -35,7 +35,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
-        <tag>v1.13.2-beta-1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <repositories>
