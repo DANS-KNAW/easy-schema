@@ -131,6 +131,8 @@
                             </execution>
                         </executions>
                         <configuration>
+                            <defaultUsername>root</defaultUsername>
+                            <defaultGroupname>root</defaultGroupname>
                             <group>Applications/Archiving</group>
                             <mappings combine.self="override">
                                 <mapping>
