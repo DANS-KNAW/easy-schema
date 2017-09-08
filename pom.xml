@@ -59,6 +59,16 @@
     </pluginRepositories>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/assembly/dist</directory>
+                <targetPath>${project.build.directory}/version</targetPath>
+                <includes>
+                    <include>version</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.jfrog.buildinfo</groupId>
@@ -128,6 +138,9 @@
                                     <sources>
                                         <source>
                                             <location>src/main/assembly/dist</location>
+                                        </source>
+                                        <source>
+                                            <location>${project.build.directory}/version/version</location>
                                         </source>
                                     </sources>
                                 </mapping>
