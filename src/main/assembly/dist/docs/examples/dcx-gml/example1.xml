@@ -23,7 +23,7 @@
     xmlns:dcx-gml="http://easy.dans.knaw.nl/schemas/dcx/gml/"
     xsi:schemaLocation=
     "http://easy.dans.knaw.nl/schemas/md/ddm/ http://easy.dans.knaw.nl/schemas/md/2014/09/ddm.xsd
-    http://easy.dans.knaw.nl/schemas/dcx/gml/ http://easy.dans.knaw.nl/schemas/dcx/2017/dcx-gml.xsd">
+    http://easy.dans.knaw.nl/schemas/dcx/gml/ http://easy.dans.knaw.nl/schemas/dcx/2016/dcx-gml.xsd">
     
     <!-- If you view this example in a browser, click 'page source' to see the namespace declarations. -->
     
@@ -89,7 +89,7 @@
 
         <!-- polygon example with interiors (holes) -->
         <dcx-gml:spatial>
-            <Polygon xmlns="http://www.opengis.net/gml">
+            <Polygon xmlns="http://www.opengis.net/gml" srsName="http://www.opengis.net/def/crs/EPSG/0/4326">
                 <exterior>
                     <LinearRing>
                         <description>Gemeente Middelharnis</description>
