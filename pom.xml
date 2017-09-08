@@ -28,7 +28,7 @@
 
     <groupId>nl.knaw.dans.easy</groupId>
     <artifactId>easy-schema</artifactId>
-    <version>1.13.1-SNAPSHOT</version>
+    <version>1.13.2-SNAPSHOT</version>
 
     <name>EASY Schema Definitions</name>
     <description>Collection of metadata schema's used by EASY</description>
