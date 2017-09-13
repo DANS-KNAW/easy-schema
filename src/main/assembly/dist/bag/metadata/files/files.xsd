@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 
     Copyright (C) 2012 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
@@ -40,16 +40,16 @@
     <!-- =================================================================================== -->
     <xs:element name="files">
         <xs:complexType>
-            <xs:all>
+            <xs:sequence>
                 <xs:element name="file" type="f:dcterms-elements" maxOccurs="unbounded">
                     <xs:annotation>
-                        <xs:documentation xml:lang="en">Container for file-specific information with qualified dcterms elements.</xs:documentation>
+                        <xs:documentation xml:lang="en">
+                            Container for file-specific information with qualified dcterms elements.
+                            Every file MUST specify at least a dcterms:format element.
+                        </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-            </xs:all>
-            <xs:assert test="
-                    every $fi in f:file
-                        satisfies $fi/dcterms:format"/>
+            </xs:sequence>
         </xs:complexType>
     </xs:element>
 
