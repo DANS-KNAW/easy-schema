@@ -40,13 +40,16 @@
     <!-- =================================================================================== -->
     <xs:element name="files">
         <xs:complexType>
-            <xs:all>
+            <xs:sequence>
                 <xs:element name="file" type="f:dcterms-elements" maxOccurs="unbounded">
                     <xs:annotation>
-                        <xs:documentation xml:lang="en">Container for file-specific information with qualified dcterms elements.</xs:documentation>
+                        <xs:documentation xml:lang="en">
+                            Container for file-specific information with qualified dcterms elements.
+                            Every file MUST specify at least a dcterms:format element.
+                        </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-            </xs:all>
+            </xs:sequence>
         </xs:complexType>
     </xs:element>
 
