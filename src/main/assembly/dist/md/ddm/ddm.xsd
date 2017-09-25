@@ -95,6 +95,28 @@
                             http://dublincore.org/documents/dcmi-terms/
                             http://dublincore.org/schemas/xmls/qdc/dcterms.xsd
                         </xs:documentation>
+                        <xs:documentation xml:lang="en">
+                            Some xml-elements from the dc and dcterms namespace have possible values for the xsi:type attribute that will be interpreted during ingest.
+                            <p xmlns="http://www.w3.org/1999/xhtml">
+                                <dl>
+                                    <dt>dc:identifier</dt>
+                                    <dd>can have an xsi:type from the "id-type" namespace. This will be interpreted as described there.</dd>
+                                    <dt>dc:language</dt>
+                                    <dd>can have xsi-type="dcterms:ISO639-2". It should then be formatted accordingly: <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php">ISO639-2</a>.
+                                        Both `B` and `T` variants are supported.
+                                    </dd>
+                                    <dt>dc:format</dt>
+                                    <dd>can have an xsi:type="dcterms:IMT" if the value provided is valid according to that vocabulary</dd>
+                                    <dt>dcterms:type</dt>
+                                    <dd>can have an xsi:type="dcterms:DCMIType". Only values from the set {`Collection`, `Dataset`, `Event`, `Image`,
+                                        `InteractiveResource`, `MovingImage`, `PhysicalObject`, `Service`, `Software`, `Sound`, `StillImage`, `Text`} are
+                                        valid.
+                                    </dd>
+                                    <dt>dc:license | dcterms:license</dt>
+                                    <dd>At most one license-node is allowed. If xsi:type="dcterms:URI" is provided, this URI should denote a known license.</dd>
+                                </dl>
+                            </p>
+                        </xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element ref="ddm:additional-xml" minOccurs="0"/>
@@ -207,7 +229,7 @@
 
     <xs:complexType name="LinkedRelationType">
         <xs:complexContent>
-            <xs:extension base="ddm:NonEmptyString"> 
+            <xs:extension base="ddm:NonEmptyString">
                 <xs:attribute name="href" type="xs:anyURI">
                     <xs:annotation>
                         <xs:documentation>
@@ -218,7 +240,7 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    
+
     <xs:complexType name="NonEmptyString">
         <xs:simpleContent>
             <xs:restriction base="dc:SimpleLiteral">
@@ -253,26 +275,6 @@
                 Any valid xml-element will do as a child of this element, as long as its namespace is ##other.
                 If a schemaLocation is provided on the element, validating agents will validate the provided xml against that schema.
                 The element may be complex.
-            </xs:documentation>
-            <xs:documentation xml:lang="en">
-                Some xml-elements from the dc and dcterms namespace have possible values for the xsi:type attribute that will be interpreted during ingest.
-                <p xmlns="http://www.w3.org/1999/xhtml">
-                    <dl>
-                        <dt>dc:identifier</dt>
-                        <dd>can have an xsi:type from the "id-type" namespace. This will be interpreted as described there.</dd>
-                        <dt>dc:language</dt>
-                        <dd>can have xsi-type="dcterms:ISO639-2". It should then be formatted accordingly: <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php">ISO639-2</a>.
-                            Both `B` and `T` variants are supported.
-                        </dd>
-                        <dt>dc:format</dt>
-                        <dd>can have an xsi:type="dcterms:IMT" if the value provided is valid according to that vocabulary</dd>
-                        <dt>dcterms:type</dt>
-                        <dd>can have an xsi:type="dcterms:DCMIType". Only values from the set {`Collection`, `Dataset`, `Event`, `Image`,
-                            `InteractiveResource`, `MovingImage`, `PhysicalObject`, `Service`, `Software`, `Sound`, `StillImage`, `Text`} are
-                            valid.
-                        </dd>
-                    </dl>
-                </p>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
