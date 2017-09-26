@@ -234,15 +234,15 @@
 
     <xs:complexType name="OrganizationalType">
         <xs:annotation>
-            <xs:documentation xml:lang="en"> Group of elements specifying information about an organization.</xs:documentation>
+            <xs:documentation xml:lang="en">Group of elements specifying information about an organization.</xs:documentation>
         </xs:annotation>
         <xs:all>
             <xs:element name="name" minOccurs="1" type="dcx-dai:LingualTokenType">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en"> Designation or appalation of a company or institution. </xs:documentation>
+                    <xs:documentation xml:lang="en">Designation or appalation of a company or institution.</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="role" type="datacite:contributorType" minOccurs="0"> </xs:element>
+            <xs:element name="role" type="datacite:contributorType" minOccurs="0"/>
         </xs:all>
     </xs:complexType>
 
@@ -250,12 +250,12 @@
 
     <xs:complexType name="AffiliationOrganizationalType">
         <xs:annotation>
-            <xs:documentation xml:lang="en"> Group of elements specifying information about an organization. </xs:documentation>
+            <xs:documentation xml:lang="en">Group of elements specifying information about an organization.</xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:element name="name" minOccurs="1" type="dcx-dai:LingualTokenType">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en"> Designation or appalation of a company or institution. </xs:documentation>
+                    <xs:documentation xml:lang="en">Designation or appalation of a company or institution.</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:sequence>
