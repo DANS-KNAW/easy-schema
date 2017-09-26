@@ -229,7 +229,7 @@
 
     <xs:complexType name="LinkedRelationType">
         <xs:complexContent>
-            <xs:extension base="ddm:NonEmptyString">
+            <xs:extension base="ddm:NonEmptyString"> 
                 <xs:attribute name="href" type="xs:anyURI">
                     <xs:annotation>
                         <xs:documentation>
@@ -240,7 +240,7 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-
+    
     <xs:complexType name="NonEmptyString">
         <xs:simpleContent>
             <xs:restriction base="dc:SimpleLiteral">
