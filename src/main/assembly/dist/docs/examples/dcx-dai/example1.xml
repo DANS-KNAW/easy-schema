@@ -22,7 +22,7 @@
     xmlns:dct="http://purl.org/dc/terms/"
     xmlns:dcx-dai="http://easy.dans.knaw.nl/schemas/dcx/dai/"
     xsi:schemaLocation=
-    "http://easy.dans.knaw.nl/schemas/md/ddm/ http://easy.dans.knaw.nl/schemas/md/2014/09/ddm.xsd">
+    "http://easy.dans.knaw.nl/schemas/md/ddm/ http://easy.dans.knaw.nl/schemas/md/2017/09/ddm.xsd">
     
     <!-- If you view this example in a browser, click 'page source' to see the namespace declarations. -->
     
@@ -60,10 +60,19 @@
                 <dcx-dai:insertions>van den</dcx-dai:insertions>
                 <dcx-dai:surname>Aarden</dcx-dai:surname>
                 <dcx-dai:DAI>123456789</dcx-dai:DAI>
+                <dcx-dai:role>RelatedPerson</dcx-dai:role>
                 <dcx-dai:organization>
                     <dcx-dai:name xml:lang="en">Maastricht University</dcx-dai:name>
                 </dcx-dai:organization>
             </dcx-dai:author>
+        </dcx-dai:creatorDetails>
+
+        <!-- Full blown instance of dcx-dai:creatorDetails referencing an organization -->
+        <dcx-dai:creatorDetails>
+            <dcx-dai:organization>
+                <dcx-dai:name>Universiteit van Maastricht</dcx-dai:name>
+                <dcx-dai:role>HostingInstitution</dcx-dai:role>
+            </dcx-dai:organization>
         </dcx-dai:creatorDetails>
         
         <!-- Use dcx-dai:creator if a Digital Author Id is known, but the name of a person 
@@ -101,10 +110,19 @@
                 <dcx-dai:insertions>van den</dcx-dai:insertions>
                 <dcx-dai:surname>Aarden</dcx-dai:surname>
                 <dcx-dai:DAI>123456789</dcx-dai:DAI>
+                <dcx-dai:role>Sponsor</dcx-dai:role>
                 <dcx-dai:organization>
                     <dcx-dai:name xml:lang="en">Maastricht University</dcx-dai:name>
                 </dcx-dai:organization>
             </dcx-dai:author>
+        </dcx-dai:contributorDetails>
+
+        <!-- Full blown instance of dcx-dai:contributorDetails referencing an organization -->
+        <dcx-dai:contributorDetails>
+            <dcx-dai:organization>
+                <dcx-dai:name>Universiteit van Maastricht</dcx-dai:name>
+                <dcx-dai:role>ResearchGroup</dcx-dai:role>
+            </dcx-dai:organization>
         </dcx-dai:contributorDetails>
         
         <!-- Use dcx-dai:contributor if a Digital Author Id is known, but the name of a person 
