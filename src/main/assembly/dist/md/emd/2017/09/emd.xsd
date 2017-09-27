@@ -22,9 +22,9 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:eas="http://easy.dans.knaw.nl/easy/easymetadata/eas/" elementFormDefault="qualified" attributeFormDefault="qualified">
 
-    <xs:import schemaLocation="sdc.xsd" namespace="http://purl.org/dc/elements/1.1/"/>
-    <xs:import schemaLocation="qdc.xsd" namespace="http://purl.org/dc/terms/"/>
-    <xs:import schemaLocation="eas.xsd" namespace="http://easy.dans.knaw.nl/easy/easymetadata/eas/"/>
+    <xs:import schemaLocation="http://easy.dans.knaw.nl/schemas/md/emd/2017/09/sdc.xsd" namespace="http://purl.org/dc/elements/1.1/"/>
+    <xs:import schemaLocation="http://easy.dans.knaw.nl/schemas/md/emd/2017/09/qdc.xsd" namespace="http://purl.org/dc/terms/"/>
+    <xs:import schemaLocation="http://easy.dans.knaw.nl/schemas/md/emd/2017/09/eas.xsd" namespace="http://easy.dans.knaw.nl/easy/easymetadata/eas/"/>
 
     <xs:element name="easymetadata">
         <xs:annotation>
