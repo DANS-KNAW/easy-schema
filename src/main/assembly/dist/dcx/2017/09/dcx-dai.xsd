@@ -20,7 +20,7 @@
            xmlns:dcx="http://easy.dans.knaw.nl/schemas/dcx/"
            xmlns:dcx-dai="http://easy.dans.knaw.nl/schemas/dcx/dai/"
            xmlns:dc="http://purl.org/dc/elements/1.1/"
-           xmlns:datacite="http://datacite.org/schema/kernel-4.0/contributorType"
+           xmlns:datacite="http://datacite.org/schema/kernel-4"
            targetNamespace="http://easy.dans.knaw.nl/schemas/dcx/dai/"
            elementFormDefault="qualified" attributeFormDefault="unqualified">
 
@@ -38,8 +38,8 @@
                schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
     <xs:import namespace="http://purl.org/dc/elements/1.1/"
                schemaLocation="http://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
-    <xs:import namespace="http://datacite.org/schema/kernel-4.0/contributorType"
-               schemaLocation="http://schema.datacite.org/meta/kernel-4.0/include/datacite-contributorType-v4.xsd"/>
+    <xs:import namespace="http://datacite.org/schema/kernel-4"
+               schemaLocation="http://schema.datacite.org/meta/kernel-4/metadata.xsd"/>
 
     <!-- =================================================================================== -->
     <xs:element name="creator" substitutionGroup="dc:creator" type="dcx-dai:DAIType">
@@ -98,18 +98,6 @@
     </xs:element>
 
     <!-- =================================================================================== -->
-    <xs:element name="organization">
-        <xs:annotation>
-            <xs:documentation xml:lang="en">
-                Detailed specification of a company or institution.
-            </xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:group ref="dcx-dai:OrganizationalInformationGroup"/>
-        </xs:complexType>
-    </xs:element>
-
-    <!-- =================================================================================== -->
     <xs:element name="author">
         <xs:annotation>
             <xs:documentation xml:lang="en">
@@ -140,7 +128,7 @@
             </xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:pattern value="(info:eu-repo/dai/nl/){0,1}([0-9]{8,9})([0-9xX]{1})"></xs:pattern>
+            <xs:pattern value="(info:eu-repo/dai/nl/){0,1}([0-9]{8,9})([0-9xX]{1})"/>
         </xs:restriction>
     </xs:simpleType>
 
@@ -157,22 +145,31 @@
     </xs:complexType>
 
     <!-- =================================================================================== -->
-    <xs:group name="OrganizationalInformationGroup">
+    <xs:complexType name="OrganizationalType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">
-                Group of elements specifying information about an organization.
-            </xs:documentation>
+            <xs:documentation xml:lang="en">Group of elements specifying information about an organization.</xs:documentation>
         </xs:annotation>
         <xs:all>
             <xs:element name="name" minOccurs="1" type="dcx-dai:LingualTokenType">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">
-                        Designation or appalation of a company or institution.
-                    </xs:documentation>
+                    <xs:documentation xml:lang="en">Designation or appalation of a company or institution.</xs:documentation>
                 </xs:annotation>
             </xs:element>
+            <xs:element name="role" type="datacite:contributorType" minOccurs="0"/>
         </xs:all>
-    </xs:group>
+    </xs:complexType>
+    <xs:complexType name="AffiliationOrganizationalType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Group of elements specifying information about an organization.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="name" minOccurs="1" type="dcx-dai:LingualTokenType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Designation or appalation of a company or institution.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
 
     <!-- =================================================================================== -->
     <xs:group name="AuthorInformationGroup">
@@ -210,6 +207,11 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
+            <xs:element name="role" type="datacite:contributorType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Use one of the contributor types from datacite-v4</xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element name="DAI" type="dcx-dai:SimpleDaiType" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
@@ -232,34 +234,4 @@
 
     <!-- =================================================================================== -->
 
-    <xs:complexType name="OrganizationalType">
-        <xs:annotation>
-            <xs:documentation xml:lang="en">Group of elements specifying information about an organization.</xs:documentation>
-        </xs:annotation>
-        <xs:all>
-            <xs:element name="name" minOccurs="1" type="dcx-dai:LingualTokenType">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">Designation or appalation of a company or institution.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="role" type="datacite:contributorType" minOccurs="0"/>
-        </xs:all>
-    </xs:complexType>
-
-    <!-- =================================================================================== -->
-
-    <xs:complexType name="AffiliationOrganizationalType">
-        <xs:annotation>
-            <xs:documentation xml:lang="en">Group of elements specifying information about an organization.</xs:documentation>
-        </xs:annotation>
-        <xs:sequence>
-            <xs:element name="name" minOccurs="1" type="dcx-dai:LingualTokenType">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">Designation or appalation of a company or institution.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-
-    <!-- =================================================================================== -->
 </xs:schema>
