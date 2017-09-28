@@ -19,10 +19,13 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     targetNamespace="http://easy.dans.knaw.nl/easy/easymetadata/eas/"
     xmlns:eas="http://easy.dans.knaw.nl/easy/easymetadata/eas/"
+    xmlns:datacite="http://datacite.org/schema/kernel-4"
     xmlns:xml="http://www.w3.org/XML/1998/namespace" elementFormDefault="qualified" attributeFormDefault="qualified">
 
     <xs:import schemaLocation="xml.xsd"
         namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xs:import schemaLocation="datacite.xsd"
+        namespace="http://datacite.org/schema/kernel-4"/>
 
 
     <xs:annotation>
@@ -147,7 +150,7 @@
             <xs:element name="role" minOccurs="0">
                 <xs:complexType>
                     <xs:simpleContent>
-                        <xs:extension base="xs:string">
+                        <xs:extension base="datacite:contributorType">
                             <xs:attribute name="scheme" use="required" fixed="DATACITE" type="xs:token"/>
                         </xs:extension>
                     </xs:simpleContent>
