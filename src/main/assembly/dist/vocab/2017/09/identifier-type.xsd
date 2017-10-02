@@ -115,9 +115,9 @@
         </xs:simpleContent>
     </xs:complexType>
 
-    <xs:complexType name="eDNA">
+    <xs:complexType name="eDNA-project">
         <xs:annotation>
-            <xs:documentation>some number</xs:documentation>
+            <xs:documentation>Internal reference number assigned by DANS to archaeological datasets.</xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
             <xs:restriction base="dc:SimpleLiteral">
