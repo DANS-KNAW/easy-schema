@@ -113,6 +113,12 @@
         <dc:subject>school leavers</dc:subject>
         <dc:subject>labour market</dc:subject>
 
+        <!-- use of a ddm:subject -->
+        <ddm:subject subjectScheme="Art and Architecture Thesaurus"
+                     schemeURI="http://vocab.getty.edu/aat/"
+                     valueURI="http://vocab.getty.edu/aat/300209303"
+                     xml:lang="en">fibulae</ddm:subject>
+
         <ddm:relation href="http://www.example.com">example.com</ddm:relation>
         <ddm:isPartOf href="http://doi.org/journaldoi">journal title</ddm:isPartOf>
 
