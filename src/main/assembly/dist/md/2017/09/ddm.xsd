@@ -181,10 +181,10 @@
         <xs:annotation>
             <xs:documentation>
                 This extension on dc:relation can be used in two ways:
-                    1. as a substitutionGroup for ddm:linkedRelation. in that case, use the href-attribute
-                    2. as a substitutionGroup for ddm:DdmRelationType. in that case, use the scheme attribute
+                1. as a substitutionGroup for ddm:linkedRelation. in that case, use the href-attribute
+                2. as a substitutionGroup for ddm:DdmRelationType. in that case, use the scheme attribute
 
-                    so either the href or scheme attribute MUST be provided
+                so either the href or scheme attribute MUST be provided
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -229,7 +229,7 @@
 
     <xs:complexType name="LinkedRelationType">
         <xs:complexContent>
-            <xs:extension base="ddm:NonEmptyString"> 
+            <xs:extension base="ddm:NonEmptyString">
                 <xs:attribute name="href" type="xs:anyURI">
                     <xs:annotation>
                         <xs:documentation>
@@ -240,7 +240,7 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    
+
     <xs:complexType name="NonEmptyString">
         <xs:simpleContent>
             <xs:restriction base="dc:SimpleLiteral">
@@ -359,6 +359,37 @@
             </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
+
+    <!-- =================================================================================== -->
+    <xs:element name="subject" substitutionGroup="dcterms:subject" type="ddm:SubjectType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Restriction on dcterms:subject. Use this instead of dcterms:subject when the subject-term adheres to a
+                formal subjectScheme.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="SubjectType">
+        <xs:complexContent>
+            <xs:extension base="dc:SimpleLiteral">
+                <xs:attribute name="schemeURI" use="required" type="xs:anyURI">
+                    <xs:annotation>
+                        <xs:documentation>The URI of the scheme. For a SKOS scheme, the ConceptScheme in the 'skos:inScheme' value is expected</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="valueURI" use="required" type="xs:anyURI">
+                    <xs:annotation>
+                        <xs:documentation>The URI of the value given in the text-node.</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="subjectScheme" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>A human readable title of the scheme used.</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
 
     <!-- =================================================================================== -->
 </xs:schema>
