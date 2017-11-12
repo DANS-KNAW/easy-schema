@@ -247,7 +247,6 @@
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
                         <xs:minLength value="1"/>
-                        <xs:pattern value=".*[^\s].*"/>
                     </xs:restriction>
                 </xs:simpleType>
             </xs:restriction>
