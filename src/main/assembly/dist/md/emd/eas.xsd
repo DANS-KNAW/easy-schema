@@ -19,10 +19,13 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     targetNamespace="http://easy.dans.knaw.nl/easy/easymetadata/eas/"
     xmlns:eas="http://easy.dans.knaw.nl/easy/easymetadata/eas/"
+    xmlns:datacite="http://datacite.org/schema/kernel-4"
     xmlns:xml="http://www.w3.org/XML/1998/namespace" elementFormDefault="qualified" attributeFormDefault="qualified">
 
     <xs:import schemaLocation="xml.xsd"
         namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xs:import schemaLocation="http://schema.datacite.org/meta/kernel-4/metadata.xsd"
+        namespace="http://datacite.org/schema/kernel-4"/>
 
 
     <xs:annotation>
@@ -144,6 +147,15 @@
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="role" minOccurs="0">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="datacite:contributorType">
+                            <xs:attribute name="scheme" use="required" fixed="DATACITE" type="xs:token"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
 
@@ -171,12 +183,43 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="polygon">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="eas:polygon-exterior" minOccurs="0"/>
+                <xs:element ref="eas:polygon-interior" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="scheme" type="xs:token"/>
+            <xs:attribute name="schemeId" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="polygon-exterior" type="eas:PolygonPartType"/>
+    <xs:element name="polygon-interior" type="eas:PolygonPartType"/>
+
+    <xs:complexType name="PolygonPartType">
+        <xs:sequence>
+            <xs:element name="place" type="xs:string" minOccurs="0"/>
+            <xs:element ref="eas:polygon-point" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="polygon-point">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="x" type="xs:string"/>
+                <xs:element name="y" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:complexType name="spatialtype">
         <xs:sequence>
             <xs:element name="place" type="eas:basic-stringtype" maxOccurs="1" minOccurs="0"/>
             <xs:choice>
                 <xs:element ref="eas:point" minOccurs="0"/>
                 <xs:element ref="eas:box" minOccurs="0"/>
+                <xs:element ref="eas:polygon" minOccurs="0"/>
             </xs:choice>
         </xs:sequence>
     </xs:complexType>
@@ -230,6 +273,30 @@
             <xs:enumeration value="IMPORTED"/>
         </xs:restriction>
     </xs:simpleType>
+
+    <xs:simpleType name="archivelocation">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="EASY">
+                <xs:annotation>
+                    <xs:documentation xml:lang="eng-usa">Data and metadata are archived in EASY.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DATAVAULT">
+            <xs:annotation>
+                <xs:documentation xml:lang="eng-usa">Data and metadata are archived in the DATAVAULT.
+                    There may be dissemination copies in EASY.</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="archivetype">
+        <xs:annotation>
+            <xs:documentation xml:lang="eng-usa">Denotes the way the dataset is archived.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="location" type="eas:archivelocation" default="EASY"/>
+    </xs:complexType>
+
 
     <xs:element name="creator" type="eas:authortype"/>
 
@@ -286,6 +353,7 @@
             <xs:sequence>
                 <xs:element name="metadataformat" type="eas:metadataformattype" default="UNSPECIFIED" maxOccurs="1" minOccurs="0"/>
                 <xs:element name="pakbon-status"  type="eas:pakbonstatustype" default="NOT_IMPORTED" maxOccurs="1" minOccurs="0"/>
+                <xs:element name="archive"  type="eas:archivetype" maxOccurs="1" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
