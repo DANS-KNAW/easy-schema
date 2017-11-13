@@ -86,6 +86,7 @@
                 <configuration combine.children="append">
                     <excludes combine.self="override">
                         <exclude>src/main/assembly/dist/extern/*.xsd</exclude>
+                        <exclude>src/main/assembly/dist/extern/**/*.xsd</exclude>
                     </excludes>
                     <includes>
                         <include>pom.xml</include>
