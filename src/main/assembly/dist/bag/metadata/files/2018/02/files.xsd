@@ -16,15 +16,27 @@
     limitations under the License.
 
 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:f="http://easy.dans.knaw.nl/schemas/bag/metadata/files/" targetNamespace="http://easy.dans.knaw.nl/schemas/bag/metadata/files/"
-    elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:dcterms="http://purl.org/dc/terms/"
+           xmlns:dc="http://purl.org/dc/elements/1.1/"
+           xmlns:f="http://easy.dans.knaw.nl/schemas/bag/metadata/files/"
+           targetNamespace="http://easy.dans.knaw.nl/schemas/bag/metadata/files/"
+           elementFormDefault="qualified">
 
     <!-- =================================================================================== -->
     <xs:annotation>
-        <xs:documentation xml:lang="en"> This schema specifies a metadata-format for describing files and folders in a SIP. An instance of this
-            metadata-format can be used for ingest of SIPs with the Sword protocol. See also: https://easy.dans.knaw.nl/doc/sword2.html Created
-            2017-05-15 Copyright (c) 2017 DANS-KNAW Last update: 2018 - add additional-metadata element </xs:documentation>
+        <xs:documentation xml:lang="en">
+            This schema specifies a metadata-format for describing files and folders in a SIP.
+            An instance of this metadata-format can be used for ingest of SIPs with the Sword protocol.
+
+            See also: https://easy.dans.knaw.nl/doc/sword2.html
+            Created 2017-05-15
+
+            Last update: 2018-02
+            * Add additional-metadata element
+
+            Copyright (c) 2017 DANS-KNAW
+        </xs:documentation>
     </xs:annotation>
 
     <!-- =================================================================================== -->
@@ -39,7 +51,10 @@
             <xs:sequence>
                 <xs:element name="file" type="f:dcterms-elements" maxOccurs="unbounded">
                     <xs:annotation>
-                        <xs:documentation xml:lang="en">Container for file-specific information with qualified dcterms elements.</xs:documentation>
+                        <xs:documentation xml:lang="en">
+                            Container for file-specific information with qualified dcterms elements.
+                            Every file MUST specify at least a dcterms:format element.
+                        </xs:documentation>
                     </xs:annotation>
                 </xs:element>
             </xs:sequence>
@@ -64,25 +79,38 @@
 
     <xs:element name="accessibleToRights" substitutionGroup="dcterms:accessRights" type="f:EasyFileAccessRightsType">
         <xs:annotation>
-            <xs:documentation xml:lang="en"> Restriction on dcterms:accessRights to indicate the accessRights to the file content. If ommitted, it is
-                implicitly derived from the accessRights in dataset.xml The accessRights to the file-metadata can be specified using visibleToRights.
-                Element value MUST conform to EasyFileAccessRightsType. See also: http://purl.org/dc/terms/accessRights </xs:documentation>
+            <xs:documentation xml:lang="en">
+                Restriction on dcterms:accessRights to indicate the accessRights to the file content.
+                If ommitted, it is implicitly derived from the accessRights in dataset.xml
+                The accessRights to the file-metadata can be specified using visibleToRights.
+
+                Element value MUST conform to EasyFileAccessRightsType.
+
+                See also: http://purl.org/dc/terms/accessRights
+            </xs:documentation>
         </xs:annotation>
     </xs:element>
 
     <xs:element name="visibleToRights" substitutionGroup="dcterms:accessRights" type="f:EasyFileAccessRightsType">
         <xs:annotation>
-            <xs:documentation xml:lang="en"> Restriction on dcterms:accessRights to indicate the accessRights to the file metadata. The accessRights
-                to the file-content can be specified using accessibleToRights. If ommitted, it is implicitly derived from the accessRights in
-                dataset.xml (and will be set to 'ANONYMOUS') Element value MUST conform to EasyFileAccessRightsType. See also:
-                http://purl.org/dc/terms/accessRights </xs:documentation>
+            <xs:documentation xml:lang="en">
+                Restriction on dcterms:accessRights to indicate the accessRights to the file metadata.
+                The accessRights to the file-content can be specified using accessibleToRights.
+                If ommitted, it is implicitly derived from the accessRights in dataset.xml (and will be set to 'ANONYMOUS')
+
+                Element value MUST conform to EasyFileAccessRightsType.
+
+                See also: http://purl.org/dc/terms/accessRights
+            </xs:documentation>
         </xs:annotation>
     </xs:element>
 
     <xs:complexType name="EasyFileAccessRightsType">
         <xs:annotation>
-            <xs:documentation xml:lang="en"> Use on dcterms:accessRights or members of its substitutionGroup. dcterms:accessRights is interpreted as
-                accessibleToRights </xs:documentation>
+            <xs:documentation xml:lang="en">
+                Use on dcterms:accessRights or members of its substitutionGroup.
+                dcterms:accessRights is interpreted as accessibleToRights
+            </xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
             <xs:restriction base="dc:SimpleLiteral">
@@ -98,19 +126,24 @@
         <xs:restriction base="xs:NMTOKEN">
             <xs:enumeration value="ANONYMOUS">
                 <xs:annotation>
-                    <xs:documentation> Unrestricted access. </xs:documentation>
+                    <xs:documentation>
+                        Unrestricted access.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="RESTRICTED_GROUP"/>
             <xs:enumeration value="RESTRICTED_REQUEST"/>
             <xs:enumeration value="KNOWN">
                 <xs:annotation>
-                    <xs:documentation> Registered EASY users. </xs:documentation>
+                    <xs:documentation>
+                        Registered EASY users.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="NONE">
                 <xs:annotation>
-                    <xs:documentation> The data are not available via Easy (they are either accessible in another way or elsewhere).
+                    <xs:documentation>
+                        The data are not available via Easy (they are either accessible in another way or elsewhere).
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
