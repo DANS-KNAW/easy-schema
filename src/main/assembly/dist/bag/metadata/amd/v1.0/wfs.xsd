@@ -17,13 +17,14 @@
 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://easy.dans.knaw.nl/easy/workflow/"
-    xmlns:wfs="http://easy.dans.knaw.nl/easy/workflow/">
+           xmlns:wfs="http://easy.dans.knaw.nl/easy/workflow/">
     <xs:annotation>
-        <xs:documentation>The administrative workflow used by DANS data managers, v1.0 
-Changes from v0.1 to v1.0: 
+        <xs:documentation xml:lang="eng">
+            The administrative workflow used by DANS data managers, v1.0
+            Changes from v0.1 to v1.0:
 
-* Delete: Time spent is no longer recorded
-* Add: revisionID
+            * Delete: Time spent is no longer recorded
+            * Add: revisionID
         </xs:documentation>
     </xs:annotation>
     <xs:element name="workflow">
@@ -32,17 +33,17 @@ Changes from v0.1 to v1.0:
                 <xs:element name="completed" form="unqualified" type="xs:boolean"/>
                 <xs:element name="revisionId" form="unqualified" type="xs:string">
                     <xs:annotation>
-                        <xs:documentation>The identifier of the revision this curation-workflow was performed on.</xs:documentation>
+                        <xs:documentation xml:lang="eng">The identifier of the revision this curation-workflow was performed on.</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="completionTime" form="unqualified" type="xs:dateTime">
                     <xs:annotation>
-                        <xs:documentation>The timestamp of marking this flow-step as completed.</xs:documentation>
+                        <xs:documentation xml:lang="eng">The timestamp of marking this flow-step as completed.</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="doneById" form="unqualified" type="xs:NCName">
                     <xs:annotation>
-                        <xs:documentation>The DANS data manager responsible for this flow-step</xs:documentation>
+                        <xs:documentation xml:lang="eng">The DANS data manager responsible for this flow-step</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="id" form="unqualified" type="wfs:WorkflowStepType"/>
@@ -74,99 +75,90 @@ Changes from v0.1 to v1.0:
     </xs:element>
     <xs:simpleType name="WorkflowStepType">
         <xs:restriction base="xs:NMTOKEN">
-            <xs:enumeration value="dataset">
-                <xs:annotation>
-                    <xs:documentation/>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="dataset.sip">
-                <xs:annotation>
-                    <xs:documentation/>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="dataset.sip.files">
-                <xs:annotation>
-                    <xs:documentation/>
-                </xs:annotation>
-            </xs:enumeration>
+            <xs:annotation>
+                <xs:documentation xml:lang="eng">
+                    The dutch text is identical to the text in the user interface.
+                    This is the actual text the data manager agrees to when ticking this workflow step as 'done'.
+                    DO NOT CHANGE
+                </xs:documentation>
+            </xs:annotation>
+            <xs:enumeration value="dataset"/>
+            <xs:enumeration value="dataset.sip"/>
+            <xs:enumeration value="dataset.sip.files"/>
             <xs:enumeration value="dataset.sip.files.completeness">
                 <xs:annotation>
-                    <xs:documentation>Controle op compleetheid aanlevering</xs:documentation>
+                    <xs:documentation xml:lang="dut">Controle op compleetheid aanlevering</xs:documentation>
+                    <xs:documentation xml:lang="eng">Check completeness of deposit-submission</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="dataset.sip.files.accessibility">
                 <xs:annotation>
-                    <xs:documentation>Controle op toegankelijkheid: leesbaarheid files, preferred formats</xs:documentation>
+                    <xs:documentation xml:lang="dut">Controle op toegankelijkheid: leesbaarheid files, preferred formats</xs:documentation>
+                    <xs:documentation xml:lang="eng">Check accessibility: readability files, preferred formats</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="dataset.sip.files.privacy">
                 <xs:annotation>
-                    <xs:documentation>Controle op privacygevoelige informatie</xs:documentation>
+                    <xs:documentation xml:lang="dut">Controle op privacygevoelige informatie</xs:documentation>
+                    <xs:documentation xml:lang="eng">Check for privacy sensitive information</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="dataset.sip.file-list">
                 <xs:annotation>
-                    <xs:documentation>Controle op bestandenlijst met individuele metadata van bestanden (optional)</xs:documentation>
+                    <xs:documentation xml:lang="dut">Controle op bestandenlijst met individuele metadata van bestanden (optional)</xs:documentation>
+                    <xs:documentation xml:lang="eng">Check filelist with individual metadata on files (optional)</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="dataset.sip.file-list.file-metadata">
-                <xs:annotation>
-                    <xs:documentation/>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="dataset.sip.descriptive-metadata">
-                <xs:annotation>
-                    <xs:documentation/>
-                </xs:annotation>
-            </xs:enumeration>
+            <xs:enumeration value="dataset.sip.file-list.file-metadata"/>
+            <xs:enumeration value="dataset.sip.descriptive-metadata"/>
             <xs:enumeration value="dataset.sip.descriptive-metadata.completeness">
                 <xs:annotation>
-                    <xs:documentation>Controle op compleetheid, correctheid. Aanpassen indien gewenst.</xs:documentation>
+                    <xs:documentation xml:lang="dut">Controle op compleetheid, correctheid. Aanpassen indien gewenst.</xs:documentation>
+                    <xs:documentation xml:lang="eng">Check on completeness, correctness. Edit if so desired</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="dataset.sip.descriptive-metadata.identifiers">
                 <xs:annotation>
-                    <xs:documentation>Identifiers: toewijzen van Intern Project Identifier (IPI) (optional)</xs:documentation>
+                    <xs:documentation xml:lang="dut">Identifiers: toewijzen van Intern Project Identifier (IPI) (optional)</xs:documentation>
+                    <xs:documentation xml:lang="eng">Identifiers: assign Intern Project Identifier (IPI) (optional)</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="dataset.aip">
-                <xs:annotation>
-                    <xs:documentation/>
-                </xs:annotation>
-            </xs:enumeration>
+            <xs:enumeration value="dataset.aip"/>
             <xs:enumeration value="dataset.aip.file-conversion">
                 <xs:annotation>
-                    <xs:documentation>Conversie van bestanden naar preferred formats; upload van "processed" (optional)</xs:documentation>
+                    <xs:documentation xml:lang="dut">Conversie van bestanden naar preferred formats; upload van "processed" (optional)</xs:documentation>
+                    <xs:documentation xml:lang="eng">Convert files to preferred format; upload "processed" files (optional)</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="dataset.aip.file-metadata">
                 <xs:annotation>
-                    <xs:documentation>Toevoegen van individuele file metadata (optional)</xs:documentation>
+                    <xs:documentation xml:lang="dut">Toevoegen van individuele file metadata (optional)</xs:documentation>
+                    <xs:documentation xml:lang="eng">Add individual file metadata (optional)</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="dataset.aip.structure">
                 <xs:annotation>
-                    <xs:documentation>Structureren dataset tot een logisch geheel (optional)</xs:documentation>
+                    <xs:documentation xml:lang="dut">Structureren dataset tot een logisch geheel (optional)</xs:documentation>
+                    <xs:documentation xml:lang="eng">Reorganize deposit into a coherent structure</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="dataset.dip">
-                <xs:annotation>
-                    <xs:documentation/>
-                </xs:annotation>
-            </xs:enumeration>
+            <xs:enumeration value="dataset.dip"/>
             <xs:enumeration value="dataset.dip.publish-files">
                 <xs:annotation>
-                    <xs:documentation>Visibility/Accessibility aanpassen voor (beschikbaar te stellen) bestanden</xs:documentation>
+                    <xs:documentation xml:lang="dut">Visibility/Accessibility aanpassen voor (beschikbaar te stellen) bestanden</xs:documentation>
+                    <xs:documentation xml:lang="eng">Edit visibility/accessibility on files</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="dataset.dip.jumpoff">
                 <xs:annotation>
-                    <xs:documentation>Opmaken/aanpassen jumpoff page (optional)</xs:documentation>
+                    <xs:documentation xml:lang="dut">Opmaken/aanpassen jumpoff page (optional)</xs:documentation>
+                    <xs:documentation xml:lang="eng">Edit jumpoff page (optional)</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="dataset.dip.relations">
                 <xs:annotation>
-                    <xs:documentation>Koppelingen met gerelateerde pagina's aanmaken ("verzamelpagina's") (optional)</xs:documentation>
+                    <xs:documentation xml:lang="dut">Koppelingen met gerelateerde pagina's aanmaken ("verzamelpagina's") (optional)</xs:documentation>
+                    <xs:documentation xml:lang="eng">Add relations (isPartOf) with other datasets ("verzamelpagina", i.e. a set of datasets) (optional)</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>
