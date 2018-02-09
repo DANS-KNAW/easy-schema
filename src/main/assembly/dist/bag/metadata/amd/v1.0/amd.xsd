@@ -17,12 +17,15 @@
 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
-    xmlns:damd="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/" xmlns:wfs="http://easy.dans.knaw.nl/easy/workflow/">
-    <xs:import namespace="http://easy.dans.knaw.nl/easy/workflow/" schemaLocation="wfs.xsd"/>
+           targetNamespace="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
+           xmlns:damd="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
+           xmlns:wfs="http://easy.dans.knaw.nl/easy/workflow/">
+    <xs:import namespace="http://easy.dans.knaw.nl/easy/workflow/" schemaLocation="https://easy.dans.knaw.nl/schemas/bag/metadata/amd/v1.0/wfs.xsd"/>
     <!-- import the versioned schema of wfs -->
     <xs:annotation>
-        <xs:documentation>Schema to describe the administrative metadata for datasets in EASY, v1.0.
+        <xs:documentation>
+            Schema to describe the administrative metadata for datasets in EASY, v1.0.
+
             Changes from v0.1 to v1.0:
             * delete: groupIds in the amd
             * delete: datasetState/previousState no longer recorded, as state is not a property to be archived
@@ -35,12 +38,15 @@
             <xs:sequence>
                 <xs:element name="depositorId" form="unqualified" type="xs:NCName" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
-                        <xs:documentation>The username of the depositor. This is NOT the creator of the dataset. </xs:documentation>
+                        <xs:documentation>The username of the depositor. This is NOT the creator of the dataset.</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="permissionGranterId" form="unqualified" type="xs:NCName" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
-                        <xs:documentation>The username of the owner of the dataset. This is the agent to be notified with questions regarding this dataset or its permissions. </xs:documentation>
+                        <xs:documentation>
+                            The username of the owner of the dataset. This is the agent to be notified with questions regarding
+                            this dataset or its permissions.
+                        </xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element ref="damd:workflowData"/>
