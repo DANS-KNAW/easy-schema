@@ -17,9 +17,10 @@
 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
-    xmlns:damd="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/" xmlns:wfs="http://easy.dans.knaw.nl/easy/workflow/">
-    <xs:import namespace="http://easy.dans.knaw.nl/easy/workflow/" schemaLocation="wfs.xsd"/>
+           targetNamespace="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
+           xmlns:damd="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
+           xmlns:wfs="http://easy.dans.knaw.nl/easy/workflow/">
+    <xs:import namespace="http://easy.dans.knaw.nl/easy/workflow/" schemaLocation="https://easy.dans.knaw.nl/schemas/bag/metadata/amd/v0.1/wfs.xsd"/>
     <!-- import the versioned schema of wfs -->
     <xs:annotation>
         <xs:documentation>Schema to describe the administrative metadata for datasets in EASY, version 0.1.</xs:documentation>
@@ -31,7 +32,7 @@
                 <xs:element name="previousState" form="unqualified" type="damd:DatasetStateType"/>
                 <xs:element name="depositorId" form="unqualified" type="xs:NCName" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
-                        <xs:documentation>The username of the depositor. This is NOT the creator of the dataset. </xs:documentation>
+                        <xs:documentation>The username of the depositor. This is NOT the creator of the dataset.</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="stateChangeDates" form="unqualified" minOccurs="0">
@@ -99,7 +100,7 @@
             </xs:enumeration>
             <xs:enumeration value="DELETED">
                 <xs:annotation>
-                    <xs:documentation> The dataset is not available. Only superuser can retrieve the dataset. </xs:documentation>
+                    <xs:documentation>The dataset is not available. Only superuser can retrieve the dataset.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>
