@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2012 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:dcterms="http://purl.org/dc/terms/"
+           xmlns:dc="http://purl.org/dc/elements/1.1/"
+           xmlns:f="http://easy.dans.knaw.nl/schemas/bag/metadata/files/"
+           targetNamespace="http://easy.dans.knaw.nl/schemas/bag/metadata/files/"
+           elementFormDefault="qualified">
+
+    <!-- =================================================================================== -->
+    <xs:annotation>
+        <xs:documentation xml:lang="en">
+            This schema specifies a metadata-format for describing files and folders in a SIP.
+            An instance of this metadata-format can be used for ingest of SIPs with the Sword protocol.
+
+            See also: https://easy.dans.knaw.nl/doc/sword2.html
+            Created 2017-05-15
+
+            Last update: 2018-02
+            * Add additional-metadata element
+
+            Copyright (c) 2017 DANS-KNAW
+        </xs:documentation>
+    </xs:annotation>
+
+    <!-- =================================================================================== -->
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <!-- this schema location is temporary, since the original (http://dublincore.org/schemas/xmls/qdc/dc.xsd) is not available -->
+    <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="http://dublincore.org/schemas/xmls/qdc/2008/02/11/dc.xsd"/>
+    <!-- this schema location is temporary, since the original (http://dublincore.org/schemas/xmls/qdc/dcterms.xsd) is not available -->
+    <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="http://dublincore.org/schemas/xmls/qdc/2008/02/11/dcterms.xsd"/>
+    <!-- =================================================================================== -->
+    <xs:element name="files">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="file" type="f:dcterms-elements" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Container for file-specific information with qualified dcterms elements.
+                            Every file MUST specify at least a dcterms:format element.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="dcterms-elements">
+        <xs:sequence>
+            <xs:group ref="dcterms:elementsAndRefinementsGroup"/>
+            <xs:element ref="f:additional-metadata" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="filepath" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:element name="additional-metadata">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="accessibleToRights" substitutionGroup="dcterms:accessRights" type="f:EasyFileAccessRightsType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Restriction on dcterms:accessRights to indicate the accessRights to the file content.
+                If ommitted, it is implicitly derived from the accessRights in dataset.xml
+                The accessRights to the file-metadata can be specified using visibleToRights.
+
+                Element value MUST conform to EasyFileAccessRightsType.
+
+                See also: http://purl.org/dc/terms/accessRights
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="visibleToRights" substitutionGroup="dcterms:accessRights" type="f:EasyFileAccessRightsType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Restriction on dcterms:accessRights to indicate the accessRights to the file metadata.
+                The accessRights to the file-content can be specified using accessibleToRights.
+                If ommitted, it is implicitly derived from the accessRights in dataset.xml (and will be set to 'ANONYMOUS')
+
+                Element value MUST conform to EasyFileAccessRightsType.
+
+                See also: http://purl.org/dc/terms/accessRights
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="EasyFileAccessRightsType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Use on dcterms:accessRights or members of its substitutionGroup.
+                dcterms:accessRights is interpreted as accessibleToRights
+            </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="f:EasyFileAccessCategoryType"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="EasyFileAccessCategoryType">
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="ANONYMOUS">
+                <xs:annotation>
+                    <xs:documentation>
+                        Unrestricted access.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESTRICTED_GROUP"/>
+            <xs:enumeration value="RESTRICTED_REQUEST"/>
+            <xs:enumeration value="KNOWN">
+                <xs:annotation>
+                    <xs:documentation>
+                        Registered EASY users.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="NONE">
+                <xs:annotation>
+                    <xs:documentation>
+                        The data are not available via Easy (they are either accessible in another way or elsewhere).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
