@@ -24,6 +24,7 @@
            xmlns:dcx-dai="http://easy.dans.knaw.nl/schemas/dcx/dai/"
            xmlns:narcis="http://easy.dans.knaw.nl/schemas/vocab/narcis-type/"
            xmlns:id-type="http://easy.dans.knaw.nl/schemas/vocab/identifier-type/"
+           xmlns:datacite="http://datacite.org/schema/kernel-4"
            targetNamespace="http://easy.dans.knaw.nl/schemas/md/ddm/"
            elementFormDefault="qualified" attributeFormDefault="unqualified">
 
@@ -41,6 +42,7 @@
 
             Change from 2018/02
             * Use 2018/03/dcx-dai.xsd
+            * Introduce ddm:description and add descriptionType-attribute
 
             Copyright (c) 2012 DANS-KNAW
         </xs:documentation>
@@ -67,7 +69,8 @@
                schemaLocation="http://easy.dans.knaw.nl/schemas/vocab/2012/abr-type.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/gml/"
                schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2016/dcx-gml.xsd"/>
-
+    <xs:import namespace="http://datacite.org/schema/kernel-4"
+               schemaLocation="http://schema.datacite.org/meta/kernel-4/metadata.xsd"/>
     <!-- =================================================================================== -->
     <xs:element name="DDM">
         <xs:annotation>
@@ -127,6 +130,20 @@
                 </xs:element>
                 <xs:element ref="ddm:additional-xml" minOccurs="0"/>
             </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- =================================================================================== -->
+    <xs:element name="description" substitutionGroup="dc:description">
+        <xs:annotation>
+            <xs:documentation xml:lang="en"> </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="ddm:NonEmptyString">
+                    <xs:attribute name="descriptionType" type="datacite:descriptionType"/>
+                </xs:extension>
+            </xs:complexContent>
         </xs:complexType>
     </xs:element>
 
