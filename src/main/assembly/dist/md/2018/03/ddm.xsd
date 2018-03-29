@@ -136,12 +136,16 @@
     <!-- =================================================================================== -->
     <xs:element name="description" substitutionGroup="dc:description">
         <xs:annotation>
-            <xs:documentation xml:lang="en"> </xs:documentation>
+            <xs:documentation xml:lang="en">
+                Restriction on dcterms:description.
+                If used, the descriptionType attribute is required.
+                Use dcterms:description otherwise.
+            </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:complexContent>
                 <xs:extension base="ddm:NonEmptyString">
-                    <xs:attribute name="descriptionType" type="datacite:descriptionType"/>
+                    <xs:attribute name="descriptionType" type="datacite:descriptionType" use="required"/>
                 </xs:extension>
             </xs:complexContent>
         </xs:complexType>
@@ -418,7 +422,7 @@
     <xs:element name="temporal" substitutionGroup="dcterms:temporal" type="ddm:SubjectType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Restriction on dcterms:temporal. Use this instead of dcterms:temporal when the temporal-term adheres to a
-            formal scheme.
+                formal scheme.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
