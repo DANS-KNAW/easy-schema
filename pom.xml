@@ -21,8 +21,8 @@
 
     <parent>
         <groupId>nl.knaw.dans.shared</groupId>
-        <artifactId>dans-scala-prototype</artifactId>
-        <version>1.64</version>
+        <artifactId>dans-java-project</artifactId>
+        <version>2.0.1</version>
     </parent>
 
     <groupId>nl.knaw.dans.easy</groupId>
@@ -59,24 +59,7 @@
     </pluginRepositories>
 
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/assembly/dist</directory>
-                <targetPath>${project.build.directory}/version</targetPath>
-                <includes>
-                    <include>version</include>
-                </includes>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
         <plugins>
-            <plugin>
-                <groupId>org.jfrog.buildinfo</groupId>
-                <artifactId>artifactory-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-release-plugin</artifactId>
-            </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
             </plugin>
@@ -123,17 +106,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>rpm-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>attach-rpm</id>
-                                <goals>
-                                    <goal>attached-rpm</goal>
-                                </goals>
-                            </execution>
-                        </executions>
                         <configuration>
-                            <defaultUsername>root</defaultUsername>
-                            <defaultGroupname>root</defaultGroupname>
                             <group>Applications/Archiving</group>
                             <mappings combine.self="override">
                                 <mapping>
