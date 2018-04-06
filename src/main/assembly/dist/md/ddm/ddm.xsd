@@ -35,12 +35,12 @@
             This schema specifies a metadata-format for describing datasets.
             An instance of this metadata-format can be used for ingest of datasets with the Sword protocol.
 
-            Created 2017-03-28
+            Created 2018-03-28
 
-            Change from 2017/09
+            Change since 2017/09
             * Add ddm:temporal
 
-            Change from 2018/02
+            Change since 2018/02
             * Use 2018/03/dcx-dai.xsd
             * Introduce ddm:description and add descriptionType-attribute
 

@@ -28,6 +28,9 @@
     <xs:annotation>
         <xs:documentation xml:lang="en">Enabling the use of Digital Author ID (DAI).
             Structuring name and affiliation of dc:creator and dc:contributor.
+
+            Changes since 2017/09
+            * Add support for ISNI, ORCID
         </xs:documentation>
     </xs:annotation>
 
