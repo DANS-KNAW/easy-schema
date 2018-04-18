@@ -31,15 +31,15 @@
             Created 2018-04-18
 
             Change since 2017/09
-            * none
+            * point to 2018/04 schemes for sdc, qdc and eas
 
             Copyright (c) 2012 DANS-KNAW
         </xs:documentation>
     </xs:annotation>
 
-    <xs:import schemaLocation="http://easy.dans.knaw.nl/schemas/md/emd/sdc.xsd" namespace="http://purl.org/dc/elements/1.1/"/>
-    <xs:import schemaLocation="http://easy.dans.knaw.nl/schemas/md/emd/qdc.xsd" namespace="http://purl.org/dc/terms/"/>
-    <xs:import schemaLocation="http://easy.dans.knaw.nl/schemas/md/emd/eas.xsd" namespace="http://easy.dans.knaw.nl/easy/easymetadata/eas/"/>
+    <xs:import schemaLocation="http://easy.dans.knaw.nl/schemas/md/emd/2018/04/sdc.xsd" namespace="http://purl.org/dc/elements/1.1/"/>
+    <xs:import schemaLocation="http://easy.dans.knaw.nl/schemas/md/emd/2018/04/qdc.xsd" namespace="http://purl.org/dc/terms/"/>
+    <xs:import schemaLocation="http://easy.dans.knaw.nl/schemas/md/emd/2018/04/eas.xsd" namespace="http://easy.dans.knaw.nl/easy/easymetadata/eas/"/>
 
     <xs:element name="easymetadata">
         <xs:annotation>

@@ -321,7 +321,7 @@
                 <exterior>
                     <LinearRing>
                         <description>main triangle</description>
-                        <posList>52.08110 4.34521 52.08071 4.34422 52.07913 4.34332 52.08110 4.34521</posList>
+                        <posList>52.080741 4.345312 52.08071 4.34422 52.07913 4.34332 52.080741 4.345312</posList>
                     </LinearRing>
                 </exterior>
                 <interior>
@@ -337,6 +337,38 @@
                     </LinearRing>
                 </interior>
             </Polygon>
+        </dcx-gml:spatial>
+        <dcx-gml:spatial>
+            <MultiSurface xmlns="http://www.opengis.net/gml">
+                <name>A random surface with multiple polygons</name>
+                <surfaceMember>
+                    <Polygon srsName="http://www.opengis.net/def/crs/EPSG/0/4326">
+                        <description>A triangle between DANS, NWO and the railway station</description>
+                        <exterior>
+                            <LinearRing>
+                                <description>main triangle</description>
+                                <posList>52.080741 4.345312 52.08071 4.34422 52.07913 4.34332 52.080741 4.345312</posList>
+                            </LinearRing>
+                        </exterior>
+                        <interior>
+                            <LinearRing>
+                                <description>hole in the triangle</description>
+                                <posList>52.080542 4.344215 52.080450 4.344323 52.080357 4.344110 52.080542 4.344215</posList>
+                            </LinearRing>
+                        </interior>
+                    </Polygon>
+                </surfaceMember>
+                <surfaceMember>
+                    <Polygon srsName="http://www.opengis.net/def/crs/EPSG/0/4326">
+                        <description>A triangle between BP, De Horeca Academie en the railway station</description>
+                        <exterior>
+                            <LinearRing>
+                                <posList>52.079710 4.342778 52.080518 4.343342 52.07913 4.34332 52.079710 4.342778</posList>
+                            </LinearRing>
+                        </exterior>
+                    </Polygon>
+                </surfaceMember>
+            </MultiSurface>
         </dcx-gml:spatial>
 
 		<!-- not copied to EMD, see SWORD v1 packaging document: it has no mapping for dcterms:Box -->
