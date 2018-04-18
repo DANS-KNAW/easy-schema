@@ -32,6 +32,7 @@
 
             Change since 2017/09
             * spatialtype can now have multiple eas:polygon instances, such that multi-polygons are supported.
+            * add an extra eas:place inside the eas:polygon
 
             Copyright (c) 2012 DANS-KNAW
         </xs:documentation>
@@ -201,6 +202,7 @@
     <xs:element name="polygon">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="place" type="xs:string" minOccurs="0"/>
                 <xs:element ref="eas:polygon-exterior" minOccurs="0"/>
                 <xs:element ref="eas:polygon-interior" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
