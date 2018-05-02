@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dcterms="http://purl.org/dc/terms/" elementFormDefault="qualified"
-    xmlns:pd="http://easy.dans.knaw.nl/schemas/bag/metadata/agreements/"
+    xmlns:am="http://easy.dans.knaw.nl/schemas/bag/metadata/agreements/"
     targetNamespace="http://easy.dans.knaw.nl/schemas/bag/metadata/agreements/">
     <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="http://dublincore.org/schemas/xmls/qdc/2008/02/11/dcterms.xsd"/>
     <xs:annotation>
@@ -15,8 +15,8 @@
     <xs:element name="agreements">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="pd:licenseAgreement"/>
-                <xs:element ref="pd:personalDataStatement"/>
+                <xs:element ref="am:licenseAgreement"/>
+                <xs:element ref="am:personalDataStatement"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -32,9 +32,9 @@
     <xs:element name="personalDataStatement">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="pd:signerId"/>
-                <xs:element ref="pd:dateSigned"/>
-                <xs:element ref="pd:containsPrivacySensitiveData"/>
+                <xs:element ref="am:signerId"/>
+                <xs:element ref="am:dateSigned"/>
+                <xs:element ref="am:containsPrivacySensitiveData"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
