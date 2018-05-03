@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dcterms="http://purl.org/dc/terms/" elementFormDefault="qualified"
+    xmlns:am="http://easy.dans.knaw.nl/schemas/bag/metadata/agreements/"
+    targetNamespace="http://easy.dans.knaw.nl/schemas/bag/metadata/agreements/">
+    <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="http://dublincore.org/schemas/xmls/qdc/2008/02/11/dcterms.xsd"/>
+    <xs:annotation>
+        <xs:documentation>
+            This schema specifies a metadata-format for describing the agreements between the depositor and DANS-KNAW.
+            It contains information about the existence of personal data within the deposit as well.
+
+            Created 2018-05-01
+
+            Copyright (c) 2018 DANS-KNAW </xs:documentation>
+    </xs:annotation>
+    <xs:element name="agreements">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="am:licenseAgreement"/>
+                <xs:element ref="am:personalDataStatement"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="licenseAgreement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="depositorId" type="xs:NCName"/>
+                <xs:element ref="dcterms:dateAccepted"/>
+                <xs:element name="licenseAgreementAccepted" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="personalDataStatement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="am:signerId"/>
+                <xs:element ref="am:dateSigned"/>
+                <xs:element ref="am:containsPrivacySensitiveData"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="signerId" type="xs:NCName">
+        <xs:annotation>
+            <xs:documentation>The name of the signer of the Agreement. Usually the depositor of the SIP</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="dateSigned" substitutionGroup="dcterms:dateSubmitted"/>
+    <xs:element name="containsPrivacySensitiveData" type="xs:boolean"/>
+</xs:schema>
