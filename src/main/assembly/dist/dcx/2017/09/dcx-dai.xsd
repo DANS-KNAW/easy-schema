@@ -39,7 +39,7 @@
     <xs:import namespace="http://purl.org/dc/elements/1.1/"
                schemaLocation="http://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
     <xs:import namespace="http://datacite.org/schema/kernel-4"
-               schemaLocation="http://schema.datacite.org/meta/kernel-4/metadata.xsd"/>
+               schemaLocation="https://schema.datacite.org/meta/kernel-4/metadata.xsd"/>
 
     <!-- =================================================================================== -->
     <xs:element name="creator" substitutionGroup="dc:creator" type="dcx-dai:DAIType">
