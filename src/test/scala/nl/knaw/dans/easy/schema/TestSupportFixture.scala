@@ -59,7 +59,6 @@ trait TestSupportFixture extends FlatSpec with Matchers {
   }
 
   def getLocationVersion(xml: Elem): Option[String] = {
-    println(schemaDir)
     xml.attributes.asAttrMap.get("xsi:schemaLocation").map(
       _.split(" ").last.replace("https://easy.dans.knaw.nl/schemas/", "")
     )

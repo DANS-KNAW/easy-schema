@@ -15,17 +15,23 @@
  */
 package nl.knaw.dans.easy.schema
 
+import better.files.File
+
 import scala.util.Success
 
 class DdmSpec extends TestSupportFixture {
   override val schemaDir: String = lastXSD()
 
-  "example1" should "succeed" in {
+  "example1" should "be schema valid" in {
     val xml = loadExample("ddm/example1.xml")
     validate(xml) shouldBe a[Success[_]]
     getLocationVersion(xml) should matchPattern {
       case Some(s: String) if schemaDir.endsWith(s) =>
     }
+  }
+
+  "unqualified" should "equal last XSD" in {
+    File(schemaDir).contentAsString shouldBe (distDir / "md/ddm/ddm.xsd").contentAsString
   }
 
   override def lastXSD(dir: String = "md"): String = {
