@@ -27,6 +27,9 @@
 
             Created 2018-05-01
 
+            Changes since 2018/02
+            * renamed licenseAgreement into depositAgreement
+
             Copyright (c) 2018 DANS-KNAW </xs:documentation>
     </xs:annotation>
     <xs:element name="agreements">
