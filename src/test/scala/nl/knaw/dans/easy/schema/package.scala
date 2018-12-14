@@ -62,7 +62,7 @@ package object schema {
      * the parser joins attributes on a single line and
      * reduces the number of comment lines.
      */
-    def printBeakingLine(xml: Elem): Try[T] = {
+    def printBreakingLine(xml: Elem): Try[T] = {
       triedT match {
         case Failure(e: SAXParseException) =>
           Try(xml.toString.split("\n")(e.getLineNumber - 1))

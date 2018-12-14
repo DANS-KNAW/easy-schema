@@ -23,6 +23,6 @@ class DcxDaiSpec extends SchemaValidationFixture {
   "example1" should "be schema valid" in {
     val xml = loadExampleXml("dcx-dai/example1.xml")
     locationsIn(xml) should contain(schemaFile.relativeToDistDir)
-    validate(xml).printBeakingLine(xml) shouldBe a[Success[_]]
+    validate(xml).printBreakingLine(xml) shouldBe a[Success[_]]
   }
 }

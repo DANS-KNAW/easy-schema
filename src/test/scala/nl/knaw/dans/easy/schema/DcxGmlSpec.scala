@@ -24,6 +24,6 @@ class DcxGmlSpec extends SchemaValidationFixture {
     val xml = loadExampleXml("dcx-gml/example1.xml")
     locationsIn(xml) should contain(schemaFile.relativeToDistDir)
     locationsIn(xml) should contain(lastLocalXsd("dcx", "dcx-gml.xsd").relativeToDistDir)
-    validate(xml).printBeakingLine(xml) shouldBe a[Success[_]]
+    validate(xml).printBreakingLine(xml) shouldBe a[Success[_]]
   }
 }

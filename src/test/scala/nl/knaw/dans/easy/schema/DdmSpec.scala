@@ -23,12 +23,12 @@ class DdmSpec extends SchemaValidationFixture {
   "example1" should "be schema valid" in {
     val xml = loadExampleXml("ddm/example1.xml")
     locationsIn(xml) should contain(schemaFile.relativeToDistDir)
-    validate(xml).printBeakingLine(xml) shouldBe a[Success[_]]
+    validate(xml).printBreakingLine(xml) shouldBe a[Success[_]]
   }
 
   "example2" should "be schema valid" in {
     val xml = loadExampleXml("ddm/example2.xml")
     locationsIn(xml) should contain(schemaFile.relativeToDistDir)
-    validate(xml).printBeakingLine(xml) shouldBe a[Success[_]]
+    validate(xml).printBreakingLine(xml) shouldBe a[Success[_]]
   }
 }

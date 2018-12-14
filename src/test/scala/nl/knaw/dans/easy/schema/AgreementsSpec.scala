@@ -41,6 +41,6 @@ class AgreementsSpec extends SchemaValidationFixture {
       </agreements>
 
     locationsIn(xml) should contain(schemaFile.relativeToDistDir)
-    validate(xml).printBeakingLine(xml) shouldBe a[Success[_]]
+    validate(xml).printBreakingLine(xml) shouldBe a[Success[_]]
   }
 }
