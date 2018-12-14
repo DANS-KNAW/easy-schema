@@ -22,8 +22,8 @@
          xmlns:dct="http://purl.org/dc/terms/"
          xmlns:abr="http://www.den.nl/standaard/166/Archeologisch-Basisregister/"
          xsi:schemaLocation=
-                 "http://easy.dans.knaw.nl/schemas/md/ddm/ http://easy.dans.knaw.nl/schemas/md/2014/09/ddm.xsd
-    http://www.den.nl/standaard/166/Archeologisch-Basisregister/ http://easy.dans.knaw.nl/schemas/vocab/2012/10/abr-type.xsd">
+                 "http://easy.dans.knaw.nl/schemas/md/ddm/ https://easy.dans.knaw.nl/schemas/md/2018/05/ddm.xsd
+    http://www.den.nl/standaard/166/Archeologisch-Basisregister/ https://easy.dans.knaw.nl/schemas/vocab/2012/10/abr-type.xsd">
 
     <!-- If you view this example in a browser, click 'page source' to see the namespace declarations. -->
 
@@ -51,6 +51,7 @@
         <dc:description></dc:description>
         <dc:creator></dc:creator>
         <ddm:created>2012</ddm:created>
+        <ddm:available>2013-05</ddm:available>
         <ddm:audience>D24000</ddm:audience>
         <ddm:accessRights>OPEN_ACCESS_FOR_REGISTERED_USERS</ddm:accessRights>
     </ddm:profile>

@@ -19,7 +19,7 @@ import scala.util.Success
 
 class AgreementsSpec extends TestSupportFixture {
 
-  override val schemaDir: String = lastXSD("bag/metadata/agreements")
+  override val schemaFile: String = lastLocalXsd("bag/metadata/agreements", "agreements.xsd")
 
   "validator" should "succeed" in {
     val xml =
@@ -39,9 +39,8 @@ class AgreementsSpec extends TestSupportFixture {
           <containsPrivacySensitiveData>false</containsPrivacySensitiveData>
         </personalDataStatement>
       </agreements>
-    validate(xml) shouldBe a[Success[_]]
-    getLocationVersion(xml) should matchPattern {
-      case Some(s: String) if schemaDir.endsWith(s) =>
-    }
+
+    locationsIn(xml) should contain(schemaFile.relativeToDistDir)
+    validate(xml).printBeakingLine(xml) shouldBe a[Success[_]]
   }
 }

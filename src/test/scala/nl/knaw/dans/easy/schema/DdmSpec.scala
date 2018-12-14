@@ -20,26 +20,21 @@ import better.files.File
 import scala.util.Success
 
 class DdmSpec extends TestSupportFixture {
-  override val schemaDir: String = lastXSD()
+  override val schemaFile: String = lastLocalXsd("md", "ddm.xsd")
 
   "example1" should "be schema valid" in {
-    val xml = loadExample("ddm/example1.xml")
-    validate(xml) shouldBe a[Success[_]]
-    getLocationVersion(xml) should matchPattern {
-      case Some(s: String) if schemaDir.endsWith(s) =>
-    }
+    val xml = loadExampleXml("ddm/example1.xml")
+    locationsIn(xml) should contain(schemaFile.relativeToDistDir)
+    validate(xml).printBeakingLine(xml) shouldBe a[Success[_]]
   }
 
-  "unqualified" should "equal last XSD" in {
-    File(schemaDir).contentAsString shouldBe (distDir / "md/ddm/ddm.xsd").contentAsString
+  "example2" should "be schema valid" in {
+    val xml = loadExampleXml("ddm/example2.xml")
+    locationsIn(xml) should contain(schemaFile.relativeToDistDir)
+    validate(xml).printBeakingLine(xml) shouldBe a[Success[_]]
   }
 
-  override def lastXSD(dir: String = "md"): String = {
-    (distDir / dir)
-      .walk()
-      .filter(_.name == "ddm.xsd")
-      .filterNot(_.toString.endsWith("/ddm/ddm.xsd")) // skip copy of last version
-      .maxBy(_.toString())
-      .toString()
+  "unqualified" should "equal last local XSD" in {
+    File(schemaFile).contentAsString shouldBe (distDir / "md/ddm/ddm.xsd").contentAsString
   }
 }

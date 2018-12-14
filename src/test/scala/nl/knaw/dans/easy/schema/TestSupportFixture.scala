@@ -15,52 +15,39 @@
  */
 package nl.knaw.dans.easy.schema
 
-import better.files.{ File, StringOps }
+import java.net.UnknownHostException
+
+import better.files.StringOps
 import javax.xml.XMLConstants
 import javax.xml.transform.Source
 import javax.xml.transform.stream.StreamSource
 import javax.xml.validation.{ Schema, SchemaFactory }
 import org.scalatest.{ FlatSpec, Matchers }
 
-import scala.util.Try
-import scala.xml.{ Elem, PrettyPrinter, XML }
+import scala.util.{ Failure, Try }
+import scala.xml.{ Elem, SAXParseException }
 
 trait TestSupportFixture extends FlatSpec with Matchers {
 
-  val schemaDir: String
-  val distDir = File("src/main/assembly/dist")
-  private lazy val triedSchema: Try[Schema] = loadSchema(schemaDir)
-
-  def lastXSD(dir: String): String = {
-    (distDir / dir)
-      .walk()
-      .maxBy(_.toString())
-      .toString()
-  }
-
-  private def loadSchema(location: String): Try[Schema] = Try {
+  val schemaFile: String
+  private lazy val triedSchema: Try[Schema] = Try {
+    // lazy for two reasons:
+    // - schemaFile is set by concrete class
+    // - postpone loading until actually validating
     SchemaFactory
       .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI)
-      .newSchema(Array(new StreamSource(location)).toArray[Source])
+      .newSchema(Array(new StreamSource(schemaFile)).toArray[Source])
   }
-
-  // pretty provides friendly trouble shooting for complex XML's
-  private val prettyPrinter: PrettyPrinter = new scala.xml.PrettyPrinter(1024, 2)
 
   def validate(elem: Elem): Try[Unit] = {
-    assume(triedSchema.isSuccess)
-    val prettyXML = prettyPrinter.format(elem)
-    val source = new StreamSource(prettyXML.inputStream)
+    assume(triedSchema match {
+      case Failure(e: SAXParseException) if e.getCause != null && e.getCause.isInstanceOf[UnknownHostException] => false
+      case Failure(e: SAXParseException) if e.getMessage.contains("Cannot resolve") =>
+        println("Probably an offline third party schema: " + e.getMessage)
+        false
+      case _ => true
+    })
+    val source = new StreamSource(elem.toString().inputStream)
     triedSchema.map(_.newValidator().validate(source))
-  }
-
-  def loadExample(example: String): Elem = {
-    XML.loadFile((File("src/main/assembly/dist/docs/examples/") / example).toString())
-  }
-
-  def getLocationVersion(xml: Elem): Option[String] = {
-    xml.attributes.asAttrMap.get("xsi:schemaLocation").map(
-      _.split(" ").last.replace("https://easy.dans.knaw.nl/schemas/", "")
-    )
   }
 }
