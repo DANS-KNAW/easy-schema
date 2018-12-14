@@ -38,7 +38,7 @@ package object schema {
   }
 
   def loadExampleXml(example: String): Elem = {
-    XML.loadFile((File("src/main/assembly/dist/docs/examples/") / example).toString())
+    XML.loadFile((distDir / "docs/examples/" / example).toString())
   }
 
   def locationsIn(xml: Elem): Seq[String] = {
