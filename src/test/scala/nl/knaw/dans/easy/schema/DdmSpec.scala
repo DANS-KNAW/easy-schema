@@ -15,8 +15,6 @@
  */
 package nl.knaw.dans.easy.schema
 
-import better.files.File
-
 import scala.util.Success
 
 class DdmSpec extends SchemaValidationFixture {
