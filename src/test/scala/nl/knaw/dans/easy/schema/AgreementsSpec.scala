@@ -17,7 +17,7 @@ package nl.knaw.dans.easy.schema
 
 import scala.util.Success
 
-class AgreementsSpec extends TestSupportFixture {
+class AgreementsSpec extends SchemaValidationFixture {
 
   override val schemaFile: String = lastLocalXsd("bag/metadata/agreements", "agreements.xsd")
 

@@ -19,7 +19,7 @@ import better.files.File
 
 import scala.util.Success
 
-class DdmSpec extends TestSupportFixture {
+class DdmSpec extends SchemaValidationFixture {
   override val schemaFile: String = lastLocalXsd("md", "ddm.xsd")
 
   "example1" should "be schema valid" in {
@@ -32,9 +32,5 @@ class DdmSpec extends TestSupportFixture {
     val xml = loadExampleXml("ddm/example2.xml")
     locationsIn(xml) should contain(schemaFile.relativeToDistDir)
     validate(xml).printBeakingLine(xml) shouldBe a[Success[_]]
-  }
-
-  "unqualified" should "equal last local XSD" in {
-    File(schemaFile).contentAsString shouldBe (distDir / "md/ddm/ddm.xsd").contentAsString
   }
 }

@@ -2,7 +2,7 @@ package nl.knaw.dans.easy.schema
 
 import scala.util.Success
 
-class AbrTypeSpec extends TestSupportFixture {
+class AbrTypeSpec extends SchemaValidationFixture {
   override val schemaFile: String = lastLocalXsd("md", "ddm.xsd")
 
   "example1" should "be schema valid" in  {

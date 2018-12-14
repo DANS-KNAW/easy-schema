@@ -27,7 +27,7 @@ import org.scalatest.{ FlatSpec, Matchers }
 import scala.util.{ Failure, Try }
 import scala.xml.{ Elem, SAXParseException }
 
-trait TestSupportFixture extends FlatSpec with Matchers {
+trait SchemaValidationFixture extends FlatSpec with Matchers {
 
   val schemaFile: String
   private lazy val triedSchema: Try[Schema] = Try {
