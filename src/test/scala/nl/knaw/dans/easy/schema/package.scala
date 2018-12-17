@@ -42,12 +42,12 @@ package object schema {
   }
 
   def locationsIn(xml: Elem): Seq[String] = {
-    xml.attributes.asAttrMap.get("xsi:schemaLocation").map(
-      _.split(" ")
-        .filter(_.endsWith(".xsd"))
-        .map(_.replace("https://easy.dans.knaw.nl/schemas", ""))
-        .toSeq
-    ).getOrElse(Seq.empty)
+    Seq(
+      "xsi:schemaLocation",
+      "xsi:noNamespaceSchemaLocation"
+    ).flatMap(xml.attributes.asAttrMap.getOrElse(_, "").split(" +"))
+      .filter(_.endsWith(".xsd"))
+      .map(_.replace("https://easy.dans.knaw.nl/schemas", ""))
   }
 
   implicit class StringExtensions[T](val s: String) extends AnyVal {
@@ -57,9 +57,10 @@ package object schema {
   implicit class TryExtensions[T](val triedT: Try[T]) extends AnyVal {
 
     /**
-     * Print the troubled line of an XML if it did not not validate.
+     * Print the XML line that breaks the test.
+     *
      * The line numbers don't match the source because
-     * the parser joins attributes on a single line and
+     * xml.toString joins attributes on a single line and
      * reduces the number of comment lines.
      */
     def printBreakingLine(xml: Elem): Try[T] = {

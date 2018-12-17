@@ -18,7 +18,7 @@ package nl.knaw.dans.easy.schema
 import better.files.File
 import org.scalatest.{ FlatSpec, Matchers }
 
-class UnqualifiedSpec extends FlatSpec with Matchers {
+class DefaultsSpec extends FlatSpec with Matchers {
   "last local XSD" should "equal unqualified ddm.xsd" in {
     File(lastLocalXsd("md", "ddm.xsd"))
       .contentAsString shouldBe (distDir / "md/ddm/ddm.xsd").contentAsString
@@ -48,5 +48,9 @@ class UnqualifiedSpec extends FlatSpec with Matchers {
   it should "equal unqualified bag/files.xsd" in {
     File(lastLocalXsd("bag/metadata/files", "files.xsd"))
       .contentAsString shouldBe (distDir / "bag/metadata/files/files.xsd").contentAsString
+  }
+  it should "equal unqualified bag/metadata/agreements.xsd" in {
+    File(lastLocalXsd("bag/metadata/agreements", "agreements.xsd"))
+      .contentAsString shouldBe (distDir / "bag/metadata/agreements/agreements.xsd").contentAsString
   }
 }
