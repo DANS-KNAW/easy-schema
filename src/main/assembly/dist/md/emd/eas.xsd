@@ -153,6 +153,16 @@
             <xs:element name="prefix" type="xs:string" minOccurs="0"/>
             <xs:element name="surname" type="xs:string" minOccurs="0"/>
             <xs:element name="organization" type="xs:string" minOccurs="0"/>
+            <xs:element name="organizationId" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute ref="eas:identification-system"/>
+                            <xs:attribute name="scheme" type="xs:string" default="ISNI"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="entityId" minOccurs="0">
                 <xs:complexType>
                     <xs:simpleContent>
