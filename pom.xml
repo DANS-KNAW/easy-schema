@@ -21,8 +21,8 @@
 
     <parent>
         <groupId>nl.knaw.dans.shared</groupId>
-        <artifactId>dans-java-project</artifactId>
-        <version>2.1.0</version>
+        <artifactId>dans-scala-project</artifactId>
+        <version>2.2.4</version>
     </parent>
 
     <groupId>nl.knaw.dans.easy</groupId>
@@ -34,9 +34,22 @@
     <inceptionYear>2012</inceptionYear>
 
     <scm>
-        <developerConnection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
+        <developerConnection>scm:git:https://github.com/DANS-KNAW/easy-schema</developerConnection>
         <tag>HEAD</tag>
     </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.pathikrit</groupId>
+            <artifactId>better-files_2.12</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_2.12</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <repositories>
         <repository>
@@ -70,6 +83,14 @@
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
             </plugin>

@@ -19,7 +19,7 @@
 <dmo-collection xmlns:dc="http://purl.org/dc/elements/1.1/"
  xmlns:oai-dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:noNamespaceSchemaLocation="http://easy.dans.knaw.nl/schemas/collections/dmo-collection.xsd" 
+ xsi:noNamespaceSchemaLocation="https://easy.dans.knaw.nl/schemas/collections/dmo-collection.xsd"
  dmo-namespace="easy-collection" id="root">
     <label>label0</label>
     <short-name>short-name0</short-name>

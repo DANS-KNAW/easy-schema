@@ -17,26 +17,25 @@
 
 -->
 <ddm:DDM xmlns:ddm="http://easy.dans.knaw.nl/schemas/md/ddm/"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:dct="http://purl.org/dc/terms/"
-    xmlns:dcx-dai="http://easy.dans.knaw.nl/schemas/dcx/dai/"
-    xsi:schemaLocation=
-    "http://easy.dans.knaw.nl/schemas/md/ddm/ http://easy.dans.knaw.nl/schemas/md/2017/09/ddm.xsd">
-    
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dcx-dai="http://easy.dans.knaw.nl/schemas/dcx/dai/"
+         xsi:schemaLocation=
+                 "http://easy.dans.knaw.nl/schemas/md/ddm/ https://easy.dans.knaw.nl/schemas/md/2018/05/ddm.xsd">
+
     <!-- If you view this example in a browser, click 'page source' to see the namespace declarations. -->
-    
+
     <!-- 
     Example of the use of the dcx-dai extension. The dcx-dai extension enables the use of
     Digital Author Id (DAI) on substitutions of the elements dc:creator and dc:contributor.
     It can also be used for structuring name and affiliation of entities referenced by these elements.
     Mark declaration of namespace in the root element (see above).
     -->
-    
+
     <ddm:profile>
         <dc:title></dc:title>
         <dc:description></dc:description>
-        
+
         <!-- Minimal instance of dcx-dai:creatorDetails referencing an author -->
         <dcx-dai:creatorDetails>
             <dcx-dai:author>
@@ -44,14 +43,14 @@
                 <dcx-dai:surname>Jansen</dcx-dai:surname>
             </dcx-dai:author>
         </dcx-dai:creatorDetails>
-        
+
         <!-- Minimal instance of dcx-dai:creatorDetails referencing an organization -->
         <dcx-dai:creatorDetails>
             <dcx-dai:organization>
                 <dcx-dai:name>Universiteit van Maastricht</dcx-dai:name>
             </dcx-dai:organization>
         </dcx-dai:creatorDetails>
-        
+
         <!-- Full blown instance of dcx-dai:creatorDetails referencing an author -->
         <dcx-dai:creatorDetails>
             <dcx-dai:author>
@@ -74,19 +73,20 @@
                 <dcx-dai:role>HostingInstitution</dcx-dai:role>
             </dcx-dai:organization>
         </dcx-dai:creatorDetails>
-        
+
         <!-- Use dcx-dai:creator if a Digital Author Id is known, but the name of a person 
         cannot be supplied in detailed form. -->
         <dcx-dai:creator DAI="123456789">Tilburg, Prof. P.H. van</dcx-dai:creator>
-        
+
         <!--  -->
         <ddm:created>2012</ddm:created>
+        <ddm:available>2013-05</ddm:available>
         <ddm:audience>D24000</ddm:audience>
         <ddm:accessRights>OPEN_ACCESS_FOR_REGISTERED_USERS</ddm:accessRights>
     </ddm:profile>
-    
+
     <ddm:dcmiMetadata>
-        
+
         <!-- Minimal instance of dcx-dai:contributorDetails referencing an author -->
         <dcx-dai:contributorDetails>
             <dcx-dai:author>
@@ -94,14 +94,14 @@
                 <dcx-dai:surname>Jansen</dcx-dai:surname>
             </dcx-dai:author>
         </dcx-dai:contributorDetails>
-        
+
         <!-- Minimal instance of dcx-dai:contributorDetails referencing an organization -->
         <dcx-dai:contributorDetails>
             <dcx-dai:organization>
                 <dcx-dai:name>Universiteit van Maastricht</dcx-dai:name>
             </dcx-dai:organization>
         </dcx-dai:contributorDetails>
-        
+
         <!-- Full blown instance of dcx-dai:contributorDetails referencing an author -->
         <dcx-dai:contributorDetails>
             <dcx-dai:author>
@@ -124,11 +124,11 @@
                 <dcx-dai:role>ResearchGroup</dcx-dai:role>
             </dcx-dai:organization>
         </dcx-dai:contributorDetails>
-        
+
         <!-- Use dcx-dai:contributor if a Digital Author Id is known, but the name of a person 
         cannot be supplied in detailed form. -->
         <dcx-dai:contributor DAI="123456789">Tilburg, Prof. P.H. van</dcx-dai:contributor>
-        
+
         <!--  -->
     </ddm:dcmiMetadata>
 
