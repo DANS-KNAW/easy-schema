@@ -26,7 +26,8 @@
             This schema specifies a metadata-format for describing datasets in the internal format of EASY.
             An instance of this metadata-format is used for internal storage in Fedora.
 
-            Created 2018-04-18
+            Created 2012-11
+            Last modified 2019-01-11
 
             Change since 2017/09
             * none

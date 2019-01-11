@@ -35,11 +35,22 @@
             This schema specifies a metadata-format for describing datasets.
             An instance of this metadata-format can be used for ingest of datasets with the Sword protocol.
 
-            Created 2019-01-11
+            Created 2012-10-26
+            Last modified 2019-01-11
 
             Change since 2018/05
             * Upgrade to 2019/01/dcx-dai
-            * Upgrade to datacite v.1
+            * Upgrade to datacite v4.1
+
+            Change since 2018/03
+            * Add attribute 'group' in ddm:accessRights
+
+            Change since 2018/02
+            * Use 2018/03/dcx-dai.xsd
+            * Introduce ddm:description and add descriptionType-attribute
+
+            Change since 2017/09
+            * Add ddm:temporal
 
             Copyright (c) 2012 DANS-KNAW
         </xs:documentation>

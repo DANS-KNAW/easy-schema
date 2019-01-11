@@ -28,7 +28,8 @@
             This schema specifies a metadata-format for describing datasets in the internal format of EASY.
             An instance of this metadata-format is used for internal storage in Fedora.
 
-            Created 2019-01-11
+            Created 2012-11
+            Last modified 2019-01-11
 
             Change since 2018/04
             * Add element organizationId to the authorType
@@ -39,7 +40,7 @@
 
     <xs:import schemaLocation="xml.xsd"
         namespace="http://www.w3.org/XML/1998/namespace"/>
-    <xs:import schemaLocation="http://schema.datacite.org/meta/kernel-4/metadata.xsd"
+    <xs:import schemaLocation="https://schema.datacite.org/meta/kernel-4/metadata.xsd"
         namespace="http://datacite.org/schema/kernel-4"/>
 
 

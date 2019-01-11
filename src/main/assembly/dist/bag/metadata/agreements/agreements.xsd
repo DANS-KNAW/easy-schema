@@ -25,11 +25,15 @@
             This schema specifies a metadata-format for describing the agreements between the depositor and DANS-KNAW.
             It contains information about the existence of personal data within the deposit as well.
 
-            Created 2019-01-11
+            Created 2018-05-01
+            Last modified 2019-01-11
 
             Changes since 2018/12
             * Add optional 'notAvailable' to the 'personalDataStatement' and 'depositAgreement'
             * Add attribute 'easy-account' to the SignerType
+
+            Changes since 2018/05
+            * renamed licenseAgreement into depositAgreement
 
             Copyright (c) 2018 DANS-KNAW </xs:documentation>
     </xs:annotation>
