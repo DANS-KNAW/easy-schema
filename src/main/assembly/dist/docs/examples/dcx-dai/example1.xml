@@ -22,7 +22,8 @@
     xmlns:dct="http://purl.org/dc/terms/"
     xmlns:dcx-dai="http://easy.dans.knaw.nl/schemas/dcx/dai/"
     xsi:schemaLocation=
-    "http://easy.dans.knaw.nl/schemas/md/ddm/ http://easy.dans.knaw.nl/schemas/md/2017/09/ddm.xsd">
+    "http://easy.dans.knaw.nl/schemas/md/ddm/ http://easy.dans.knaw.nl/schemas/md/2017/09/ddm.xsd
+    http://easy.dans.knaw.nl/schemas/dcx/dai/ http://easy.dans.knaw.nl/schemas/dcx/2019/01/dcx-dai.xsd">
     
     <!-- If you view this example in a browser, click 'page source' to see the namespace declarations. -->
     
@@ -63,6 +64,7 @@
                 <dcx-dai:role>RelatedPerson</dcx-dai:role>
                 <dcx-dai:organization>
                     <dcx-dai:name xml:lang="en">Maastricht University</dcx-dai:name>
+                    <dcx-dai:identifier scheme="ISNI" value="ISNI:000000012281955X">http://isni.org/isni/000000012281955X</dcx-dai:identifier>
                 </dcx-dai:organization>
             </dcx-dai:author>
         </dcx-dai:creatorDetails>
