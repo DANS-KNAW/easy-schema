@@ -25,11 +25,10 @@
             This schema specifies a metadata-format for describing the agreements between the depositor and DANS-KNAW.
             It contains information about the existence of personal data within the deposit as well.
 
-            Created 2019-01-11
+            Created 2018-05-01
 
-            Changes since 2018/12
-            * Add optional 'notAvailable' to the 'personalDataStatement' and 'depositAgreement'
-            * Add attribute 'easy-account' to the SignerType
+            Changes since 2018/02
+            * renamed licenseAgreement into depositAgreement
 
             Copyright (c) 2018 DANS-KNAW </xs:documentation>
     </xs:annotation>
@@ -43,37 +42,27 @@
     </xs:element>
     <xs:element name="depositAgreement">
         <xs:complexType>
-            <xs:choice>
-                <xs:sequence>
-                    <xs:element name="signerId" type="am:SignerType"/>
-                    <xs:element ref="dcterms:dateAccepted"/>
-                    <xs:element name="depositAgreementAccepted" type="xs:boolean"/>
-                </xs:sequence>
-                <xs:element ref="am:notAvailable"/>
-            </xs:choice>
+            <xs:sequence>
+                <xs:element name="depositorId" type="xs:NCName"/>
+                <xs:element ref="dcterms:dateAccepted"/>
+                <xs:element name="depositAgreementAccepted" type="xs:boolean"/>
+            </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="personalDataStatement">
         <xs:complexType>
-            <xs:choice>
-                <xs:sequence>
-                    <xs:element name="signerId" type="am:SignerType"/>
-                    <xs:element ref="am:dateSigned"/>
-                    <xs:element ref="am:containsPrivacySensitiveData"/>
-                </xs:sequence>
-                <xs:element ref="am:notAvailable"/>
-            </xs:choice>
+            <xs:sequence>
+                <xs:element ref="am:signerId"/>
+                <xs:element ref="am:dateSigned"/>
+                <xs:element ref="am:containsPrivacySensitiveData"/>
+            </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="notAvailable" type="xs:string">
-        <xs:annotation><xs:documentation>Describe why this agreement is not available for this dataset</xs:documentation></xs:annotation>
-    </xs:element>
-    <xs:complexType name="SignerType" mixed="true">
+    <xs:element name="signerId" type="xs:NCName">
         <xs:annotation>
-            <xs:documentation>The full name of the signer of the Agreement. If this is the depositor of the dataset, the account-name MUST be mentioned in the @easy-account.</xs:documentation>
+            <xs:documentation>The name of the signer of the Agreement. Usually the depositor of the SIP</xs:documentation>
         </xs:annotation>
-        <xs:attribute name="easy-account" use="optional"/>
-    </xs:complexType>
+    </xs:element>
     <xs:element name="dateSigned" substitutionGroup="dcterms:dateSubmitted"/>
     <xs:element name="containsPrivacySensitiveData" type="xs:boolean"/>
 </xs:schema>
