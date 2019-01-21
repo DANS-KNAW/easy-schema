@@ -32,8 +32,7 @@
             - Nanotechnology
             - Greenhouse gas mitigation
             - Biobased economy
-            label changed for D21300 from 'Biochemie' to 'Biochemie, moleculaire biologie'
-
+            Change 'D21300: Biochemistry' to 'Biochemistry, molecular biology'
         </xs:documentation>
     </xs:annotation>
 
@@ -656,7 +655,7 @@
             </xs:enumeration>
             <xs:enumeration value="D21300">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">Biochemistry</xs:documentation>
+                    <xs:documentation xml:lang="en">Biochemistry, molecular biology</xs:documentation>
                     <xs:appinfo>easy-discipline:150</xs:appinfo>
                 </xs:annotation>
             </xs:enumeration>
