@@ -26,7 +26,8 @@
             An instance of this metadata-format can be used for ingest of SIPs with the Sword protocol.
 
             See also: https://easy.dans.knaw.nl/doc/sword2.html
-            Created 2018-04-11
+            Created 2017-05-15
+            Last modified 2018-04-11
 
             Changes since 2018/02, to make it compatible with the DANS-bagit-profile, v0
             * File-element is no longer required
