@@ -21,7 +21,7 @@
     <comment>
         Created 2016-08-08 based on https://easy.dans.knaw.nl/schemas/vocab/2015/narcis-type.xsd
         Change since 2016:
-        EASY-1840: Change label of D21300 to 'Biochemistry, molecular biology' from 'Biochemistry'
+            EASY-1840: Change label of D21300 to 'Biochemistry, molecular biology' from 'Biochemistry'
     </comment>
     <entry key="easy-discipline:57">Science and technology</entry>
     <entry key="easy-discipline:58">Mathematics</entry>
@@ -243,7 +243,7 @@
     <entry key="easy-discipline:46">Development studies</entry>
     <entry key="easy-discipline:222">Migration, ethnic relations and multiculturalism</entry>
     <entry key="easy-discipline:25">Environmental studies</entry>
-    <entry key="easy-discipline:223">Nanotechnology</entry>
-    <entry key="easy-discipline:224">Greenhouse gas mitigation</entry>
-    <entry key="easy-discipline:225">Biobased economy</entry>
+    <entry key="easy-discipline:224">Nanotechnology</entry>
+    <entry key="easy-discipline:225">Greenhouse gas mitigation</entry>
+    <entry key="easy-discipline:226">Biobased economy</entry>
 </properties>
