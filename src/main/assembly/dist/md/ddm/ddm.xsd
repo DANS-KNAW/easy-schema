@@ -263,7 +263,7 @@
         </xs:simpleContent>
     </xs:complexType>
 
-<xs:element name="relation" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="relation" substitutionGroup="ddm:linkedRelation"/>
     <xs:element name="conformsTo" substitutionGroup="ddm:linkedRelation"/>
     <xs:element name="hasFormat" substitutionGroup="ddm:linkedRelation"/>
     <xs:element name="hasPart" substitutionGroup="ddm:linkedRelation"/>
