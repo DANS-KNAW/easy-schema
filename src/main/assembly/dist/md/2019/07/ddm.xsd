@@ -248,7 +248,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="scheme" type="ddm:LinkedRelationTypeSchema" use="required" default="URL"/>
+                <xs:attribute name="scheme" type="ddm:LinkedRelationTypeSchema" use="required"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
