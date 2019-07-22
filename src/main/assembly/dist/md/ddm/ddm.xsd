@@ -26,7 +26,6 @@
            xmlns:id-type="http://easy.dans.knaw.nl/schemas/vocab/identifier-type/"
            xmlns:datacite="http://datacite.org/schema/kernel-4"
            targetNamespace="http://easy.dans.knaw.nl/schemas/md/ddm/"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <!-- =================================================================================== -->
@@ -248,7 +247,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="scheme" type="ddm:LinkedRelationTypeSchema" use="required" default="URL"/>
+                <xs:attribute name="scheme" type="ddm:LinkedRelationTypeSchema" use="optional" default="URL"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
