@@ -43,9 +43,9 @@
     <xs:import namespace="http://www.w3.org/XML/1998/namespace"
         schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
     <xs:import namespace="http://purl.org/dc/elements/1.1/"
-        schemaLocation="http://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
+        schemaLocation="https://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
     <xs:import namespace="http://purl.org/dc/terms/"
-        schemaLocation="http://dublincore.org/schemas/xmls/qdc/dcterms.xsd"/>
+        schemaLocation="https://dublincore.org/schemas/xmls/qdc/dcterms.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/" 
         schemaLocation="http://eof12.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
     <xs:import namespace="info:eu-repo/dai"
@@ -87,8 +87,8 @@
                             Where applicable the use of the xml:lang attribute is recommended.
                             Where applicable the use of the xsi:type attribute is recommended.
                             See also:
-                            http://dublincore.org/documents/dcmi-terms/
-                            http://dublincore.org/schemas/xmls/qdc/dcterms.xsd
+                            https://dublincore.org/documents/dcmi-terms/
+                            https://dublincore.org/schemas/xmls/qdc/dcterms.xsd
                             http://eof12.dans.knaw.nl/schemas/vocab/2012/10/abr-type.xsd (Archeologisch-Basisregister)
                             http://eof12.dans.knaw.nl/schemas/vocab/2012/10/narcis-type.xsd (NARCIS classification)
                         </xs:documentation>
