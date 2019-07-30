@@ -19,7 +19,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dcterms="http://purl.org/dc/terms/" elementFormDefault="qualified"
            xmlns:am="http://easy.dans.knaw.nl/schemas/bag/metadata/agreements/"
            targetNamespace="http://easy.dans.knaw.nl/schemas/bag/metadata/agreements/">
-    <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="http://dublincore.org/schemas/xmls/qdc/2008/02/11/dcterms.xsd"/>
+    <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="https://dublincore.org/schemas/xmls/qdc/2008/02/11/dcterms.xsd"/>
     <xs:annotation>
         <xs:documentation>
             This schema specifies a metadata-format for describing the agreements between the depositor and DANS-KNAW.
