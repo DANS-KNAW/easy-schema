@@ -47,7 +47,7 @@
     <xs:element name="title">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-title"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-title"
                     xml:lang="eng-usa">
                     <definition>A name given to the resource.</definition>
                 </xs:documentation>
@@ -61,7 +61,7 @@
     <xs:element name="creator">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-creator"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-creator"
                     xml:lang="eng-usa">
                     <definition>An entity primarily responsible for making the resource.</definition>
                     <comment> Examples of a Creator include a person, an organization, or a service.
@@ -78,7 +78,7 @@
     <xs:element name="subject">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-subject"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-subject"
                     xml:lang="eng-usa">
                     <definition>The topic of the resource.</definition>
                     <comment> Typically, the subject will be represented using keywords, key
@@ -97,7 +97,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-description"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-description"
                     xml:lang="eng-usa">
                     <definition>An account of the resource.</definition>
                     <comment> Description may include but is not limited to: an abstract, a table of
@@ -115,7 +115,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-publisher"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-publisher"
                     xml:lang="eng-usa">
                     <definition>An entity responsible for making the resource available.</definition>
                     <comment> Examples of a Publisher include a person, an organization, or a
@@ -133,7 +133,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-contributor"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-contributor"
                     xml:lang="eng-usa">
                     <definition>An entity responsible for making contributions to the resource.</definition>
                     <comment> Examples of a Contributor include a person, an organization, or a
@@ -150,7 +150,7 @@
     <xs:element name="date">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-date"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-date"
                     xml:lang="eng-usa">
                     <definition>A point or period of time associated with an event in the lifecycle
                         of the resource.</definition>
@@ -168,7 +168,7 @@
     <xs:element name="type">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-type"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-type"
                     xml:lang="eng-usa">
                     <definition>The nature or genre of the resource.</definition>
                     <comment> Recommended best practice is to use a controlled vocabulary such as
@@ -185,7 +185,7 @@
     <xs:element name="format">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-format"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-format"
                     xml:lang="eng-usa">
                     <definition>The file format, physical medium, or dimensions of the resource.</definition>
                     <comment> Examples of dimensions include size and duration. Recommended best
@@ -203,7 +203,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-identifier"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-identifier"
                     xml:lang="eng-usa">
                     <definition>An unambiguous reference to the resource within a given context.</definition>
                     <comment> Recommended best practice is to identify the resource by means of a
@@ -220,7 +220,7 @@
     <xs:element name="source">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-source"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-source"
                     xml:lang="eng-usa">
                     <definition>A related resource from which the described resource is derived.</definition>
                     <comment> The described resource may be derived from the related resource in
@@ -241,7 +241,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-language"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-language"
                     xml:lang="eng-usa">
                     <definition>A language of the resource.</definition>
                     <comment> Recommended best practice is to use a controlled vocabulary such as
@@ -258,7 +258,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-relation"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-relation"
                     xml:lang="eng-usa">
                     <definition>A related resource.</definition>
                     <comment> Recommended best practice is to identify the related resource by means
@@ -275,7 +275,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-coverage"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-coverage"
                     xml:lang="eng-usa">
                     <definition> The spatial or temporal topic of the resource, the spatial
                         applicability of the resource, or the jurisdiction under which the resource
@@ -299,7 +299,7 @@
     <xs:element name="rights">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-rights"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-rights"
                     xml:lang="eng-usa">
                     <definition>Information about rights held in and over the resource.</definition>
                     <comment> Typically, rights information includes a statement about various

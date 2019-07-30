@@ -32,7 +32,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-alternative"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-alternative"
                     xml:lang="eng-usa">
                     <definition>An alternative name for the resource.</definition>
                     <comment> The distinction between titles and alternative titles is
@@ -50,7 +50,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-tableOfContents"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-tableOfContents"
                     xml:lang="eng-usa">
                     <definition>A list of subunits of the resource.</definition>
                     <refines>http://purl.org/dc/elements/1.1/description</refines>
@@ -66,7 +66,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-abstract"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-abstract"
                     xml:lang="eng-usa">
                     <definition>A summary of the resource.</definition>
                     <refines>http://purl.org/dc/elements/1.1/description</refines>
@@ -81,7 +81,7 @@
     <xs:element name="created">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-created"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-created"
                     xml:lang="eng-usa">
                     <definition>Date of creation of the resource.</definition>
                     <refines>http://purl.org/dc/elements/1.1/date</refines>
@@ -96,7 +96,7 @@
     <xs:element name="valid">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-valid"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-valid"
                     xml:lang="eng-usa">
                     <definition>Date (often a range) of validity of a resource.</definition>
                     <refines>http://purl.org/dc/elements/1.1/date</refines>
@@ -112,7 +112,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-available"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-available"
                     xml:lang="eng-usa">
                     <definition>Date (often a range) that the resource will become or did become
                         available.</definition>
@@ -128,7 +128,7 @@
     <xs:element name="issued">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-issued"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-issued"
                     xml:lang="eng-usa">
                     <definition>Date of formal issuance (e.g., publication) of the resource.</definition>
                     <refines>http://purl.org/dc/elements/1.1/date</refines>
@@ -144,7 +144,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-modified"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-modified"
                     xml:lang="eng-usa">
                     <definition>Date on which the resource was changed.</definition>
                     <refines>http://purl.org/dc/elements/1.1/date</refines>
@@ -160,7 +160,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-dateAccepted"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-dateAccepted"
                     xml:lang="eng-usa">
                     <definition>Date of acceptance of the resource.</definition>
                     <refines>http://purl.org/dc/elements/1.1/date</refines>
@@ -176,7 +176,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-dateCopyrighted"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-dateCopyrighted"
                     xml:lang="eng-usa">
                     <definition> 	Date of copyright.</definition>
                     <refines>http://purl.org/dc/elements/1.1/date</refines>
@@ -192,7 +192,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-dateSubmitted"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-dateSubmitted"
                     xml:lang="eng-usa">
                     <definition>Date of submission of the resource.</definition>
                     <refines>http://purl.org/dc/elements/1.1/date</refines>
@@ -207,7 +207,7 @@
     <xs:element name="extent">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-extent"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-extent"
                     xml:lang="eng-usa">
                     <definition>The size or duration of the resource.</definition>
                     <refines>http://purl.org/dc/elements/1.1/format</refines>
@@ -222,7 +222,7 @@
     <xs:element name="medium">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-medium"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-medium"
                     xml:lang="eng-usa">
                     <definition>The material or physical carrier of the resource.</definition>
                     <refines>http://purl.org/dc/elements/1.1/format</refines>
@@ -241,7 +241,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-conformsTo"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-conformsTo"
                     xml:lang="eng-usa">
                     <definition>An established standard to which the described resource conforms.</definition>
                     <refines>http://purl.org/dc/elements/1.1/relation</refines>
@@ -257,7 +257,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-isVersionOf"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-isVersionOf"
                     xml:lang="eng-usa">
                     <definition> The described resource is a version, edition, or adaptation of the
                         referenced resource. Changes in version imply substantive changes in content
@@ -275,7 +275,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-hasVersion"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-hasVersion"
                     xml:lang="eng-usa">
                     <definition> A related resource that is a version, edition, or adaptation of the
                         described resource. </definition>
@@ -292,7 +292,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-isReplacedBy"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-isReplacedBy"
                     xml:lang="eng-usa">
                     <definition> A related resource that supplants, displaces, or supersedes the
                         described resource. </definition>
@@ -309,7 +309,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-replaces"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-replaces"
                     xml:lang="eng-usa">
                     <definition> A related resource that is supplanted, displaced, or superseded by
                         the described resource. </definition>
@@ -326,7 +326,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-isRequiredBy"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-isRequiredBy"
                     xml:lang="eng-usa">
                     <definition> A related resource that requires the described resource to support
                         its function, delivery, or coherence. </definition>
@@ -343,7 +343,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-requires"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-requires"
                     xml:lang="eng-usa">
                     <definition> A related resource that is required by the described resource to
                         support its function, delivery, or coherence. </definition>
@@ -360,7 +360,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-isPartOf"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-isPartOf"
                     xml:lang="eng-usa">
                     <definition> A related resource in which the described resource is physically or
                         logically included. </definition>
@@ -376,7 +376,7 @@
     <xs:element name="hasPart">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-hasPart"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-hasPart"
                     xml:lang="eng-usa">
                     <definition> A related resource that is included either physically or logically
                         in the described resource. </definition>
@@ -393,7 +393,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-isReferencedBy"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-isReferencedBy"
                     xml:lang="eng-usa">
                     <definition> The described resource is referenced, cited, or otherwise pointed
                         to by the referenced resource. </definition>
@@ -410,7 +410,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-references"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-references"
                     xml:lang="eng-usa">
                     <definition> The described resource references, cites, or otherwise points to
                         the referenced resource. </definition>
@@ -427,7 +427,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-isFormatOf"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-isFormatOf"
                     xml:lang="eng-usa">
                     <definition> The described resource is the same intellectual content of the
                         referenced resource, but presented in another format. </definition>
@@ -444,7 +444,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-hasFormat"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-hasFormat"
                     xml:lang="eng-usa">
                     <definition> The described resource pre-existed the referenced resource, which
                         is essentially the same intellectual content presented in another format. </definition>
@@ -460,7 +460,7 @@
     <xs:element name="spatial">
         <xs:complexType>
             <xs:annotation>
-                <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-spatial"
+                <xs:documentation source="https://dublincore.org/documents/dcmi-terms/#terms-spatial"
                     xml:lang="eng-usa">
                     <definition> Spatial characteristics of the intellectual content of the resoure. </definition>
                     <refines>http://purl.org/dc/elements/1.1/coverage</refines>
@@ -476,7 +476,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-temporal"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-temporal"
                     xml:lang="eng-usa">
                     <definition> Temporal characteristics of the intellectual content of the
                         resource. </definition>
@@ -493,7 +493,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-accessRights"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-accessRights"
                     xml:lang="eng-usa">
                     <definition> Information about who can access the resource or an indication of
                         its security status. </definition>
@@ -510,7 +510,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-accessRights"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-accessRights"
                     xml:lang="eng-usa">
                     <definition> A legal document giving official permission to do something with
                         the resource. </definition>
@@ -527,7 +527,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-rightsHolder"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-rightsHolder"
                     xml:lang="eng-usa">
                     <definition>A person or organization owning or managing rights over the resource.</definition>
                 </xs:documentation>
@@ -542,7 +542,7 @@
         <xs:complexType>
             <xs:annotation>
                 <xs:documentation
-                    source="http://dublincore.org/documents/dcmi-terms/#terms-audience"
+                    source="https://dublincore.org/documents/dcmi-terms/#terms-audience"
                     xml:lang="eng-usa">
                     <definition> A class of entity for whom the resource is intended or useful.
                     </definition>
