@@ -1,0 +1,1474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2012 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:narcis="http://easy.dans.knaw.nl/schemas/vocab/narcis-type/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    targetNamespace="http://easy.dans.knaw.nl/schemas/vocab/narcis-type/"
+    elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <xs:annotation>
+        <xs:documentation>This type vocabulary contains a provisional enumeration for use on
+            dcterms:audience.
+
+            Change from 2015:
+            easy-discipline numbers changed for
+            - Environmental studies
+            - Nanotechnology
+            - Greenhouse gas mitigation
+            - Biobased economy
+            Change 'D21300: Biochemistry' to 'Biochemistry, molecular biology'
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <xs:import namespace="http://purl.org/dc/elements/1.1/"
+        schemaLocation="http://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
+
+    <xs:complexType name="DisciplineType">
+        <xs:annotation>
+            <xs:documentation> Use on element dcterms:audience. </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="narcis:Discipline"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="Discipline">
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="D10000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Science and technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:57</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D11000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Mathematics</xs:documentation>
+                    <xs:appinfo>easy-discipline:58</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D11100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Logic, set theory and
+                        arithmetic</xs:documentation>
+                    <xs:appinfo>easy-discipline:59</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D11200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Algebra, group theory</xs:documentation>
+                    <xs:appinfo>easy-discipline:60</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D11300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Functions, differential
+                        equations</xs:documentation>
+                    <xs:appinfo>easy-discipline:61</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D11400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Fourier analysis, functional
+                        analysis</xs:documentation>
+                    <xs:appinfo>easy-discipline:62</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D11500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Geometry, topology</xs:documentation>
+                    <xs:appinfo>easy-discipline:63</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D11600">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Probability theory,
+                        statistics</xs:documentation>
+                    <xs:appinfo>easy-discipline:64</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D11700">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Operations research</xs:documentation>
+                    <xs:appinfo>easy-discipline:65</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D11800">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Numerical analysis</xs:documentation>
+                    <xs:appinfo>easy-discipline:66</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D12000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Physics</xs:documentation>
+                    <xs:appinfo>easy-discipline:67</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D12100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Metrology, scientific
+                        instrumentation</xs:documentation>
+                    <xs:appinfo>easy-discipline:68</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D12200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Theoretical physics, (quantum)
+                        mechanics</xs:documentation>
+                    <xs:appinfo>easy-discipline:69</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D12300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Electromagnetism, optics,
+                        acoustics</xs:documentation>
+                    <xs:appinfo>easy-discipline:70</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D12400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Elementary particle physics and nuclear
+                        physics</xs:documentation>
+                    <xs:appinfo>easy-discipline:71</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D12600">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Atomic and molecular physics</xs:documentation>
+                    <xs:appinfo>easy-discipline:72</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D12700">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Gases, fluid dynamics, plasma
+                        physics</xs:documentation>
+                    <xs:appinfo>easy-discipline:73</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D12800">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Solid-state physics</xs:documentation>
+                    <xs:appinfo>easy-discipline:74</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D13000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Chemistry</xs:documentation>
+                    <xs:appinfo>easy-discipline:75</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D13100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Analytical chemistry</xs:documentation>
+                    <xs:appinfo>easy-discipline:76</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D13200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Macromolecular chemistry, polymer
+                        chemistry</xs:documentation>
+                    <xs:appinfo>easy-discipline:77</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D13300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Organic chemistry</xs:documentation>
+                    <xs:appinfo>easy-discipline:78</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D13400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Inorganic chemistry</xs:documentation>
+                    <xs:appinfo>easy-discipline:79</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D13500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Physical chemistry</xs:documentation>
+                    <xs:appinfo>easy-discipline:80</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D13600">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Catalysis</xs:documentation>
+                    <xs:appinfo>easy-discipline:81</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D13700">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Theoretical chemistry, quantum
+                        chemistry</xs:documentation>
+                    <xs:appinfo>easy-discipline:82</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:83</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Materials technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:84</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Mechanical engineering</xs:documentation>
+                    <xs:appinfo>easy-discipline:85</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14210">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Technical mechanics</xs:documentation>
+                    <xs:appinfo>easy-discipline:86</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14220">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Engines, energy converters</xs:documentation>
+                    <xs:appinfo>easy-discipline:87</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14230">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Vehicle and transport
+                        technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:88</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14231">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Road vehicles, rail vehicles</xs:documentation>
+                    <xs:appinfo>easy-discipline:89</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14232">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Vessels</xs:documentation>
+                    <xs:appinfo>easy-discipline:90</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14233">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Aircraft and spacecraft</xs:documentation>
+                    <xs:appinfo>easy-discipline:91</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14240">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Manufacturing technology, mechanical technology,
+                        robotics</xs:documentation>
+                    <xs:appinfo>easy-discipline:92</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Electrical engineering</xs:documentation>
+                    <xs:appinfo>easy-discipline:93</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14310">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Telecommunication engineering</xs:documentation>
+                    <xs:appinfo>easy-discipline:94</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14320">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Microelectronics</xs:documentation>
+                    <xs:appinfo>easy-discipline:95</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14330">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Electrical energy technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:96</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14340">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Measurement and control
+                        engineering</xs:documentation>
+                    <xs:appinfo>easy-discipline:97</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Civil engineering, building
+                        technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:98</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14410">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Building technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:99</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14420">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Civil engineering</xs:documentation>
+                    <xs:appinfo>easy-discipline:100</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14430">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Hydraulic engineering</xs:documentation>
+                    <xs:appinfo>easy-discipline:101</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14431">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Offshore technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:102</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14440">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Sanitary engineering</xs:documentation>
+                    <xs:appinfo>easy-discipline:103</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14441">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Drinking water supply</xs:documentation>
+                    <xs:appinfo>easy-discipline:104</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14442">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Waste water treatment</xs:documentation>
+                    <xs:appinfo>easy-discipline:105</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14443">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Waste treatment</xs:documentation>
+                    <xs:appinfo>easy-discipline:106</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Chemical technology, process
+                        technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:107</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14510">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Inorganic-chemical technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:108</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14520">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Organic-chemical technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:109</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14530">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Fuel technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:110</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14540">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Food technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:111</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14600">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Geotechnics</xs:documentation>
+                    <xs:appinfo>easy-discipline:112</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14610">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Mining engineering</xs:documentation>
+                    <xs:appinfo>easy-discipline:113</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14620">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Engineering geology</xs:documentation>
+                    <xs:appinfo>easy-discipline:114</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14700">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Industrial design</xs:documentation>
+                    <xs:appinfo>easy-discipline:115</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14800">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Energy</xs:documentation>
+                    <xs:appinfo>easy-discipline:116</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D14900">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Technology assessment</xs:documentation>
+                    <xs:appinfo>easy-discipline:117</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D15000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Earth sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:118</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D15100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Geochemistry, geophysics</xs:documentation>
+                    <xs:appinfo>easy-discipline:119</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D15200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Paleontology, stratigraphy</xs:documentation>
+                    <xs:appinfo>easy-discipline:120</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D15300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Physical geology</xs:documentation>
+                    <xs:appinfo>easy-discipline:121</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D15400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Petrology, mineralogy,
+                        sedimentology</xs:documentation>
+                    <xs:appinfo>easy-discipline:122</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D15500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Atmospheric sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:123</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D15600">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Hydrospheric sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:124</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D15700">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Geodesy, physical geography</xs:documentation>
+                    <xs:appinfo>easy-discipline:56</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D16000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Computer science</xs:documentation>
+                    <xs:appinfo>easy-discipline:125</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D16100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Computer systems, architectures,
+                        networks</xs:documentation>
+                    <xs:appinfo>easy-discipline:126</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D16200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Software, algorithms, control
+                        systems</xs:documentation>
+                    <xs:appinfo>easy-discipline:127</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D16300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Theoretical computer science</xs:documentation>
+                    <xs:appinfo>easy-discipline:128</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D16400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Information systems,
+                        databases</xs:documentation>
+                    <xs:appinfo>easy-discipline:129</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D16500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">User interfaces, multimedia</xs:documentation>
+                    <xs:appinfo>easy-discipline:130</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D16600">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Artificial intelligence, expert
+                        systems</xs:documentation>
+                    <xs:appinfo>easy-discipline:131</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D16700">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Computer graphics</xs:documentation>
+                    <xs:appinfo>easy-discipline:132</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D16800">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Computer simulation, virtual
+                        reality</xs:documentation>
+                    <xs:appinfo>easy-discipline:133</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D17000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Astronomy, astrophysics</xs:documentation>
+                    <xs:appinfo>easy-discipline:134</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D18000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Agriculture and the physical
+                        environment</xs:documentation>
+                    <xs:appinfo>easy-discipline:135</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D18100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Exploitation and management physical
+                        environment</xs:documentation>
+                    <xs:appinfo>easy-discipline:136</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D18110">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Air</xs:documentation>
+                    <xs:appinfo>easy-discipline:137</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D18120">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Surfacewater and groundwater</xs:documentation>
+                    <xs:appinfo>easy-discipline:138</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D18130">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Soil</xs:documentation>
+                    <xs:appinfo>easy-discipline:139</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D18140">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Nature and landscape</xs:documentation>
+                    <xs:appinfo>easy-discipline:140</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D18200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Plant production and animal
+                        production</xs:documentation>
+                    <xs:appinfo>easy-discipline:141</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D18210">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Agriculture and horticulture</xs:documentation>
+                    <xs:appinfo>easy-discipline:142</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D18220">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Animal husbandry</xs:documentation>
+                    <xs:appinfo>easy-discipline:143</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D18230">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Fisheries</xs:documentation>
+                    <xs:appinfo>easy-discipline:144</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D18240">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Forestry</xs:documentation>
+                    <xs:appinfo>easy-discipline:145</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D18250">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Agriculturural technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:146</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D20000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Life sciences, medicine and health care </xs:documentation>
+                    <xs:appinfo>easy-discipline:54</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D21000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Life sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:147</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D21100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Bioinformatics,
+                        biomathematics</xs:documentation>
+                    <xs:appinfo>easy-discipline:148</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D21200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Biophysics, clinical physics</xs:documentation>
+                    <xs:appinfo>easy-discipline:149</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D21300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Biochemistry, molecular biology</xs:documentation>
+                    <xs:appinfo>easy-discipline:150</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D21400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Genetics</xs:documentation>
+                    <xs:appinfo>easy-discipline:151</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D21500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Histology, cell biology</xs:documentation>
+                    <xs:appinfo>easy-discipline:152</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D21600">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Anatomy, morphology</xs:documentation>
+                    <xs:appinfo>easy-discipline:153</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D21700">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Physiology</xs:documentation>
+                    <xs:appinfo>easy-discipline:154</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D21800">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Immunology, serology</xs:documentation>
+                    <xs:appinfo>easy-discipline:155</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D21900">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Epidemiology and medical
+                        statistics</xs:documentation>
+                    <xs:appinfo>easy-discipline:156</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D22000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Biology</xs:documentation>
+                    <xs:appinfo>easy-discipline:157</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D22100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Microbiology</xs:documentation>
+                    <xs:appinfo>easy-discipline:158</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D22200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Biogeography, taxonomy</xs:documentation>
+                    <xs:appinfo>easy-discipline:159</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D22300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Animal ethology, animal
+                        psychology</xs:documentation>
+                    <xs:appinfo>easy-discipline:160</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D22400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Ecology</xs:documentation>
+                    <xs:appinfo>easy-discipline:161</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D22500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Botany</xs:documentation>
+                    <xs:appinfo>easy-discipline:162</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D22600">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Zoology</xs:documentation>
+                    <xs:appinfo>easy-discipline:163</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D22700">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Toxicology (plants,
+                        invertebrates)</xs:documentation>
+                    <xs:appinfo>easy-discipline:164</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Medicine</xs:documentation>
+                    <xs:appinfo>easy-discipline:165</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Pathology, pathological
+                        anatomy</xs:documentation>
+                    <xs:appinfo>easy-discipline:166</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23110">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Infections, parasitology,
+                        virology</xs:documentation>
+                    <xs:appinfo>easy-discipline:167</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23120">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Oncology</xs:documentation>
+                    <xs:appinfo>easy-discipline:168</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23130">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Allergology</xs:documentation>
+                    <xs:appinfo>easy-discipline:169</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23140">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Traumatology</xs:documentation>
+                    <xs:appinfo>easy-discipline:170</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Organs and organ systems </xs:documentation>
+                    <xs:appinfo>easy-discipline:171</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23210">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Dermatology, venereology, rheumatology,
+                        orthopaedics</xs:documentation>
+                    <xs:appinfo>easy-discipline:172</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23211">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Dermatology</xs:documentation>
+                    <xs:appinfo>easy-discipline:173</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23212">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Venereology</xs:documentation>
+                    <xs:appinfo>easy-discipline:174</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23213">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Rheumatology</xs:documentation>
+                    <xs:appinfo>easy-discipline:175</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23214">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Orthopaedics</xs:documentation>
+                    <xs:appinfo>easy-discipline:176</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23220">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Internal medicine</xs:documentation>
+                    <xs:appinfo>easy-discipline:177</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23221">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Blood and lymphatic diseases</xs:documentation>
+                    <xs:appinfo>easy-discipline:178</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23222">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Cardiovascular disorders</xs:documentation>
+                    <xs:appinfo>easy-discipline:179</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23223">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Gastrointestinal system</xs:documentation>
+                    <xs:appinfo>easy-discipline:180</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23224">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Gynaecology and obstetrics</xs:documentation>
+                    <xs:appinfo>easy-discipline:181</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23225">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Pulmonary disorders</xs:documentation>
+                    <xs:appinfo>easy-discipline:182</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23226">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Nephrology</xs:documentation>
+                    <xs:appinfo>easy-discipline:183</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23227">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Urology</xs:documentation>
+                    <xs:appinfo>easy-discipline:184</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23230">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Neurology, otorhinolaryngology,
+                        opthalmology</xs:documentation>
+                    <xs:appinfo>easy-discipline:185</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23231">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Neurology</xs:documentation>
+                    <xs:appinfo>easy-discipline:186</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23232">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Otorhinolaryngology</xs:documentation>
+                    <xs:appinfo>easy-discipline:187</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23233">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Ophthalmology</xs:documentation>
+                    <xs:appinfo>easy-discipline:188</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23240">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Dentistry</xs:documentation>
+                    <xs:appinfo>easy-discipline:189</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Medical specialisms</xs:documentation>
+                    <xs:appinfo>easy-discipline:190</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23310">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Surgery</xs:documentation>
+                    <xs:appinfo>easy-discipline:191</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23320">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Anesthesiology</xs:documentation>
+                    <xs:appinfo>easy-discipline:192</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23330">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Radiology, radiotherapy</xs:documentation>
+                    <xs:appinfo>easy-discipline:193</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23340">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Biopharmacology, toxicology</xs:documentation>
+                    <xs:appinfo>easy-discipline:194</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23350">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Psychiatry, clinical
+                        psychology</xs:documentation>
+                    <xs:appinfo>easy-discipline:195</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23360">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Age-related medical
+                        specialisms</xs:documentation>
+                    <xs:appinfo>easy-discipline:196</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23361">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Neonatology</xs:documentation>
+                    <xs:appinfo>easy-discipline:197</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23362">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Pediatrics</xs:documentation>
+                    <xs:appinfo>easy-discipline:198</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23363">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Geriatrics</xs:documentation>
+                    <xs:appinfo>easy-discipline:199</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23370">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Social medicine</xs:documentation>
+                    <xs:appinfo>easy-discipline:200</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23380">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Primary care (including General
+                        practice)</xs:documentation>
+                    <xs:appinfo>easy-discipline:201</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D23390">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Occupational medicine</xs:documentation>
+                    <xs:appinfo>easy-discipline:202</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D24000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Health sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:55</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D24100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Nursing sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:203</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D24200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Health education, prevention</xs:documentation>
+                    <xs:appinfo>easy-discipline:204</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D24300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Nutrition</xs:documentation>
+                    <xs:appinfo>easy-discipline:205</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D25000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Kinesiology</xs:documentation>
+                    <xs:appinfo>easy-discipline:206</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D25100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Rehabilitation</xs:documentation>
+                    <xs:appinfo>easy-discipline:207</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D26000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Veterinary medicine</xs:documentation>
+                    <xs:appinfo>easy-discipline:208</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D30000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Humanities</xs:documentation>
+                    <xs:appinfo>easy-discipline:1</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D30100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Digital humanities</xs:documentation>
+                    <xs:appinfo>easy-discipline:209</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D31000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Paleography, bibliology, bibliography, library
+                        science</xs:documentation>
+                    <xs:appinfo>easy-discipline:20</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D32000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Philosophy</xs:documentation>
+                    <xs:appinfo>easy-discipline:21</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D32100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">History and philosophy of science and
+                        technology</xs:documentation>
+                    <xs:appinfo>easy-discipline:210</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D32200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">History and philosphy of the life sciences,
+                        ethics, evolution biology</xs:documentation>
+                    <xs:appinfo>easy-discipline:211</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D32300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">History and philosophy of the
+                        humanities</xs:documentation>
+                    <xs:appinfo>easy-discipline:212</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D32400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">History and philosophy of the behavioural
+                        sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:213</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D32500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">History and philosophy of the social
+                        sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:214</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D33000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Theology and religious
+                        studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:22</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D34000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">History</xs:documentation>
+                    <xs:appinfo>easy-discipline:8</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D34100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Antiquity</xs:documentation>
+                    <xs:appinfo>easy-discipline:9</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D34200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Middle Ages</xs:documentation>
+                    <xs:appinfo>easy-discipline:10</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D34300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Modern and contemporary
+                        history</xs:documentation>
+                    <xs:appinfo>easy-discipline:11</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D34400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en"/>
+                    <xs:appinfo>easy-discipline:12</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D34500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en"/>
+                    <xs:appinfo>easy-discipline:13</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D35000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Arts and culture</xs:documentation>
+                    <xs:appinfo>easy-discipline:3</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D35100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">History of arts and
+                        architecture</xs:documentation>
+                    <xs:appinfo>easy-discipline:5</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D35200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Musicology</xs:documentation>
+                    <xs:appinfo>easy-discipline:7</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D35300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Dramaturgy</xs:documentation>
+                    <xs:appinfo>easy-discipline:4</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D35400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Media sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:6</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D35500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Architecture and building
+                        construction</xs:documentation>
+                    <xs:appinfo>easy-discipline:215</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D36000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Language and literature
+                        studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:14</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D36100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Linguistics</xs:documentation>
+                    <xs:appinfo>easy-discipline:216</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D36200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Classic studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:16</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D36300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Germanic language and literature
+                        studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:17</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D36400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Romance language and literature
+                        studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:18</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D36500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Baltic and Slavonic language and literature
+                        studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:15</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D36900">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Language and literature studies of other
+                        language groups</xs:documentation>
+                    <xs:appinfo>easy-discipline:19</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D37000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Archaeology</xs:documentation>
+                    <xs:appinfo>easy-discipline:2</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D38000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Area Studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:217</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D40000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Law and public administration </xs:documentation>
+                    <xs:appinfo>easy-discipline:23</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Science of law</xs:documentation>
+                    <xs:appinfo>easy-discipline:29</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">History of law</xs:documentation>
+                    <xs:appinfo>easy-discipline:30</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Private (procedural) law</xs:documentation>
+                    <xs:appinfo>easy-discipline:31</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41300">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Criminal (procedural) law and
+                        criminology</xs:documentation>
+                    <xs:appinfo>easy-discipline:32</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41400">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Constitutional and administrative
+                        law</xs:documentation>
+                    <xs:appinfo>easy-discipline:33</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Interdisciplinary branches of
+                        law</xs:documentation>
+                    <xs:appinfo>easy-discipline:34</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D41600">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">International law</xs:documentation>
+                    <xs:appinfo>easy-discipline:35</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D42000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Political and administrative
+                        sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:26</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D42100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Political science</xs:documentation>
+                    <xs:appinfo>easy-discipline:27</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D42110">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Defence</xs:documentation>
+                    <xs:appinfo>easy-discipline:218</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D42200">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Social and public
+                        administration</xs:documentation>
+                    <xs:appinfo>easy-discipline:28</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D44000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Traffic and transport studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:36</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D50000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Behavioural and educational
+                        sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:37</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D51000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Psychology</xs:documentation>
+                    <xs:appinfo>easy-discipline:40</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D52000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Educational theory</xs:documentation>
+                    <xs:appinfo>easy-discipline:41</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D53000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Gerontology</xs:documentation>
+                    <xs:appinfo>easy-discipline:38</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D54000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Pedagogics</xs:documentation>
+                    <xs:appinfo>easy-discipline:39</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D60000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Social sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:42</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D61000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Sociology</xs:documentation>
+                    <xs:appinfo>easy-discipline:51</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D62000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Social geography</xs:documentation>
+                    <xs:appinfo>easy-discipline:49</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D63000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Cultural anthropology</xs:documentation>
+                    <xs:appinfo>easy-discipline:44</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D64000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Demography</xs:documentation>
+                    <xs:appinfo>easy-discipline:45</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D65000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Urban and rural planning</xs:documentation>
+                    <xs:appinfo>easy-discipline:52</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D66000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Communication sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:43</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D67000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Leisure and recreation
+                        studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:47</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D68000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Social security studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:50</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D69000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Gender studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:53</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D70000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Economics and Business
+                        Administration</xs:documentation>
+                    <xs:appinfo>easy-discipline:24</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="D70100">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Personnel administration and
+                        management</xs:documentation>
+                    <xs:appinfo>easy-discipline:48</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="E10000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Interdisciplinary sciences</xs:documentation>
+                    <xs:appinfo>easy-discipline:219</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="E11000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Biotechnology</xs:documentation>
+                    <xs:appinfo>easy-discipline:220</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="E12000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Technology in medicine and health
+                        care</xs:documentation>
+                    <xs:appinfo>easy-discipline:221</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="E13000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Development studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:46</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="E14000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Migration, ethnic relations and
+                        multiculturalism</xs:documentation>
+                    <xs:appinfo>easy-discipline:222</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="E15000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Environmental studies</xs:documentation>
+                    <xs:appinfo>easy-discipline:25</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="E16000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Nanotechnology</xs:documentation>
+                    <xs:appinfo>easy-discipline:223</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="E17000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Greenhouse gas mitigation</xs:documentation>
+                    <xs:appinfo>easy-discipline:224</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="E18000">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Biobased economy</xs:documentation>
+                    <xs:appinfo>easy-discipline:225</xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
