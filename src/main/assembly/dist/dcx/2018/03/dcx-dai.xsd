@@ -40,7 +40,7 @@
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/"
                schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
     <xs:import namespace="http://purl.org/dc/elements/1.1/"
-               schemaLocation="http://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
+               schemaLocation="https://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
     <xs:import namespace="http://datacite.org/schema/kernel-4"
                schemaLocation="https://schema.datacite.org/meta/kernel-4/metadata.xsd"/>
 

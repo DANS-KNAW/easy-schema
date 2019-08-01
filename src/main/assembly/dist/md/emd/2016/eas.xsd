@@ -35,16 +35,16 @@
             <xs:enumeration value="Period">
                 <xs:annotation>
                     <xs:documentation
-                        source="http://dublincore.org/documents/2000/07/11/dcmes-qualifiers/#date">
+                        source="https://dublincore.org/documents/2000/07/11/dcmes-qualifiers/#date">
                         <definition>A specification of the limits of a time interval.</definition>
-                        <see-also>http://dublincore.org/documents/dcmi-period/</see-also>
+                        <see-also>https://dublincore.org/documents/dcmi-period/</see-also>
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="W3CDTF">
                 <xs:annotation>
                     <xs:documentation
-                        source="http://dublincore.org/documents/2000/07/11/dcmes-qualifiers/#date">
+                        source="https://dublincore.org/documents/2000/07/11/dcmes-qualifiers/#date">
                         <definition>W3C Encoding rules for dates and times - a profile based on ISO
                             8601</definition>
                         <see-also>http://www.w3.org/TR/NOTE-datetime</see-also>
