@@ -232,10 +232,10 @@
                     Use STREAMING_SURROGATE_RELATION for the location on the video streaming service.
                 </xs:documentation>
             </xs:annotation>
-            <xs:pattern value="([-a-z:A-Z]*:*(DOI|ARCHIS-ZAAK-IDENTIFICATIE|URN|ISSN|ISBN|URI|URL))|STREAMING_SURROGATE_RELATION"/>            
+            <xs:pattern value="([-a-z:A-Z]*:*(DOI|ARCHIS-ZAAK-IDENTIFICATIE|URN|ISSN|ISBN|URI|URL))|STREAMING_SURROGATE_RELATION"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <xs:complexType name="LinkedRelationType">
         <xs:complexContent>
             <xs:extension base="ddm:NonEmptyString">
@@ -246,7 +246,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="scheme" type="ddm:LinkedRelationTypeSchema" use="optional" default="URL"/>
+                <xs:attribute name="scheme" type="ddm:LinkedRelationTypeSchema"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>

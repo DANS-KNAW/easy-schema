@@ -26,7 +26,6 @@
            xmlns:id-type="http://easy.dans.knaw.nl/schemas/vocab/identifier-type/"
            xmlns:datacite="http://datacite.org/schema/kernel-4"
            targetNamespace="http://easy.dans.knaw.nl/schemas/md/ddm/"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <!-- =================================================================================== -->
@@ -56,20 +55,19 @@
             Change since 2017/09
             * Add ddm:temporal
 
-
             Copyright (c) 2012 DANS-KNAW
         </xs:documentation>
     </xs:annotation>
 
     <!-- =================================================================================== -->
     <xs:import namespace="http://www.w3.org/XML/1998/namespace"
-               schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>    
-    <!-- this schema location is temporary, since the original (http://dublincore.org/schemas/xmls/qdc/dc.xsd) is not available -->
+               schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <!-- this schema location is temporary, since the original (https://dublincore.org/schemas/xmls/qdc/dc.xsd) is not available -->
     <xs:import namespace="http://purl.org/dc/elements/1.1/"
-               schemaLocation="http://dublincore.org/schemas/xmls/qdc/2008/02/11/dc.xsd"/>
-    <!-- this schema location is temporary, since the original (http://dublincore.org/schemas/xmls/qdc/dcterms.xsd) is not available -->
+               schemaLocation="https://dublincore.org/schemas/xmls/qdc/2008/02/11/dc.xsd"/>
+    <!-- this schema location is temporary, since the original (https://dublincore.org/schemas/xmls/qdc/dcterms.xsd) is not available -->
     <xs:import namespace="http://purl.org/dc/terms/"
-               schemaLocation="http://dublincore.org/schemas/xmls/qdc/2008/02/11/dcterms.xsd"/>
+               schemaLocation="https://dublincore.org/schemas/xmls/qdc/2008/02/11/dcterms.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/"
                schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/dai/"
@@ -114,8 +112,8 @@
                             Where applicable the use of the xml:lang attribute is recommended.
                             Where applicable the use of the xsi:type attribute is recommended.
                             See also:
-                            http://dublincore.org/documents/dcmi-terms/
-                            http://dublincore.org/schemas/xmls/qdc/dcterms.xsd
+                            https://dublincore.org/documents/dcmi-terms/
+                            https://dublincore.org/schemas/xmls/qdc/dcterms.xsd
                         </xs:documentation>
                         <xs:documentation xml:lang="en">
                             Some xml-elements from the dc and dcterms namespace have possible values for the xsi:type attribute that will be interpreted during ingest.
@@ -234,10 +232,10 @@
                     Use STREAMING_SURROGATE_RELATION for the location on the video streaming service.
                 </xs:documentation>
             </xs:annotation>
-            <xs:pattern value="([-a-z:A-Z]*:*(DOI|ARCHIS-ZAAK-IDENTIFICATIE|URN|ISSN|ISBN|URI|URL))|STREAMING_SURROGATE_RELATION"/>            
+            <xs:pattern value="([-a-z:A-Z]*:*(DOI|ARCHIS-ZAAK-IDENTIFICATIE|URN|ISSN|ISBN|URI|URL))|STREAMING_SURROGATE_RELATION"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <xs:complexType name="LinkedRelationType">
         <xs:complexContent>
             <xs:extension base="ddm:NonEmptyString">
@@ -248,7 +246,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="scheme" type="ddm:LinkedRelationTypeSchema" use="required"/>
+                <xs:attribute name="scheme" type="ddm:LinkedRelationTypeSchema"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -265,7 +263,7 @@
         </xs:simpleContent>
     </xs:complexType>
 
-<xs:element name="relation" substitutionGroup="ddm:linkedRelation"/>
+    <xs:element name="relation" substitutionGroup="ddm:linkedRelation"/>
     <xs:element name="conformsTo" substitutionGroup="ddm:linkedRelation"/>
     <xs:element name="hasFormat" substitutionGroup="ddm:linkedRelation"/>
     <xs:element name="hasPart" substitutionGroup="ddm:linkedRelation"/>
