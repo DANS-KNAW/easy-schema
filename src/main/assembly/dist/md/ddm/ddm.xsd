@@ -228,7 +228,7 @@
         <xs:restriction base="xs:NMTOKEN">
             <xs:annotation>
                 <xs:documentation>
-                    For the first five values, see http://easy.dans.knaw.nl/schemas/vocab/identifier-type/ for the documentation on the allowed elements                
+                    For the first five values, see https://easy.dans.knaw.nl/schemas/vocab/2017/identifier-type.xsd for the documentation on the allowed elements
                     Use STREAMING_SURROGATE_RELATION for the location on the video streaming service.
                 </xs:documentation>
             </xs:annotation>
