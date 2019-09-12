@@ -77,7 +77,7 @@
     <build>
         <resources>
             <resource>
-                <directory>src/main/assembly/dist</directory>
+                <directory>src/main/resources</directory>
                 <targetPath>${project.build.directory}/version</targetPath>
                 <includes>
                     <include>version</include>
@@ -95,33 +95,20 @@
                 <artifactId>scalatest-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <configuration combine.children="append">
                     <excludes combine.self="override">
-                        <exclude>src/main/assembly/dist/extern/*.xsd</exclude>
-                        <exclude>src/main/assembly/dist/extern/**/*.xsd</exclude>
+                        <exclude>src/main/resources/extern/*.xsd</exclude>
+                        <exclude>src/main/resources/extern/**/*.xsd</exclude>
                     </excludes>
                     <includes>
                         <include>pom.xml</include>
                         <include>src/test/scala/**</include>
-                        <include>src/main/assembly/**/*.xsd</include>
-                        <include>src/main/assembly/**/*.xml</include>
+                        <include>src/main/resources/**/*.xsd</include>
+                        <include>src/main/resources/**/*.xml</include>
                     </includes>
                 </configuration>
-            </plugin>
-            <!-- Avoid build warning about generating empty jar -->
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>default-jar</id>
-                        <phase>none</phase>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
@@ -142,6 +129,10 @@
                     </plugin>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
                         <artifactId>rpm-maven-plugin</artifactId>
                         <configuration>
                             <group>Applications/Archiving</group>
@@ -150,7 +141,7 @@
                                     <directory>/var/www/html/schemas</directory>
                                     <sources>
                                         <source>
-                                            <location>src/main/assembly/dist</location>
+                                            <location>src/main/resources</location>
                                         </source>
                                         <source>
                                             <location>${project.build.directory}/version/version</location>
