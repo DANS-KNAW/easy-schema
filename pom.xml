@@ -84,6 +84,12 @@
                 </includes>
                 <filtering>true</filtering>
             </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>version</exclude>
+                </excludes>
+            </resource>
         </resources>
         <plugins>
             <plugin>
