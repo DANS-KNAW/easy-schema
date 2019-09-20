@@ -35,9 +35,6 @@
             Changes since 2018/05
             * renamed licenseAgreement into depositAgreement
 
-            Changes since 2019/06
-            * new attribute "email" for signerType
-
             Copyright (c) 2018 DANS-KNAW </xs:documentation>
     </xs:annotation>
     <xs:element name="agreements">
@@ -80,7 +77,6 @@
             <xs:documentation>The full name of the signer of the Agreement. If this is the depositor of the dataset, the account-name MUST be mentioned in the @easy-account.</xs:documentation>
         </xs:annotation>
         <xs:attribute name="easy-account" use="optional"/>
-        <xs:attribute name="email" use="optional"/>
     </xs:complexType>
     <xs:element name="dateSigned" substitutionGroup="dcterms:dateSubmitted"/>
     <xs:element name="containsPrivacySensitiveData" type="xs:boolean"/>
