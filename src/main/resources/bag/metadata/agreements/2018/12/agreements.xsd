@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2012 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dcterms="http://purl.org/dc/terms/" elementFormDefault="qualified"
+    xmlns:am="http://easy.dans.knaw.nl/schemas/bag/metadata/agreements/"
+    targetNamespace="http://easy.dans.knaw.nl/schemas/bag/metadata/agreements/">
+    <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="https://dublincore.org/schemas/xmls/qdc/2008/02/11/dcterms.xsd"/>
+    <xs:annotation>
+        <xs:documentation>
+            This schema specifies a metadata-format for describing the agreements between the depositor and DANS-KNAW.
+            It contains information about the existence of personal data within the deposit as well.
+
+            Created 2018-05-01
+
+            Changes since 2018/02
+            * renamed licenseAgreement into depositAgreement
+
+            Copyright (c) 2018 DANS-KNAW </xs:documentation>
+    </xs:annotation>
+    <xs:element name="agreements">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="am:depositAgreement"/>
+                <xs:element ref="am:personalDataStatement"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="depositAgreement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="depositorId" type="xs:NCName"/>
+                <xs:element ref="dcterms:dateAccepted"/>
+                <xs:element name="depositAgreementAccepted" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="personalDataStatement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="am:signerId"/>
+                <xs:element ref="am:dateSigned"/>
+                <xs:element ref="am:containsPrivacySensitiveData"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="signerId" type="xs:NCName">
+        <xs:annotation>
+            <xs:documentation>The name of the signer of the Agreement. Usually the depositor of the SIP</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="dateSigned" substitutionGroup="dcterms:dateSubmitted"/>
+    <xs:element name="containsPrivacySensitiveData" type="xs:boolean"/>
+</xs:schema>
