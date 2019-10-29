@@ -27,13 +27,16 @@
 
             See also: https://easy.dans.knaw.nl/doc/sword2.html
             Created 2017-05-15
-            Last modified 2018-04-11
+            Last modified 2019-10-11
 
             Changes since 2018/02, to make it compatible with the DANS-bagit-profile, v0
             * File-element is no longer required
             * Attribute 'filepath' is required
             * All 'filepath's must be unique, and start with "data/"
             * At least 1 dcterms element is required
+
+            Changes since 2018/04
+            * Remove RESTRICTED_GROUP from the EasyFileAccessCategoryType
 
             Copyright (c) 2017 DANS-KNAW
         </xs:documentation>
@@ -133,19 +136,18 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="RESTRICTED_GROUP"/>
             <xs:enumeration value="RESTRICTED_REQUEST"/>
             <xs:enumeration value="KNOWN">
                 <xs:annotation>
                     <xs:documentation>
-                        Registered EASY users.
+                        Deprecated, kept for backwards compatibility. Registered EASY users.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="NONE">
                 <xs:annotation>
                     <xs:documentation>
-                        The data are not available via Easy (they are either accessible in another way or elsewhere).
+                        The data are not available via Easy (they are either not accessible or available elsewhere).
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
