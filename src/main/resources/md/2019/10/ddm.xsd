@@ -39,7 +39,7 @@
             Last modified 2019-10-11
 
             Change since 2019/07
-            * Remove GROUP_ACCESS and OPEN_ACCESS_FOR_REGISTERED_USERS from EasyAccessCategoryType
+            * Remove GROUP_ACCESS from EasyAccessCategoryType
             * Remove 'group' attribute from ddm:accessRights
 
             Change since 2019/01
@@ -337,6 +337,13 @@
                 <xs:annotation>
                     <xs:documentation>
                         Unrestricted access.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="OPEN_ACCESS_FOR_REGISTERED_USERS">
+                <xs:annotation>
+                    <xs:documentation>
+                        Unrestricted access for all registered EASY users.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>

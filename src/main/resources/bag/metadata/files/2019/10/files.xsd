@@ -36,7 +36,7 @@
             * At least 1 dcterms element is required
 
             Changes since 2018/04
-            * Remove RESTRICTED_GROUP and KNOWN from the EasyFileAccessCategoryType
+            * Remove RESTRICTED_GROUP from the EasyFileAccessCategoryType
 
             Copyright (c) 2017 DANS-KNAW
         </xs:documentation>
@@ -137,6 +137,13 @@
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="RESTRICTED_REQUEST"/>
+            <xs:enumeration value="KNOWN">
+                <xs:annotation>
+                    <xs:documentation>
+                        Registered EASY users.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="NONE">
                 <xs:annotation>
                     <xs:documentation>
