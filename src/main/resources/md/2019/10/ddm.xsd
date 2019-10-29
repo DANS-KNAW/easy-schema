@@ -343,7 +343,7 @@
             <xs:enumeration value="OPEN_ACCESS_FOR_REGISTERED_USERS">
                 <xs:annotation>
                     <xs:documentation>
-                        Unrestricted access for all registered EASY users.
+                        Deprecated, kept for backwards compatibility. Unrestricted access for all registered EASY users.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>

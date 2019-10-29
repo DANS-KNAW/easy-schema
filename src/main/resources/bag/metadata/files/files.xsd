@@ -140,7 +140,7 @@
             <xs:enumeration value="KNOWN">
                 <xs:annotation>
                     <xs:documentation>
-                        Registered EASY users.
+                        Deprecated, kept for backwards compatibility. Registered EASY users.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
