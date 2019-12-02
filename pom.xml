@@ -19,146 +19,53 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>nl.knaw.dans.shared</groupId>
-        <artifactId>dans-scala-project</artifactId>
-        <version>5.1.0</version>
-    </parent>
-
     <groupId>nl.knaw.dans.easy</groupId>
-    <artifactId>easy-schema</artifactId>
+    <artifactId>easy-schema-build</artifactId>
     <version>3.1.1-SNAPSHOT</version>
 
     <name>EASY Schema Definitions</name>
     <description>Collection of metadata schema's used by EASY</description>
     <inceptionYear>2012</inceptionYear>
 
+    <packaging>pom</packaging>
+
     <scm>
-        <developerConnection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
+        <developerConnection>scm:git:https://github.com/DANS-KNAW/easy-schema</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.github.pathikrit</groupId>
-            <artifactId>better-files_2.12</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_2.12</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <repositories>
-        <repository>
-            <id>dans-releases</id>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <url>https://maven.dans.knaw.nl/releases/</url>
-        </repository>
-        <repository>
-            <id>dans-snapshots</id>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <url>https://maven.dans.knaw.nl/snapshots/</url>
-        </repository>
-    </repositories>
-
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <targetPath>${project.build.directory}/version</targetPath>
-                <includes>
-                    <include>version</include>
-                </includes>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <excludes>
-                    <exclude>version</exclude>
-                </excludes>
-            </resource>
-        </resources>
+   <build>
         <plugins>
             <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <configuration combine.children="append">
-                    <excludes combine.self="override">
-                        <exclude>src/main/resources/extern/*.xsd</exclude>
-                        <exclude>src/main/resources/extern/**/*.xsd</exclude>
-                    </excludes>
-                    <includes>
-                        <include>pom.xml</include>
-                        <include>src/test/scala/**</include>
-                        <include>src/main/resources/**/*.xsd</include>
-                        <include>src/main/resources/**/*.xml</include>
-                    </includes>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>rpm</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <file>
-                    <exists>/usr/local/bin/rpm</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>rpm-maven-plugin</artifactId>
-                        <configuration>
-                            <group>Applications/Archiving</group>
-                            <mappings combine.self="override">
-                                <mapping>
-                                    <directory>/var/www/html/schemas</directory>
-                                    <sources>
-                                        <source>
-                                            <location>src/main/resources</location>
-                                        </source>
-                                        <source>
-                                            <location>${project.build.directory}/version/version</location>
-                                        </source>
-                                    </sources>
-                                </mapping>
-                            </mappings>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>attach-rpm</id>
-                                <goals>
-                                    <goal>attached-rpm</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+    <modules>
+        <module>lib</module>
+        <module>command</module>
+    </modules>
 </project>
