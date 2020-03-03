@@ -33,7 +33,7 @@
             Last modified 2020-03-03
 
             Changes since 2019/01
-            * no longer allow an X as 17th digit for a urified ISNI, lower case X also no longer allowed
+            * no longer allow an X as 17th digit, lowercase 'x' is no longer allowed
 
             Changes since 2018/03
             * Add support for identifiers for organisations
