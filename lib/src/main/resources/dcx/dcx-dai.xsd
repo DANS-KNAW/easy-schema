@@ -30,20 +30,16 @@
             Structuring name and affiliation of dc:creator and dc:contributor.
 
             Created 2012-10
-            Last modified 2019-01-11
+            Last modified 2020-03-03
+
+            Changes since 2019/01
+            * no longer allow an X as 17th digit for a urified ISNI, lower case X also no longer allowed
 
             Changes since 2018/03
             * Add support for identifiers for organisations
 
             Changes since 2017/09
             * Add support for ISNI, ORCID
-
-            Changes since 2018/03
-            * external URLs changed
-            * ...
-
-            Changes since 2019/01
-            * No 17'th digit for ISNI
 
         </xs:documentation>
     </xs:annotation>
