@@ -193,11 +193,11 @@
         <xs:restriction base="xs:string">
             <xs:pattern value="(http://isni.org/isni/[0-9]{15}[0-9X])|((ISNI:? ?)?([0-9]{4} ?){3}[0-9]{3}[0-9X])"/>
             <!--
-            No lower case X (as in previous implementation)
-            No spaces in case of an URL, an URL 'prefix' is lower case only
-            If not an URL
-            * An optional upper case prefix 'ISNI' followed an optional semicolon and/or space.
-            * No other separators than spaces, Groups of 8 or 12 digits will also pass
+            No lower case 'x' (as in previous implementation)
+            No spaces in case of a URL; a URL 'prefix' is lowercase only
+            If not a URL:
+            * An optional uppercase prefix 'ISNI' followed by an optional semicolon and/or space
+            * No other separators than spaces; groups of 8 or 12 digits are also allowed
             -->
         </xs:restriction>
     </xs:simpleType>

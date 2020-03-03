@@ -39,7 +39,7 @@
             Last modified 2020-03-03
 
             Change since 2020/03
-            * no longer allow an X as 17th digit for a urified isni, lower case X also no longer allowed
+            * no longer allow an X as 17th digit, lowercase 'x' is no longer allowed
 
             Change since 2019/07
             * Remove GROUP_ACCESS from EasyAccessCategoryType
