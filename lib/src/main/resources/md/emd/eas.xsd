@@ -190,14 +190,17 @@
             </xs:element>
         </xs:sequence>
     </xs:complexType>
+
     <xs:simpleType name="Additionalroles">
         <xs:restriction base="xs:normalizedString">
             <xs:enumeration value="Funder"/>
         </xs:restriction>
     </xs:simpleType>
+
     <xs:simpleType name="contributorRoles">
         <xs:union memberTypes="eas:Additionalroles datacite:contributorType"/>
     </xs:simpleType>
+
     <xs:simpleType name="contributorRolesSchemes">
         <xs:restriction base="xs:normalizedString">
             <xs:enumeration value="DATACITE"/>
