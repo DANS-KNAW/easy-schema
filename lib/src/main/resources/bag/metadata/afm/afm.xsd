@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dcterms="http://purl.org/dc/terms/" elementFormDefault="qualified"
+    targetNamespace="http://easy.dans.knaw.nl/schemas/bag/metadata/afm/"> 
+    
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="https://dublincore.org/schemas/xmls/qdc/dcterms.xsd"/>
+    
+    <xs:element name="mapprojection" substitutionGroup="dcterms:description"/>
+    <xs:element name="analyticUnits" substitutionGroup="dcterms:description"/>
+    <xs:element name="notes" substitutionGroup="dcterms:description"/>
+    <xs:element name="software" substitutionGroup="dcterms:description"/>
+    
+</xs:schema>
