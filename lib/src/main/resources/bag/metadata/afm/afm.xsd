@@ -1,13 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dcterms="http://purl.org/dc/terms/" elementFormDefault="qualified"
-    targetNamespace="http://easy.dans.knaw.nl/schemas/bag/metadata/afm/"> 
-    
-    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
-    <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="https://dublincore.org/schemas/xmls/qdc/dcterms.xsd"/>
-    
-    <xs:element name="mapprojection" substitutionGroup="dcterms:description"/>
-    <xs:element name="analyticUnits" substitutionGroup="dcterms:description"/>
-    <xs:element name="notes" substitutionGroup="dcterms:description"/>
-    <xs:element name="software" substitutionGroup="dcterms:description"/>
-    
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dcterms="http://purl.org/dc/terms/"
+    elementFormDefault="qualified"
+    targetNamespace="http://easy.dans.knaw.nl/schemas/bag/metadata/afm/">
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <xs:import namespace="http://purl.org/dc/terms/"
+        schemaLocation="https://dublincore.org/schemas/xmls/qdc/dcterms.xsd"/>
+
+    <xs:element name="hardware" substitutionGroup="dcterms:description">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut">computertype</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="original_OS" substitutionGroup="dcterms:description">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut">operation system</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+
+    <xs:element name="software" substitutionGroup="dcterms:description">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut">toepassingsprogrammatuur</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="notes" substitutionGroup="dcterms:description">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut"
+                >aanvullingen en specifieke instructies voor
+                (her)gebruik</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="case_quantity" substitutionGroup="dcterms:extent">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut">aantal waarnemingen</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="file_category" substitutionGroup="dcterms:type">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut">indelingsgroep</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="data_format" substitutionGroup="dcterms:format">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut">digitaal gegevensmodel</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="file_type" substitutionGroup="dcterms:format">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut">technische bestandsspecificatie</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="othmat_codebook" substitutionGroup="dcterms:requires">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut"
+                >exact bestandsnaam van het bijbehorende codeboek
+                (bijv. monsterlijst_code.txt)</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="data_collector" substitutionGroup="dcterms:contributor">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut">verzamelaar van de gegevens</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="collection_date" substitutionGroup="dcterms:date">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut">verzamelperiode</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="time_period" substitutionGroup="dcterms:temporal">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut"
+                >periode waarop de data betrekking
+                hebben</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="geog_cover" substitutionGroup="dcterms:spatial">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut"
+                >geografisch ligging (coordinaten,
+                begrenzingskader)</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="geog_unit" substitutionGroup="dcterms:spatial">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut"
+                >geografische eenheden (km., m.,
+                graden)</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="local_georef" substitutionGroup="dcterms:spatial">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut"
+                >lokaal naar landelijk of
+                lengte/breedtegraden</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="mapprojection" substitutionGroup="dcterms:spatial">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut"
+                >naam van de kaartprojectie of "lokaal meetsysteem"
+                (RD)</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="analytic_units" substitutionGroup="dcterms:spatial">
+        <xs:annotation>
+            <xs:documentation xml:lang="dut"
+                >analyse/opslag eenheden, observaties, records
+                (beschrijving per grondsporen)</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
 </xs:schema>
