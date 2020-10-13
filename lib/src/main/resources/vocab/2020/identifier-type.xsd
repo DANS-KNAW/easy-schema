@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2012 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:id-type="http://easy.dans.knaw.nl/schemas/vocab/identifier-type/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    targetNamespace="http://easy.dans.knaw.nl/schemas/vocab/identifier-type/"
+    elementFormDefault="qualified" attributeFormDefault="unqualified"> 
+    
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/> 
+    
+    <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="https://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
+    
+    <xs:complexType name="DOI">
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="URN">
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="MENDELEY-DATA">
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="ISBN">
+        <xs:annotation>
+            <xs:documentation>The ISBN number of one of the resources in this deposit</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="ISSN">
+        <xs:annotation>
+            <xs:documentation>The ISSN number of one of the resources in this deposit</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="NWO-PROJECTNR">
+        <xs:annotation>
+            <xs:documentation>The NWO project number of the Research Project that produced the resources in this deposit if it was funded by NWO</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="ARCHIS-ZAAK-IDENTIFICATIE">
+        <xs:annotation>
+            <xs:documentation>Zaakidentificatie used in Archis3. there can be multiple zaakidentificatie-numbers per deposit</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:complexType name="EASY2">
+        <xs:annotation>
+            <xs:documentation>The identifier for this dataset as created and used during EASY2, from 2011 until 2021</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:complexType name="EASY1">
+        <xs:annotation>
+            <xs:documentation>The identifier for this dataset as created and used during EASY1, until 2011</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="EDNA-PROJECT">
+        <xs:annotation>
+            <xs:documentation>Het e-depot Nederlandse archeologie (EDNA) is een samenwerking tussen DANS en de Rijksdienst voor het Cultureel Erfgoed en is ondergebracht bij het nationaal data archief DANS.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="ARCHIS-ONDERZOEK">
+        <xs:annotation>
+            <xs:documentation>Nummer toegekend bij  het afmelden van het onderzoek in Archis2 van de Rijksdienst Cultureel Erfgoed.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="ARCHIS-VONDSTMELDING">
+        <xs:annotation>
+            <xs:documentation>Nummer toegekend aan een melding van een archeologische vondst in Archis2 van de Rijksdienst Cultureel Erfgoed.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="ARCHIS-WAARNEMING">
+        <xs:annotation>
+            <xs:documentation>Nummer toegekend aan een waarneming van een mogelijke archeologie in Archis2 van de Rijksdienst Cultureel Erfgoed. Een waarneming in Archis is de documentatie van een bepaalde archeologische vondst of vindplaats, op een bepaald moment (datum vondst) en door een bepaalde persoon of instantie (Definitie van waarneming volgens het Archeologisch Basis Register 1992, versie 1.0, II). </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="ARCHIS-MONUMENT">
+        <xs:annotation>
+            <xs:documentation>Nummer toegekend aan een monument in Archis2 van de Rijksdienst Cultureel Erfgoed.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
+
+</xs:schema>
