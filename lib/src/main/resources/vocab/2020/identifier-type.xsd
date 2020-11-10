@@ -157,6 +157,20 @@
         </xs:simpleContent>
     </xs:complexType>
 
+    <xs:complexType name="EDNA-PROJECT">
+        <xs:annotation>
+            <xs:documentation>Deprecated. Use 'eDNA-project' instead.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:restriction base="dc:SimpleLiteral">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+                <xs:attribute ref="xml:lang" use="prohibited"/>
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+
     <xs:complexType name="ARCHIS-ONDERZOEK">
         <xs:annotation>
             <xs:documentation>Nummer toegekend bij  het afmelden van het onderzoek in Archis2 van de Rijksdienst Cultureel Erfgoed.</xs:documentation>
