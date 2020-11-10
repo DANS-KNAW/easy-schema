@@ -143,7 +143,7 @@
         </xs:simpleContent>
     </xs:complexType>
 
-    <xs:complexType name="EDNA-PROJECT">
+    <xs:complexType name="eDNA-project">
         <xs:annotation>
             <xs:documentation>Het e-depot Nederlandse archeologie (EDNA) is een samenwerking tussen DANS en de Rijksdienst voor het Cultureel Erfgoed en is ondergebracht bij het nationaal data archief DANS.</xs:documentation>
         </xs:annotation>
