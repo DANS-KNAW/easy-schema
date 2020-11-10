@@ -28,7 +28,7 @@
 
     <groupId>nl.knaw.dans.easy</groupId>
     <artifactId>easy-schema</artifactId>
-    <version>3.4.6</version>
+    <version>3.4.7-SNAPSHOT</version>
 
     <name>EASY Schema Definitions Command</name>
     <inceptionYear>2012</inceptionYear>
@@ -158,8 +158,4 @@
             </build>
         </profile>
     </profiles>
-
-  <scm>
-    <tag>v3.4.6</tag>
-  </scm>
 </project>
