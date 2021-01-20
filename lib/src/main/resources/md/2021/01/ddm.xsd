@@ -160,38 +160,6 @@
     </xs:element>
 
     <!-- =================================================================================== -->
-    <xs:element name="language" substitutionGroup="dc:language">
-        <xs:annotation><xs:documentation>Restriction on dc:language. If used, the code attribute is required to record the language code in either dcterms:ISO639-2 or dcterms:ISO639-3</xs:documentation></xs:annotation>
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:extension base="ddm:NonEmptyString">
-                    <xs:attribute name="code" type="xs:string" use="required"/>
-                    <xs:attribute name="encodingScheme" type="ddm:LanguageEncodingScheme" use="required"/>
-                </xs:extension>
-            </xs:complexContent>
-        </xs:complexType>
-    </xs:element>
-    
-    <xs:simpleType name="LanguageEncodingScheme">
-        <xs:restriction base="xs:NMTOKEN">
-            <xs:enumeration value="ISO639-2">
-                <xs:annotation>
-                    <xs:documentation>
-                        http://lcweb.loc.gov/standards/iso639-2/langhome.html
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="ISO639-3">
-                <xs:annotation>
-                    <xs:documentation>
-                        http://www.sil.org/iso639-3/
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-        </xs:restriction>
-    </xs:simpleType>
-    
-    <!-- =================================================================================== -->
     <xs:element name="description" substitutionGroup="dc:description">
         <xs:annotation>
             <xs:documentation xml:lang="en">
