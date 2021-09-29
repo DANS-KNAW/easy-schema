@@ -28,7 +28,7 @@
 
     <groupId>nl.knaw.dans.easy</groupId>
     <artifactId>easy-schema</artifactId>
-    <version>3.4.10-SNAPSHOT</version>
+    <version>3.4.11-SNAPSHOT</version>
 
     <name>EASY Schema Definitions Command</name>
     <inceptionYear>2012</inceptionYear>
