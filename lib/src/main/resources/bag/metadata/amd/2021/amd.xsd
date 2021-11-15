@@ -20,14 +20,12 @@
            targetNamespace="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
            xmlns:damd="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
            xmlns:wfs="http://easy.dans.knaw.nl/easy/workflow/">
-    <xs:import namespace="http://easy.dans.knaw.nl/easy/workflow/" schemaLocation="https://easy.dans.knaw.nl/schemas/bag/metadata/amd/wfs.xsd"/>
+    <xs:import namespace="http://easy.dans.knaw.nl/easy/workflow/" schemaLocation="https://easy.dans.knaw.nl/schemas/bag/metadata/amd/2018/02/wfs.xsd"/>
     <!-- import the versioned schema of wfs -->
     <xs:annotation>
         <xs:documentation>
             Schema to describe the administrative metadata for datasets in EASY, v1.0.
 
-            Changes from 2018/02 to 2021:
-            * Make depositorId a standalone element
             Changes from 2012 to 2018/02:
             * delete: groupIds in the amd
             * delete: datasetState/previousState no longer recorded, as state is not a property to be archived
