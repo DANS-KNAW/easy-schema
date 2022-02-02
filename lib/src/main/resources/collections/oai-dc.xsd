@@ -21,7 +21,7 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     targetNamespace="http://www.openarchives.org/OAI/2.0/oai_dc/">
 
-    <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="http://easy.dans.knaw.nl/schemas/collections/dc.xsd"/>
+    <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="https://easy.dans.knaw.nl/schemas/extern/dc.xsd"/>
 
     <xs:element name="dc" substitutionGroup="dc:dc"/>
     

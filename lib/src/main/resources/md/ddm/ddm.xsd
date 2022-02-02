@@ -89,12 +89,10 @@
     <!-- =================================================================================== -->
     <xs:import namespace="http://www.w3.org/XML/1998/namespace"
                schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
-    <!-- this schema location is temporary, since the original (https://dublincore.org/schemas/xmls/qdc/dc.xsd) is not available -->
     <xs:import namespace="http://purl.org/dc/elements/1.1/"
-               schemaLocation="https://dublincore.org/schemas/xmls/qdc/2008/02/11/dc.xsd"/>
-    <!-- this schema location is temporary, since the original (https://dublincore.org/schemas/xmls/qdc/dcterms.xsd) is not available -->
+               schemaLocation="https://easy.dans.knaw.nl/schemas/extern/dc.xsd"/>
     <xs:import namespace="http://purl.org/dc/terms/"
-               schemaLocation="https://dublincore.org/schemas/xmls/qdc/2008/02/11/dcterms.xsd"/>
+               schemaLocation="https://easy.dans.knaw.nl/schemas/extern/dcterms.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/"
                schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/dai/"
@@ -174,8 +172,8 @@
     <!-- =================================================================================== -->
     <xs:element name="language" substitutionGroup="dc:language">
         <xs:annotation>
-            <xs:documentation>Restriction on dc:language. 
-                If used, the code attribute is required to record the language code 
+            <xs:documentation>Restriction on dc:language.
+                If used, the code attribute is required to record the language code
                 in either dcterms:ISO639-2 or dcterms:ISO639-3
             </xs:documentation>
         </xs:annotation>
@@ -188,7 +186,7 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
+
     <xs:simpleType name="LanguageEncodingScheme">
         <xs:restriction base="xs:NMTOKEN">
             <xs:enumeration value="ISO639-2">
@@ -207,7 +205,7 @@
             </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <!-- =================================================================================== -->
     <xs:element name="description" substitutionGroup="dc:description">
         <xs:annotation>
@@ -277,15 +275,15 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
+
     <!-- =================================================================================== -->
     <xs:element name="datesOfCollection" substitutionGroup="dcterms:date" type="id-type:RKMS-ISO8601">
         <xs:annotation>
             <xs:documentation xml:lang="en">
                 Restriction on dcterms:date to record the period the data was collected.
-                
+
                 Element value MUST conform to the id-type:RKMS-ISO8601 format.
-                
+
                 See also: http://purl.org/dc/terms/created
             </xs:documentation>
         </xs:annotation>
@@ -293,7 +291,7 @@
 
     <!-- =================================================================================== -->
     <xs:element name="funding" substitutionGroup="dcterms:contributor" type="ddm:FundingReferenceType"/>
-    
+
     <xs:complexType name="FundingReferenceType">
         <xs:complexContent>
             <xs:extension base="dcx:ElementsOnlyNoLanguageAttributeType">
@@ -304,7 +302,7 @@
                             <xs:simpleContent>
                                 <xs:extension base="xs:string">
                                     <xs:attribute name="funderIdentifierType"
-                                        type="datacite:funderIdentifierType" use="required"/>
+                                                  type="datacite:funderIdentifierType" use="required"/>
                                 </xs:extension>
                             </xs:simpleContent>
                         </xs:complexType>
@@ -313,7 +311,8 @@
                     <xs:element name="awardNumber" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>The code assigned by the funder to a sponsored award
-                                (grant).</xs:documentation>
+                                (grant).
+                            </xs:documentation>
                         </xs:annotation>
                         <xs:complexType>
                             <xs:simpleContent>
@@ -526,15 +525,15 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
+
     <!-- =================================================================================== -->
     <xs:element name="inCollection" substitutionGroup="dcterms:isPartOf" type="ddm:CollectionType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Use this to describe the collection to which this dataset belongs.
             </xs:documentation>
-        </xs:annotation>        
+        </xs:annotation>
     </xs:element>
-    
+
     <xs:complexType name="CollectionType">
         <xs:complexContent>
             <xs:extension base="dc:SimpleLiteral">
@@ -556,7 +555,7 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    
+
     <!-- =================================================================================== -->
     <xs:element name="subject" substitutionGroup="dcterms:subject" type="ddm:SubjectType">
         <xs:annotation>
