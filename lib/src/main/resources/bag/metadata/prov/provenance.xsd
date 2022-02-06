@@ -54,9 +54,15 @@
     <xs:import namespace="http://datacite.org/schema/kernel-4"
                schemaLocation="http://schema.datacite.org/meta/kernel-4.1/metadata.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
-               schemaLocation="http://easy.dans.knaw.nl/schemas/bag/metadata/afm/afm.xsd"/>
+               schemaLocation="http://easy.dans.knaw.nl/schemas/bag/metadata/amd/amd.xsd"/>
     <!-- =================================================================================== -->
 
+    <xs:annotation><xs:documentation>
+        changes since 2021-11
+        * Add filename attribute to prov:file element
+        * Add stateChangeDate element to ContentType
+        * Add encoding element to ContentType
+    </xs:documentation></xs:annotation>
     <xs:element name="provenance">
         <xs:complexType>
             <xs:choice>
@@ -71,6 +77,7 @@
                 <xs:element ref="prov:new"/>
             </xs:sequence>
             <xs:attribute name="scheme" type="prov:XmlFileScheme"/>
+            <xs:attribute name="filename" type="xs:string" use="optional"/>
         </xs:complexType>
     </xs:element>
 
@@ -110,8 +117,10 @@
             <xs:extension base="dcterms:elementOrRefinementContainer">
                 <xs:choice>
                     <xs:element ref="amd:depositorId" minOccurs="0"/>
+                    <xs:element ref="amd:stateChangeDate" minOccurs="0"/>
+                    <xs:element name="encoding" type="xs:string" minOccurs="0"/>
                 </xs:choice>
             </xs:extension>
         </xs:complexContent>
-    </xs:complexType>
+    </xs:complexType>    
 </xs:schema>

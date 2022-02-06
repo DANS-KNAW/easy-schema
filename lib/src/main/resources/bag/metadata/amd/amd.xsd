@@ -25,7 +25,10 @@
     <xs:annotation>
         <xs:documentation>
             Schema to describe the administrative metadata for datasets in EASY, v1.0.
-
+            
+            Changes from 2021 to 2022:
+            * reintroduce: stateChangeDate
+            * Allow changeDate in stateChangeDate to be empty
             Changes from 2018/02 to 2021:
             * Make depositorId a standalone element
             Changes from 2012 to 2018/02:
@@ -34,7 +37,7 @@
             * delete: stateChangeDates
             * add: accessGranterId
         </xs:documentation>
-    </xs:annotation>
+    </xs:annotation>    
     <xs:element name="administrative-md">
         <xs:complexType>
             <xs:sequence>
@@ -51,6 +54,15 @@
                 <xs:element ref="damd:workflowData"/>
             </xs:sequence>
             <xs:attribute name="version" use="required" type="xs:string" fixed="1.0"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="stateChangeDate">
+        <xs:complexType>
+            <xs:sequence>                
+                <xs:element name="fromState" form="unqualified" type="xs:NCName"/>
+                <xs:element name="toState" form="unqualified" type="xs:NCName"/>
+                <xs:element name="changeDate" form="unqualified" type="damd:dateTime-or-nothing" />
+            </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="depositorId" type="xs:NCName">
@@ -70,5 +82,16 @@
             </xs:sequence>
             <xs:attribute name="version" use="required" type="xs:string" fixed="1.0"/>
         </xs:complexType>
-    </xs:element>
+    </xs:element>   
+    
+    
+    <xs:simpleType name="empty-string">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value=""/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="dateTime-or-nothing">
+        <xs:union memberTypes="xs:dateTime damd:empty-string"/>
+    </xs:simpleType>       
 </xs:schema>
