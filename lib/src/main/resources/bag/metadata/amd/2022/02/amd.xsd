@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2012 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           targetNamespace="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
+           xmlns:damd="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
+           xmlns:wfs="http://easy.dans.knaw.nl/easy/workflow/">
+    <xs:import namespace="http://easy.dans.knaw.nl/easy/workflow/" schemaLocation="https://easy.dans.knaw.nl/schemas/bag/metadata/amd/wfs.xsd"/>
+    <!-- import the versioned schema of wfs -->
+    <xs:annotation>
+        <xs:documentation>
+            Schema to describe the administrative metadata for datasets in EASY, v1.0.
+            
+            Changes from 2021 to 2022:
+            * reintroduce: stateChangeDate
+            * Allow changeDate in stateChangeDate to be empty
+            Changes from 2018/02 to 2021:
+            * Make depositorId a standalone element
+            Changes from 2012 to 2018/02:
+            * delete: groupIds in the amd
+            * delete: datasetState/previousState no longer recorded, as state is not a property to be archived
+            * delete: stateChangeDates
+            * add: accessGranterId
+        </xs:documentation>
+    </xs:annotation>    
+    <xs:element name="administrative-md">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="damd:depositorId"/>
+                <xs:element name="accessGranterId" form="unqualified" type="xs:NCName" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The agent to be notified with questions regarding this dataset or its permissions.
+                            This is NOT necessarily the creator of the dataset.
+                            If no AccessGranter is specified, the depositor is notified.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="damd:workflowData"/>
+            </xs:sequence>
+            <xs:attribute name="version" use="required" type="xs:string" fixed="1.0"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="stateChangeDate">
+        <xs:complexType>
+            <xs:sequence>                
+                <xs:element name="fromState" form="unqualified" type="xs:NCName"/>
+                <xs:element name="toState" form="unqualified" type="xs:NCName"/>
+                <xs:element name="changeDate" form="unqualified" type="damd:dateTime-or-nothing" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="depositorId" type="xs:NCName">
+        <xs:annotation>
+            <xs:documentation>The username of the depositor. This is NOT necessarily the creator of the dataset.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="workflowData">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="assigneeId" form="unqualified" type="xs:NCName">
+                    <xs:annotation>
+                        <xs:documentation>The DANS data manager responsible for the curation of this dataset.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="wfs:workflow"/>
+            </xs:sequence>
+            <xs:attribute name="version" use="required" type="xs:string" fixed="1.0"/>
+        </xs:complexType>
+    </xs:element>   
+    
+    
+    <xs:simpleType name="empty-string">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value=""/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="dateTime-or-nothing">
+        <xs:union memberTypes="xs:dateTime damd:empty-string"/>
+    </xs:simpleType>       
+</xs:schema>

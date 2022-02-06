@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2012 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:prov="http://easy.dans.knaw.nl/schemas/bag/metadata/prov/"
+           xmlns:ddm="http://easy.dans.knaw.nl/schemas/md/ddm/"
+           xmlns:amd="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
+           xmlns:dc="http://purl.org/dc/elements/1.1/"
+           xmlns:dcterms="http://purl.org/dc/terms/"
+           xmlns:dcx="http://easy.dans.knaw.nl/schemas/dcx/"
+           xmlns:dcx-dai="http://easy.dans.knaw.nl/schemas/dcx/dai/"
+           xmlns:narcis="http://easy.dans.knaw.nl/schemas/vocab/narcis-type/"
+           xmlns:id-type="http://easy.dans.knaw.nl/schemas/vocab/identifier-type/"
+           xmlns:datacite="http://datacite.org/schema/kernel-4"
+           targetNamespace="http://easy.dans.knaw.nl/schemas/bag/metadata/prov/"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <!-- =================================================================================== -->
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+               schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <xs:import namespace="http://purl.org/dc/elements/1.1/"
+               schemaLocation="https://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
+    <xs:import namespace="http://purl.org/dc/terms/"
+               schemaLocation="https://dublincore.org/schemas/xmls/qdc/dcterms.xsd"/>
+    <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/"
+               schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
+    <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/dai/"
+               schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2020/03/dcx-dai.xsd"/>
+    <xs:import namespace="http://easy.dans.knaw.nl/schemas/md/ddm/"
+               schemaLocation="http://easy.dans.knaw.nl/schemas/md/ddm/ddm.xsd"/>
+    <xs:import namespace="http://easy.dans.knaw.nl/schemas/vocab/narcis-type/"
+               schemaLocation="http://easy.dans.knaw.nl/schemas/vocab/2015/narcis-type.xsd"/>
+    <xs:import namespace="http://easy.dans.knaw.nl/schemas/vocab/identifier-type/"
+               schemaLocation="http://easy.dans.knaw.nl/schemas/vocab/identifier-type.xsd"/>
+    <xs:import namespace="http://www.den.nl/standaard/166/Archeologisch-Basisregister/"
+               schemaLocation="http://easy.dans.knaw.nl/schemas/vocab/2012/abr-type.xsd"/>
+    <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/gml/"
+               schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2016/dcx-gml.xsd"/>
+    <xs:import namespace="http://datacite.org/schema/kernel-4"
+               schemaLocation="http://schema.datacite.org/meta/kernel-4.1/metadata.xsd"/>
+    <xs:import namespace="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
+               schemaLocation="http://easy.dans.knaw.nl/schemas/bag/metadata/amd/amd.xsd"/>
+    <!-- =================================================================================== -->
+
+    <xs:annotation><xs:documentation>
+        changes since 2021-11
+        * Add filename attribute to prov:file element
+        * Add stateChangeDate element to ContentType
+        * Add encoding element to ContentType
+    </xs:documentation></xs:annotation>
+    <xs:element name="provenance">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="prov:migration"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="file">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="prov:old"/>
+                <xs:element ref="prov:new"/>
+            </xs:sequence>
+            <xs:attribute name="scheme" type="prov:XmlFileScheme"/>
+            <xs:attribute name="filename" type="xs:string" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="migration">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="prov:file" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="app" use="required" type="xs:NCName"/>
+            <xs:attribute name="version" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="date" use="required" type="xs:date"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="old" type="prov:ContentType"/>
+    <xs:element name="new" type="prov:ContentType"/>
+    <xs:simpleType name="XmlFileScheme">
+        <xs:restriction base="xs:anyURI">
+            <xs:enumeration value="http://easy.dans.knaw.nl/schemas/md/ddm/">
+                <xs:annotation>
+                    <xs:documentation>
+                        The DANS Dataset Metadata scheme
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/">
+                <xs:annotation>
+                    <xs:documentation>
+                        The EASY Administrative Metadata scheme
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="ContentType">
+        <xs:complexContent>
+            <xs:extension base="dcterms:elementOrRefinementContainer">
+                <xs:choice>
+                    <xs:element ref="amd:depositorId" minOccurs="0"/>
+                    <xs:element ref="amd:stateChangeDate" minOccurs="0"/>
+                    <xs:element name="encoding" type="xs:string" minOccurs="0"/>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>    
+</xs:schema>
