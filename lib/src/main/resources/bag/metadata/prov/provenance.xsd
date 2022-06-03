@@ -112,14 +112,14 @@
             </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
-    <xs:complexType name="ContentType" minOccurs="0">
+    <xs:complexType name="ContentType">
         <xs:complexContent>
             <xs:extension base="dcterms:elementOrRefinementContainer">
-                <xs:choice>
+                <xs:sequence>
                     <xs:element name="depositorId" form="unqualified" type="xs:NCName" minOccurs="0"/>
                     <xs:element ref="amd:stateChangeDate" minOccurs="0"/>
                     <xs:element name="encoding" type="xs:string" minOccurs="0"/>
-                </xs:choice>
+                </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>    
