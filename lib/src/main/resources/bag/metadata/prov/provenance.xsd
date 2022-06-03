@@ -117,6 +117,7 @@
             <xs:extension base="dcterms:elementOrRefinementContainer">
                 <xs:choice>
                     <xs:element name="depositorId" form="unqualified" type="xs:NCName" minOccurs="0"/>
+                    <xs:element name="changeDate" form="unqualified" type="xs:dateTime" />
                     <xs:element ref="amd:stateChangeDate" minOccurs="0"/>
                     <xs:element name="encoding" type="xs:string" minOccurs="0"/>
                 </xs:choice>
