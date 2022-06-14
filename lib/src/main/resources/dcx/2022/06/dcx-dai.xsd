@@ -30,7 +30,10 @@
             Structuring name and affiliation of dc:creator and dc:contributor.
 
             Created 2012-10
-            Last modified 2020-03-03
+            Last modified 2022-06-14
+
+            Changes since 2020/03
+            * removed unused ISNIType, ORCIDType
 
             Changes since 2019/01
             * no longer allow an X as 17th digit, lowercase 'x' is no longer allowed
@@ -146,16 +149,6 @@
     </xs:simpleType>
 
     <!-- =================================================================================== -->
-    <xs:complexType name="ORCIDType">
-        <xs:complexContent>
-            <xs:extension base="dc:SimpleLiteral">
-                <xs:attribute name="ORCID" type="dcx-dai:SimpleORCIDType" use="required"/>
-                <xs:attribute ref="xml:lang" use="prohibited"/>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-
-    <!-- =================================================================================== -->
     <xs:simpleType name="SimpleORCIDType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Use of a urified ORCID (starting with https://orcid.org/) is recommended.
@@ -169,16 +162,6 @@
             <xs:pattern value="(https://orcid.org/){0,1}([0-9]{4}-){3}[0-9]{3}[0-9xX]{0,1}"/>
         </xs:restriction>
     </xs:simpleType>
-
-    <!-- =================================================================================== -->
-    <xs:complexType name="ISNIType">
-        <xs:complexContent>
-            <xs:extension base="dc:SimpleLiteral">
-                <xs:attribute name="ISNI" type="dcx-dai:SimpleISNIType" use="required"/>
-                <xs:attribute ref="xml:lang" use="prohibited"/>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
 
     <!-- =================================================================================== -->
     <xs:simpleType name="SimpleISNIType">
