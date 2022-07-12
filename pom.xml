@@ -21,7 +21,7 @@
 
     <groupId>nl.knaw.dans.easy</groupId>
     <artifactId>easy-schema-build</artifactId>
-    <version>3.5.7-SNAPSHOT</version>
+    <version>3.5.7</version>
 
     <name>EASY Schema Definitions</name>
     <description>Collection of metadata schema's used by EASY</description>
@@ -31,7 +31,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/DANS-KNAW/easy-schema</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v3.5.7</tag>
     </scm>
 
    <build>
