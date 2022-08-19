@@ -89,22 +89,22 @@
     <!-- =================================================================================== -->
     <xs:import namespace="http://www.w3.org/XML/1998/namespace"
                schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
-    <xs:import namespace="http://purl.org/dc/elements/1.1/"
+    <xs:import namespace="https://purl.org/dc/elements/1.1/"
                schemaLocation="https://easy.dans.knaw.nl/schemas/extern/dc.xsd"/>
     <xs:import namespace="http://purl.org/dc/terms/"
                schemaLocation="https://easy.dans.knaw.nl/schemas/extern/dcterms.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/"
-               schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
+               schemalocation="https://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/dai/"
-               schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2020/03/dcx-dai.xsd"/>
+               schemalocation="https://easy.dans.knaw.nl/schemas/dcx/2020/03/dcx-dai.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/vocab/narcis-type/"
-               schemaLocation="http://easy.dans.knaw.nl/schemas/vocab/2015/narcis-type.xsd"/>
+               schemalocation="https://easy.dans.knaw.nl/schemas/vocab/2015/narcis-type.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/vocab/identifier-type/"
-               schemaLocation="http://easy.dans.knaw.nl/schemas/vocab/identifier-type.xsd"/>
+               schemalocation="https://easy.dans.knaw.nl/schemas/vocab/identifier-type.xsd"/>
     <xs:import namespace="http://www.den.nl/standaard/166/Archeologisch-Basisregister/"
-               schemaLocation="http://easy.dans.knaw.nl/schemas/vocab/2012/abr-type.xsd"/>
+               schemalocation="https://easy.dans.knaw.nl/schemas/vocab/2012/abr-type.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/gml/"
-               schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2016/dcx-gml.xsd"/>
+               schemalocation="https://easy.dans.knaw.nl/schemas/dcx/2016/dcx-gml.xsd"/>
     <xs:import namespace="http://datacite.org/schema/kernel-4"
                schemaLocation="http://schema.datacite.org/meta/kernel-4.1/metadata.xsd"/>
     <!-- =================================================================================== -->
