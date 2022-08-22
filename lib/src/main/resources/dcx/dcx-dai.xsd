@@ -49,9 +49,9 @@
 
     <!-- =================================================================================== -->
     <xs:import namespace="http://www.w3.org/XML/1998/namespace"
-               schemalocation="https://easy.dans.knaw.nl/schemas/extern/w3/2001/03/xml.xsd"/>
+               schemaLocation="https://easy.dans.knaw.nl/schemas/extern/w3/2001/03/xml.xsd"/>
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/"
-               schemalocation="https://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
+               schemaLocation="https://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
     <xs:import namespace="http://purl.org/dc/elements/1.1/"
                schemaLocation="https://easy.dans.knaw.nl/schemas/extern/dc.xsd"/>
     <xs:import namespace="http://datacite.org/schema/kernel-4"

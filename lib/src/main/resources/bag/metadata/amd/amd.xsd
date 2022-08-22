@@ -20,7 +20,7 @@
            targetNamespace="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
            xmlns:damd="http://easy.dans.knaw.nl/easy/dataset-administrative-metadata/"
            xmlns:wfs="http://easy.dans.knaw.nl/easy/workflow/">
-    <xs:import namespace="http://easy.dans.knaw.nl/easy/workflow/" schemalocation="https://easy.dans.knaw.nl/schemas/bag/metadata/amd/wfs.xsd"/>
+    <xs:import namespace="http://easy.dans.knaw.nl/easy/workflow/" schemaLocation="https://easy.dans.knaw.nl/schemas/bag/metadata/amd/wfs.xsd"/>
     <!-- import the versioned schema of wfs -->
     <xs:annotation>
         <xs:documentation>

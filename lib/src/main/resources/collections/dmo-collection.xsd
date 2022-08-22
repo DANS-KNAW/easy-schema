@@ -19,7 +19,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:oai-dc="http://www.openarchives.org/OAI/2.0/oai_dc/"> 
     
-    <xs:import namespace="http://www.openarchives.org/OAI/2.0/oai_dc/" schemalocation="https://easy.dans.knaw.nl/schemas/collections/oai-dc.xsd"/>
+    <xs:import namespace="http://www.openarchives.org/OAI/2.0/oai_dc/" schemaLocation="https://easy.dans.knaw.nl/schemas/collections/oai-dc.xsd"/>
     
     <xs:element name="dmo-collection">
         <xs:annotation>

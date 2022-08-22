@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:sf="http://easy.dans.knaw.nl/external/springfield-actions/" xmlns:xml="http://www.w3.org/XML/1998/namespace"
            targetNamespace="http://easy.dans.knaw.nl/external/springfield-actions/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemalocation="https://easy.dans.knaw.nl/schemas/extern/w3/2001/03/xml.xsd"/>
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="https://easy.dans.knaw.nl/schemas/extern/w3/2001/03/xml.xsd"/>
     <xs:annotation>
         <xs:documentation>2017-08: @play-mode attribuut toegevoegd in de video-playlist met twee mogelijke
             waarden, continuous en menu. voor elke video/audio in menu-playlist moet een @title attribuut aanwezig zijn. </xs:documentation>
