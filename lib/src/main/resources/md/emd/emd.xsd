@@ -38,9 +38,9 @@
         </xs:documentation>
     </xs:annotation>
 
-    <xs:import schemaLocation="https://easy.dans.knaw.nl/schemas/md/emd/sdc.xsd" namespace="http://purl.org/dc/elements/1.1/"/>
-    <xs:import schemaLocation="https://easy.dans.knaw.nl/schemas/md/emd/qdc.xsd" namespace="http://purl.org/dc/terms/"/>
-    <xs:import schemaLocation="https://easy.dans.knaw.nl/schemas/md/emd/eas.xsd" namespace="http://easy.dans.knaw.nl/easy/easymetadata/eas/"/>
+    <xs:import schemalocation="https://easy.dans.knaw.nl/schemas/md/emd/sdc.xsd" namespace="http://purl.org/dc/elements/1.1/"/>
+    <xs:import schemalocation="https://easy.dans.knaw.nl/schemas/md/emd/qdc.xsd" namespace="http://purl.org/dc/terms/"/>
+    <xs:import schemalocation="https://easy.dans.knaw.nl/schemas/md/emd/eas.xsd" namespace="http://easy.dans.knaw.nl/easy/easymetadata/eas/"/>
 
     <xs:element name="easymetadata">
         <xs:annotation>
