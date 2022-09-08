@@ -32,6 +32,7 @@
             Last modified 2022-09-08
 
             Change since 2020-03-23
+
             * Allow empty role in contributor types
 
             Change since 2019-01-11
@@ -49,7 +50,9 @@
 
     <xs:import schemaLocation="xml.xsd"
         namespace="http://www.w3.org/XML/1998/namespace"/>
+
     <xs:import schemaLocation="https://schema.datacite.org/meta/kernel-4/metadata.xsd"
+
         namespace="http://datacite.org/schema/kernel-4"/>
 
 

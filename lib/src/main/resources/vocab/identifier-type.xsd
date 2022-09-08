@@ -22,7 +22,7 @@
     targetNamespace="http://easy.dans.knaw.nl/schemas/vocab/identifier-type/"
     elementFormDefault="qualified" attributeFormDefault="unqualified"> 
     
-    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/> 
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemalocation="https://easy.dans.knaw.nl/schemas/extern/w3/2001/03/xml.xsd"/>
     
     <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="https://easy.dans.knaw.nl/schemas/extern/dc.xsd"/>
     
