@@ -29,11 +29,8 @@
             An instance of this metadata-format is used for internal storage in Fedora.
 
             Created 2012-11
-            Last modified 2022-09-08
-
-            Change since 2020-03-23
-            * Allow empty role in to contributor types
-
+            Last modified 2020-03-23
+            
             Change since 2019-01-11
             * Add role 'Funder' to contributor types
 
@@ -197,7 +194,6 @@
     <xs:simpleType name="Additionalroles">
         <xs:restriction base="xs:normalizedString">
             <xs:enumeration value="Funder"/>
-            <xs:enumeration value=""/>
         </xs:restriction>
     </xs:simpleType>
 
