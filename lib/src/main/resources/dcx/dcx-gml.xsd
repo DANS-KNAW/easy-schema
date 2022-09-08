@@ -32,11 +32,11 @@
 
     <!-- =================================================================================== -->
     <xs:import namespace="http://easy.dans.knaw.nl/schemas/dcx/"
-               schemalocation="https://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
+               schemaLocation="http://easy.dans.knaw.nl/schemas/dcx/2012/10/dcx.xsd"/>
     <xs:import namespace="http://purl.org/dc/terms/"
                schemaLocation="https://easy.dans.knaw.nl/schemas/extern/dcterms.xsd"/>
     <xs:import namespace="http://www.opengis.net/gml"
-               schemaLocation="https://easy.dans.knaw.nl/schemas/extern/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsf.xsd"/>
+               schemaLocation="http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsf.xsd"/>
 
     <!-- =================================================================================== -->
     <xs:element name="spatial" substitutionGroup="dcterms:spatial" type="dcx-gml:SimpleGMLType">

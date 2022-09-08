@@ -46,7 +46,7 @@
 
     <xs:import schemaLocation="xml.xsd"
         namespace="http://www.w3.org/XML/1998/namespace"/>
-    <xs:import schemaLocation="https://easy.dans.knaw.nl/schemas/extern/datacite/v4/metadata.xsd"
+    <xs:import schemaLocation="https://schema.datacite.org/meta/kernel-4/metadata.xsd"
         namespace="http://datacite.org/schema/kernel-4"/>
 
 
