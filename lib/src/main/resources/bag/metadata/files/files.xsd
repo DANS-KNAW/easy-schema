@@ -44,10 +44,10 @@
     </xs:annotation>
 
     <!-- =================================================================================== -->
-    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemalocation="https://easy.dans.knaw.nl/schemas/extern/w3/2001/03/xml.xsd"/>
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
     <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="https://easy.dans.knaw.nl/schemas/extern/dc.xsd"/>
     <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="https://easy.dans.knaw.nl/schemas/extern/dcterms.xsd"/>
-    <xs:import namespace="http://easy.dans.knaw.nl/schemas/bag/metadata/afm/" schemalocation="https://easy.dans.knaw.nl/schemas/bag/metadata/afm/afm.xsd"/>
+    <xs:import namespace="http://easy.dans.knaw.nl/schemas/bag/metadata/afm/" schemaLocation="http://easy.dans.knaw.nl/schemas/bag/metadata/afm/afm.xsd"/>
     <!-- =================================================================================== -->
     <xs:element name="files">
         <xs:complexType>
