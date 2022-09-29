@@ -63,7 +63,6 @@
         * Add stateChangeDate element to ContentType
         * Add encoding element to ContentType
         changes since 2022-02
-        * Allow empty eas:role in contributor
         changes since 2021-06
         * allow CDATA in prov:old
     </xs:documentation></xs:annotation>
