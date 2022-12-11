@@ -30,7 +30,7 @@
     <packaging>pom</packaging>
 
     <scm>
-        <developerConnection>scm:git:https://github.com/DANS-KNAW/easy-schema</developerConnection>
+        <developerConnection>scm:git:ssh://github.com/DANS-KNAW/easy-schema</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
